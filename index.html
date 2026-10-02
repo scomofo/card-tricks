@@ -4,75 +4,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sleight School — 13 Card Tricks, Zero to Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --felt:#0e2a1c; --felt2:#123522; --gold:#d4af37; --gold-dim:#a8872e;
-    --cream:#f2ead8; --muted:#b9ac93; --card:#16402a; --line:#2a5a3e;
+    --bg:#0d0b08; --panel:#15110c; --panel2:#1a140d; --line:#2c2314;
+    --gold:#d8a93f; --gold-soft:#b98c2e; --red:#b3402e;
+    --cream:#f0e7d3; --muted:#a79a7f; --faint:#6f6350;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:radial-gradient(1200px 800px at 50% -10%, #17452c 0%, var(--felt) 55%, #08170f 100%);
-    color:var(--cream);font-family:Georgia,'Times New Roman',serif;line-height:1.65}
-  .wrap{max-width:880px;margin:0 auto;padding:32px 20px 80px}
-  header.hero{text-align:center;padding:48px 16px 32px;border-bottom:2px solid var(--gold-dim);margin-bottom:8px}
-  .suit{font-size:44px;letter-spacing:12px;color:var(--gold)}
-  h1{font-size:42px;margin:12px 0 8px;color:var(--gold);letter-spacing:1px}
-  .sub{color:var(--muted);font-size:18px;font-style:italic}
-  nav.toc{background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:28px 0}
-  nav.toc h2{margin:0 0 10px;font-size:18px;color:var(--gold)}
-  nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:32px}
-  nav.toc li{margin:4px 0;font-size:15px}
-  nav.toc a{color:var(--cream);text-decoration:none;border-bottom:1px dotted var(--gold-dim)}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--cream);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:16.5px;line-height:1.7;
+    -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(1000px 600px at 50% -8%, rgba(216,169,63,.07), transparent 60%)}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:50;
+    background:linear-gradient(90deg,var(--gold-soft),var(--gold))}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px 90px;position:relative;z-index:1}
+
+  /* ---------- hero ---------- */
+  header.hero{position:relative;text-align:center;padding:110px 16px 70px;overflow:hidden}
+  .float-card{position:absolute;font-family:'Playfair Display',serif;color:var(--gold);
+    opacity:.14;user-select:none;pointer-events:none;animation:drift 9s ease-in-out infinite}
+  .float-card.c1{font-size:120px;top:6%;left:6%;transform:rotate(-14deg)}
+  .float-card.c2{font-size:90px;top:52%;right:8%;transform:rotate(11deg);animation-delay:-3s;color:var(--red)}
+  .float-card.c3{font-size:70px;top:12%;right:16%;transform:rotate(-6deg);animation-delay:-6s}
+  .float-card.c4{font-size:100px;bottom:4%;left:12%;transform:rotate(8deg);animation-delay:-4.5s;color:var(--red)}
+  @keyframes drift{0%,100%{translate:0 0;rotate:-2deg}50%{translate:0 -18px;rotate:2deg}}
+  .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
+  h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(44px,7vw,76px);
+    margin:0 0 14px;line-height:1.05;color:var(--cream)}
+  h1 em{color:var(--gold);font-style:italic}
+  .sub{color:var(--muted);font-size:18px;max-width:600px;margin:0 auto}
+  .scrollhint{margin-top:44px;color:var(--faint);font-size:13px;letter-spacing:2px;text-transform:uppercase;
+    animation:hint 2.4s ease-in-out infinite}
+  @keyframes hint{0%,100%{opacity:.45}50%{opacity:1}}
+
+  /* ---------- toc ---------- */
+  nav.toc{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px;
+    padding:24px 28px;margin:10px 0 8px}
+  nav.toc h2{font-family:'Playfair Display',serif;margin:0 0 12px;font-size:20px;color:var(--gold)}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:36px}
+  nav.toc li{margin:5px 0;font-size:15px;break-inside:avoid}
+  nav.toc a{color:var(--cream);text-decoration:none;border-bottom:1px dotted var(--gold-soft);transition:color .2s}
   nav.toc a:hover{color:var(--gold)}
-  section.block{margin:44px 0}
-  h2.sec{font-size:28px;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:8px}
-  h2.sec .n{color:var(--muted);font-size:18px;font-weight:normal}
-  article.trick{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:26px 26px 22px;margin:26px 0;box-shadow:0 6px 24px rgba(0,0,0,.35)}
-  article.trick h3{margin:0 0 4px;font-size:24px;color:#fff}
-  article.trick h3 .num{display:inline-block;background:var(--gold);color:#1a1206;font-size:15px;
-    width:30px;height:30px;line-height:30px;text-align:center;border-radius:50%;margin-right:10px;vertical-align:2px;font-family:Arial,sans-serif}
-  .meta{display:flex;gap:10px;align-items:center;margin:8px 0 4px;flex-wrap:wrap}
-  .badge{font-family:Arial,sans-serif;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;
-    padding:4px 12px;border-radius:20px}
-  .easy{background:#2e7d43;color:#eafff0} .med{background:#8a6d1c;color:#fff8e1} .hard{background:#8a2f1c;color:#ffe9e1}
-  .teaches{color:var(--muted);font-style:italic;margin:2px 0 12px}
-  ol.steps{padding-left:22px;margin:12px 0}
-  ol.steps li{margin:9px 0}
-  ol.steps li::marker{color:var(--gold);font-weight:bold}
-  .tip{background:rgba(212,175,55,.09);border-left:3px solid var(--gold);padding:10px 14px;margin:14px 0;
-    font-size:15px;border-radius:0 8px 8px 0}
-  .tip strong{color:var(--gold)}
-  .video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;margin:16px 0 8px;
-    border:1px solid var(--line);background:#000}
+
+  /* ---------- sections & tricks ---------- */
+  section.block{margin:64px 0}
+  h2.sec{font-family:'Playfair Display',serif;font-size:32px;color:var(--cream);margin:0 0 6px}
+  h2.sec .n{display:block;font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);font-weight:400;margin-top:4px}
+  .rule{height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent);margin:0 0 8px}
+  article.trick{background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;margin:28px 0;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+  article.trick:hover{transform:translateY(-4px);border-color:#4a3a1e;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .thead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .tnum{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:15px;min-width:34px}
+  article.trick h3{font-family:'Playfair Display',serif;font-size:26px;margin:0;color:var(--cream);font-weight:700}
+  .meta{display:flex;gap:10px;align-items:center;margin:10px 0 2px;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    padding:5px 13px;border-radius:20px;border:1px solid}
+  .easy{color:#8fd6a0;border-color:#2e5a3a;background:rgba(46,125,67,.12)}
+  .med{color:var(--gold);border-color:#5a4a1e;background:rgba(216,169,63,.08)}
+  .hard{color:#e08a75;border-color:#5a2a1e;background:rgba(179,64,46,.1)}
+  .lede{color:var(--muted);font-size:16px;margin:10px 0 4px}
+  ol.steps{padding-left:0;margin:16px 0;list-style:none;counter-reset:step}
+  ol.steps li{counter-increment:step;position:relative;padding:10px 0 10px 52px;margin:0;border-top:1px solid rgba(255,255,255,.05)}
+  ol.steps li:first-child{border-top:none}
+  ol.steps li::before{content:counter(step);position:absolute;left:0;top:12px;width:32px;height:32px;
+    border:1px solid var(--gold-soft);border-radius:50%;color:var(--gold);
+    font-family:'Playfair Display',serif;font-style:italic;font-size:15px;
+    display:flex;align-items:center;justify-content:center}
+  ol.steps strong{color:var(--cream)}
+  .aside{border-left:2px solid var(--gold);padding:2px 0 2px 18px;margin:18px 0;color:var(--muted);font-size:15.5px}
+  .aside b{color:var(--gold);font-weight:600}
+  .video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;
+    margin:20px 0 6px;border:1px solid var(--line);background:#000}
   .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-  .vlink{display:block;background:#0a1f14;border:1px solid var(--gold-dim);border-radius:10px;padding:14px 18px;
-    margin:16px 0 8px;color:var(--cream);text-decoration:none}
-  .vlink:hover{border-color:var(--gold)}
-  .vlink .t{color:var(--gold);font-weight:bold}
+  .vlink{display:flex;gap:14px;align-items:center;background:rgba(216,169,63,.06);
+    border:1px solid var(--gold-soft);border-radius:12px;padding:16px 20px;margin:20px 0 6px;
+    color:var(--cream);text-decoration:none;transition:border-color .2s,background .2s}
+  .vlink:hover{border-color:var(--gold);background:rgba(216,169,63,.1)}
+  .vlink .play{font-size:26px;color:var(--gold);flex-shrink:0}
+  .vlink .t{font-weight:600}
   .vlink .u{font-size:13px;color:var(--muted);word-break:break-all}
-  .guides{margin:10px 0 0;font-size:15px}
+  .guides{margin:12px 0 0;font-size:15px;color:var(--muted)}
   .guides a{color:var(--gold)}
-  .guides .cav{color:var(--muted);font-size:13px;font-style:italic}
-  .practicetips{background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin:28px 0}
-  .practicetips h2{margin-top:0;color:var(--gold);font-size:22px}
-  .practicetips li{margin:8px 0}
-  footer{margin-top:56px;padding-top:24px;border-top:2px solid var(--gold-dim);color:var(--muted);font-size:15px}
+  .guides .cav{font-size:13px;font-style:italic;color:var(--faint)}
+
+  /* ---------- practice & footer ---------- */
+  .practice{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px;
+    padding:28px 30px;margin:40px 0}
+  .practice h2{font-family:'Playfair Display',serif;color:var(--gold);margin:0 0 14px;font-size:24px}
+  .practice ul{margin:0;padding-left:20px}
+  .practice li{margin:10px 0;color:var(--cream)}
+  .practice li::marker{color:var(--gold)}
+  footer{margin-top:70px;color:var(--muted);font-size:15px}
+  footer .books{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-bottom:28px}
+  footer .books h2{font-family:'Playfair Display',serif;color:var(--gold);margin:0 0 10px;font-size:24px}
+  footer .books p{margin:0}
   footer a{color:var(--gold)}
-  footer .books{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:24px}
-  footer .books h2{color:var(--gold);margin-top:0;font-size:22px}
-  @media(max-width:640px){nav.toc ol{columns:1}h1{font-size:32px}}
+  .signoff{text-align:center;padding:30px 0 10px;color:var(--faint);font-size:26px;letter-spacing:14px}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .scrollhint{display:none}
+  }
+  @media(max-width:640px){nav.toc ol{columns:1}article.trick{padding:24px 20px}}
 </style>
 </head>
 <body>
+<div id="progress"></div>
 <div class="wrap">
 
 <header class="hero">
-  <div class="suit">♠ ♥ ♣ ♦</div>
-  <h1>Sleight School</h1>
-  <p class="sub">13 card tricks &amp; sleights, ordered so each one teaches you the next.<br>Written instructions + video tutorial + illustrated guide for every trick.</p>
+  <div class="float-card c1">A♠</div>
+  <div class="float-card c2">K♥</div>
+  <div class="float-card c3">Q♣</div>
+  <div class="float-card c4">J♦</div>
+  <p class="kicker">A thirteen-trick syllabus</p>
+  <h1>Sleight <em>School</em></h1>
+  <p class="sub">Learn them in order. The first five are the alphabet, everything after is sentences. One deck of cards, fifteen minutes a day.</p>
+  <p class="scrollhint">↓ begin</p>
 </header>
 
-<nav class="toc">
+<nav class="toc reveal">
   <h2>The syllabus</h2>
   <ol>
     <li><a href="#t1">Key Card Principle</a></li>
@@ -91,249 +154,278 @@
   </ol>
 </nav>
 
-<div class="practicetips">
-  <h2>Before you start</h2>
+<div class="practice reveal">
+  <h2>How to practice</h2>
   <ul>
-    <li><strong>Any deck works</strong> — but a fresh Bicycle Rider Back deck (broken in for a day) handles best and is what every tutorial below uses.</li>
-    <li><strong>Learn in order.</strong> Tricks 1–5 are the alphabet; everything after is words made from those letters. Triumph (#13) uses #2 and #5.</li>
-    <li><strong>Practice in front of a mirror</strong> — or better, film yourself on your phone. You'll spot flashes you'd never feel.</li>
-    <li><strong>15 focused minutes beats 2 distracted hours.</strong> Drill one move until it's boring, then it's ready.</li>
-    <li><strong>Never stare at the secret.</strong> Look at the spectator, not your hands, during every secret move. Your eyes tell them where the trick is.</li>
-    <li><strong>Perform early.</strong> A trick that's 80% smooth for a real person teaches you more than a week of solo practice.</li>
+    <li>Get a deck that handles well. Bicycle Rider Backs, broken in for a day or two. It's what every video below uses.</li>
+    <li>Go in order. Triumph at the end leans on the overhand control and the false cut from the start.</li>
+    <li>Film yourself. A mirror is kind; your phone isn't. You'll catch every flash you'd never feel.</li>
+    <li>Fifteen focused minutes beats two hours of fiddling while the TV's on.</li>
+    <li>When the secret happens, look at the person, not your hands. Eyes tell the audience where the trick lives.</li>
+    <li>Perform early. A trick that's merely smooth for a real person teaches you more than another week alone.</li>
   </ul>
 </div>
 
 <section class="block">
-<h2 class="sec">Foundations <span class="n">— the five moves everything else is built on</span></h2>
+<h2 class="sec reveal">Foundations<span class="n">Five moves. Everything else on this page is built from them.</span></h2>
+<div class="rule"></div>
 
-<article class="trick" id="t1">
-  <h3><span class="num">1</span>Key Card Principle</h3>
+<article class="trick reveal" id="t1">
+  <div class="thead"><span class="tnum">No. 1</span><h3>Key Card Principle</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
-  <p class="teaches">Teaches: the single most useful secret in card magic — knowing a card you were never told.</p>
+  <p class="lede">The most useful secret in card magic: knowing a card nobody told you.</p>
   <ol class="steps">
-    <li>Casually glimpse and memorize the <strong>bottom card</strong> of the deck while chatting or squaring up. That's your <em>key</em> — know it cold.</li>
-    <li>Have the spectator pick a card, show it around, and place it on <strong>top</strong> of the deck.</li>
-    <li>Cut the deck once, genuinely, about halfway. Their card is now sitting <strong>directly below your key card</strong>.</li>
-    <li>To reveal: spread the deck face-up, spot your key, and name the card right beneath it. Or deal cards face-up one by one — the card after your key is theirs.</li>
+    <li>While you're chatting or squaring the deck, glimpse the <strong>bottom card</strong> and memorize it. That's your key. Know it cold enough to recognize it without thinking.</li>
+    <li>Someone picks a card, shows it around, and puts it back on <strong>top</strong> of the deck.</li>
+    <li>Cut the deck once, genuinely, somewhere near the middle. Their card is now sitting <strong>directly underneath your key card</strong>.</li>
+    <li>Spread the deck face up, find your key, and name the card below it. Or deal cards over one by one — the one after your key is theirs.</li>
   </ol>
-  <div class="tip"><strong>Why it works:</strong> the cut buries their card under the one card you already know. You'll use this principle inside half the tricks on this page.</div>
+  <p class="aside">You'll use this inside half the tricks here. It's not really a trick, it's a piece of grammar.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/vk7ES7k-GIc" title="Key Card Principle tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: the key card is simple enough that most teachers cover it on video — but the full treatment is <a href="https://www.bookey.app/book/the-royal-road-to-card-magic">Chapter 6 of <em>Royal Road to Card Magic</em></a>, and the <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf">complete illustrated book (free PDF)</a> is worth downloading regardless.</p>
+  <p class="guides">📖 The full treatment is Chapter 6 of <a href="https://www.bookey.app/book/the-royal-road-to-card-magic"><em>Royal Road to Card Magic</em></a> — and the <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf">complete illustrated book (free PDF)</a> is worth grabbing no matter what.</p>
 </article>
 
-<article class="trick" id="t2">
-  <h3><span class="num">2</span>Overhand Shuffle Control</h3>
+<article class="trick reveal" id="t2">
+  <div class="thead"><span class="tnum">No. 2</span><h3>Overhand Shuffle Control</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
-  <p class="teaches">Teaches: controlling a card to the top or bottom while the shuffle looks completely fair.</p>
+  <p class="lede">Keep a card exactly where you want it while the shuffle looks honest.</p>
   <ol class="steps">
-    <li><strong>To the bottom:</strong> their card starts on top. Hold the deck in your left hand; lift the top half with your right hand. With your left thumb, peel small packets off the top of the right-hand packet into your left hand until the right hand is empty. The first card peeled — theirs — ends up on the <strong>bottom</strong> of the reassembled deck.</li>
-    <li><strong>To keep it there:</strong> on later shuffles, always leave the bottom ~10 cards in your left hand — lift packets only from the top, peel, and drop back on top. The bottom stock (and their card) never moves.</li>
-    <li><strong>The injog (your first marker):</strong> when you want to mark a spot, let the final packet land sticking out ~1&nbsp;cm toward you instead of squared. That protruding packet is a bookmark — later you can cut exactly to it.</li>
+    <li><strong>To the bottom.</strong> Their card starts on top. Deck in your left hand, lift the top half with your right. Left thumb peels small packets off the top of the right-hand packet into your left hand, until the right hand is empty. The first card peeled was theirs, so it lands on the <strong>bottom</strong> of the reassembled deck.</li>
+    <li><strong>Keeping it there.</strong> On later shuffles, always leave the bottom ten or so cards sitting in your left hand. Lift packets only from the top, peel, drop them back on top. The bottom stock never moves, and neither does their card.</li>
+    <li><strong>The injog.</strong> When you want to bookmark a spot, let the last packet land sticking out about a centimeter toward you instead of squared. That little protruding step is a marker — later you can cut to it exactly.</li>
   </ol>
-  <div class="tip"><strong>The rule to internalize:</strong> one honest overhand shuffle sends the top card to the bottom. Once you feel that in your hands, you own the most-used control in magic.</div>
+  <p class="aside"><b>The thing to feel in your hands:</b> one honest overhand shuffle moves the top card to the bottom. Once that's muscle memory, you own the most-used control in magic.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/VjvNSPMdOTo" title="Overhand shuffle card control tutorial (Scam School)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: <a href="https://www.thesprucecrafts.com/sleight-of-hand-card-magic-tricks-2266267">The Overhand Shuffle</a> (The Spruce Crafts — photo-illustrated grip and packet work). Bonus reference for the injog: <a href="https://falseshuffle.com:443/card-sleights/injog">falseshuffle.com's injog page</a> with demo video.</p>
+  <p class="guides">📖 <a href="https://www.thesprucecrafts.com/sleight-of-hand-card-magic-tricks-2266267">The Overhand Shuffle</a> (The Spruce Crafts) has photos of the grip and the packet work. For the injog specifically: <a href="https://falseshuffle.com:443/card-sleights/injog">falseshuffle.com's injog page</a> with a demo video.</p>
 </article>
 
-<article class="trick" id="t3">
-  <h3><span class="num">3</span>Hindu Shuffle &amp; Force</h3>
+<article class="trick reveal" id="t3">
+  <div class="thead"><span class="tnum">No. 3</span><h3>Hindu Shuffle &amp; Force</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
-  <p class="teaches">Teaches: a shuffle that looks chaotic but keeps one card exactly where you want it — plus your first force.</p>
+  <p class="lede">A shuffle that looks like chaos and a force hiding inside it.</p>
   <ol class="steps">
-    <li>Place your force card on <strong>top</strong> of the deck.</li>
-    <li>Hold the deck face-down in your left hand, thumb along the left edge. Your right hand comes over the top — thumb at the inner end, fingers at the outer — and pinches off the top portion, pulling it to the right.</li>
-    <li>With your left thumb, strip small packets off the <strong>top</strong> of the right-hand packet back into your left hand. That stripping rhythm <em>is</em> the Hindu shuffle. Your right hand keeps hold of the bottom stub throughout.</li>
-    <li><strong>The force:</strong> the bottom card of the right-hand packet never changes during the shuffle — it's always your force card. Have the spectator say "stop" anytime, then tilt the right-hand packet to show its bottom card. That's their "free choice."</li>
-    <li>Complete the shuffle by dropping the right-hand stub on top — and as you square up, hold a left pinky break exactly where the stub lands. Your force card is right at that break: cut to it whenever you're ready for the reveal.</li>
+    <li>Your force card goes on <strong>top</strong> of the deck.</li>
+    <li>Deck face down in your left hand, thumb along the left edge. Right hand comes over the top, thumb at the inner end, fingers at the outer, and pinches off the top portion, pulling it right.</li>
+    <li>Left thumb strips small packets off the <strong>top</strong> of the right-hand packet back into your left hand. That stripping rhythm is the whole shuffle. Your right hand keeps hold of the bottom stub the entire time.</li>
+    <li>Here's the force: the bottom card of the right-hand packet <strong>never changes</strong> through the shuffle. It's always your force card. Have them say stop whenever they want, then tilt the packet to show its bottom card. Free choice, apparently.</li>
+    <li>Drop the stub on top to finish, and as you square up, keep a left pinky break right where the stub landed. Your card is sitting at that break — cut to it whenever the reveal calls for it.</li>
   </ol>
-  <div class="tip"><strong>Why it fools:</strong> the spectator watches cards flying and believes the stop selected something random. The bottom card of that packet was decided before you started.</div>
+  <p class="aside">They watched cards flying everywhere and they're sure the stop chose something random. The stop chose nothing. That's the entire trick.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/P92EqykBAAg" title="Hindu Shuffle tutorial — forces, controls, false shuffle" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: step-by-step grip photos in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — may ask you to log in; the video above stands alone if so).</span></p>
+  <p class="guides">📖 Step-by-step grip photos in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — it may ask you to log in; the video above stands on its own if so).</span></p>
 </article>
 
-<article class="trick" id="t4">
-  <h3><span class="num">4</span>Double Lift</h3>
+<article class="trick reveal" id="t4">
+  <div class="thead"><span class="tnum">No. 4</span><h3>Double Lift</h3></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
-  <p class="teaches">Teaches: <em>the</em> core sleight. Two cards handled as one — the engine inside Ambitious Card, Two-Card Monte, and a hundred others.</p>
+  <p class="lede">Two cards handled as one. This is the engine inside half of card magic.</p>
   <ol class="steps">
     <li>As you square the deck, let your left pinky hold a tiny break under the top <strong>two</strong> cards.</li>
-    <li>Right hand takes the double from above by the ends — thumb at the inner end, fingers at the outer — lifting both cards as one.</li>
-    <li>Keep the two cards <strong>perfectly squared</strong>. A split edge is the only tell — if you see daylight between them, so will everyone.</li>
-    <li>Turn it over like a book page onto the deck to display it, then turn it back face-down the same way.</li>
-    <li>The deck's top card is now secretly the <em>second</em> card — deal it, or leave it there for a routine.</li>
+    <li>Right hand takes the double from above by the ends — thumb inner end, fingers outer — lifting both as a single card.</li>
+    <li>Keep them perfectly squared. A split edge is the only tell there is. If you can see daylight between them, so can everyone.</li>
+    <li>Turn it over like a book page to show the face, then turn it back the same way.</li>
+    <li>The top card of the deck is now secretly the <em>second</em> card. Deal it, or leave it there for whatever comes next.</li>
   </ol>
-  <div class="tip"><strong>Practice drill:</strong> push the top two cards off as one with your left thumb, over and over, until a double feels identical to a single. Then practice the turnover in a mirror.</div>
+  <p class="aside"><b>Drill:</b> push the top two off as one with your left thumb, again and again, until a double feels exactly like a single. Then practice the turnover in a mirror.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/Gjd4EDm3EWU" title="Double Lift tutorial (52Kards)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: two photographed methods (push-off and thumb-slide) in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — login may be required).</span> Follow-up once it's smooth: <a href="https://www.youtube.com/watch?v=1-6Niz-VxUY">Alex Pandrea's "The BEST Double Lifts in Magic"</a>.</p>
+  <p class="guides">📖 Two photographed methods in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — login may be required).</span> When it's smooth, watch <a href="https://www.youtube.com/watch?v=1-6Niz-VxUY">Alex Pandrea's "The BEST Double Lifts in Magic"</a> for the graduate course.</p>
 </article>
 
-<article class="trick" id="t5">
-  <h3><span class="num">5</span>False Cut</h3>
+<article class="trick reveal" id="t5">
+  <div class="thead"><span class="tnum">No. 5</span><h3>False Cut</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
-  <p class="teaches">Teaches: looking scrupulously fair while changing absolutely nothing.</p>
+  <p class="lede">Look scrupulously fair while changing nothing at all.</p>
   <ol class="steps">
-    <li>Hold the deck in your right hand. With your left hand, swing-cut the top half off (take it).</li>
-    <li>Complete the cut: place the right-hand half on top of the left-hand half. That's one genuine cut — top and bottom halves have swapped.</li>
-    <li><strong>Do the exact same thing again.</strong> Two identical half-cuts restore the original order completely.</li>
-    <li>Do it casually, mid-sentence, exactly the way you'd cut before any trick. Two cuts looks <em>more</em> fair than one — that's the joke, and the power.</li>
+    <li>Deck in your right hand. Left hand swing-cuts the top half off.</li>
+    <li>Finish the cut: set the right-hand half on top of the left-hand half. One genuine cut — the halves have swapped.</li>
+    <li>Now do the exact same thing again. Two identical half-cuts put everything back where it started.</li>
+    <li>Do it mid-sentence, the way you'd cut before any trick. Two cuts somehow looks <em>more</em> honest than one, which is the whole joke.</li>
   </ol>
-  <div class="tip"><strong>Where you'll use it:</strong> after any control (#2) or force (#3, #7), a false cut "proves" the deck is mixed while your setup stays intact.</div>
+  <p class="aside">Use it after any control or force on this page. It "proves" the deck is mixed while your setup sits there untouched.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/LQJn40df7p8" title="3 Easy False Cuts tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: <a href="https://img1.wsimg.com/blobby/go/af23e0a7-b2bc-4f1e-9298-99b6f6d32c18/downloads/False_Shuffles_Cut_Forces.pdf?ver=1781631767798">False Shuffles, Cuts &amp; Forces (illustrated PDF)</a> — diagrams with arrows for several false cuts including the Charlier.</p>
+  <p class="guides">📖 <a href="https://img1.wsimg.com/blobby/go/af23e0a7-b2bc-4f1e-9298-99b6f6d32c18/downloads/False_Shuffles_Cut_Forces.pdf?ver=1781631767798">False Shuffles, Cuts &amp; Forces (illustrated PDF)</a> — arrowed diagrams for several false cuts including the Charlier.</p>
 </article>
 </section>
 
 <section class="block">
-<h2 class="sec">The Moves <span class="n">— four weapons-grade sleights</span></h2>
+<h2 class="sec reveal">The Moves<span class="n">Four sleights worth their practice time.</span></h2>
+<div class="rule"></div>
 
-<article class="trick" id="t6">
-  <h3><span class="num">6</span>The Glide</h3>
+<article class="trick reveal" id="t6">
+  <div class="thead"><span class="tnum">No. 6</span><h3>The Glide</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
-  <p class="teaches">Teaches: stealing the bottom card while everyone watches the bottom of the deck.</p>
+  <p class="lede">Steal the bottom card while everyone is looking right at the bottom of the deck.</p>
   <ol class="steps">
-    <li>Hold the deck face-down in your left hand. Tilt it so the spectator clearly sees the <strong>bottom card</strong> — "remember this card."</li>
-    <li>Your right hand comes over the deck from above: thumb at the inner end, fingers at the outer.</li>
-    <li>As the right hand slides the deck slightly forward, your <strong>left fingertips secretly pull the bottom card back</strong> about a centimeter — it glides against the deck and stays behind in your left hand.</li>
-    <li>The right hand lifts away with the deck. The bottom card never left your left hand.</li>
-    <li>Classic payoff: show the bottom of the right-hand deck — their card has vanished. (Casually drop the retained card to your side or pocket it as you gesture.)</li>
+    <li>Deck face down in your left hand. Tilt it so they clearly see the <strong>bottom card</strong>. "Remember this one."</li>
+    <li>Right hand comes over from above — thumb inner end, fingers outer.</li>
+    <li>As the right hand slides the deck forward a touch, your <strong>left fingertips pull the bottom card back</strong> about a centimeter. It glides along the deck and stays behind in your left hand.</li>
+    <li>Right hand lifts away with the deck. The bottom card never left your left hand.</li>
+    <li>Show the bottom of the right-hand deck: their card is gone. Let the retained card fall casually to your side as you gesture.</li>
   </ol>
-  <div class="tip"><strong>The psychology:</strong> the audience just <em>saw</em> the bottom card a second ago. Their brain files it as "still there" — which is exactly why the steal works.</div>
+  <p class="aside">They <em>saw</em> that card one second ago, so their brain already filed it as "still there." That's what you're stealing — the assumption, not the card.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/DBZaQoeXtN4" title="The Glide tutorial (52Kards)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: the Glide is taught with 120+ diagrams in <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a>, Chapter 1 — still the best diagrammed source on the open web.</p>
+  <p class="guides">📖 Still the best diagrammed source anywhere: <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a>, Chapter 1.</p>
 </article>
 
-<article class="trick" id="t7">
-  <h3><span class="num">7</span>Riffle Force</h3>
+<article class="trick reveal" id="t7">
+  <div class="thead"><span class="tnum">No. 7</span><h3>Riffle Force</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
-  <p class="teaches">Teaches: forcing a card with psychology — plus the secret "slip" that makes it work.</p>
+  <p class="lede">Force a card with psychology — and one small secret slip.</p>
   <ol class="steps">
-    <li>Place your force card on <strong>top</strong> of the deck.</li>
-    <li>Hold the deck in your left hand. With your right thumb, riffle down the outer edge — the spectator says "stop" whenever they like.</li>
-    <li>Freeze at the break. Your right hand lifts the upper packet at the stop point — and <strong>as it lifts, your left thumb secretly drags the top card (your force card) back</strong> so it stays on the lower packet. Keep the motion tiny and covered by the right hand.</li>
-    <li>Show the top card of the lower packet: "the card you stopped at." It's your force card.</li>
+    <li>Force card on <strong>top</strong>.</li>
+    <li>Deck in your left hand. Right thumb riffles down the outer edge; they say stop whenever they feel like it.</li>
+    <li>Freeze at the break. Right hand lifts the upper packet at the stop point — and as it lifts, your <strong>left thumb drags the top card back</strong> so it stays on the lower packet. Small motion, covered by the right hand.</li>
+    <li>Show the top card of the lower packet: "the card you stopped at." It was never in doubt.</li>
   </ol>
-  <div class="tip"><strong>Why it fools:</strong> the spectator believes the <em>stop</em> selected the card. The stop selected nothing — the slip did. Their sense of free choice is the whole trick.</div>
+  <p class="aside">They'll swear the <em>stop</em> chose the card. Protect that belief — it's doing most of the work for you.</p>
   <a class="vlink" href="https://52kards.com/learn-a-powerful-mental-effect-tutorial/">
-    <div class="t">▶ Watch: 52Kards teaches the Riffle Force <span style="font-weight:normal">(segment at 11:35 — plus the Classic Force and performance theory)</span></div>
-    <div class="u">52kards.com/learn-a-powerful-mental-effect-tutorial/</div>
+    <span class="play">▶</span>
+    <span><span class="t">52Kards teaches the Riffle Force</span> <span style="color:var(--muted)">(the force is at 11:35 — the rest is the Classic Force and performance theory, worth your time)</span><br><span class="u">52kards.com/learn-a-powerful-mental-effect-tutorial/</span></span>
   </a>
-  <p class="guides">📖 Illustrated guide: <a href="https://www.freemagictricks4u.com/easy-magic-card-tricks.html">"The Riffle Force"</a> — step-by-step with photos of the thumb riffle, the secret peel, and the top-card retention.</p>
+  <p class="guides">📖 <a href="https://www.freemagictricks4u.com/easy-magic-card-tricks.html">"The Riffle Force"</a> — photos of the riffle, the secret peel, and the retention.</p>
 </article>
 
-<article class="trick" id="t8">
-  <h3><span class="num">8</span>Elmsley Count</h3>
+<article class="trick reveal" id="t8">
+  <div class="thead"><span class="tnum">No. 8</span><h3>Elmsley Count</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
-  <p class="teaches">Teaches: the false count behind a hundred packet tricks — showing four cards while hiding one.</p>
+  <p class="lede">Count four cards fairly while one of them never shows its face.</p>
   <ol class="steps">
-    <li>Hold 4 cards face-down in your left hand.</li>
-    <li>With your right hand, take the cards one at a time from the top, counting aloud: "1, 2, 3, 4."</li>
-    <li>The secret: cards <strong>2 and 4 are taken <em>under</em> the right-hand packet</strong> instead of on top — the right hand dips slightly to receive each one beneath.</li>
-    <li>Keep the rhythm <strong>perfectly even</strong>. The metronome-steady "1-2-3-4" is what sells the illusion that all four were counted fairly.</li>
-    <li>The audience sees four cards counted; one card never shows its face. Classic demo: count four blue-backed cards "fairly," then spread them to reveal one has a red back — it was hidden the entire time.</li>
+    <li>Four cards face down in your left hand.</li>
+    <li>Right hand takes them one at a time off the top, counting out loud: one, two, three, four.</li>
+    <li>The second and fourth cards are taken <strong>under</strong> the right-hand packet instead of on top — the right hand dips a fraction to receive each one beneath.</li>
+    <li>Keep the rhythm dead even. A metronome "1-2-3-4" is what sells it; any hurry on two and four and the eye catches the dip.</li>
+    <li>Try it as a trick: count four blue-backed cards "fairly," then spread them — one has a red back. It was hidden the whole time.</li>
   </ol>
-  <div class="tip"><strong>Common mistake:</strong> rushing counts 2 and 4. If the rhythm breaks, the eye catches the dip. Slow is smooth, smooth is invisible.</div>
+  <p class="aside">Slow is smooth, and smooth is invisible. If it feels too slow to you, it's probably just right for them.</p>
   <a class="vlink" href="https://52kards.com/video/elmsley-count/">
-    <div class="t">▶ Watch: 52Kards' Elmsley Count tutorial</div>
-    <div class="u">52kards.com/video/elmsley-count/</div>
+    <span class="play">▶</span>
+    <span><span class="t">52Kards' Elmsley Count tutorial</span><br><span class="u">52kards.com/video/elmsley-count/</span></span>
   </a>
-  <p class="guides">📖 Illustrated guide: <a href="https://conjuror.community/blog/the-elmsley-count">"Elmsley Count in 4 Simple Steps"</a> (Conjuror Community) — clean written breakdown of the push-off-two / steal-back mechanics.</p>
+  <p class="guides">📖 <a href="https://conjuror.community/blog/the-elmsley-count">"Elmsley Count in 4 Simple Steps"</a> (Conjuror Community) — the push-off-two / steal-back mechanics written out.</p>
 </article>
 
-<article class="trick" id="t9">
-  <h3><span class="num">9</span>Snap Change</h3>
+<article class="trick reveal" id="t9">
+  <div class="thead"><span class="tnum">No. 9</span><h3>Snap Change</h3></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
-  <p class="teaches">Teaches: a visual color change — one card visibly <em>becomes</em> another in a snap.</p>
+  <p class="lede">One card visibly becomes another, in a snap.</p>
   <ol class="steps">
-    <li>Hold a small packet face-up in your left hand. Your right hand comes over from above.</li>
-    <li>Press your right middle and ring fingertips onto the face of the top card, near its top edge.</li>
-    <li>In <strong>one sharp snapping motion</strong>, drag the top card back toward you — it flips face-down under cover of your right hand — revealing the card beneath. The snap sound plus the speed sells the "visual change."</li>
-    <li>Commit fully to the motion. Hesitation is the only thing that exposes it.</li>
+    <li>Small packet face up in your left hand. Right hand comes over from above.</li>
+    <li>Right middle and ring fingertips press on the face of the top card, near its top edge.</li>
+    <li><strong>One sharp motion:</strong> drag the top card back toward you. It flips face-down under cover of your hand, and the card beneath is revealed. The snap of the fingers plus the speed is what reads as a visual change.</li>
+    <li>Commit to it completely. The only thing that exposes this move is hesitation.</li>
   </ol>
-  <div class="tip"><strong>Angles matter:</strong> the Snap Change is devastating head-on and weak from the sides — perform it for someone directly in front of you, and keep the packet low so wandering eyes can't get around it.</div>
+  <p class="aside">Play it to someone directly in front of you, packet held low. It's devastating head-on and ordinary from the side — so don't give anyone the side.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/KS39-4pfex0" title="Snap Change tutorial (52Kards)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: <a href="http://www.goodtricks.net/card-snap-change-trick.html">"Card Snap Change"</a> (GoodTricks — written grip and motion breakdown). <span class="cav">Honest note: this one is genuinely best learned from video; the 52Kards tutorial above is the primary path.</span></p>
+  <p class="guides">📖 <a href="http://www.goodtricks.net/card-snap-change-trick.html">"Card Snap Change"</a> (GoodTricks) covers the grip in writing — but honestly, this one belongs to video. The tutorial above is the way in.</p>
 </article>
 </section>
 
 <section class="block">
-<h2 class="sec">Routines <span class="n">— putting it all together</span></h2>
+<h2 class="sec reveal">Routines<span class="n">Everything above, assembled into actual tricks.</span></h2>
+<div class="rule"></div>
 
-<article class="trick" id="t10">
-  <h3><span class="num">10</span>21-Card Trick</h3>
+<article class="trick reveal" id="t10">
+  <div class="thead"><span class="tnum">No. 10</span><h3>21-Card Trick</h3></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
-  <p class="teaches">Teaches: mathematical magic — a trick with zero sleight of hand that still destroys laypeople.</p>
+  <p class="lede">No sleight of hand at all. The math does the trick, and it still floors people.</p>
   <ol class="steps">
-    <li>Deal 21 cards face-up into <strong>3 columns of 7</strong>, dealing across row by row.</li>
-    <li>The spectator memorizes one card and tells you <strong>which column</strong> it's in.</li>
-    <li>Gather the columns so <strong>their column ends up in the middle</strong> of the packet: pick up one of the other columns, then theirs, then the last.</li>
-    <li>Deal into 3 columns again. Ask the column again. Again sandwich theirs in the middle.</li>
-    <li>Repeat once more — <strong>three rounds total</strong>.</li>
-    <li>Their card is now exactly the <strong>11th card from the top</strong>. Reveal it however you like: deal and count, spell its name, have them name it first for drama.</li>
+    <li>Deal 21 cards face up into <strong>3 columns of 7</strong>, dealing across row by row.</li>
+    <li>They memorize a card and tell you <strong>which column</strong> it's in.</li>
+    <li>Gather the columns so <strong>theirs lands in the middle</strong> of the packet: pick up one of the other columns, then theirs, then the last.</li>
+    <li>Deal three columns again, ask again, sandwich theirs in the middle again.</li>
+    <li>Once more. Three rounds total.</li>
+    <li>Their card is now exactly the <strong>11th from the top</strong>. Deal, count, and turn it over — or let them name it first for maximum drama.</li>
   </ol>
-  <div class="tip"><strong>Why it works:</strong> each round narrows the card's possible position; three rounds pin it to the exact middle of the packet. The dealing does the "sleight" for you.</div>
+  <p class="aside">Each round shrinks where the card can be. Three rounds and there's exactly one place left: the middle. A good first trick to perform — it can't go wrong.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/h8vKGSBMSdo" title="21-Card Trick tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: <a href="https://cse.msu.edu/~cse291/ctl/Spring2020/Meeting10/21CardTrickDescription.pdf">"21-Card Magic Trick" (free PDF)</a> — concise, with diagrams of the 3×7 dealing layout and the pile-pickup order that make the math click.</p>
+  <p class="guides">📖 <a href="https://cse.msu.edu/~cse291/ctl/Spring2020/Meeting10/21CardTrickDescription.pdf">"21-Card Magic Trick" (free PDF)</a> — short, with diagrams of the dealing layout and the pickup order.</p>
 </article>
 
-<article class="trick" id="t11">
-  <h3><span class="num">11</span>Two-Card Monte</h3>
+<article class="trick reveal" id="t11">
+  <div class="thead"><span class="tnum">No. 11</span><h3>Two-Card Monte</h3></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
-  <p class="teaches">Teaches: a pocket-sized miracle — and that presentation is 90% of magic.</p>
+  <p class="lede">Two cards, one impossible game. Fits in a pocket, plays huge.</p>
   <ol class="steps">
-    <li>Two cards — say the Ace of Spades and the King of Hearts. Show both faces: <strong>"Watch the Ace."</strong></li>
-    <li>Turn the two-card packet face-down <strong>as one block</strong>, exactly like a double lift (#4). This is the entire secret: the order never changes.</li>
-    <li>Do the "throw" — toss or flip the packet between your hands with a flourish. It <em>looks</em> like a switch. It isn't.</li>
-    <li>"Where's the Ace — top or bottom?" Whatever they answer, show them they're wrong.</li>
-    <li>Repeat. The comedy is that they can never win — lean into it.</li>
+    <li>Ace of Spades, King of Hearts. Show both faces: "Watch the Ace."</li>
+    <li>Turn the two-card packet face down <strong>as one block</strong>, just like the double lift. Nothing changed order. That's the whole method.</li>
+    <li>Now the "throw" — toss the packet between your hands with a little flourish. It looks like a switch. It isn't.</li>
+    <li>"Top or bottom — where's the Ace?" They're wrong. Whatever they said.</li>
+    <li>Go again. The bit is that they cannot win, so play it like a game they're losing.</li>
   </ol>
-  <div class="tip"><strong>The real lesson:</strong> nothing sneaky happened, yet the spectator is <em>certain</em> something did. Conviction beats complexity — this is David Blaine's handling, the one that fooled a US president on television.</div>
+  <p class="aside">Nothing sneaky happened and they're <em>certain</em> something did. That's the lesson here: conviction outperforms complexity. (This is Blaine's handling — the one that fooled a president on live TV.)</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/Mm0EcpCkCi8" title="Two-Card Monte tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Illustrated guide: <span class="cav">none worth linking — this trick lives and dies on timing, so the video above is the way to learn it.</span></p>
+  <p class="guides">📖 <span class="cav">Skip the written guides for this one — it lives or dies on timing, and the video is the teacher.</span></p>
 </article>
 
-<article class="trick" id="t12">
-  <h3><span class="num">12</span>Ambitious Card</h3>
+<article class="trick reveal" id="t12">
+  <div class="thead"><span class="tnum">No. 12</span><h3>Ambitious Card</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
-  <p class="teaches">Teaches: the classic signature routine — their signed card impossibly rises to the top, again and again.</p>
+  <p class="lede">Their signed card keeps rising to the top no matter what you do to it. The classic.</p>
   <ol class="steps">
-    <li>Have a card selected and <strong>signed</strong>, then control it to the top (#2).</li>
-    <li><strong>Phase 1:</strong> push it face-up into the middle of the deck. Snap your fingers — it's back on top.</li>
-    <li><strong>Phase 2 — the double lift turnover:</strong> show their card with a double lift (#4), turn the double face-down, then take the <em>top</em> card — secretly an indifferent card — and insert <em>it</em> into the middle. They swear their card went in. It never left the top. Reveal.</li>
-    <li><strong>Phase 3:</strong> lose it in the middle for real this time (overhand control, #2), then place the deck in the card box. It still rises to the top.</li>
-    <li><strong>Finale idea:</strong> the card rises while the deck sits in your pocket, or under a handkerchief.</li>
+    <li>Card selected, <strong>signed</strong>, controlled to the top.</li>
+    <li>Push it face up into the middle. Snap your fingers. It's back on top.</li>
+    <li>Now the double lift turnover: show their card with a double lift, turn the double face down, then take the <em>top</em> card — secretly some other card — and push <em>that</em> into the middle. They watched their card go in. It never left the top.</li>
+    <li>Lose it in the middle for real this time, put the deck in the card box. It still comes back.</li>
+    <li>Finale, when you're ready: it rises with the deck in your pocket, or under a handkerchief.</li>
   </ol>
-  <div class="tip"><strong>Start with phases 1–2.</strong> Two clean phases beat four sloppy ones. Add phases as each one becomes automatic — the routine is modular by design.</div>
+  <p class="aside">Two clean phases beat four shaky ones. The routine is built to grow — add a phase each week and it'll be a different trick by spring.</p>
   <a class="vlink" href="https://www.thecardtrickteacher.com/card-trick-video.php?v=28117">
-    <div class="t">▶ Watch: In-depth Ambitious Card tutorial <span style="font-weight:normal">(52Kards)</span></div>
-    <div class="u">thecardtrickteacher.com/card-trick-video.php?v=28117</div>
+    <span class="play">▶</span>
+    <span><span class="t">In-depth Ambitious Card tutorial</span> <span style="color:var(--muted)">(52Kards — the full multi-phase routine)</span><br><span class="u">thecardtrickteacher.com/card-trick-video.php?v=28117</span></span>
   </a>
-  <p class="guides">📖 Illustrated guide: <span class="cav">no free illustrated version worth linking — the multi-phase choreography is genuinely best learned from the video above.</span></p>
+  <p class="guides">📖 <span class="cav">No free illustrated version worth your time — the choreography across phases is a video lesson.</span></p>
 </article>
 
-<article class="trick" id="t13">
-  <h3><span class="num">13</span>Triumph</h3>
+<article class="trick reveal" id="t13">
+  <div class="thead"><span class="tnum">No. 13</span><h3>Triumph</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
-  <p class="teaches">Teaches: the perfect closer — a shuffled-together mess that rights itself, except for their card.</p>
+  <p class="lede">The deck gets shuffled face-up into face-down, an unsalvageable mess — and then it isn't. Except for their card.</p>
   <ol class="steps">
-    <li>Their signed card is controlled to the top (#2) and placed <strong>face-up</strong> on the face-down deck — openly, "so we remember it."</li>
-    <li>Keep it on top with the top-stock control from trick #2: shuffle everything <em>below</em> it.</li>
-    <li>Now the theater: perform 2–3 sequences that <strong>look</strong> like you're mixing face-up cards into the face-down deck — overhand shuffles keeping the top stock (#2) plus false cuts (#5), turning a few packets face-up as you go. Their card's packet stays intact throughout. <strong>The mixing is the illusion; their card is the only one whose orientation you secretly preserve.</strong></li>
-    <li>Finale: slowly square the deck, then spread it — every card is face-down <strong>except theirs, face-up</strong>.</li>
+    <li>Their signed card, controlled to the top, placed <strong>face-up</strong> on the face-down deck. Out in the open: "so we remember it."</li>
+    <li>Keep it there with the top-stock control from No. 2 — shuffle everything <em>below</em> it.</li>
+    <li>Now the theater. Do two or three sequences that <strong>look</strong> like you're mixing face-up cards into the deck — overhand shuffles that keep the top stock, false cuts from No. 5 — turning a few packets face-up as you go. Their card's little packet stays intact through all of it. The mixing is the illusion; the one card whose orientation you protect is the trick.</li>
+    <li>Square the deck slowly. Spread it. Every card face-down — except theirs, face-up.</li>
   </ol>
-  <div class="tip"><strong>Why it kills as a closer:</strong> the audience is certain the deck is hopelessly mixed — they watched it happen. The full Vernon slip-shuffle handling is in the video; the version above is the honest beginner path using tricks #2 and #5 you already own.</div>
+  <p class="aside">They watched the mess happen, which is why the cleanup lands so hard. Vernon's original uses a slip-shuffle for the mixing; the video teaches that handling, and the version above gets you there with moves you already own.</p>
   <div class="video"><iframe loading="lazy" src="https://www.youtube.com/embed/jKmDOThx6kQ" title="Triumph tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="guides">📖 Background reading: <a href="https://geniimagazine.com/wiki/index.php?title=Triumph">Magicpedia's Triumph page</a> — history and credits of Dai Vernon's classic (no illustrated method; the video is the teacher here).</p>
+  <p class="guides">📖 <a href="https://geniimagazine.com/wiki/index.php?title=Triumph">Magicpedia's Triumph page</a> for the history and credits of Dai Vernon's classic.</p>
 </article>
 </section>
 
-<footer>
+<footer class="reveal">
   <div class="books">
-    <h2>📚 The textbook</h2>
-    <p>If these thirteen give you the bug, there's exactly one book to read next: <strong><em>The Royal Road to Card Magic</em></strong> by Hugard &amp; Braue. It's the classic course — heavily illustrated, structured as lessons, and it teaches the Glide (#6) plus everything here in greater depth. <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf">Free PDF here</a>. After that: <em>Card College</em> by Roberto Giobbi.</p>
+    <h2>The textbook</h2>
+    <p>If these thirteen give you the bug, there's one book: <strong><em>The Royal Road to Card Magic</em></strong> by Hugard &amp; Braue. Written as lessons, drawn all the way through, and it covers everything here in more depth. <a href="https://hsbsports.nfsb.qc.ca/tbookq-/jkeys/7V7E449/8V8E892498/the-royal_road-to__card_magic-yumpu.pdf">Free PDF</a>. After that, Roberto Giobbi's <em>Card College</em>.</p>
   </div>
-  <p>Built from a research pass over the best open tutorials available — 52Kards, Scam School, Connjure, DisturbReality, and friends. Video links go to their creators; written guides to theirs. Now go fool someone you like. ♠</p>
+  <p style="text-align:center">Video links belong to their creators, written guides to theirs.<br>Now go fool someone you like.</p>
+  <div class="signoff">♠ ♥ ♣ ♦</div>
 </footer>
 
 </div>
+<script>
+(function(){
+  // scroll progress
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  // reveal on scroll
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, {threshold: 0.08});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('visible'); });
+  }
+})();
+</script>
 </body>
 </html>
