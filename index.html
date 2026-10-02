@@ -156,6 +156,112 @@
   .vsrc{margin:8px 0 0;font-size:14px;color:var(--faint)}
   .vsrc a{color:var(--gold-soft)}
   .noanim .pinner,.noanim .pcard,.noanim .pdeck{transition:none !important}
+
+  /* ---------- checklist + progress ---------- */
+
+  .thead{position:relative}
+
+  .learned{margin-left:auto;display:flex;align-items:center;gap:8px;cursor:pointer;
+
+    font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+
+  .learned input{appearance:none;width:18px;height:18px;border:1px solid var(--gold-soft);border-radius:4px;
+
+    background:transparent;cursor:pointer;position:relative;flex:none;margin:0}
+
+  .learned input:checked{background:var(--gold);border-color:var(--gold)}
+
+  .learned input:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+
+    color:#1a1206;font-size:13px;font-weight:700}
+
+  .learned input:checked + span{color:var(--gold)}
+
+  .herobtns{margin:26px 0 8px;display:flex;flex-direction:column;gap:14px;align-items:center}
+
+  .myprogress{display:flex;align-items:center;gap:12px}
+
+  .pbar{width:min(280px,60vw);height:6px;border:1px solid var(--gold-soft);border-radius:3px;overflow:hidden;background:rgba(0,0,0,.35)}
+
+  .pfill{height:100%;width:0;background:linear-gradient(90deg,var(--gold-soft),var(--gold));transition:width .5s ease}
+
+  .ptext{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-soft)}
+
+  .hbtnrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+  .hbtn{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:1px;
+
+    color:#1a1206;background:linear-gradient(160deg,#e8c86a,#c9962e);border:none;border-radius:999px;
+
+    padding:10px 26px;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+
+  .hbtn:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(216,169,63,.35)}
+
+  .hbtn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-soft)}
+
+  .hbtn.ghost:hover{box-shadow:none;background:rgba(216,169,63,.08)}
+
+  nav.toc ol a.done{color:var(--gold)}
+
+  nav.toc ol a.done::after{content:' ✓';color:var(--gold)}
+
+  /* ---------- start here ---------- */
+
+  .starthere{margin:34px 0;padding:30px clamp(20px,4vw,44px);border:1px solid var(--line);border-radius:14px;
+
+    background:linear-gradient(170deg,rgba(216,169,63,.07),rgba(0,0,0,0) 60%)}
+
+  .starthere h2{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--cream);margin:0 0 8px}
+
+  .pathsub{color:var(--muted);font-size:15px;max-width:60ch;margin:0 0 18px}
+
+  ol.path{list-style:none;margin:0;padding:0;counter-reset:path;display:grid;gap:2px}
+
+  ol.path li{counter-increment:path;display:flex;gap:14px;align-items:baseline;padding:9px 6px;border-bottom:1px dotted rgba(216,169,63,.18)}
+
+  ol.path li:last-child{border-bottom:none}
+
+  ol.path li::before{content:counter(path);flex:none;width:30px;height:30px;border:1px solid var(--gold-soft);border-radius:50%;
+
+    display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--gold);font-size:15px}
+
+  ol.path a{color:var(--cream);font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap}
+
+  ol.path a:hover{color:var(--gold)}
+
+  ol.path li span{color:var(--muted);font-size:14px}
+
+  /* ---------- glossary ---------- */
+
+  .glossary{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px 28px;margin:0;padding:0}
+
+  .gterm dt{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--gold);margin:0}
+
+  .gterm dd{margin:2px 0 0;color:var(--muted);font-size:14.5px;line-height:1.55}
+
+  /* ---------- cheat sheet ---------- */
+
+  .cheatsheet{display:none}
+
+  @media print{
+
+    .hero,.toc,.practice,.starthere,section.block,footer,.float-card,.herobtns{display:none !important}
+
+    .cheatsheet{display:block !important;color:#000}
+
+    .cheatsheet h2{font-size:22px;margin:0 0 4px}
+
+    .cs-sub{font-size:12px;margin:0 0 12px;color:#444}
+
+    .cheatsheet ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+
+    .cheatsheet li{font-size:11px;line-height:1.45;margin-bottom:6px;break-inside:avoid}
+
+    .cheatsheet li b{font-size:11.5px}
+
+    body{background:#fff}
+
+  }
   /* ---------- reveal on scroll ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
   .reveal.visible{opacity:1;transform:none}
@@ -177,9 +283,23 @@
   <div class="float-card c2">K♥</div>
   <div class="float-card c3">Q♣</div>
   <div class="float-card c4">J♦</div>
-  <p class="kicker">A twenty-five-trick syllabus</p>
+  <p class="kicker">A thirty-seven-trick syllabus</p>
   <h1>Sleight <em>School</em></h1>
   <p class="sub">Learn them in order. The first five are the alphabet, everything after is sentences. One deck of cards, fifteen minutes a day.</p>
+  
+  <div class="herobtns">
+
+    <div class="myprogress"><div class="pbar"><div class="pfill" id="pfill"></div></div><span class="ptext" id="ptext">0 of 37 learned</span></div>
+
+    <div class="hbtnrow">
+
+      <button class="hbtn" id="surpriseBtn" type="button">Surprise me</button>
+
+      <button class="hbtn ghost" id="printBtn" type="button">Print cheat sheet</button>
+
+    </div>
+
+  </div>
   <p class="scrollhint">↓ begin</p>
 </header>
 
@@ -229,7 +349,7 @@
 <div class="practice reveal">
   <h2>How to practice</h2>
   <ul>
-    <li>Get a deck that handles well. Bicycle Rider Backs, broken in for a day or two. It's what every video below uses.</li>
+    <li>Get a deck that handles well. Bicycle Rider Backs, broken in for a day or two. It's the standard for a reason.</li>
     <li>Go in order. Triumph at the end leans on the overhand control and the false cut from the start.</li>
     <li>Film yourself. A mirror is kind; your phone isn't. You'll catch every flash you'd never feel.</li>
     <li>Fifteen focused minutes beats two hours of fiddling while the TV's on.</li>
@@ -238,12 +358,40 @@
   </ul>
 </div>
 
+
+<div class="starthere reveal">
+
+  <h2>Start here</h2>
+
+  <p class="pathsub">Thirty-seven tricks is a lot. This is the order that builds — each one hands you something the next one needs. After No. 14, the rest of the page is yours.</p>
+
+  <ol class="path">
+
+      <li><a href="#t1">Key Card Principle</a><span>The core idea: secret knowledge beats secret moves.</span></li>
+      <li><a href="#t20">The Peek</a><span>Your first secret glimpse. Nobody knows you looked.</span></li>
+      <li><a href="#t2">Overhand Shuffle Control</a><span>Keep a card where you want it through honest-looking shuffles.</span></li>
+      <li><a href="#t10">21-Card Trick</a><span>Your first performance piece. Zero sleight of hand, and it floors people.</span></li>
+      <li><a href="#t3">Hindu Shuffle & Force</a><span>A shuffle with a force hiding inside it.</span></li>
+      <li><a href="#t32">Cross Cut Force</a><span>Their cut, your card.</span></li>
+      <li><a href="#t4">Double Lift</a><span>Two cards handled as one — the engine inside half of card magic.</span></li>
+      <li><a href="#t12">Ambitious Card</a><span>Put the double lift to work in the classic routine.</span></li>
+      <li><a href="#t5">False Cut</a><span>Look scrupulously fair while changing nothing.</span></li>
+      <li><a href="#t14">Classic Force</a><span>Timing and nerve. The boldest force in the book.</span></li>
+      <li><a href="#t27">Out of This World</a><span>A reputation-maker, and your hands never touch the deck.</span></li>
+      <li><a href="#t15">The Palm</a><span>Your first real vanish.</span></li>
+      <li><a href="#t25">Card to Pocket</a><span>The palm's graduation ceremony.</span></li>
+      <li><a href="#t8">Elmsley Count</a><span>Count four cards while one of them hides.</span></li>
+
+  </ol>
+
+</div>
+
 <section class="block">
 <h2 class="sec reveal">Foundations<span class="n">Seven moves. Everything else on this page is built from them.</span></h2>
 <div class="rule"></div>
 
 <article class="trick reveal" id="t1">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 1"><div class="flip-inner"><div class="flip-face flip-front">1</div><div class="flip-face flip-back black">♠</div></div></div><h3>Key Card Principle</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 1"><div class="flip-inner"><div class="flip-face flip-front">1</div><div class="flip-face flip-back black">♠</div></div></div><h3>Key Card Principle</h3><label class="learned"><input type="checkbox" data-trick="t1"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">The most useful secret in card magic: knowing a card nobody told you.</p>
   <ol class="steps">
@@ -259,7 +407,7 @@
 </article>
 
 <article class="trick reveal" id="t2">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 2"><div class="flip-inner"><div class="flip-face flip-front">2</div><div class="flip-face flip-back red">♥</div></div></div><h3>Overhand Shuffle Control</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 2"><div class="flip-inner"><div class="flip-face flip-front">2</div><div class="flip-face flip-back red">♥</div></div></div><h3>Overhand Shuffle Control</h3><label class="learned"><input type="checkbox" data-trick="t2"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Keep a card exactly where you want it while the shuffle looks honest.</p>
   <ol class="steps">
@@ -274,7 +422,7 @@
 </article>
 
 <article class="trick reveal" id="t3">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 3"><div class="flip-inner"><div class="flip-face flip-front">3</div><div class="flip-face flip-back black">♣</div></div></div><h3>Hindu Shuffle &amp; Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 3"><div class="flip-inner"><div class="flip-face flip-front">3</div><div class="flip-face flip-back black">♣</div></div></div><h3>Hindu Shuffle &amp; Force</h3><label class="learned"><input type="checkbox" data-trick="t3"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A shuffle that looks like chaos and a force hiding inside it.</p>
   <ol class="steps">
@@ -291,7 +439,7 @@
 </article>
 
 <article class="trick reveal" id="t4">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 4"><div class="flip-inner"><div class="flip-face flip-front">4</div><div class="flip-face flip-back red">♦</div></div></div><h3>Double Lift</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 4"><div class="flip-inner"><div class="flip-face flip-front">4</div><div class="flip-face flip-back red">♦</div></div></div><h3>Double Lift</h3><label class="learned"><input type="checkbox" data-trick="t4"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards handled as one. This is the engine inside half of card magic.</p>
   <ol class="steps">
@@ -308,7 +456,7 @@
 </article>
 
 <article class="trick reveal" id="t5">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 5"><div class="flip-inner"><div class="flip-face flip-front">5</div><div class="flip-face flip-back black">♠</div></div></div><h3>False Cut</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 5"><div class="flip-inner"><div class="flip-face flip-front">5</div><div class="flip-face flip-back black">♠</div></div></div><h3>False Cut</h3><label class="learned"><input type="checkbox" data-trick="t5"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Look scrupulously fair while changing nothing at all.</p>
   <ol class="steps">
@@ -323,7 +471,7 @@
   <p class="guides">📖 <a href="https://img1.wsimg.com/blobby/go/af23e0a7-b2bc-4f1e-9298-99b6f6d32c18/downloads/False_Shuffles_Cut_Forces.pdf?ver=1781631767798">False Shuffles, Cuts &amp; Forces (illustrated PDF)</a> — arrowed diagrams for several false cuts including the Charlier.</p>
 </article>
 <article class="trick reveal" id="t14">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 14"><div class="flip-inner"><div class="flip-face flip-front">14</div><div class="flip-face flip-back red">♥</div></div></div><h3>Classic Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 14"><div class="flip-inner"><div class="flip-face flip-front">14</div><div class="flip-face flip-back red">♥</div></div></div><h3>Classic Force</h3><label class="learned"><input type="checkbox" data-trick="t14"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">The boldest force in the book. No shuffle, no setup — just timing and nerve.</p>
   <ol class="steps">
@@ -340,7 +488,7 @@
 </article>
 
 <article class="trick reveal" id="t15">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 15"><div class="flip-inner"><div class="flip-face flip-front">15</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Palm</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 15"><div class="flip-inner"><div class="flip-face flip-front">15</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Palm</h3><label class="learned"><input type="checkbox" data-trick="t15"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">The first real vanish. A card leaves the deck, and your hand is empty — except it isn't.</p>
   <ol class="steps">
@@ -358,7 +506,7 @@
 
 
 <article class="trick reveal" id="t20">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 20"><div class="flip-inner"><div class="flip-face flip-front">20</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Peek</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 20"><div class="flip-inner"><div class="flip-face flip-front">20</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Peek</h3><label class="learned"><input type="checkbox" data-trick="t20"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Learn a card without anyone knowing you looked. The quietest skill in magic.</p>
   <ol class="steps">
@@ -374,7 +522,7 @@
 </article>
 
 <article class="trick reveal" id="t21">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 21"><div class="flip-inner"><div class="flip-face flip-front">21</div><div class="flip-face flip-back black">♠</div></div></div><h3>Charlier Cut</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 21"><div class="flip-inner"><div class="flip-face flip-front">21</div><div class="flip-face flip-back black">♠</div></div></div><h3>Charlier Cut</h3><label class="learned"><input type="checkbox" data-trick="t21"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Cut the deck with one hand. Pure flourish — no secret, all style.</p>
   <ol class="steps">
@@ -395,7 +543,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t6">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 6"><div class="flip-inner"><div class="flip-face flip-front">6</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Glide</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 6"><div class="flip-inner"><div class="flip-face flip-front">6</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Glide</h3><label class="learned"><input type="checkbox" data-trick="t6"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Steal the bottom card while everyone is looking right at the bottom of the deck.</p>
   <ol class="steps">
@@ -412,7 +560,7 @@
 </article>
 
 <article class="trick reveal" id="t7">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 7"><div class="flip-inner"><div class="flip-face flip-front">7</div><div class="flip-face flip-back black">♣</div></div></div><h3>Riffle Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 7"><div class="flip-inner"><div class="flip-face flip-front">7</div><div class="flip-face flip-back black">♣</div></div></div><h3>Riffle Force</h3><label class="learned"><input type="checkbox" data-trick="t7"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Force a card with psychology — and one small secret slip.</p>
   <ol class="steps">
@@ -428,7 +576,7 @@
 </article>
 
 <article class="trick reveal" id="t8">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 8"><div class="flip-inner"><div class="flip-face flip-front">8</div><div class="flip-face flip-back red">♦</div></div></div><h3>Elmsley Count</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 8"><div class="flip-inner"><div class="flip-face flip-front">8</div><div class="flip-face flip-back red">♦</div></div></div><h3>Elmsley Count</h3><label class="learned"><input type="checkbox" data-trick="t8"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Count four cards fairly while one of them never shows its face.</p>
   <ol class="steps">
@@ -445,7 +593,7 @@
 </article>
 
 <article class="trick reveal" id="t9">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 9"><div class="flip-inner"><div class="flip-face flip-front">9</div><div class="flip-face flip-back black">♠</div></div></div><h3>Snap Change</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 9"><div class="flip-inner"><div class="flip-face flip-front">9</div><div class="flip-face flip-back black">♠</div></div></div><h3>Snap Change</h3><label class="learned"><input type="checkbox" data-trick="t9"><span>Learned</span></label></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
   <p class="lede">One card visibly becomes another, in a snap.</p>
   <ol class="steps">
@@ -460,7 +608,7 @@
   <p class="guides">📖 <a href="http://www.goodtricks.net/card-snap-change-trick.html">"Card Snap Change"</a> (GoodTricks) covers the grip in writing — but honestly, this one belongs to video. The tutorial above is the way in.</p>
 </article>
 <article class="trick reveal" id="t16">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 16"><div class="flip-inner"><div class="flip-face flip-front">16</div><div class="flip-face flip-back red">♦</div></div></div><h3>Top Change</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 16"><div class="flip-inner"><div class="flip-face flip-front">16</div><div class="flip-face flip-back red">♦</div></div></div><h3>Top Change</h3><label class="learned"><input type="checkbox" data-trick="t16"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">One card becomes another in the half-second between your hands. The cleanest switch in magic.</p>
   <ol class="steps">
@@ -477,7 +625,7 @@
 
 
 <article class="trick reveal" id="t22">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 22"><div class="flip-inner"><div class="flip-face flip-front">22</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Pass</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 22"><div class="flip-inner"><div class="flip-face flip-front">22</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Pass</h3><label class="learned"><input type="checkbox" data-trick="t22"><span>Learned</span></label></div>
   <div class="meta"><span class="badge hard">Hard</span></div>
   <p class="lede">The invisible cut. Two halves transpose inside your hands and nobody sees a thing.</p>
   <ol class="steps">
@@ -492,7 +640,7 @@
   <p class="guides">📖 <a href="https://www.cardtricksrevealed.com/products/the-pass-tutorial/">The Pass tutorial</a> (Card Tricks Revealed) — all three parts of the video series.</p>
 </article>
 <article class="trick reveal" id="t32">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 32"><div class="flip-inner"><div class="flip-face flip-front">32</div><div class="flip-face flip-back red">♦</div></div></div><h3>Cross Cut Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 32"><div class="flip-inner"><div class="flip-face flip-front">32</div><div class="flip-face flip-back red">♦</div></div></div><h3>Cross Cut Force</h3><label class="learned"><input type="checkbox" data-trick="t32"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They cut wherever they want. They still end up with the card you picked.</p>
   <ol class="steps">
@@ -509,7 +657,7 @@
 </article>
 
 <article class="trick reveal" id="t33">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 33"><div class="flip-inner"><div class="flip-face flip-front">33</div><div class="flip-face flip-back black">♠</div></div></div><h3>Slip Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 33"><div class="flip-inner"><div class="flip-face flip-front">33</div><div class="flip-face flip-back black">♠</div></div></div><h3>Slip Force</h3><label class="learned"><input type="checkbox" data-trick="t33"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Deal a pile, let them stop you anywhere — the stopped-at card is always the one you planted.</p>
   <ol class="steps">
@@ -531,7 +679,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t10">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 10"><div class="flip-inner"><div class="flip-face flip-front">10</div><div class="flip-face flip-back red">♥</div></div></div><h3>21-Card Trick</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 10"><div class="flip-inner"><div class="flip-face flip-front">10</div><div class="flip-face flip-back red">♥</div></div></div><h3>21-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t10"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
   <p class="lede">No sleight of hand at all. The math does the trick, and it still floors people.</p>
   <ol class="steps">
@@ -549,7 +697,7 @@
 </article>
 
 <article class="trick reveal" id="t11">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 11"><div class="flip-inner"><div class="flip-face flip-front">11</div><div class="flip-face flip-back black">♣</div></div></div><h3>Two-Card Monte</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 11"><div class="flip-inner"><div class="flip-face flip-front">11</div><div class="flip-face flip-back black">♣</div></div></div><h3>Two-Card Monte</h3><label class="learned"><input type="checkbox" data-trick="t11"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards, one impossible game. Fits in a pocket, plays huge.</p>
   <ol class="steps">
@@ -566,7 +714,7 @@
 </article>
 
 <article class="trick reveal" id="t12">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 12"><div class="flip-inner"><div class="flip-face flip-front">12</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ambitious Card</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 12"><div class="flip-inner"><div class="flip-face flip-front">12</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ambitious Card</h3><label class="learned"><input type="checkbox" data-trick="t12"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their signed card keeps rising to the top no matter what you do to it. The classic.</p>
   <ol class="steps">
@@ -583,7 +731,7 @@
 </article>
 
 <article class="trick reveal" id="t13">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 13"><div class="flip-inner"><div class="flip-face flip-front">13</div><div class="flip-face flip-back black">♠</div></div></div><h3>Triumph</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 13"><div class="flip-inner"><div class="flip-face flip-front">13</div><div class="flip-face flip-back black">♠</div></div></div><h3>Triumph</h3><label class="learned"><input type="checkbox" data-trick="t13"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">The deck gets shuffled face-up into face-down, an unsalvageable mess — and then it isn't. Except for their card.</p>
   <ol class="steps">
@@ -598,7 +746,7 @@
   <p class="guides">📖 <a href="https://geniimagazine.com/wiki/index.php?title=Triumph">Magicpedia's Triumph page</a> for the history and credits of Dai Vernon's classic.</p>
 </article>
 <article class="trick reveal" id="t17">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 17"><div class="flip-inner"><div class="flip-face flip-front">17</div><div class="flip-face flip-back black">♠</div></div></div><h3>Oil and Water</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 17"><div class="flip-inner"><div class="flip-face flip-front">17</div><div class="flip-face flip-back black">♠</div></div></div><h3>Oil and Water</h3><label class="learned"><input type="checkbox" data-trick="t17"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Reds and blacks, mixed together — then they separate themselves. Your Elmsley count's favorite routine.</p>
   <ol class="steps">
@@ -614,7 +762,7 @@
 </article>
 
 <article class="trick reveal" id="t18">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 18"><div class="flip-inner"><div class="flip-face flip-front">18</div><div class="flip-face flip-back red">♥</div></div></div><h3>Twisting the Aces</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 18"><div class="flip-inner"><div class="flip-face flip-front">18</div><div class="flip-face flip-back red">♥</div></div></div><h3>Twisting the Aces</h3><label class="learned"><input type="checkbox" data-trick="t18"><span>Learned</span></label></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
   <p class="lede">Four aces, face down. Each twist of the packet turns one face-up. Vernon's masterpiece in miniature.</p>
   <ol class="steps">
@@ -631,7 +779,7 @@
 </article>
 
 <article class="trick reveal" id="t19">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 19"><div class="flip-inner"><div class="flip-face flip-front">19</div><div class="flip-face flip-back black">♣</div></div></div><h3>Chicago Opener</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 19"><div class="flip-inner"><div class="flip-face flip-front">19</div><div class="flip-face flip-back black">♣</div></div></div><h3>Chicago Opener</h3><label class="learned"><input type="checkbox" data-trick="t19"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their card changes the color of its back — then becomes someone else's card entirely. The classic opener.</p>
   <p class="aside" style="border-color:var(--red)"><b style="color:#d4695a">You need one extra:</b> a duplicate of a card with a different-colored back. Blue deck? Find a red-backed mate.</p>
@@ -651,7 +799,7 @@
 
 
 <article class="trick reveal" id="t23">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 23"><div class="flip-inner"><div class="flip-face flip-front">23</div><div class="flip-face flip-back black">♣</div></div></div><h3>Biddle Trick</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 23"><div class="flip-inner"><div class="flip-face flip-front">23</div><div class="flip-face flip-back black">♣</div></div></div><h3>Biddle Trick</h3><label class="learned"><input type="checkbox" data-trick="t23"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their card vanishes from among five cards and turns up somewhere impossible. Elmer Biddle's classic.</p>
   <ol class="steps">
@@ -669,7 +817,7 @@
 </article>
 
 <article class="trick reveal" id="t24">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 24"><div class="flip-inner"><div class="flip-face flip-front">24</div><div class="flip-face flip-back red">♦</div></div></div><h3>Do As I Do</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 24"><div class="flip-inner"><div class="flip-face flip-front">24</div><div class="flip-face flip-back red">♦</div></div></div><h3>Do As I Do</h3><label class="learned"><input type="checkbox" data-trick="t24"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
   <p class="lede">You both do exactly the same thing with your own halves — and find the same card. A duet.</p>
   <ol class="steps">
@@ -689,7 +837,7 @@
 </article>
 
 <article class="trick reveal" id="t25">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 25"><div class="flip-inner"><div class="flip-face flip-front">25</div><div class="flip-face flip-back black">♠</div></div></div><h3>Card to Pocket</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 25"><div class="flip-inner"><div class="flip-face flip-front">25</div><div class="flip-face flip-back black">♠</div></div></div><h3>Card to Pocket</h3><label class="learned"><input type="checkbox" data-trick="t25"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their signed card leaves the deck and lands in your pocket. The palm's graduation ceremony.</p>
   <ol class="steps">
@@ -711,7 +859,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t26">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 26"><div class="flip-inner"><div class="flip-face flip-front">26</div><div class="flip-face flip-back red">♥</div></div></div><h3>Si Stebbins Stack</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 26"><div class="flip-inner"><div class="flip-face flip-front">26</div><div class="flip-face flip-back red">♥</div></div></div><h3>Si Stebbins Stack</h3><label class="learned"><input type="checkbox" data-trick="t26"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A secret number system hiding in plain sight — cut all you want, the order never breaks.</p>
   <ol class="steps">
@@ -728,7 +876,7 @@
 </article>
 
 <article class="trick reveal" id="t27">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 27"><div class="flip-inner"><div class="flip-face flip-front">27</div><div class="flip-face flip-back black">♣</div></div></div><h3>Out of This World</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 27"><div class="flip-inner"><div class="flip-face flip-front">27</div><div class="flip-face flip-back black">♣</div></div></div><h3>Out of This World</h3><label class="learned"><input type="checkbox" data-trick="t27"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They sort the reds from the blacks without looking — and you're not allowed to touch the deck.</p>
   <ol class="steps">
@@ -745,7 +893,7 @@
 </article>
 
 <article class="trick reveal" id="t28">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 28"><div class="flip-inner"><div class="flip-face flip-front">28</div><div class="flip-face flip-back red">♦</div></div></div><h3>Fitch Cheney's Five-Card Trick</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 28"><div class="flip-inner"><div class="flip-face flip-front">28</div><div class="flip-face flip-back red">♦</div></div></div><h3>Fitch Cheney's Five-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t28"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Your partner leaves the room. Five random cards later, they name the hidden one.</p>
   <ol class="steps">
@@ -762,7 +910,7 @@
 </article>
 
 <article class="trick reveal" id="t29">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 29"><div class="flip-inner"><div class="flip-face flip-front">29</div><div class="flip-face flip-back black">♠</div></div></div><h3>Ten-Card Poker Deal</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 29"><div class="flip-inner"><div class="flip-face flip-front">29</div><div class="flip-face flip-back black">♠</div></div></div><h3>Ten-Card Poker Deal</h3><label class="learned"><input type="checkbox" data-trick="t29"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They deal. They turn over four kings. You still win.</p>
   <ol class="steps">
@@ -778,7 +926,7 @@
 </article>
 
 <article class="trick reveal" id="t30">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 30"><div class="flip-inner"><div class="flip-face flip-front">30</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Clock Trick</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 30"><div class="flip-inner"><div class="flip-face flip-front">30</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Clock Trick</h3><label class="learned"><input type="checkbox" data-trick="t30"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Name any hour. The clock already knows.</p>
   <ol class="steps">
@@ -794,7 +942,7 @@
 </article>
 
 <article class="trick reveal" id="t31">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 31"><div class="flip-inner"><div class="flip-face flip-front">31</div><div class="flip-face flip-back black">♣</div></div></div><h3>Miraskill</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 31"><div class="flip-inner"><div class="flip-face flip-front">31</div><div class="flip-face flip-back black">♣</div></div></div><h3>Miraskill</h3><label class="learned"><input type="checkbox" data-trick="t31"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They shuffle, they deal, you never touch the cards — and your prediction is right twice.</p>
   <ol class="steps">
@@ -816,7 +964,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t34">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 34"><div class="flip-inner"><div class="flip-face flip-front">34</div><div class="flip-face flip-back red">♥</div></div></div><h3>Thumb Fan</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 34"><div class="flip-inner"><div class="flip-face flip-front">34</div><div class="flip-face flip-back red">♥</div></div></div><h3>Thumb Fan</h3><label class="learned"><input type="checkbox" data-trick="t34"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">The classic display — a perfect semicircle of cards from one sweep of the thumb.</p>
   <ol class="steps">
@@ -832,7 +980,7 @@
 </article>
 
 <article class="trick reveal" id="t35">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 35"><div class="flip-inner"><div class="flip-face flip-front">35</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Dribble</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 35"><div class="flip-inner"><div class="flip-face flip-front">35</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Dribble</h3><label class="learned"><input type="checkbox" data-trick="t35"><span>Learned</span></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Cards cascading hand to hand in a waterfall — the foundation flourish.</p>
   <ol class="steps">
@@ -848,7 +996,7 @@
 </article>
 
 <article class="trick reveal" id="t36">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 36"><div class="flip-inner"><div class="flip-face flip-front">36</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Spring</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 36"><div class="flip-inner"><div class="flip-face flip-front">36</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Spring</h3><label class="learned"><input type="checkbox" data-trick="t36"><span>Learned</span></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Bend the deck, let go — a stream of cards flying hand to hand.</p>
   <ol class="steps">
@@ -864,7 +1012,7 @@
 </article>
 
 <article class="trick reveal" id="t37">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 37"><div class="flip-inner"><div class="flip-face flip-front">37</div><div class="flip-face flip-back black">♠</div></div></div><h3>Sybil Cut</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 37"><div class="flip-inner"><div class="flip-face flip-front">37</div><div class="flip-face flip-back black">♠</div></div></div><h3>Sybil Cut</h3><label class="learned"><input type="checkbox" data-trick="t37"><span>Learned</span></label></div>
   <div class="meta"><span class="badge hard">Hard</span></div>
   <p class="lede">Packets dancing between your fingers — and the deck never actually mixes.</p>
   <ol class="steps">
@@ -882,6 +1030,79 @@
 </section>
 
 
+
+<section class="block">
+
+<h2 class="sec reveal">Glossary<span class="n">Fifteen words that do a lot of heavy lifting above.</span></h2>
+
+<div class="rule"></div>
+
+<dl class="glossary reveal">
+
+    <div class="gterm"><dt>Break</dt><dd>A small gap held in the deck — usually with a fingertip — marking a position you need to find later.</dd></div>
+    <div class="gterm"><dt>Control</dt><dd>Keeping a chosen card exactly where you want it while shuffles and cuts look honest.</dd></div>
+    <div class="gterm"><dt>Cut</dt><dd>Dividing the deck and restacking the halves in reverse order. Half of magic is cuts that aren't.</dd></div>
+    <div class="gterm"><dt>Fan</dt><dd>Spreading the deck into a semicircle for display, pivoting the cards around one anchored finger.</dd></div>
+    <div class="gterm"><dt>Flourish</dt><dd>A display of card handling with no trick inside it. Style as substance.</dd></div>
+    <div class="gterm"><dt>Force</dt><dd>Steering a spectator to a predetermined card while the choice feels completely free.</dd></div>
+    <div class="gterm"><dt>Injog</dt><dd>A card or packet left protruding slightly toward you — a hidden bookmark in the deck.</dd></div>
+    <div class="gterm"><dt>Key card</dt><dd>A card whose identity you know, used to locate the card sitting next to it.</dd></div>
+    <div class="gterm"><dt>Misdirection</dt><dd>Managing what the audience pays attention to, and when. It's directing, not distracting.</dd></div>
+    <div class="gterm"><dt>Packet</dt><dd>A small portion of the deck handled as a single unit.</dd></div>
+    <div class="gterm"><dt>Palm</dt><dd>Holding a card secretly in the hand while the hand looks empty and natural.</dd></div>
+    <div class="gterm"><dt>Patter</dt><dd>The talking that accompanies a trick — the story wrapped around the secret.</dd></div>
+    <div class="gterm"><dt>Sleight</dt><dd>A secret move of the hands. The plural does most of the work on this page.</dd></div>
+    <div class="gterm"><dt>Spread</dt><dd>Laying the cards in an overlapping row — usually face-up — for display or selection.</dd></div>
+    <div class="gterm"><dt>Stack</dt><dd>A deck, or part of one, arranged in a secret predetermined order.</dd></div>
+
+</dl>
+
+</section>
+
+
+<div class="cheatsheet">
+  <h2>Sleight School — Cheat Sheet</h2>
+  <p class="cs-sub">Thirty-seven tricks, one line each. <span class="cs-url">scomofo.github.io/card-tricks</span></p>
+  <ol>
+    <li><b>1. Key Card Principle</b> — The most useful secret in card magic: knowing a card nobody told you.</li>
+    <li><b>2. Overhand Shuffle Control</b> — Keep a card exactly where you want it while the shuffle looks honest.</li>
+    <li><b>3. Hindu Shuffle & Force</b> — A shuffle that looks like chaos and a force hiding inside it.</li>
+    <li><b>4. Double Lift</b> — Two cards handled as one. This is the engine inside half of card magic.</li>
+    <li><b>5. False Cut</b> — Look scrupulously fair while changing nothing at all.</li>
+    <li><b>14. Classic Force</b> — The boldest force in the book. No shuffle, no setup — just timing and nerve.</li>
+    <li><b>15. The Palm</b> — The first real vanish. A card leaves the deck, and your hand is empty — except it isn't.</li>
+    <li><b>20. The Peek</b> — Learn a card without anyone knowing you looked. The quietest skill in magic.</li>
+    <li><b>21. Charlier Cut</b> — Cut the deck with one hand. Pure flourish — no secret, all style.</li>
+    <li><b>6. The Glide</b> — Steal the bottom card while everyone is looking right at the bottom of the deck.</li>
+    <li><b>7. Riffle Force</b> — Force a card with psychology — and one small secret slip.</li>
+    <li><b>8. Elmsley Count</b> — Count four cards fairly while one of them never shows its face.</li>
+    <li><b>9. Snap Change</b> — One card visibly becomes another, in a snap.</li>
+    <li><b>16. Top Change</b> — One card becomes another in the half-second between your hands. The cleanest switch in magic.</li>
+    <li><b>22. The Pass</b> — The invisible cut. Two halves transpose inside your hands and nobody sees a thing.</li>
+    <li><b>32. Cross Cut Force</b> — They cut wherever they want. They still end up with the card you picked.</li>
+    <li><b>33. Slip Force</b> — Deal a pile, let them stop you anywhere — the stopped-at card is always the one you planted.</li>
+    <li><b>10. 21-Card Trick</b> — No sleight of hand at all. The math does the trick, and it still floors people.</li>
+    <li><b>11. Two-Card Monte</b> — Two cards, one impossible game. Fits in a pocket, plays huge.</li>
+    <li><b>12. Ambitious Card</b> — Their signed card keeps rising to the top no matter what you do to it. The classic.</li>
+    <li><b>13. Triumph</b> — The deck gets shuffled face-up into face-down, an unsalvageable mess — and then it isn't. Except for their card.</li>
+    <li><b>17. Oil and Water</b> — Reds and blacks, mixed together — then they separate themselves. Your Elmsley count's favorite routine.</li>
+    <li><b>18. Twisting the Aces</b> — Four aces, face down. Each twist of the packet turns one face-up. Vernon's masterpiece in miniature.</li>
+    <li><b>19. Chicago Opener</b> — Their card changes the color of its back — then becomes someone else's card entirely. The classic opener.</li>
+    <li><b>23. Biddle Trick</b> — Their card vanishes from among five cards and turns up somewhere impossible. Elmer Biddle's classic.</li>
+    <li><b>24. Do As I Do</b> — You both do exactly the same thing with your own halves — and find the same card. A duet.</li>
+    <li><b>25. Card to Pocket</b> — Their signed card leaves the deck and lands in your pocket. The palm's graduation ceremony.</li>
+    <li><b>26. Si Stebbins Stack</b> — A secret number system hiding in plain sight — cut all you want, the order never breaks.</li>
+    <li><b>27. Out of This World</b> — They sort the reds from the blacks without looking — and you're not allowed to touch the deck.</li>
+    <li><b>28. Fitch Cheney's Five-Card Trick</b> — Your partner leaves the room. Five random cards later, they name the hidden one.</li>
+    <li><b>29. Ten-Card Poker Deal</b> — They deal. They turn over four kings. You still win.</li>
+    <li><b>30. The Clock Trick</b> — Name any hour. The clock already knows.</li>
+    <li><b>31. Miraskill</b> — They shuffle, they deal, you never touch the cards — and your prediction is right twice.</li>
+    <li><b>34. Thumb Fan</b> — The classic display — a perfect semicircle of cards from one sweep of the thumb.</li>
+    <li><b>35. The Dribble</b> — Cards cascading hand to hand in a waterfall — the foundation flourish.</li>
+    <li><b>36. The Spring</b> — Bend the deck, let go — a stream of cards flying hand to hand.</li>
+    <li><b>37. Sybil Cut</b> — Packets dancing between your fingers — and the deck never actually mixes.</li>
+  </ol>
+</div>
 <footer class="reveal">
   <div class="books">
     <h2>The textbook</h2>
@@ -2458,5 +2679,76 @@ if('IntersectionObserver' in window && !REDUCED){
 }
 })();
 </script>
+
+<script>
+
+(function(){
+
+"use strict";
+
+var KEY='sleight-school-learned', learned=[];
+
+try{ learned=JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ learned=[]; }
+
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(learned)); }catch(e){} }
+
+function refresh(){
+
+  var boxes=document.querySelectorAll('.learned input');
+
+  boxes.forEach(function(b){ b.checked=learned.indexOf(b.getAttribute('data-trick'))>=0; });
+
+  document.querySelectorAll('nav.toc ol a').forEach(function(a){
+
+    var id=a.getAttribute('href').slice(1);
+
+    a.classList.toggle('done', learned.indexOf(id)>=0);
+
+  });
+
+  var n=learned.length, total=boxes.length;
+
+  document.getElementById('pfill').style.width=(total? (100*n/total):0)+'%';
+
+  document.getElementById('ptext').textContent=n+' of '+total+' learned';
+
+}
+
+document.querySelectorAll('.learned input').forEach(function(b){
+
+  b.addEventListener('change', function(){
+
+    var id=b.getAttribute('data-trick'), ix=learned.indexOf(id);
+
+    if(b.checked && ix<0) learned.push(id);
+
+    if(!b.checked && ix>=0) learned.splice(ix,1);
+
+    save(); refresh();
+
+  });
+
+});
+
+document.getElementById('surpriseBtn').addEventListener('click', function(){
+
+  var arts=document.querySelectorAll('article.trick');
+
+  var pick=arts[Math.floor(Math.random()*arts.length)];
+
+  pick.scrollIntoView({behavior:'smooth', block:'start'});
+
+  pick.classList.remove('reveal');
+
+});
+
+document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+
+refresh();
+
+})();
+
+</script>
+
 </body>
 </html>
