@@ -153,6 +153,14 @@
   .plabel{position:absolute;transform:translate(-50%,-50%);color:var(--gold);font-size:13px;font-weight:600;
     background:rgba(0,0,0,.68);padding:3px 11px;border-radius:12px;border:1px solid var(--gold-soft);
     white-space:nowrap;z-index:7;transition:opacity .3s;pointer-events:none}
+  .pnote{position:absolute;transform:translate(-50%,-50%);max-width:42%;color:var(--cream);font-size:12px;line-height:1.35;
+    background:rgba(12,9,6,.82);padding:6px 10px;border-radius:8px;border:1px solid var(--line);z-index:8;pointer-events:none}
+  .pnote b{color:var(--gold);font-weight:600}
+  .pcard,.pdeck{transition:left .7s cubic-bezier(.22,.7,.3,1),top .7s cubic-bezier(.22,.7,.3,1),opacity .4s ease,transform .55s ease}
+  .animplayer .beats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .animplayer .beat{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-soft);
+    border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+
   .vsrc{margin:8px 0 0;font-size:14px;color:var(--faint)}
   .vsrc a{color:var(--gold-soft)}
   .noanim .pinner,.noanim .pcard,.noanim .pdeck{transition:none !important}
@@ -3181,8 +3189,20 @@ Player.prototype.render=function(){
 };
 Player.prototype.applyStep=function(step){
   var self=this;
-  (step.actions||[]).forEach(function(a){ self.act(a); });
-  if(step.caption) this.cap.innerHTML=step.caption;
+  var instant=this.root.classList.contains('noanim');
+  var now=[], later=[];
+  (step.actions||[]).forEach(function(a){
+    if(!instant && (a.t==='move' || a.t==='rot')) later.push(a);
+    else now.push(a);
+  });
+  now.forEach(function(a){ self.act(a); });
+  if(later.length){
+    requestAnimationFrame(function(){ later.forEach(function(a){ self.act(a); }); });
+  }
+  if(step.caption){
+    var beats=(step.beats||[]).map(function(b){ return '<span class="beat">'+b+'</span>'; }).join('');
+    this.cap.innerHTML=step.caption+(beats?'<div class="beats">'+beats+'</div>':'');
+  }
 };
 Player.prototype.stepDelay=function(){
   var n=((this.anim.steps[this.i]||{}).actions||[]).length;
@@ -3224,7 +3244,14 @@ Player.prototype.act=function(a){
       inner.appendChild(fr); inner.appendChild(mk('div','pface pback'));
       c.appendChild(inner); this.stage.appendChild(c); o[a.id]=c; break;
     }
-    case 'move': { var m=o[a.id]; if(m){ m.style.left=a.x+'%'; m.style.top=a.y+'%'; if(a.z) m.style.zIndex=a.z; } break; }
+    case 'move': { var m=o[a.id]; if(m){ m.style.left=a.x+'%'; m.style.top=a.y+'%'; if(a.z) m.style.zIndex=a.z; if(a.w) m.style.width=a.w+'%'; } break; }
+    case 'rot': { var rv=o[a.id]; if(rv) rv.style.transform='translate(-50%,-50%) rotate('+(a.deg||0)+'deg)'; break; }
+    case 'note': {
+      var nt=o['n'+a.id];
+      if(!nt){ nt=mk('div','pnote'); this.stage.appendChild(nt); o['n'+a.id]=nt; }
+      nt.innerHTML=a.text; nt.style.left=a.x+'%'; nt.style.top=a.y+'%'; nt.style.opacity='1'; break;
+    }
+    case 'unnote': { var un=o['n'+a.id]; if(un) un.style.opacity='0'; break; }
     case 'flip': { var f=o[a.id]; if(f) f.classList.toggle('facedown', a.to==='down'); break; }
     case 'hi': { var hh=o[a.id]; if(hh) hh.classList.toggle('phi', !!a.on); break; }
     case 'label': {
@@ -3242,6 +3269,291 @@ Player.prototype.act=function(a){
     }
   }
 };
+
+
+ANIMS.t46 = { steps: [
+  { caption: "Their card sits in the middle. As you square, the left pinky holds a break under it.",
+    beats: ["selection in the middle","pinky break"],
+    actions: [
+      {t:'deck', id:'d', x:50, y:48, n:52},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:50, y:48, face:'down', w:12},
+      {t:'hi', id:'sel', on:true},
+      {t:'note', id:'b', text:'pinky break under the A♠', x:74, y:62}
+    ]},
+  { caption: "The right hand takes the deck from above and steals that gap as a thumb break. From the front, nothing is open.",
+    beats: ["thumb break","front looks square"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'note', id:'b', text:'thumb break — invisible from the front', x:72, y:28}
+    ]},
+  { caption: "Left hand undercuts about half the cards below the break and drops them on top.",
+    beats: ["first undercut"],
+    actions: [
+      {t:'deck', id:'low', x:50, y:70, n:16},
+      {t:'move', id:'low', x:50, y:30, z:5},
+      {t:'note', id:'b', text:'half below the break → on top', x:74, y:62}
+    ]},
+  { caption: "Come back for everything still under the break. That packet goes on top too.",
+    beats: ["second undercut"],
+    actions: [
+      {t:'remove', id:'low'},
+      {t:'deck', id:'rest', x:50, y:72, n:18},
+      {t:'move', id:'rest', x:50, y:28, z:6},
+      {t:'note', id:'b', text:'the rest of the break follows', x:74, y:62}
+    ]},
+  { caption: "Square. Their card is the top card. A false cut after this changes nothing.",
+    beats: ["A♠ is on top","false cut optional"],
+    actions: [
+      {t:'remove', id:'rest'}, {t:'remove', id:'d'}, {t:'unnote', id:'b'},
+      {t:'card', id:'top', rank:'A', suit:'♠', x:50, y:42, face:'up', w:16},
+      {t:'deck', id:'rest2', x:50, y:56, n:51},
+      {t:'hi', id:'top', on:true},
+      {t:'label', id:'k', text:'two cuts · their card is back on top', x:50, y:86}
+    ]}
+]};
+ANIMS.t47 = { steps: [
+  { caption: "A card lies face down. The card you want to switch in is face down in the right hand.",
+    beats: ["tabled card","switch card in hand"],
+    actions: [
+      {t:'card', id:'tab', rank:'7', suit:'♣', x:42, y:58, face:'down', w:16},
+      {t:'card', id:'sw', rank:'A', suit:'♠', x:70, y:28, face:'down', w:16},
+      {t:'label', id:'k', text:'honest turnover would scoop and flip', x:50, y:88}
+    ]},
+  { caption: "Slide the hand card under the tabled card until the two are roughly square.",
+    beats: ["scoop under"],
+    actions: [
+      {t:'move', id:'sw', x:42, y:62, z:1},
+      {t:'label', id:'k', text:'aligned · not yet turned', x:50, y:88}
+    ]},
+  { caption: "As the turnover starts, the thumb draws the top card right and the fingers push the bottom card left.",
+    beats: ["top card right","bottom card left"],
+    actions: [
+      {t:'move', id:'tab', x:62, y:40, z:4},
+      {t:'move', id:'sw', x:30, y:58, z:2},
+      {t:'note', id:'b', text:'they swap under the flip', x:72, y:70}
+    ]},
+  { caption: "The card that lands face up was in your hand. The one that was on the table leaves with you.",
+    beats: ["switched face","original leaves"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'flip', id:'sw', to:'up'},
+      {t:'move', id:'sw', x:42, y:55, z:3},
+      {t:'move', id:'tab', x:74, y:24, z:5},
+      {t:'hi', id:'sw', on:true},
+      {t:'label', id:'k', text:'table shows the A♠ · 7♣ is in the hand', x:50, y:88}
+    ]}
+]};
+ANIMS.t48 = { steps: [
+  { caption: "Five faces in a fan. Each has a near-twin squared behind it — same color, close value, different suit.",
+    beats: ["five faces","five hidden mates"],
+    actions: [
+      {t:'card', id:'a', rank:'6', suit:'♣', x:28, y:48, face:'up', w:13},
+      {t:'card', id:'b', rank:'7', suit:'♥', x:40, y:46, face:'up', w:13},
+      {t:'card', id:'c', rank:'5', suit:'♠', x:52, y:46, face:'up', w:13},
+      {t:'card', id:'d', rank:'6', suit:'♦', x:64, y:46, face:'up', w:13},
+      {t:'card', id:'e', rank:'7', suit:'♣', x:76, y:48, face:'up', w:13},
+      {t:'note', id:'b', text:'mates hidden behind the fan', x:50, y:78}
+    ]},
+  { caption: "They only think of one. They never touch. Say they settle on the 7♥.",
+    beats: ["thought of","no touch"],
+    actions: [
+      {t:'hi', id:'b', on:true},
+      {t:'label', id:'k', text:'they think: 7♥', x:50, y:18}
+    ]},
+  { caption: "Close the fan, turn it toward yourself, and take out a card they were never shown — the mate you don't need.",
+    beats: ["close","remove an unseen card"],
+    actions: [
+      {t:'remove', id:'a'},{t:'remove', id:'b'},{t:'remove', id:'c'},{t:'remove', id:'d'},{t:'remove', id:'e'},
+      {t:'unnote', id:'b'},
+      {t:'card', id:'gone', rank:'4', suit:'♦', x:50, y:42, face:'up', w:16},
+      {t:'move', id:'gone', x:78, y:30},
+      {t:'label', id:'k', text:'pocket a card they never saw', x:50, y:84}
+    ]},
+  { caption: "Spread the five mates. Their 7♥ is not there. The missing one is, apparently, the one in your pocket.",
+    beats: ["show the mates","theirs is absent"],
+    actions: [
+      {t:'remove', id:'gone'},
+      {t:'card', id:'m1', rank:'6', suit:'♠', x:22, y:50, face:'up', w:12},
+      {t:'card', id:'m2', rank:'7', suit:'♦', x:36, y:50, face:'up', w:12},
+      {t:'card', id:'m3', rank:'5', suit:'♣', x:50, y:50, face:'up', w:12},
+      {t:'card', id:'m4', rank:'6', suit:'♥', x:64, y:50, face:'up', w:12},
+      {t:'card', id:'m5', rank:'7', suit:'♠', x:78, y:50, face:'up', w:12},
+      {t:'label', id:'k', text:'7♥ is gone · they never saw these five', x:50, y:84}
+    ]}
+]};
+ANIMS.t49 = { steps: [
+  { caption: "Bevel the deck toward the spreading hand. Index on the near end, fingers on the long edge.",
+    beats: ["bevel","finger on the end"],
+    actions: [
+      {t:'deck', id:'d', x:28, y:52, n:52},
+      {t:'note', id:'b', text:'bevel toward the sweep', x:28, y:28}
+    ]},
+  { caption: "Sweep in a straight line with even pressure. A cloth surface. Uneven pressure clumps the far end.",
+    beats: ["even pressure","cloth, not glass"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'card', id:'c1', rank:'', suit:'', x:22, y:52, face:'down', w:9},
+      {t:'card', id:'c2', rank:'', suit:'', x:32, y:52, face:'down', w:9},
+      {t:'card', id:'c3', rank:'', suit:'', x:42, y:52, face:'down', w:9},
+      {t:'card', id:'c4', rank:'', suit:'', x:52, y:52, face:'down', w:9},
+      {t:'card', id:'c5', rank:'', suit:'', x:62, y:52, face:'down', w:9},
+      {t:'card', id:'c6', rank:'', suit:'', x:72, y:52, face:'down', w:9},
+      {t:'remove', id:'d'},
+      {t:'label', id:'k', text:'one even ribbon', x:50, y:84}
+    ]},
+  { caption: "Pinch the near end, lay a finger on top, and ride the length. Friction turns the whole ribbon over.",
+    beats: ["ride the ribbon","every card flips"],
+    actions: [
+      {t:'flip', id:'c1', to:'up'},{t:'flip', id:'c2', to:'up'},{t:'flip', id:'c3', to:'up'},
+      {t:'flip', id:'c4', to:'up'},{t:'flip', id:'c5', to:'up'},{t:'flip', id:'c6', to:'up'},
+      {t:'label', id:'k', text:'one stroke · the ribbon is face up', x:50, y:84}
+    ]}
+]};
+ANIMS.t50 = { steps: [
+  { caption: "Deck face up. They are looking at the 4♥. The card you want to appear — the A♠ — is on the bottom.",
+    beats: ["face: 4♥","bottom: A♠"],
+    actions: [
+      {t:'card', id:'face', rank:'4', suit:'♥', x:50, y:46, face:'up', w:18},
+      {t:'card', id:'bot', rank:'A', suit:'♠', x:50, y:54, face:'up', w:16},
+      {t:'hi', id:'bot', on:true},
+      {t:'note', id:'b', text:'A♠ waiting on the bottom', x:76, y:68}
+    ]},
+  { caption: "The right hand covers the face, a stroke, not a pose. The cover lasts less than a second.",
+    beats: ["cover the face"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'note', id:'b', text:'right hand covers', x:50, y:22},
+      {t:'hi', id:'face', on:true}
+    ]},
+  { caption: "Under the hand, the left fingers slide the bottom card out to the right, into the right palm.",
+    beats: ["bottom card slides right"],
+    actions: [
+      {t:'move', id:'bot', x:68, y:46, z:5},
+      {t:'note', id:'b', text:'bottom card into the palm', x:74, y:72}
+    ]},
+  { caption: "The hand moves away carrying the A♠. The 4♥ never moved — it is the new bottom card.",
+    beats: ["face has changed"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'move', id:'face', x:50, y:58, z:1},
+      {t:'move', id:'bot', x:50, y:44, z:4},
+      {t:'hi', id:'bot', on:true},
+      {t:'label', id:'k', text:'they see the A♠ · 4♥ is underneath', x:50, y:86}
+    ]}
+]};
+ANIMS.t51 = { steps: [
+  { caption: "A break under the top card, then the inner end lifts a few millimeters. From the front that gap reads as the middle.",
+    beats: ["break under the top card","depth illusion"],
+    actions: [
+      {t:'deck', id:'d', x:50, y:56, n:51},
+      {t:'card', id:'top', rank:'K', suit:'♣', x:50, y:40, face:'down', w:16},
+      {t:'rot', id:'top', deg:-8},
+      {t:'note', id:'b', text:'gap looks like the center', x:76, y:36}
+    ]},
+  { caption: "Their card — the A♥ — is pushed into that gap. A little pretend difficulty sells the fair choice.",
+    beats: ["insert into the gap"],
+    actions: [
+      {t:'card', id:'sel', rank:'A', suit:'♥', x:18, y:48, face:'down', w:15},
+      {t:'move', id:'sel', x:46, y:46, z:4},
+      {t:'label', id:'k', text:'looks like the middle', x:50, y:86}
+    ]},
+  { caption: "Square the deck. The lifted card drops. Their card is directly under the top card.",
+    beats: ["square","second from the top"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'rot', id:'top', deg:0},
+      {t:'move', id:'top', x:50, y:42},
+      {t:'move', id:'sel', x:50, y:50},
+      {t:'hi', id:'sel', on:true},
+      {t:'label', id:'k', text:'A♥ is second · K♣ covers it', x:50, y:86}
+    ]},
+  { caption: "A double lift now shows the wrong card. The ambitious-card phase can start from here.",
+    beats: ["double lift shows the cover"],
+    actions: [
+      {t:'flip', id:'top', to:'up'},
+      {t:'move', id:'top', x:62, y:36, z:6},
+      {t:'label', id:'k', text:'they see the K♣ · their A♥ is on top', x:50, y:86}
+    ]}
+]};
+ANIMS.t52 = { steps: [
+  { caption: "Three cards face up. You need the A♠. They don't know that. Ask them to point to one.",
+    beats: ["three cards","target is the A♠"],
+    actions: [
+      {t:'card', id:'a', rank:'A', suit:'♠', x:28, y:50, face:'up', w:16},
+      {t:'card', id:'b', rank:'7', suit:'♥', x:50, y:50, face:'up', w:16},
+      {t:'card', id:'c', rank:'Q', suit:'♣', x:72, y:50, face:'up', w:16},
+      {t:'note', id:'b', text:'you need this one', x:28, y:24},
+      {t:'hi', id:'a', on:true}
+    ]},
+  { caption: "They point to the 7♥. That is not the target, so it is the one you eliminate.",
+    beats: ["they point","you eliminate"],
+    actions: [
+      {t:'hi', id:'a', on:false},
+      {t:'hi', id:'b', on:true},
+      {t:'move', id:'b', x:50, y:22},
+      {t:'label', id:'k', text:'“we’ll lose that one”', x:50, y:84}
+    ]},
+  { caption: "Two left. They point to the A♠. This time the point is the selection, and you stop.",
+    beats: ["second point","keep it"],
+    actions: [
+      {t:'hi', id:'b', on:false},
+      {t:'remove', id:'b'},
+      {t:'hi', id:'a', on:true},
+      {t:'move', id:'c', x:78, y:22},
+      {t:'label', id:'k', text:'same question · other sentence · A♠ remains', x:50, y:84}
+    ]},
+  { caption: "If the second point had been the queen, you would have eliminated her and the last card would still be the ace. Both routes end here.",
+    beats: ["both outs land here"],
+    actions: [
+      {t:'remove', id:'c'},
+      {t:'move', id:'a', x:50, y:46},
+      {t:'unnote', id:'b'},
+      {t:'note', id:'b', text:'the ending was fixed', x:50, y:22},
+      {t:'hi', id:'a', on:true}
+    ]}
+]};
+ANIMS.t53 = { steps: [
+  { caption: "Bevel the deck toward the right. Left hand holds it like a thumb fan — then doesn't use it that way.",
+    beats: ["bevel","thumb-fan grip"],
+    actions: [
+      {t:'deck', id:'d', x:42, y:52, n:52},
+      {t:'note', id:'b', text:'bevel to the right', x:42, y:28}
+    ]},
+  { caption: "The right hand presses back so the cards bow. The left thumb starts the spread.",
+    beats: ["pressure","thumb starts"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'note', id:'b', text:'both hands push', x:68, y:32},
+      {t:'card', id:'c1', rank:'', suit:'', x:34, y:52, face:'down', w:10},
+      {t:'card', id:'c2', rank:'', suit:'', x:42, y:50, face:'down', w:10}
+    ]},
+  { caption: "As the thumb clears, the right hand keeps the arc going. The fan opens wider than a thumb fan, indices still readable.",
+    beats: ["arc","wider than a thumb fan"],
+    actions: [
+      {t:'remove', id:'d'},
+      {t:'card', id:'c3', rank:'A', suit:'♠', x:50, y:46, face:'up', w:11},
+      {t:'card', id:'c4', rank:'K', suit:'♥', x:60, y:44, face:'up', w:11},
+      {t:'card', id:'c5', rank:'Q', suit:'♣', x:70, y:46, face:'up', w:11},
+      {t:'card', id:'c6', rank:'J', suit:'♦', x:80, y:52, face:'up', w:11},
+      {t:'move', id:'c1', x:22, y:58},
+      {t:'move', id:'c2', x:34, y:46},
+      {t:'rot', id:'c1', deg:-28},
+      {t:'rot', id:'c2', deg:-16},
+      {t:'rot', id:'c4', deg:12},
+      {t:'rot', id:'c5', deg:22},
+      {t:'rot', id:'c6', deg:32},
+      {t:'label', id:'k', text:'pressure fan · wider, still readable', x:50, y:86}
+    ]},
+  { caption: "Close it by reversing the pressure, same path, slower. A fan you can't close isn't finished.",
+    beats: ["reverse to close"],
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'rot', id:'c1', deg:0},{t:'rot', id:'c2', deg:0},{t:'rot', id:'c4', deg:0},{t:'rot', id:'c5', deg:0},{t:'rot', id:'c6', deg:0},
+      {t:'move', id:'c1', x:48, y:50},{t:'move', id:'c2', x:49, y:50},{t:'move', id:'c3', x:50, y:50},
+      {t:'move', id:'c4', x:51, y:50},{t:'move', id:'c5', x:52, y:50},{t:'move', id:'c6', x:53, y:50},
+      {t:'label', id:'k', text:'close on the same path', x:50, y:86}
+    ]}
+]};
 
 var players=[];
 document.querySelectorAll('.animplayer').forEach(function(root){
