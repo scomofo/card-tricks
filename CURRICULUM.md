@@ -76,6 +76,24 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   5. Reverse the action under cover of squaring the deck to replace the card.
 * **Pro Tip:** Palming is ninety percent acting. Flash yourself in the mirror on purpose to learn the bad angles.
 
+### 8. The Peek
+* **Difficulty:** Beginner
+* **Objective:** Learn a card's identity without anyone knowing you looked.
+* **Mechanics:**
+  1. **Bottom peek:** tilt the deck a fraction toward yourself while gesturing and glimpse the bottom index. One glance — staring gets caught.
+  2. **Top peek:** in dealing grip, the left thumb buckles the top card just enough to sight its index, covered by tapping the deck square.
+  3. **Riffle peek:** riffle up the back of the deck, lifting the top card just high enough to sight it.
+* **Pro Tip:** Your eyes work while your mouth keeps talking. Nobody watches a person who's mid-sentence.
+
+### 9. Charlier Cut
+* **Difficulty:** Beginner
+* **Objective:** Cut the deck one-handed — pure flourish, no secret, all style.
+* **Mechanics:**
+  1. Deck at the left fingertips: thumb on one long edge, middle and ring fingers on the other.
+  2. Let the bottom half drop into the palm, pivoting against the thumb.
+  3. The index finger pushes the top half forward; it swings down onto the bottom half. Halves swapped, one-handed.
+* **Pro Tip:** Flourishes are the salt of card magic — a pinch improves everything.
+
 ---
 
 ## Part 2: The Moves
@@ -128,6 +146,16 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   3. In one passing motion the right hand drops its card while the left thumb slides the original top card into the right hand. Neither hand stops.
   4. The right hand continues on, carrying the stolen card away naturally.
 * **Pro Tip:** Speed is not the point — the logic of the gesture is the cover. If the gesture makes sense, nobody watches the cards.
+
+### 6. The Pass
+* **Difficulty:** Advanced
+* **Objective:** Transpose the deck's halves invisibly — the classic secret cut.
+* **Mechanics:**
+  1. Left hand holds the deck with a pinky break between the halves.
+  2. Right hand covers the deck, thumb inner end, fingers outer.
+  3. The hands pivot: the bottom half swings up and over as the top half drops beneath.
+  4. Square up immediately, the way you would after any ordinary cut.
+* **Pro Tip:** Graduate school — months, not days. Until it's invisible, the overhand control does the same job honestly.
 
 ---
 
@@ -204,3 +232,31 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   4. A second card is selected and controlled to the top.
   5. Pick up the tabled card and switch it for the top card (the top change earns its keep); reveal it as the second selection.
 * **Pro Tip:** Two miracles, one odd-backed card. Requires a duplicate with a different-colored back.
+### 8. Biddle Trick
+* **Difficulty:** Intermediate
+* **Objective:** A selected card vanishes from among five cards and appears somewhere impossible (Elmer Biddle).
+* **Routine Flow:**
+  1. Card selected and controlled to the top; deal the top five into a packet.
+  2. Spread them — the spectator confirms their card is there.
+  3. Count the packet face-up; on the second card, execute the Biddle steal, keeping it back under the packet.
+  4. Their card has vanished from the five — reveal it face-up in the deck or from your pocket.
+* **Pro Tip:** The steal happens while they're answering your question. Questions are misdirection you never choreograph.
+
+### 9. Do As I Do
+* **Difficulty:** Beginner (Self-Working)
+* **Objective:** You and the spectator each follow the same steps with your own halves — and find the same card.
+* **Routine Flow:**
+  1. Spectator cuts into two piles; you each take one and shuffle.
+  2. Each picks a card to remember — but you only glimpse the bottom card of your pile (your key); your "selection" is theater.
+  3. Each places their card on their pile; your pile goes on top of theirs, putting your key directly above their selection.
+  4. They cut the combined deck. You find your key — the card beneath it is theirs. Reveal together: they match.
+* **Pro Tip:** The "do as I do" patter keeps their eyes on their own hands.
+
+### 10. Card to Pocket
+* **Difficulty:** Intermediate
+* **Objective:** A signed card leaves the deck and lands in your pocket — the palm's graduation piece.
+* **Routine Flow:**
+  1. Card selected, signed, controlled to the top.
+  2. Palm it under cover of squaring the deck.
+  3. Hand them the deck; produce the signed card from your (or their) pocket.
+* **Pro Tip:** The trick isn't the palm — it's the ordinary moments around it.
