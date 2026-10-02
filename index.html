@@ -60,8 +60,18 @@
     border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;margin:28px 0;
     transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
   article.trick:hover{transform:translateY(-4px);border-color:#4a3a1e;box-shadow:0 14px 40px rgba(0,0,0,.45)}
-  .thead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-  .tnum{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:15px;min-width:34px}
+  .thead{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .flip{width:46px;height:64px;perspective:500px;flex-shrink:0}
+  .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;
+    transition:transform .7s cubic-bezier(.25,.8,.3,1.15)}
+  article.trick:hover .flip-inner{transform:rotateY(180deg)}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:9px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--gold-soft);background:linear-gradient(160deg,#26201a,#100d08);
+    box-shadow:inset 0 0 0 3px rgba(216,169,63,.12)}
+  .flip-front{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:21px}
+  .flip-back{transform:rotateY(180deg);font-size:26px}
+  .flip-back.red{color:#d4695a}.flip-back.black{color:var(--cream)}
   article.trick h3{font-family:'Playfair Display',serif;font-size:26px;margin:0;color:var(--cream);font-weight:700}
   .meta{display:flex;gap:10px;align-items:center;margin:10px 0 2px;flex-wrap:wrap}
   .badge{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
@@ -171,7 +181,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t1">
-  <div class="thead"><span class="tnum">No. 1</span><h3>Key Card Principle</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 1"><div class="flip-inner"><div class="flip-face flip-front">1</div><div class="flip-face flip-back black">♠</div></div></div><h3>Key Card Principle</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">The most useful secret in card magic: knowing a card nobody told you.</p>
   <ol class="steps">
@@ -186,7 +196,7 @@
 </article>
 
 <article class="trick reveal" id="t2">
-  <div class="thead"><span class="tnum">No. 2</span><h3>Overhand Shuffle Control</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 2"><div class="flip-inner"><div class="flip-face flip-front">2</div><div class="flip-face flip-back red">♥</div></div></div><h3>Overhand Shuffle Control</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Keep a card exactly where you want it while the shuffle looks honest.</p>
   <ol class="steps">
@@ -200,7 +210,7 @@
 </article>
 
 <article class="trick reveal" id="t3">
-  <div class="thead"><span class="tnum">No. 3</span><h3>Hindu Shuffle &amp; Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 3"><div class="flip-inner"><div class="flip-face flip-front">3</div><div class="flip-face flip-back black">♣</div></div></div><h3>Hindu Shuffle &amp; Force</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A shuffle that looks like chaos and a force hiding inside it.</p>
   <ol class="steps">
@@ -216,7 +226,7 @@
 </article>
 
 <article class="trick reveal" id="t4">
-  <div class="thead"><span class="tnum">No. 4</span><h3>Double Lift</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 4"><div class="flip-inner"><div class="flip-face flip-front">4</div><div class="flip-face flip-back red">♦</div></div></div><h3>Double Lift</h3></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards handled as one. This is the engine inside half of card magic.</p>
   <ol class="steps">
@@ -232,7 +242,7 @@
 </article>
 
 <article class="trick reveal" id="t5">
-  <div class="thead"><span class="tnum">No. 5</span><h3>False Cut</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 5"><div class="flip-inner"><div class="flip-face flip-front">5</div><div class="flip-face flip-back black">♠</div></div></div><h3>False Cut</h3></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Look scrupulously fair while changing nothing at all.</p>
   <ol class="steps">
@@ -252,7 +262,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t6">
-  <div class="thead"><span class="tnum">No. 6</span><h3>The Glide</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 6"><div class="flip-inner"><div class="flip-face flip-front">6</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Glide</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Steal the bottom card while everyone is looking right at the bottom of the deck.</p>
   <ol class="steps">
@@ -268,7 +278,7 @@
 </article>
 
 <article class="trick reveal" id="t7">
-  <div class="thead"><span class="tnum">No. 7</span><h3>Riffle Force</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 7"><div class="flip-inner"><div class="flip-face flip-front">7</div><div class="flip-face flip-back black">♣</div></div></div><h3>Riffle Force</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Force a card with psychology — and one small secret slip.</p>
   <ol class="steps">
@@ -286,7 +296,7 @@
 </article>
 
 <article class="trick reveal" id="t8">
-  <div class="thead"><span class="tnum">No. 8</span><h3>Elmsley Count</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 8"><div class="flip-inner"><div class="flip-face flip-front">8</div><div class="flip-face flip-back red">♦</div></div></div><h3>Elmsley Count</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Count four cards fairly while one of them never shows its face.</p>
   <ol class="steps">
@@ -305,7 +315,7 @@
 </article>
 
 <article class="trick reveal" id="t9">
-  <div class="thead"><span class="tnum">No. 9</span><h3>Snap Change</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 9"><div class="flip-inner"><div class="flip-face flip-front">9</div><div class="flip-face flip-back black">♠</div></div></div><h3>Snap Change</h3></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
   <p class="lede">One card visibly becomes another, in a snap.</p>
   <ol class="steps">
@@ -325,7 +335,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t10">
-  <div class="thead"><span class="tnum">No. 10</span><h3>21-Card Trick</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 10"><div class="flip-inner"><div class="flip-face flip-front">10</div><div class="flip-face flip-back red">♥</div></div></div><h3>21-Card Trick</h3></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
   <p class="lede">No sleight of hand at all. The math does the trick, and it still floors people.</p>
   <ol class="steps">
@@ -342,7 +352,7 @@
 </article>
 
 <article class="trick reveal" id="t11">
-  <div class="thead"><span class="tnum">No. 11</span><h3>Two-Card Monte</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 11"><div class="flip-inner"><div class="flip-face flip-front">11</div><div class="flip-face flip-back black">♣</div></div></div><h3>Two-Card Monte</h3></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards, one impossible game. Fits in a pocket, plays huge.</p>
   <ol class="steps">
@@ -358,7 +368,7 @@
 </article>
 
 <article class="trick reveal" id="t12">
-  <div class="thead"><span class="tnum">No. 12</span><h3>Ambitious Card</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 12"><div class="flip-inner"><div class="flip-face flip-front">12</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ambitious Card</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their signed card keeps rising to the top no matter what you do to it. The classic.</p>
   <ol class="steps">
@@ -377,7 +387,7 @@
 </article>
 
 <article class="trick reveal" id="t13">
-  <div class="thead"><span class="tnum">No. 13</span><h3>Triumph</h3></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 13"><div class="flip-inner"><div class="flip-face flip-front">13</div><div class="flip-face flip-back black">♠</div></div></div><h3>Triumph</h3></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">The deck gets shuffled face-up into face-down, an unsalvageable mess — and then it isn't. Except for their card.</p>
   <ol class="steps">
