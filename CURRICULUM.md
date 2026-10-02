@@ -55,6 +55,27 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   3. Do the exact same thing a second time. Two identical half-cuts restore the original order completely.
 * **Pro Tip:** Two cuts look more honest than one. Do it mid-sentence, casually, exactly as you would before any trick.
 
+### 6. Classic Force
+* **Difficulty:** Beginner / Intermediate
+* **Objective:** Force a predetermined card with nothing but timing — no shuffle, no setup.
+* **Mechanics:**
+  1. Place the force card on top of the deck.
+  2. Hold the deck face-down and tell the spectator you'll riffle through the cards; they should just touch the back of one.
+  3. Riffle down the outer edge, extending the deck toward their hand. Watch their hand, not the cards.
+  4. Slow the riffle so the instant their finger commits, the card beneath it is the top card — your force. Stop the moment they touch.
+* **Pro Tip:** This runs on timing, not mechanics, which is why it looks so fair. When it misses, smile and move on — a shrugged-off miss is invisible.
+
+### 7. The Palm
+* **Difficulty:** Intermediate
+* **Objective:** Secretly steal the top card into your palm — the first real vanish.
+* **Mechanics:**
+  1. The card to vanish starts on top, deck in left-hand dealing grip.
+  2. The right hand comes over to square the deck.
+  3. As it lifts away, it presses down gently and carries the top card with it, the card bowing slightly into the palm under finger pressure.
+  4. Keep the hand moving and natural — fingers softly curled, never flat and frozen.
+  5. Reverse the action under cover of squaring the deck to replace the card.
+* **Pro Tip:** Palming is ninety percent acting. Flash yourself in the mirror on purpose to learn the bad angles.
+
 ---
 
 ## Part 2: The Moves
@@ -97,6 +118,16 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   3. In one sharp snapping motion, drag the top card back toward you — it flips face-down under cover of the right hand, revealing the card beneath. The snap sound plus the speed is what reads as a visual change.
   4. Commit fully to the motion; hesitation is the only thing that exposes it.
 * **Pro Tip:** Play it to someone directly in front of you with the packet held low. It's devastating head-on and ordinary from the side.
+
+### 5. Top Change
+* **Difficulty:** Intermediate
+* **Objective:** Switch one card for another in the half-second between your hands.
+* **Mechanics:**
+  1. The known card sits on top of the deck (left hand); the switch card is face-down in the right hand.
+  2. Bring the right hand over the deck as if laying its card on top.
+  3. In one passing motion the right hand drops its card while the left thumb slides the original top card into the right hand. Neither hand stops.
+  4. The right hand continues on, carrying the stolen card away naturally.
+* **Pro Tip:** Speed is not the point — the logic of the gesture is the cover. If the gesture makes sense, nobody watches the cards.
 
 ---
 
@@ -142,3 +173,34 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   2. Protect that card's orientation while apparently mixing the deck: overhand shuffles that keep the top stock, false cuts — turning a few packets face-up as you go. The mixing is theater; the one orientation you protect is the trick.
   3. Square the deck slowly and spread it: every card face-down except theirs, face-up.
 * **Pro Tip:** The classic Vernon handling uses a slip shuffle for the mixing phase. Whatever handling you choose, the shuffle must be false or controlled — a genuinely randomized deck can't be unmixed. The spectator watched the mess happen, which is why the cleanup lands so hard.
+### 5. Oil and Water
+* **Difficulty:** Intermediate
+* **Objective:** Reds and blacks, mixed together, separate themselves — the classic Elmsley-count routine.
+* **Routine Flow:**
+  1. Show three red cards, then three black cards.
+  2. Mix them face-down alternately, then gather the packet so the colors quietly regroup.
+  3. Elmsley count the packet, showing "mixed" reds and blacks — the count hides the grouping.
+  4. With a snap, deal two piles: all reds, all blacks.
+* **Pro Tip:** The audience remembers the mixing and the separation. Nobody remembers the gathering — which is where the trick lives.
+
+### 6. Twisting the Aces
+* **Difficulty:** Intermediate / Advanced
+* **Objective:** Four face-down aces turn face-up one by one with each twist of the packet (Dai Vernon).
+* **Routine Flow:**
+  1. Four aces face-down, in Clubs-Hearts-Spades-Diamonds order from the top.
+  2. Triple turnover to show the Ace of Spades ("the heaviest ace"), then turn face-down.
+  3. Twist the packet 180 degrees; Elmsley count shows the Ace of Hearts face-up.
+  4. Twist again; Elmsley count with the last card underneath shows the Ace of Clubs.
+  5. The Ace of Diamonds resists — then turns face-up in the middle on the final twist.
+* **Pro Tip:** Vernon invented the twisting motion to justify the Elmsley grip. They watch the twist, never the count.
+
+### 7. Chicago Opener
+* **Difficulty:** Intermediate
+* **Objective:** A selected card changes its back color, then transforms into a second selection (Al Leech).
+* **Routine Flow:**
+  1. Setup: an odd-backed duplicate on top of the deck; force its mate (the Hindu force works well).
+  2. Control the selection to the top; double lift to show its back has turned red.
+  3. Deal the red-backed card to the table; the original is secretly back on top.
+  4. A second card is selected and controlled to the top.
+  5. Pick up the tabled card and switch it for the top card (the top change earns its keep); reveal it as the second selection.
+* **Pro Tip:** Two miracles, one odd-backed card. Requires a duplicate with a different-colored back.
