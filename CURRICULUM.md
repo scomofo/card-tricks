@@ -1,6 +1,6 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the thirty-seven tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the forty-five tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
 ---
 
@@ -347,6 +347,36 @@ A progressive syllabus for the thirty-seven tricks in the [Sleight School guide]
   4. On "stop," deal the top card honestly — the force card.
 * **Pro Tip:** Practice the slip until the rhythm of a slipped deal and an honest deal are indistinguishable — record yourself from the front to check.
 
+
+### 38. Spelling Bee
+* **Difficulty:** Beginner
+* **Objective:** Deal a 13-card packet so each card arrives exactly on the last letter of its spelled name.
+* **Mechanics:**
+  1. Pre-arrange 13 cards: 3-8-7-A-Q-6-4-2-J-K-10-9-5. Memorize with the story: "387 years ago, a queen, 64 years old, had 2 sons, Jack and King. Jack worked until 10, but King worked a 9 to 5."
+  2. Hold the packet face-down; an opening false shuffle sells that it is mixed.
+  3. For each rank ace through king, spell its name aloud, moving one card from top to bottom per letter; after the last letter, the next card on top is the named card — set it aside.
+* **Pro Tip:** Spell at a natural talking pace. Rushing the spelling is what makes it look like a procedure instead of magic.
+
+### 39. Lazy Magician
+* **Difficulty:** Beginner
+* **Objective:** The spectator finds their own card by following your instructions; you never touch the deck.
+* **Mechanics:**
+  1. They shuffle, then peek at the top card behind your back.
+  2. They move cards from the bottom to the top equal to their card's value (J=11, Q=12, K=13).
+  3. Take the deck and deal one card at a time, counting 1, 2, 3… starting from the second card dealt.
+  4. The first card whose value matches your count is theirs — it started on top and N cards went above it, so it sits exactly N+1 down.
+* **Pro Tip:** In Koran's presentation they do everything including the reveal. Stand back, stay quiet, and let the impossibility land on them.
+
+### 40. Poker Player's Picnic
+* **Difficulty:** Beginner
+* **Objective:** The spectator cuts four piles themselves; an ace tops each one.
+* **Mechanics:**
+  1. Secretly stack the four aces on top of the deck.
+  2. They cut the deck into four piles by lifting off packets and laying them in a row.
+  3. Every cut takes cards off the top, so an ace rides along as the top card of each new pile.
+  4. Turn the top card of each pile over one by one.
+* **Pro Tip:** Have them make the last cut small — a tall fourth pile with an ace on top reads better than four even ones.
+
 ---
 
 ## Part 5: Flourishes
@@ -387,3 +417,51 @@ A progressive syllabus for the thirty-seven tricks in the [Sleight School guide]
   2. Pick up, display, twirl, and set down the packets in the choreographed sequence (taught step-by-step in the linked tutorial) — every packet lands back exactly where it started.
   3. The deck order never changes; the mixing is pure theater.
 * **Pro Tip:** Learn it packet by packet at half speed. Speed is the last thing you add — the sequence has to live in your hands before it can look effortless.
+
+### 41. Gemini Twins
+* **Difficulty:** Beginner
+* **Objective:** Two predictions set aside match cards a spectator freely stops at.
+* **Mechanics:**
+  1. Borrow a shuffled deck. Fan through to remove two "prediction" cards, secretly noting the top and bottom cards — the predictions you pull are their mates.
+  2. They deal into a pile and stop anywhere; lay the first prediction face-up on the pile and drop the deck on top, sandwiching it directly under the original bottom card.
+  3. Repeat with the second prediction — it lands directly under the original top card.
+  4. Spread: each face-up prediction sits beside its mate. Lift each pair to show the matches.
+* **Pro Tip:** Don't rush the spreads. The audience needs to see the predictions sitting next to strangers before the pairs are lifted.
+
+### 42. Impromptu Invisible Deck
+* **Difficulty:** Intermediate
+* **Objective:** A freely named card is the only face-up card in the deck.
+* **Mechanics:**
+  1. They name any card — genuinely free, no force.
+  2. During an innocent spread-square-cut sequence, locate the named card and reverse it under the deck, typically with a finger break above it as you square up.
+  3. Spread the deck face-down: 51 backs, one face-up card — the named one.
+* **Pro Tip:** Name the card out loud yourself as you spread ("…looking for the seven of clubs…") so the reversal happens under conversational cover.
+
+### 43. Three-Card Monte
+* **Difficulty:** Intermediate
+* **Objective:** Run the classic street monte as entertainment: the money card is never where they swear it is.
+* **Mechanics:**
+  1. Three cards — two losers, one money card (usually a queen). Toss them face-down in a row.
+  2. The "hype": holding two cards as one, appear to throw the bottom card while actually throwing the top, keeping the money card's position controlled.
+  3. A bent corner on the money card is the convincer they track.
+  4. Secretly transfer the bend to a loser mid-routine; they pick wrong with total confidence.
+* **Pro Tip:** Present it as a demonstration of a famous scam, never as a game. The history is the entertainment; the betting is the crime.
+
+### 44. Card to Ceiling
+* **Difficulty:** Beginner (plus supplies)
+* **Objective:** A signed card thrown at the ceiling sticks there.
+* **Mechanics:**
+  1. Under natural handling, press a small pellet of magician's wax onto the back of the signed card.
+  2. Throw it spinning toward the ceiling, flat like a frisbee, back-first.
+  3. The wax grabs on impact. Point it out overhead, or let it drop later for the reveal.
+* **Pro Tip:** Test the wax and the ceiling before anyone is watching. A card that flutters down mid-trick is a lesson you only need once. And get permission — not every ceiling qualifies.
+
+### 45. McDonald's Aces
+* **Difficulty:** Intermediate (plus gaffs)
+* **Objective:** Four aces vanish from under cover cards and gather in a spectator's hands.
+* **Mechanics:**
+  1. Display the four aces; cover three each with three indifferent cards; a spectator holds the fourth packet.
+  2. The aces vanish from the three tabled packets one by one — each spread shows only indifferent cards.
+  3. The spectator's packet is spread: all four aces.
+  4. The method uses double-faced cards — each displayed "ace" is flipped or exchanged during the covering so the packet is really all indifferent cards.
+* **Pro Tip:** This is the only gaffed routine on the page. Treat the double-facers casually — the more ordinary your handling, the less anyone suspects the cards themselves.
