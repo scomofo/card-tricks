@@ -1,6 +1,6 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the thirteen tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the thirty-seven tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
 ---
 
@@ -260,3 +260,130 @@ A progressive syllabus for the thirteen tricks in the [Sleight School guide](htt
   2. Palm it under cover of squaring the deck.
   3. Hand them the deck; produce the signed card from your (or their) pocket.
 * **Pro Tip:** The trick isn't the palm — it's the ordinary moments around it.
+
+---
+
+## Part 4: Systems & Self-Workers
+
+### 26. Si Stebbins Stack
+* **Difficulty:** Beginner
+* **Objective:** Memorize a full-deck stack that survives any number of cuts, enabling apparent mind-reading.
+* **Mechanics:**
+  1. Arrange the deck so suits cycle Clubs, Hearts, Spades, Diamonds ("CHaSeD") and each value is 3 higher than the previous card (A=1 … K=13, wrapping): A♣, 4♥, 7♠, 10♦, K♣, 3♥, and so on through all 52.
+  2. The sequence is a closed cycle, so the deck may be cut any number of times without breaking the order.
+  3. Glimpse any single card (the bottom is easiest). Add 3 to its value (wrapping past King to Ace) and step its suit one place forward in CHaSeD order to name the card below it; subtract and step back to name the card above it.
+* **Pro Tip:** Drill the stack with the deck in your hands — deal and name each next card — until the +3/CHaSeD step is instant.
+
+### 27. Out of This World
+* **Difficulty:** Beginner
+* **Objective:** The spectator separates reds from blacks without looking, while you never touch the cards.
+* **Mechanics:**
+  1. Prearrange: all 26 reds on top of the deck, all 26 blacks beneath. Cover with casual shuffling patter.
+  2. The spectator deals the cards face-down into two piles, trusting their gut about which pile each card belongs to.
+  3. Insist they finish one pile before starting the other ("deal about half here, then the rest here"). Since the first 26 cards are all red and the last 26 all black, the piles separate themselves.
+  4. Spread both piles to show one all red, one all black.
+* **Pro Tip:** Never touch the deck after the setup — the trick's power comes from your visible lack of involvement.
+
+### 28. Fitch Cheney's Five-Card Trick
+* **Difficulty:** Beginner
+* **Objective:** With a partner out of the room, encode a hidden card's identity in the arrangement of four visible cards.
+* **Mechanics:**
+  1. The spectator selects any five cards; the partner leaves the room.
+  2. By the pigeonhole principle, two of the five share a suit. Hide one of that pair and place its mate face-up first — it silently communicates the suit.
+  3. Rank the remaining three cards low/medium/high. Their six possible left-to-right orderings encode the numbers 1–6.
+  4. Counting clockwise through the suit's values, the hidden card always lies within 6 steps ahead of the suit card, so the ordering tells the partner exactly how far to count forward.
+  5. The partner returns, reads the suit from the first card and the number from the order of the other three, and names the hidden card.
+* **Pro Tip:** Agree the ordering code (e.g., low-medium-high = 1, low-high-medium = 2…) in advance and drill it until it's automatic.
+
+### 29. Ten-Card Poker Deal
+* **Difficulty:** Beginner
+* **Objective:** Win an "unbeatable" poker hand that the spectator deals themselves.
+* **Mechanics:**
+  1. Pre-stack ten cards so a strict alternating deal gives you a straight flush and the spectator four of a kind. Classic shape, top to bottom: K♣, 5♥, K♦, 6♥, K♥, 7♥, K♠, 8♥, Q♣, 9♥.
+  2. Deal the first two cards yourself, one to each hand — this locks who receives the odd and even positions.
+  3. Let the spectator deal the rest, even face-up. The fixed order means the hands were decided before the deal began.
+  4. They turn over four kings; you turn over the 5♥–9♥ straight flush.
+* **Pro Tip:** Many published stacks exist (Buckley, Lorayne, Trost). Pick one and never vary it — hesitation during the deal is what spectators remember.
+
+### 30. The Clock Trick
+* **Difficulty:** Beginner
+* **Objective:** A named hour always matches the card dealt to that clock position.
+* **Mechanics:**
+  1. Secretly arrange thirteen cards, Ace through King in order, on top of the deck.
+  2. Have the spectator deal twelve of them face-down in a circle like clock hours, starting at 1 o'clock. Keep the thirteenth card (the King) in your hand.
+  3. Ask for any hour from 1 to 12 and flip the card at that position — position N received the Nth card of the Ace-to-Queen sequence, so it always matches.
+  4. Reveal the King as the thirteenth card "watching over" all twelve hours.
+* **Pro Tip:** Let them deal slowly and name the hour before you touch anything — the less you handle the cards, the stronger it plays.
+
+### 31. Miraskill
+* **Difficulty:** Beginner
+* **Objective:** Predict, twice, the outcome of a pair-separation the spectator performs with a shuffled deck.
+* **Mechanics:**
+  1. Beforehand, secretly remove and pocket four red cards. The spectator genuinely shuffles the remaining 48.
+  2. Write a prediction ("your pile will come up four cards short") and set it face-down in view.
+  3. The spectator deals the deck into face-up pairs: red-red pairs pile in front of them, black-black pairs in front of you, mixed pairs discarded.
+  4. Mixed pairs consume equal reds and blacks, so the piles would always come out even — except you stole four reds, so their pile lands exactly four short, as predicted.
+  5. Under cover of the counting, slip the four cards back into the discards; gather everything and predict — correctly — that both piles match on the second round.
+* **Pro Tip:** The prediction must be on paper before the dealing starts. A prediction made after the fact is just a observation.
+
+### 32. Cross Cut Force
+* **Difficulty:** Beginner
+* **Objective:** Force a card using the spectator's own cut and a crosswise "marker."
+* **Mechanics:**
+  1. Place the force card on top of the deck and set the deck on the table.
+  2. The spectator cuts: they lift off the top portion and set it beside the rest.
+  3. Take the remaining bottom portion and lay it crosswise on top of their packet, "marking the exact spot they cut to."
+  4. Chat for a beat so the cross reads as a placeholder, then lift the crosswise packet away.
+  5. They take the top card of the lower packet — the original top card of the deck, your force.
+* **Pro Tip:** The casual chat between marking and revealing is the whole trick. Rush it and the cross looks like a move; linger and it looks like nothing.
+
+### 33. Slip Force
+* **Difficulty:** Intermediate
+* **Objective:** Keep a force card on top while dealing a pile the spectator stops anywhere in.
+* **Mechanics:**
+  1. The force card starts on top of the deck.
+  2. Deal cards face-down one at a time, inviting the spectator to say "stop" whenever they like.
+  3. On every deal, push the top card forward with the thumb as if to take it, then slip it back flush and take the next card instead. The top stock never leaves the deck; every deal looks identical.
+  4. On "stop," deal the top card honestly — the force card.
+* **Pro Tip:** Practice the slip until the rhythm of a slipped deal and an honest deal are indistinguishable — record yourself from the front to check.
+
+---
+
+## Part 5: Flourishes
+
+### 34. Thumb Fan
+* **Difficulty:** Intermediate
+* **Objective:** Spread the deck into a clean one-handed semicircle display.
+* **Mechanics:**
+  1. Hold the deck face-down in one hand, beveled slightly to the side.
+  2. Press the opposite thumb onto the top edge and sweep it in a smooth, steady arc; the cards pivot around the holding hand's middle finger.
+  3. Keep pressure even — too hard clumps cards, too light collapses the fan. Learn with a fresh deck; worn cards fight you.
+  4. Close the fan one-handed as the natural finish.
+* **Pro Tip:** A light dusting of fanning powder (or just a new deck) makes the first week dramatically easier.
+
+### 35. The Dribble
+* **Difficulty:** Beginner
+* **Objective:** Cascade the cards hand to hand in a steady waterfall.
+* **Mechanics:**
+  1. Hold the deck up in one hand, angled slightly downward, thumb along the top edge.
+  2. Ease off thumb pressure just enough that cards escape one by one into the waiting hand below.
+  3. Keep pressure constant and light — squeezing gives bursts, relaxing gives clumps.
+* **Pro Tip:** Practice over a bed or couch. You'll drop plenty while calibrating, and chasing cards across the room kills practice momentum.
+
+### 36. The Spring
+* **Difficulty:** Intermediate
+* **Objective:** Shoot the deck in an arcing stream from hand to hand.
+* **Mechanics:**
+  1. Grip the deck with thumb along one long edge, fingers along the other; bend the packet into a slight arch so the cards sit under tension.
+  2. Aim at the waiting hand and let the thumb release gradually — the cards fly in a tight stream.
+  3. Start with hands close together; add distance only once the release is smooth. Relaxed, steady pressure out-throws muscling.
+* **Pro Tip:** Learn the dribble first — it's the same controlled release pointed downward, and it calibrates the exact thumb pressure the spring needs.
+
+### 37. Sybil Cut
+* **Difficulty:** Advanced
+* **Objective:** Perform a five-packet false cut that looks like thorough mixing but preserves deck order.
+* **Mechanics:**
+  1. Split the deck into four or five packets.
+  2. Pick up, display, twirl, and set down the packets in the choreographed sequence (taught step-by-step in the linked tutorial) — every packet lands back exactly where it started.
+  3. The deck order never changes; the mixing is pure theater.
+* **Pro Tip:** Learn it packet by packet at half speed. Speed is the last thing you add — the sequence has to live in your hands before it can look effortless.
