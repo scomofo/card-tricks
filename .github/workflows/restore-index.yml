@@ -1,0 +1,35 @@
+name: restore-index
+on:
+  workflow_dispatch:
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8bc5229b91e78203454c7631a3a435dc1efba6a1
+          fetch-depth: 1
+      - name: Apply button text and push to main
+        run: |
+          set -e
+          git fetch origin main
+          git checkout -B main origin/main
+          git checkout 8bc5229b91e78203454c7631a3a435dc1efba6a1 -- index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          t = p.read_text()
+          old = '<a class="hbtn" href="#five-minute-set">Five-minute set</a>'
+          new = '<a class="hbtn" href="#five-minute-set">Click Jordan&rsquo;s five-minute set</a>'
+          if old not in t:
+              raise SystemExit('button text not found')
+          p.write_text(t.replace(old, new, 1))
+          print('patched')
+          PY
+          git config user.name "scomofo"
+          git config user.email "159295352+scomofo@users.noreply.github.com"
+          git add index.html
+          git commit -m "Restore full page; button: Click Jordan's five-minute set"
+          git push origin main
