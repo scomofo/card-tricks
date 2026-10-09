@@ -1,6 +1,6 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the forty-five tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the fifty-three tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
 ---
 

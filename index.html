@@ -297,6 +297,165 @@
     .animplayer .caption{font-size:14px;min-height:0}
     .plabel{font-size:11px}
   }
+
+  /* ---------- Training Tool Enhancements ---------- */
+  .bm-btn {
+    background: transparent; border: 1px solid var(--gold-soft); color: var(--faint);
+    border-radius: 50%; width: 28px; height: 28px; font-size: 14px; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; transition: all .2s;
+    margin-left: 6px; padding: 0; line-height: 1; flex-shrink: 0;
+  }
+  .bm-btn:hover { color: var(--gold); border-color: var(--gold); background: rgba(216,169,63,.1); }
+  .bm-btn.bookmarked { color: var(--gold); border-color: var(--gold); background: rgba(216,169,63,.2); text-shadow: 0 0 6px rgba(216,169,63,.8); }
+
+  .notes-toggle-btn {
+    background: transparent; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 4px;
+    margin-left: 6px; flex-shrink: 0;
+  }
+  .notes-toggle-btn:hover { border-color: var(--gold-soft); color: var(--cream); }
+  .notes-toggle-btn.has-notes { border-color: var(--gold-soft); color: var(--gold); background: rgba(216,169,63,.08); }
+
+  .trick-notes-panel {
+    margin-top: 18px; padding: 14px 16px; background: rgba(0,0,0,.4);
+    border: 1px solid var(--line); border-radius: 10px; transition: border-color .2s;
+  }
+  .trick-notes-panel:focus-within { border-color: var(--gold-soft); }
+  .notes-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; color: var(--gold); font-weight: 600; }
+  .notes-status { font-size: 11px; color: var(--muted); font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+  .trick-notes-input {
+    width: 100%; min-height: 64px; background: transparent; border: none; color: var(--cream);
+    font-family: inherit; font-size: 14px; line-height: 1.5; resize: vertical; outline: none;
+  }
+  .trick-notes-input::placeholder { color: var(--faint); }
+
+  /* Filter Controls Bar */
+  .filter-bar {
+    background: var(--panel2); border: 1px solid var(--line); border-radius: 16px;
+    padding: 18px 22px; margin: 24px 0 32px; display: flex; flex-direction: column; gap: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.3); position: sticky; top: 12px; z-index: 30; backdrop-filter: blur(10px);
+  }
+  .filter-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .search-box {
+    flex: 1; min-width: 220px; position: relative; display: flex; align-items: center;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 0 14px;
+    transition: border-color .2s;
+  }
+  .search-box:focus-within { border-color: var(--gold); }
+  .search-icon { color: var(--muted); font-size: 14px; margin-right: 8px; }
+  .search-box input {
+    width: 100%; background: transparent; border: none; color: var(--cream);
+    padding: 10px 0; font-size: 14px; outline: none; font-family: inherit;
+  }
+  .clear-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 16px; padding: 0 4px; display: none; }
+  .clear-btn.visible { display: inline-block; }
+  .clear-btn:hover { color: var(--cream); }
+
+  .select-group { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .select-group select {
+    background: var(--bg); border: 1px solid var(--line); color: var(--cream);
+    border-radius: 999px; padding: 8px 14px; font-size: 13.5px; font-family: inherit;
+    outline: none; cursor: pointer; transition: border-color .2s;
+  }
+  .select-group select:hover, .select-group select:focus { border-color: var(--gold-soft); }
+  .filter-stats { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); border-top: 1px solid rgba(255,255,255,.05); padding-top: 10px; }
+  .reset-link { background: transparent; border: none; color: var(--gold); cursor: pointer; text-decoration: underline; font-size: 12px; padding: 0; }
+  .reset-link:hover { color: var(--cream); }
+
+  /* Player controls additions */
+  .spd-group { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+  .sbtn {
+    background: transparent; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 6px; padding: 2px 7px; font-size: 11px; font-weight: 600; cursor: pointer;
+    transition: all .2s;
+  }
+  .sbtn:hover { border-color: var(--gold-soft); color: var(--cream); }
+  .sbtn.active { background: var(--gold); color: #1a1206; border-color: var(--gold); font-weight: 700; }
+  .loop-btn { width: 32px; height: 32px; font-size: 13px; }
+  .loop-btn.active { background: rgba(216,169,63,.25); border-color: var(--gold); color: var(--gold); }
+
+  /* Floating Action Bar */
+  .fab-bar {
+    position: fixed; bottom: 20px; right: 20px; z-index: 90; display: flex; gap: 10px;
+    background: rgba(21,17,12,.92); border: 1px solid var(--gold-soft); border-radius: 999px;
+    padding: 8px 14px; box-shadow: 0 10px 30px rgba(0,0,0,.6); backdrop-filter: blur(12px);
+  }
+  .fab-btn {
+    background: transparent; border: none; color: var(--cream); font-size: 13.5px; font-weight: 600;
+    font-family: inherit; cursor: pointer; display: flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; transition: background .2s, color .2s;
+  }
+  .fab-btn:hover { background: rgba(216,169,63,.15); color: var(--gold); }
+  .fab-btn.primary { background: linear-gradient(160deg,#e8c86a,#c9962e); color: #1a1206; font-weight: 700; }
+  .fab-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(216,169,63,.4); }
+
+  /* Modals */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.82); z-index: 1000;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; transition: opacity .3s ease; backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; opacity: 1; }
+  .modal-container {
+    background: var(--panel2); border: 1px solid var(--gold-soft); border-radius: 20px;
+    width: min(840px, 95vw); max-height: 90vh; overflow-y: auto; padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.8); position: relative; color: var(--cream);
+    transform: translateY(20px); transition: transform .3s ease;
+  }
+  .modal-overlay.open .modal-container { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid var(--line);
+    color: var(--muted); border-radius: 50%; width: 36px; height: 36px; font-size: 20px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s;
+  }
+  .modal-close:hover { border-color: var(--gold); color: var(--gold); }
+  .modal-title { font-family: 'Fraunces', serif; font-size: 28px; color: var(--gold); margin: 0 0 6px; }
+  .modal-sub { color: var(--muted); font-size: 14.5px; margin: 0 0 20px; }
+
+  /* Studio Tab / Flashcards */
+  .studio-grid { display: grid; grid-template-columns: 1fr 300px; gap: 24px; margin-top: 18px; }
+  @media(max-width: 768px) { .studio-grid { grid-template-columns: 1fr; } }
+  .studio-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+  }
+  .drill-step-box {
+    background: var(--bg); border: 1px solid var(--gold-soft); border-radius: 12px;
+    padding: 20px; margin: 16px 0; font-size: 17px; line-height: 1.6; position: relative;
+  }
+  .drill-step-num { font-family: 'Fraunces', serif; color: var(--gold); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .drill-nav { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-top: 16px; }
+
+  /* Metronome & Timer Widget */
+  .tool-widget { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .tool-widget h4 { margin: 0 0 10px; font-family: 'Fraunces', serif; color: var(--gold); font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .timer-display { font-family: monospace; font-size: 32px; font-weight: 700; color: var(--cream); text-align: center; margin: 8px 0; }
+  .timer-btns { display: flex; gap: 8px; justify-content: center; }
+  .metro-box { display: flex; flex-direction: column; gap: 10px; }
+  .metro-pulse { width: 16px; height: 16px; border-radius: 50%; background: var(--line); margin: 0 auto; transition: background .1s, transform .1s; }
+  .metro-pulse.flash { background: var(--gold); transform: scale(1.4); box-shadow: 0 0 12px var(--gold); }
+
+  /* Webcam Box */
+  .webcam-box { position: relative; aspect-ratio: 4/3; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .webcam-box video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+  .webcam-box.no-mirror video { transform: scaleX(1); }
+  .webcam-overlay { position: absolute; inset: 0; pointer-events: none; border: 1px dashed rgba(216,169,63,.3); display: none; }
+  .webcam-overlay.active { display: block; }
+  .webcam-crosshair { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; transform: translate(-50%,-50%); }
+  .webcam-crosshair::before, .webcam-crosshair::after { content:''; position: absolute; background: rgba(216,169,63,.5); }
+  .webcam-crosshair::before { top: 19px; left: 0; width: 40px; height: 2px; }
+  .webcam-crosshair::after { top: 0; left: 19px; width: 2px; height: 40px; }
+
+  /* Act Builder List */
+  .act-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+  .act-item {
+    display: flex; align-items: center; gap: 12px; background: var(--bg);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px;
+  }
+  .act-item .num { font-family: 'Fraunces', serif; color: var(--gold); font-weight: 700; width: 24px; }
+  .act-item .title { flex: 1; font-weight: 600; font-size: 15px; }
+  .act-item .act-btns { display: flex; gap: 6px; }
+
 </style>
 </head>
 <body>
@@ -318,17 +477,66 @@
 
     <div class="hbtnrow">
 
-      <a class="hbtn" href="#five-minute-set">Click Jordan&rsquo;s five-minute set</a>
+      <a class="hbtn" href="#five-minute-set">Jordan&rsquo;s 5-Min Set</a>
 
-      <button class="hbtn" id="surpriseBtn" type="button">Surprise me</button>
+      <button class="hbtn" id="openStudioBtn" type="button">⚡ Practice Studio</button>
 
-      <button class="hbtn ghost" id="printBtn" type="button">Print cheat sheet</button>
+      <button class="hbtn ghost" id="openActBuilderBtn" type="button">🎭 Act Builder</button>
+
+      <button class="hbtn ghost" id="openMirrorBtn" type="button">📹 Angle Mirror</button>
+
+      <button class="hbtn ghost" id="surpriseBtn" type="button">Surprise Me</button>
+
+      <button class="hbtn ghost" id="printBtn" type="button">Print Cheat Sheet</button>
 
     </div>
 
   </div>
   <p class="scrollhint">↓ begin</p>
 </header>
+
+
+<div class="filter-bar reveal" id="filterBar">
+  <div class="filter-row">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search tricks, sleights, key terms..." aria-label="Search tricks">
+      <button id="clearSearchBtn" type="button" class="clear-btn">&times;</button>
+    </div>
+    <div class="select-group">
+      <select id="diffFilter" aria-label="Filter by difficulty">
+        <option value="all">All Difficulties</option>
+        <option value="easy">Easy / Beginner</option>
+        <option value="med">Medium / Intermediate</option>
+        <option value="hard">Hard / Advanced</option>
+      </select>
+      <select id="catFilter" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="Foundations">Foundations</option>
+        <option value="The Moves">The Moves</option>
+        <option value="Routines">Routines</option>
+        <option value="Systems & Self-Workers">Systems & Self-Workers</option>
+        <option value="Flourishes">Flourishes</option>
+      </select>
+      <select id="statusFilter" aria-label="Filter by status">
+        <option value="all">All Statuses</option>
+        <option value="learned">✓ Learned</option>
+        <option value="unlearned">○ Unlearned</option>
+        <option value="bookmarked">★ Bookmarked</option>
+        <option value="hasNotes">📝 Has Notes</option>
+      </select>
+      <select id="sortBy" aria-label="Sort tricks">
+        <option value="default">Default Syllabus Order</option>
+        <option value="title">Alphabetical (A-Z)</option>
+        <option value="difficulty">Difficulty (Easy → Hard)</option>
+      </select>
+    </div>
+  </div>
+  <div class="filter-stats">
+    <span id="filterCount">Showing 53 of 53 tricks</span>
+    <button id="resetFiltersBtn" class="reset-link" type="button">Reset Filters</button>
+  </div>
+</div>
 
 <nav class="toc reveal">
   <h2>The syllabus</h2>
@@ -456,7 +664,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t1">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 1"><div class="flip-inner"><div class="flip-face flip-front">1</div><div class="flip-face flip-back black">♠</div></div></div><h3>Key Card Principle</h3><label class="learned"><input type="checkbox" data-trick="t1"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 1"><div class="flip-inner"><div class="flip-face flip-front">1</div><div class="flip-face flip-back black">♠</div></div></div><h3>Key Card Principle</h3><label class="learned"><input type="checkbox" data-trick="t1"><span>Learned</span><button class="bm-btn" data-trick="t1" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t1" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">The most useful secret in card magic: knowing a card nobody told you.</p>
   <ol class="steps">
@@ -469,10 +677,17 @@
   <div class="animplayer" data-anim="t1"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=vk7ES7k-GIc">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The full treatment is Chapter 6 of <a href="https://www.bookey.app/book/the-royal-road-to-card-magic"><em>Royal Road to Card Magic</em></a> — and the <a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf">complete illustrated book (free PDF)</a> is worth grabbing no matter what.</p>
+  <div class="trick-notes-panel" id="notespanel-t1" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t1">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t1" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t2">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 2"><div class="flip-inner"><div class="flip-face flip-front">2</div><div class="flip-face flip-back red">♥</div></div></div><h3>Overhand Shuffle Control</h3><label class="learned"><input type="checkbox" data-trick="t2"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 2"><div class="flip-inner"><div class="flip-face flip-front">2</div><div class="flip-face flip-back red">♥</div></div></div><h3>Overhand Shuffle Control</h3><label class="learned"><input type="checkbox" data-trick="t2"><span>Learned</span><button class="bm-btn" data-trick="t2" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t2" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Keep a card exactly where you want it while the shuffle looks honest.</p>
   <ol class="steps">
@@ -484,10 +699,17 @@
   <div class="animplayer" data-anim="t2"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=VjvNSPMdOTo">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.thesprucecrafts.com/sleight-of-hand-card-magic-tricks-2266267">The Overhand Shuffle</a> (The Spruce Crafts) has photos of the grip and the packet work. For the injog: <a href="https://www.youtube.com/watch?v=9-LZ8tfpRzU">this short video tutorial</a> walks through it.</p>
+  <div class="trick-notes-panel" id="notespanel-t2" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t2">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t2" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t3">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 3"><div class="flip-inner"><div class="flip-face flip-front">3</div><div class="flip-face flip-back black">♣</div></div></div><h3>Hindu Shuffle &amp; Force</h3><label class="learned"><input type="checkbox" data-trick="t3"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 3"><div class="flip-inner"><div class="flip-face flip-front">3</div><div class="flip-face flip-back black">♣</div></div></div><h3>Hindu Shuffle &amp; Force</h3><label class="learned"><input type="checkbox" data-trick="t3"><span>Learned</span><button class="bm-btn" data-trick="t3" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t3" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A shuffle that looks like chaos and a force hiding inside it.</p>
   <ol class="steps">
@@ -501,10 +723,17 @@
   <div class="animplayer" data-anim="t3"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=P92EqykBAAg">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 Step-by-step grip photos in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — it may ask you to log in; the video link above stands on its own if so).</span></p>
+  <div class="trick-notes-panel" id="notespanel-t3" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t3">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t3" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t4">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 4"><div class="flip-inner"><div class="flip-face flip-front">4</div><div class="flip-face flip-back red">♦</div></div></div><h3>Double Lift</h3><label class="learned"><input type="checkbox" data-trick="t4"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 4"><div class="flip-inner"><div class="flip-face flip-front">4</div><div class="flip-face flip-back red">♦</div></div></div><h3>Double Lift</h3><label class="learned"><input type="checkbox" data-trick="t4"><span>Learned</span><button class="bm-btn" data-trick="t4" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t4" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards handled as one. This is the engine inside half of card magic.</p>
   <ol class="steps">
@@ -518,10 +747,17 @@
   <div class="animplayer" data-anim="t4"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=Gjd4EDm3EWU">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 Two photographed methods in <a href="https://www.scribd.com/document/244141068/Unc-Shuffle">"Unshuffled Card Trick Techniques"</a> <span class="cav">(Scribd — login may be required).</span> When it's smooth, watch <a href="https://www.youtube.com/watch?v=1-6Niz-VxUY">Alex Pandrea's "The BEST Double Lifts in Magic"</a> for the graduate course.</p>
+  <div class="trick-notes-panel" id="notespanel-t4" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t4">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t4" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t5">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 5"><div class="flip-inner"><div class="flip-face flip-front">5</div><div class="flip-face flip-back black">♠</div></div></div><h3>False Cut</h3><label class="learned"><input type="checkbox" data-trick="t5"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 5"><div class="flip-inner"><div class="flip-face flip-front">5</div><div class="flip-face flip-back black">♠</div></div></div><h3>False Cut</h3><label class="learned"><input type="checkbox" data-trick="t5"><span>Learned</span><button class="bm-btn" data-trick="t5" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t5" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Look scrupulously fair while changing nothing at all.</p>
   <ol class="steps">
@@ -534,9 +770,16 @@
   <div class="animplayer" data-anim="t5"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=LQJn40df7p8">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://img1.wsimg.com/blobby/go/af23e0a7-b2bc-4f1e-9298-99b6f6d32c18/downloads/False_Shuffles_Cut_Forces.pdf?ver=1781631767798">False Shuffles, Cuts &amp; Forces (illustrated PDF)</a> — arrowed diagrams for several false cuts including the Charlier.</p>
+  <div class="trick-notes-panel" id="notespanel-t5" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t5">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t5" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t14">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 14"><div class="flip-inner"><div class="flip-face flip-front">14</div><div class="flip-face flip-back red">♥</div></div></div><h3>Classic Force</h3><label class="learned"><input type="checkbox" data-trick="t14"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 14"><div class="flip-inner"><div class="flip-face flip-front">14</div><div class="flip-face flip-back red">♥</div></div></div><h3>Classic Force</h3><label class="learned"><input type="checkbox" data-trick="t14"><span>Learned</span><button class="bm-btn" data-trick="t14" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t14" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">The boldest force in the book. No shuffle, no setup — just timing and nerve.</p>
   <ol class="steps">
@@ -550,10 +793,17 @@
   <div class="animplayer" data-anim="t14"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=guIQTpa19DY">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The classic force gets a full chapter in <a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a>.</p>
+  <div class="trick-notes-panel" id="notespanel-t14" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t14">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t14" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t15">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 15"><div class="flip-inner"><div class="flip-face flip-front">15</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Palm</h3><label class="learned"><input type="checkbox" data-trick="t15"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 15"><div class="flip-inner"><div class="flip-face flip-front">15</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Palm</h3><label class="learned"><input type="checkbox" data-trick="t15"><span>Learned</span><button class="bm-btn" data-trick="t15" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t15" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">The first real vanish. A card leaves the deck, and your hand is empty — except it isn't.</p>
   <ol class="steps">
@@ -567,11 +817,18 @@
   <div class="animplayer" data-anim="t15"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=6JaDQLe1-fk">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The palm gets two full chapters in <a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a> — still the deepest written treatment.</p>
+  <div class="trick-notes-panel" id="notespanel-t15" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t15">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t15" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 
 <article class="trick reveal" id="t20">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 20"><div class="flip-inner"><div class="flip-face flip-front">20</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Peek</h3><label class="learned"><input type="checkbox" data-trick="t20"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 20"><div class="flip-inner"><div class="flip-face flip-front">20</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Peek</h3><label class="learned"><input type="checkbox" data-trick="t20"><span>Learned</span><button class="bm-btn" data-trick="t20" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t20" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Learn a card without anyone knowing you looked. The quietest skill in magic.</p>
   <ol class="steps">
@@ -584,10 +841,17 @@
   <div class="animplayer" data-anim="t20"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=RyKc4_bwyYg">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.blifaloo.com/glimpse-top/">Top Card Peek / Glimpse Methods</a> (Blifaloo) — illustrated handlings from Erdnase onward.</p>
+  <div class="trick-notes-panel" id="notespanel-t20" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t20">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t20" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t21">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 21"><div class="flip-inner"><div class="flip-face flip-front">21</div><div class="flip-face flip-back black">♠</div></div></div><h3>Charlier Cut</h3><label class="learned"><input type="checkbox" data-trick="t21"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 21"><div class="flip-inner"><div class="flip-face flip-front">21</div><div class="flip-face flip-back black">♠</div></div></div><h3>Charlier Cut</h3><label class="learned"><input type="checkbox" data-trick="t21"><span>Learned</span><button class="bm-btn" data-trick="t21" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t21" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Cut the deck with one hand. Pure flourish — no secret, all style.</p>
   <ol class="steps">
@@ -600,6 +864,13 @@
   <div class="animplayer" data-anim="t21"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=S4ES5K7CM-c">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="http://cardtricksrevealed.com/products/charlier-cut-one-handed-cut-tutorial/">Charlier Cut tutorial page</a> (Card Tricks Revealed) with the video and breakdown.</p>
+  <div class="trick-notes-panel" id="notespanel-t21" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t21">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t21" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 </section>
 
@@ -608,7 +879,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t6">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 6"><div class="flip-inner"><div class="flip-face flip-front">6</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Glide</h3><label class="learned"><input type="checkbox" data-trick="t6"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 6"><div class="flip-inner"><div class="flip-face flip-front">6</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Glide</h3><label class="learned"><input type="checkbox" data-trick="t6"><span>Learned</span><button class="bm-btn" data-trick="t6" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t6" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Steal the bottom card while everyone is looking right at the bottom of the deck.</p>
   <ol class="steps">
@@ -622,10 +893,17 @@
   <div class="animplayer" data-anim="t6"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=DBZaQoeXtN4">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 Still the best diagrammed source anywhere: <a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a>, Chapter 1.</p>
+  <div class="trick-notes-panel" id="notespanel-t6" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t6">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t6" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t7">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 7"><div class="flip-inner"><div class="flip-face flip-front">7</div><div class="flip-face flip-back black">♣</div></div></div><h3>Riffle Force</h3><label class="learned"><input type="checkbox" data-trick="t7"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 7"><div class="flip-inner"><div class="flip-face flip-front">7</div><div class="flip-face flip-back black">♣</div></div></div><h3>Riffle Force</h3><label class="learned"><input type="checkbox" data-trick="t7"><span>Learned</span><button class="bm-btn" data-trick="t7" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t7" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Force a card with psychology — and one small secret slip.</p>
   <ol class="steps">
@@ -638,10 +916,17 @@
   <div class="animplayer" data-anim="t7"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=9o3hdzb5nGw">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.freemagictricks4u.com/easy-magic-card-tricks.html">"The Riffle Force"</a> — photos of the riffle, the secret peel, and the retention.</p>
+  <div class="trick-notes-panel" id="notespanel-t7" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t7">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t7" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t8">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 8"><div class="flip-inner"><div class="flip-face flip-front">8</div><div class="flip-face flip-back red">♦</div></div></div><h3>Elmsley Count</h3><label class="learned"><input type="checkbox" data-trick="t8"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 8"><div class="flip-inner"><div class="flip-face flip-front">8</div><div class="flip-face flip-back red">♦</div></div></div><h3>Elmsley Count</h3><label class="learned"><input type="checkbox" data-trick="t8"><span>Learned</span><button class="bm-btn" data-trick="t8" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t8" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Count four cards fairly while one of them never shows its face.</p>
   <ol class="steps">
@@ -655,10 +940,17 @@
   <div class="animplayer" data-anim="t8"></div>
   <p class="vsrc">Prefer video? <a href="https://52kards.com/video/elmsley-count/">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://conjuror.community/blog/the-elmsley-count">"Elmsley Count in 4 Simple Steps"</a> (Conjuror Community) — the push-off-two / steal-back mechanics written out.</p>
+  <div class="trick-notes-panel" id="notespanel-t8" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t8">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t8" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t9">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 9"><div class="flip-inner"><div class="flip-face flip-front">9</div><div class="flip-face flip-back black">♠</div></div></div><h3>Snap Change</h3><label class="learned"><input type="checkbox" data-trick="t9"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 9"><div class="flip-inner"><div class="flip-face flip-front">9</div><div class="flip-face flip-back black">♠</div></div></div><h3>Snap Change</h3><label class="learned"><input type="checkbox" data-trick="t9"><span>Learned</span><button class="bm-btn" data-trick="t9" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t9" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
   <p class="lede">One card visibly becomes another, in a snap.</p>
   <ol class="steps">
@@ -671,9 +963,16 @@
   <div class="animplayer" data-anim="t9"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=KS39-4pfex0">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="http://www.goodtricks.net/card-snap-change-trick.html">"Card Snap Change"</a> (GoodTricks) covers the grip in writing — but honestly, this one belongs to video. The tutorial above is the way in.</p>
+  <div class="trick-notes-panel" id="notespanel-t9" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t9">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t9" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t16">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 16"><div class="flip-inner"><div class="flip-face flip-front">16</div><div class="flip-face flip-back red">♦</div></div></div><h3>Top Change</h3><label class="learned"><input type="checkbox" data-trick="t16"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 16"><div class="flip-inner"><div class="flip-face flip-front">16</div><div class="flip-face flip-back red">♦</div></div></div><h3>Top Change</h3><label class="learned"><input type="checkbox" data-trick="t16"><span>Learned</span><button class="bm-btn" data-trick="t16" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t16" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">One card becomes another in the half-second between your hands. The cleanest switch in magic.</p>
   <ol class="steps">
@@ -686,11 +985,18 @@
   <div class="animplayer" data-anim="t16"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=S_iiwl12dtM">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 "Top and Bottom Changes" in <a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf"><em>Royal Road to Card Magic</em> (free PDF)</a>.</p>
+  <div class="trick-notes-panel" id="notespanel-t16" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t16">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t16" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 
 <article class="trick reveal" id="t22">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 22"><div class="flip-inner"><div class="flip-face flip-front">22</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Pass</h3><label class="learned"><input type="checkbox" data-trick="t22"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 22"><div class="flip-inner"><div class="flip-face flip-front">22</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Pass</h3><label class="learned"><input type="checkbox" data-trick="t22"><span>Learned</span><button class="bm-btn" data-trick="t22" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t22" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge hard">Hard</span></div>
   <p class="lede">The invisible cut. Two halves transpose inside your hands and nobody sees a thing.</p>
   <ol class="steps">
@@ -703,9 +1009,16 @@
   <div class="animplayer" data-anim="t22"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=nvhYJvSwgAA">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.cardtricksrevealed.com/products/the-pass-tutorial/">The Pass tutorial</a> (Card Tricks Revealed) — all three parts of the video series.</p>
+  <div class="trick-notes-panel" id="notespanel-t22" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t22">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t22" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t32">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 32"><div class="flip-inner"><div class="flip-face flip-front">32</div><div class="flip-face flip-back red">♦</div></div></div><h3>Cross Cut Force</h3><label class="learned"><input type="checkbox" data-trick="t32"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 32"><div class="flip-inner"><div class="flip-face flip-front">32</div><div class="flip-face flip-back red">♦</div></div></div><h3>Cross Cut Force</h3><label class="learned"><input type="checkbox" data-trick="t32"><span>Learned</span><button class="bm-btn" data-trick="t32" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t32" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They cut wherever they want. They still end up with the card you picked.</p>
   <ol class="steps">
@@ -719,10 +1032,17 @@
   <div class="animplayer" data-anim="t32"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=ySZITVrnSno">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://mikemaione.com/pdfs/Cut_Deeper_and_Criss_Cross.pdf">"Cut Deeper and Criss Cross"</a> (PDF) — the force family in detail.</p>
+  <div class="trick-notes-panel" id="notespanel-t32" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t32">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t32" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t33">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 33"><div class="flip-inner"><div class="flip-face flip-front">33</div><div class="flip-face flip-back black">♠</div></div></div><h3>Slip Force</h3><label class="learned"><input type="checkbox" data-trick="t33"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 33"><div class="flip-inner"><div class="flip-face flip-front">33</div><div class="flip-face flip-back black">♠</div></div></div><h3>Slip Force</h3><label class="learned"><input type="checkbox" data-trick="t33"><span>Learned</span><button class="bm-btn" data-trick="t33" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t33" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Deal a pile, let them stop you anywhere — the stopped-at card is always the one you planted.</p>
   <ol class="steps">
@@ -735,10 +1055,17 @@
   <div class="animplayer" data-anim="t33"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=f8K-GchIoeA">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://card-tricks.wonderhowto.com/how-to/conjure-aces-with-slip-force-card-trick-359172/">Conjuring the aces with the slip force</a> (WonderHowTo) — the full routine.</p>
+  <div class="trick-notes-panel" id="notespanel-t33" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t33">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t33" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t46">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 46"><div class="flip-inner"><div class="flip-face flip-front">46</div><div class="flip-face flip-back black">♠</div></div></div><h3>Double Undercut</h3><label class="learned"><input type="checkbox" data-trick="t46"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 46"><div class="flip-inner"><div class="flip-face flip-front">46</div><div class="flip-face flip-back black">♠</div></div></div><h3>Double Undercut</h3><label class="learned"><input type="checkbox" data-trick="t46"><span>Learned</span><button class="bm-btn" data-trick="t46" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t46" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Two ordinary-looking cuts, and their card is back on top. This is the control you reach for after the injog.</p>
   <ol class="steps">
@@ -752,10 +1079,17 @@
   <div class="animplayer" data-anim="t46"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=ZmIWD97VHiY">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 52Kards walks the undercut, the thumb break, and the control in one clip. Once the injog from the overhand shuffle is in your hands, this is the next sentence.</p>
+  <div class="trick-notes-panel" id="notespanel-t46" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t46">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t46" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t47">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 47"><div class="flip-inner"><div class="flip-face flip-front">47</div><div class="flip-face flip-back red">♥</div></div></div><h3>Mexican Turnover</h3><label class="learned"><input type="checkbox" data-trick="t47"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 47"><div class="flip-inner"><div class="flip-face flip-front">47</div><div class="flip-face flip-back red">♥</div></div></div><h3>Mexican Turnover</h3><label class="learned"><input type="checkbox" data-trick="t47"><span>Learned</span><button class="bm-btn" data-trick="t47" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t47" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">You turn a tabled card face up. The card that turns over is not the card that was on the table.</p>
   <ol class="steps">
@@ -768,10 +1102,17 @@
   <div class="animplayer" data-anim="t47"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=SA1Cv3sLb1A">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 52Kards, "The Mexican Turnover Card Switch." Use it once in a routine, not as a puzzle they can replay.</p>
+  <div class="trick-notes-panel" id="notespanel-t47" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t47">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t47" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t50">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 50"><div class="flip-inner"><div class="flip-face flip-front">50</div><div class="flip-face flip-back black">♠</div></div></div><h3>Erdnase Color Change</h3><label class="learned"><input type="checkbox" data-trick="t50"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 50"><div class="flip-inner"><div class="flip-face flip-front">50</div><div class="flip-face flip-back black">♠</div></div></div><h3>Erdnase Color Change</h3><label class="learned"><input type="checkbox" data-trick="t50"><span>Learned</span><button class="bm-btn" data-trick="t50" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t50" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Cover the face of the deck for a second. The card looking at them is a different one.</p>
   <ol class="steps">
@@ -784,10 +1125,17 @@
   <div class="animplayer" data-anim="t50"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=8ym7AAndz-M">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The original is in S.W. Erdnase, <em>The Expert at the Card Table</em> (<a href="https://archive.org/details/expertatcardtable00erdu">free scan</a>), still the shortest honest description of the change.</p>
+  <div class="trick-notes-panel" id="notespanel-t50" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t50">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t50" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t51">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 51"><div class="flip-inner"><div class="flip-face flip-front">51</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Tilt</h3><label class="learned"><input type="checkbox" data-trick="t51"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 51"><div class="flip-inner"><div class="flip-face flip-front">51</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Tilt</h3><label class="learned"><input type="checkbox" data-trick="t51"><span>Learned</span><button class="bm-btn" data-trick="t51" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t51" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">They push their card into the middle of the deck. It is second from the top.</p>
   <ol class="steps">
@@ -800,6 +1148,13 @@
   <div class="animplayer" data-anim="t51"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=PoIGtgtt7Rc">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 52Kards, "Marlo's Tilt." Learn the break before the illusion. The illusion is just a break someone is allowed to see.</p>
+  <div class="trick-notes-panel" id="notespanel-t51" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t51">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t51" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 </section>
@@ -809,7 +1164,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t10">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 10"><div class="flip-inner"><div class="flip-face flip-front">10</div><div class="flip-face flip-back red">♥</div></div></div><h3>21-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t10"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 10"><div class="flip-inner"><div class="flip-face flip-front">10</div><div class="flip-face flip-back red">♥</div></div></div><h3>21-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t10"><span>Learned</span><button class="bm-btn" data-trick="t10" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t10" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
   <p class="lede">No sleight of hand at all. The math does the trick, and it still floors people.</p>
   <ol class="steps">
@@ -824,10 +1179,17 @@
   <div class="animplayer" data-anim="t10"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=h8vKGSBMSdo">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://cse.msu.edu/~cse291/ctl/Spring2020/Meeting10/21CardTrickDescription.pdf">"21-Card Magic Trick" (free PDF)</a> — short, with diagrams of the dealing layout and the pickup order.</p>
+  <div class="trick-notes-panel" id="notespanel-t10" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t10">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t10" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t11">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 11"><div class="flip-inner"><div class="flip-face flip-front">11</div><div class="flip-face flip-back black">♣</div></div></div><h3>Two-Card Monte</h3><label class="learned"><input type="checkbox" data-trick="t11"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 11"><div class="flip-inner"><div class="flip-face flip-front">11</div><div class="flip-face flip-back black">♣</div></div></div><h3>Two-Card Monte</h3><label class="learned"><input type="checkbox" data-trick="t11"><span>Learned</span><button class="bm-btn" data-trick="t11" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t11" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Easy–Medium</span></div>
   <p class="lede">Two cards, one impossible game. Fits in a pocket, plays huge.</p>
   <ol class="steps">
@@ -841,10 +1203,17 @@
   <div class="animplayer" data-anim="t11"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=Mm0EcpCkCi8">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <span class="cav">Skip the written guides for this one — it lives or dies on timing, and the video is the teacher.</span></p>
+  <div class="trick-notes-panel" id="notespanel-t11" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t11">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t11" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t12">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 12"><div class="flip-inner"><div class="flip-face flip-front">12</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ambitious Card</h3><label class="learned"><input type="checkbox" data-trick="t12"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 12"><div class="flip-inner"><div class="flip-face flip-front">12</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ambitious Card</h3><label class="learned"><input type="checkbox" data-trick="t12"><span>Learned</span><button class="bm-btn" data-trick="t12" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t12" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their signed card keeps rising to the top no matter what you do to it. The classic.</p>
   <ol class="steps">
@@ -858,10 +1227,17 @@
   <div class="animplayer" data-anim="t12"></div>
   <p class="vsrc">Prefer video? <a href="https://www.thecardtrickteacher.com/card-trick-video.php?v=28117">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <span class="cav">No free illustrated version worth your time — the choreography across phases is a video lesson.</span></p>
+  <div class="trick-notes-panel" id="notespanel-t12" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t12">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t12" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t13">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 13"><div class="flip-inner"><div class="flip-face flip-front">13</div><div class="flip-face flip-back black">♠</div></div></div><h3>Triumph</h3><label class="learned"><input type="checkbox" data-trick="t13"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 13"><div class="flip-inner"><div class="flip-face flip-front">13</div><div class="flip-face flip-back black">♠</div></div></div><h3>Triumph</h3><label class="learned"><input type="checkbox" data-trick="t13"><span>Learned</span><button class="bm-btn" data-trick="t13" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t13" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">The deck gets shuffled face-up into face-down, an unsalvageable mess — and then it isn't. Except for their card.</p>
   <ol class="steps">
@@ -874,9 +1250,16 @@
   <div class="animplayer" data-anim="t13"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=jKmDOThx6kQ">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://geniimagazine.com/wiki/index.php?title=Triumph">Magicpedia's Triumph page</a> for the history and credits of Dai Vernon's classic.</p>
+  <div class="trick-notes-panel" id="notespanel-t13" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t13">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t13" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t17">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 17"><div class="flip-inner"><div class="flip-face flip-front">17</div><div class="flip-face flip-back black">♠</div></div></div><h3>Oil and Water</h3><label class="learned"><input type="checkbox" data-trick="t17"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 17"><div class="flip-inner"><div class="flip-face flip-front">17</div><div class="flip-face flip-back black">♠</div></div></div><h3>Oil and Water</h3><label class="learned"><input type="checkbox" data-trick="t17"><span>Learned</span><button class="bm-btn" data-trick="t17" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t17" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Reds and blacks, mixed together — then they separate themselves. Your Elmsley count's favorite routine.</p>
   <ol class="steps">
@@ -889,10 +1272,17 @@
   <div class="animplayer" data-anim="t17"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=MZNqY0JN-G4">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <span class="cav">No written guide worth linking — the rhythm of the counts is the lesson, and the video is the teacher.</span></p>
+  <div class="trick-notes-panel" id="notespanel-t17" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t17">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t17" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t18">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 18"><div class="flip-inner"><div class="flip-face flip-front">18</div><div class="flip-face flip-back red">♥</div></div></div><h3>Twisting the Aces</h3><label class="learned"><input type="checkbox" data-trick="t18"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 18"><div class="flip-inner"><div class="flip-face flip-front">18</div><div class="flip-face flip-back red">♥</div></div></div><h3>Twisting the Aces</h3><label class="learned"><input type="checkbox" data-trick="t18"><span>Learned</span><button class="bm-btn" data-trick="t18" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t18" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge hard">Medium–Hard</span></div>
   <p class="lede">Four aces, face down. Each twist of the packet turns one face-up. Vernon's masterpiece in miniature.</p>
   <ol class="steps">
@@ -906,10 +1296,17 @@
   <div class="animplayer" data-anim="t18"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=tLeWsRqaXeQ">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://conjuror.community/blog/twisting-the-aces">"Twisting the Aces: Effect, History &amp; How to Learn It"</a> (Conjuror Community) — the history, plus a performance to study.</p>
+  <div class="trick-notes-panel" id="notespanel-t18" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t18">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t18" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t19">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 19"><div class="flip-inner"><div class="flip-face flip-front">19</div><div class="flip-face flip-back black">♣</div></div></div><h3>Chicago Opener</h3><label class="learned"><input type="checkbox" data-trick="t19"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 19"><div class="flip-inner"><div class="flip-face flip-front">19</div><div class="flip-face flip-back black">♣</div></div></div><h3>Chicago Opener</h3><label class="learned"><input type="checkbox" data-trick="t19"><span>Learned</span><button class="bm-btn" data-trick="t19" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t19" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their card changes the color of its back — then becomes someone else's card entirely. The classic opener.</p>
   <p class="aside" style="border-color:var(--red)"><b style="color:#d4695a">You need one extra:</b> a duplicate of a card with a different-colored back. Blue deck? Find a red-backed mate.</p>
@@ -925,11 +1322,18 @@
   <div class="animplayer" data-anim="t19"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=QWH2fUwen2U">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <span class="cav">Video-first for this one — the timing of the two switches is the whole lesson.</span></p>
+  <div class="trick-notes-panel" id="notespanel-t19" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t19">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t19" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 
 <article class="trick reveal" id="t23">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 23"><div class="flip-inner"><div class="flip-face flip-front">23</div><div class="flip-face flip-back black">♣</div></div></div><h3>Biddle Trick</h3><label class="learned"><input type="checkbox" data-trick="t23"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 23"><div class="flip-inner"><div class="flip-face flip-front">23</div><div class="flip-face flip-back black">♣</div></div></div><h3>Biddle Trick</h3><label class="learned"><input type="checkbox" data-trick="t23"><span>Learned</span><button class="bm-btn" data-trick="t23" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t23" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their card vanishes from among five cards and turns up somewhere impossible. Elmer Biddle's classic.</p>
   <ol class="steps">
@@ -944,10 +1348,17 @@
   <div class="animplayer" data-anim="t23"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=DOVHm9I6t9s">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="http://falseshuffle.com/card-tricks/biddle-trick">Biddle Trick method</a> (FalseShuffle) — the full step-by-step written out.</p>
+  <div class="trick-notes-panel" id="notespanel-t23" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t23">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t23" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t24">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 24"><div class="flip-inner"><div class="flip-face flip-front">24</div><div class="flip-face flip-back red">♦</div></div></div><h3>Do As I Do</h3><label class="learned"><input type="checkbox" data-trick="t24"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 24"><div class="flip-inner"><div class="flip-face flip-front">24</div><div class="flip-face flip-back red">♦</div></div></div><h3>Do As I Do</h3><label class="learned"><input type="checkbox" data-trick="t24"><span>Learned</span><button class="bm-btn" data-trick="t24" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t24" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy · self-working</span></div>
   <p class="lede">You both do exactly the same thing with your own halves — and find the same card. A duet.</p>
   <ol class="steps">
@@ -964,10 +1375,17 @@
   <div class="animplayer" data-anim="t24"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=AAEkRvSYtIY">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.card-trick.com/card-tricks-using-marker-cards/come-together/">Do As I Do / Come Together</a> (card-trick.com) — the key-card handling written out.</p>
+  <div class="trick-notes-panel" id="notespanel-t24" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t24">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t24" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t25">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 25"><div class="flip-inner"><div class="flip-face flip-front">25</div><div class="flip-face flip-back black">♠</div></div></div><h3>Card to Pocket</h3><label class="learned"><input type="checkbox" data-trick="t25"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 25"><div class="flip-inner"><div class="flip-face flip-front">25</div><div class="flip-face flip-back black">♠</div></div></div><h3>Card to Pocket</h3><label class="learned"><input type="checkbox" data-trick="t25"><span>Learned</span><button class="bm-btn" data-trick="t25" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t25" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Medium</span></div>
   <p class="lede">Their signed card leaves the deck and lands in your pocket. The palm's graduation ceremony.</p>
   <ol class="steps">
@@ -981,10 +1399,17 @@
   <div class="animplayer" data-anim="t25"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=WeLg7cX-tOY">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://52kards.com/card-to-pocket-tutorial/">Card to Pocket tutorial</a> (52Kards) — the routine plus its palm prerequisites.</p>
+  <div class="trick-notes-panel" id="notespanel-t25" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t25">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t25" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t41">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 41"><div class="flip-inner"><div class="flip-face flip-front">41</div><div class="flip-face flip-back black">♠</div></div></div><h3>Gemini Twins</h3><label class="learned"><input type="checkbox" data-trick="t41"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 41"><div class="flip-inner"><div class="flip-face flip-front">41</div><div class="flip-face flip-back black">♠</div></div></div><h3>Gemini Twins</h3><label class="learned"><input type="checkbox" data-trick="t41"><span>Learned</span><button class="bm-btn" data-trick="t41" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t41" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Two predictions you set aside turn out to match the exact cards a spectator stopped at — free choice, both times.</p>
   <ol class="steps">
@@ -997,9 +1422,16 @@
   <div class="animplayer" data-anim="t41"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=9ZFehTXFSbo">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://ulearnmagic.com/gemini-twins-card-trick-tutorial/">Gemini Twins tutorial</a> (uLearnMagic) — full handling plus the history: Fulves's "Stopped Twice" (1979).</p>
+  <div class="trick-notes-panel" id="notespanel-t41" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t41">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t41" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t42">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 42"><div class="flip-inner"><div class="flip-face flip-front">42</div><div class="flip-face flip-back red">♥</div></div></div><h3>Impromptu Invisible Deck</h3><label class="learned"><input type="checkbox" data-trick="t42"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 42"><div class="flip-inner"><div class="flip-face flip-front">42</div><div class="flip-face flip-back red">♥</div></div></div><h3>Impromptu Invisible Deck</h3><label class="learned"><input type="checkbox" data-trick="t42"><span>Learned</span><button class="bm-btn" data-trick="t42" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t42" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">They name any card out loud — genuinely free choice — and it's the only card face-up in the deck.</p>
   <ol class="steps">
@@ -1012,9 +1444,16 @@
   <div class="animplayer" data-anim="t42"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=7lofIGvTkFs">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.cardtricksrevealed.com/products/impromptu-invisible-deck-easy-card-magic-trick-tutorial/">Impromptu invisible deck tutorial</a> (Card Tricks Revealed).</p>
+  <div class="trick-notes-panel" id="notespanel-t42" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t42">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t42" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t43">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 43"><div class="flip-inner"><div class="flip-face flip-front">43</div><div class="flip-face flip-back black">♣</div></div></div><h3>Three-Card Monte</h3><label class="learned"><input type="checkbox" data-trick="t43"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 43"><div class="flip-inner"><div class="flip-face flip-front">43</div><div class="flip-face flip-back black">♣</div></div></div><h3>Three-Card Monte</h3><label class="learned"><input type="checkbox" data-trick="t43"><span>Learned</span><button class="bm-btn" data-trick="t43" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t43" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">The classic street game: follow the money card, and watch it not be where you swore it was.</p>
   <ol class="steps">
@@ -1027,9 +1466,16 @@
   <div class="animplayer" data-anim="t43"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=6YifJhCMofs">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.harlemworldmagazine.com/three-card-monte-tricks-anyone-can-learn-from-harlem-to-hollywood/">Harlem World Magazine</a> — the hype and the bent-corner convincer.</p>
+  <div class="trick-notes-panel" id="notespanel-t43" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t43">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t43" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t44">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 44"><div class="flip-inner"><div class="flip-face flip-front">44</div><div class="flip-face flip-back red">♦</div></div></div><h3>Card to Ceiling</h3><label class="learned"><input type="checkbox" data-trick="t44"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 44"><div class="flip-inner"><div class="flip-face flip-front">44</div><div class="flip-face flip-back red">♦</div></div></div><h3>Card to Ceiling</h3><label class="learned"><input type="checkbox" data-trick="t44"><span>Learned</span><button class="bm-btn" data-trick="t44" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t44" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Their signed card gets thrown at the ceiling — and stays there.</p>
   <ol class="steps">
@@ -1040,9 +1486,16 @@
   <p class="aside">The classic closer: visual, impossible-looking, and it leaves their signed card somewhere absurd. You need magician's wax and a ceiling you have permission to stick things to — not every venue qualifies.</p>
   <div class="animplayer" data-anim="t44"></div>
   <p class="guides">📖 <a href="https://www.conjuringarchive.com/list/category/762">Conjuring Archive</a> — history and methods bibliography for card-on-ceiling.</p>
+  <div class="trick-notes-panel" id="notespanel-t44" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t44">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t44" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t45">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 45"><div class="flip-inner"><div class="flip-face flip-front">45</div><div class="flip-face flip-back black">♠</div></div></div><h3>McDonald's Aces</h3><label class="learned"><input type="checkbox" data-trick="t45"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 45"><div class="flip-inner"><div class="flip-face flip-front">45</div><div class="flip-face flip-back black">♠</div></div></div><h3>McDonald's Aces</h3><label class="learned"><input type="checkbox" data-trick="t45"><span>Learned</span><button class="bm-btn" data-trick="t45" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t45" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Four aces vanish one by one from under their cover cards — and all gather in the packet a spectator is holding.</p>
   <ol class="steps">
@@ -1055,6 +1508,13 @@
   <div class="animplayer" data-anim="t45"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=8YrxW0oCVUE">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://geniimagazine.com/wiki/index.php?title=MacDonald%27s_Aces">MacDonald's Aces</a> (Magicpedia) — history and credits.</p>
+  <div class="trick-notes-panel" id="notespanel-t45" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t45">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t45" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 </section>
 
@@ -1063,7 +1523,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t26">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 26"><div class="flip-inner"><div class="flip-face flip-front">26</div><div class="flip-face flip-back red">♥</div></div></div><h3>Si Stebbins Stack</h3><label class="learned"><input type="checkbox" data-trick="t26"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 26"><div class="flip-inner"><div class="flip-face flip-front">26</div><div class="flip-face flip-back red">♥</div></div></div><h3>Si Stebbins Stack</h3><label class="learned"><input type="checkbox" data-trick="t26"><span>Learned</span><button class="bm-btn" data-trick="t26" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t26" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A secret number system hiding in plain sight — cut all you want, the order never breaks.</p>
   <ol class="steps">
@@ -1077,10 +1537,17 @@
   <div class="animplayer" data-anim="t26"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=cjxwjk2eStU">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://en.wikipedia.org/wiki/Si_Stebbins_stack">Si Stebbins stack</a> (Wikipedia) — the full sequence and the math behind it.</p>
+  <div class="trick-notes-panel" id="notespanel-t26" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t26">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t26" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t27">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 27"><div class="flip-inner"><div class="flip-face flip-front">27</div><div class="flip-face flip-back black">♣</div></div></div><h3>Out of This World</h3><label class="learned"><input type="checkbox" data-trick="t27"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 27"><div class="flip-inner"><div class="flip-face flip-front">27</div><div class="flip-face flip-back black">♣</div></div></div><h3>Out of This World</h3><label class="learned"><input type="checkbox" data-trick="t27"><span>Learned</span><button class="bm-btn" data-trick="t27" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t27" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They sort the reds from the blacks without looking — and you're not allowed to touch the deck.</p>
   <ol class="steps">
@@ -1094,10 +1561,17 @@
   <div class="animplayer" data-anim="t27"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=-DB1VQTFZ5I">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://en.wikipedia.org/wiki/Out_of_This_World_(card_trick)">Out of This World</a> (Wikipedia) — Curry's original and how it evolved.</p>
+  <div class="trick-notes-panel" id="notespanel-t27" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t27">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t27" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t28">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 28"><div class="flip-inner"><div class="flip-face flip-front">28</div><div class="flip-face flip-back red">♦</div></div></div><h3>Fitch Cheney's Five-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t28"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 28"><div class="flip-inner"><div class="flip-face flip-front">28</div><div class="flip-face flip-back red">♦</div></div></div><h3>Fitch Cheney's Five-Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t28"><span>Learned</span><button class="bm-btn" data-trick="t28" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t28" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Your partner leaves the room. Five random cards later, they name the hidden one.</p>
   <ol class="steps">
@@ -1111,10 +1585,17 @@
   <div class="animplayer" data-anim="t28"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=unk8ummxoOY">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 Colm Mulcahy's <a href="https://cardcolm.org/Pics/2003_02HorizonsMulcahy.pdf">"Fitch Cheney's Five-Card Trick"</a> (<em>Math Horizons</em>, 2003, PDF) — the full encoding, worked through.</p>
+  <div class="trick-notes-panel" id="notespanel-t28" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t28">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t28" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t29">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 29"><div class="flip-inner"><div class="flip-face flip-front">29</div><div class="flip-face flip-back black">♠</div></div></div><h3>Ten-Card Poker Deal</h3><label class="learned"><input type="checkbox" data-trick="t29"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 29"><div class="flip-inner"><div class="flip-face flip-front">29</div><div class="flip-face flip-back black">♠</div></div></div><h3>Ten-Card Poker Deal</h3><label class="learned"><input type="checkbox" data-trick="t29"><span>Learned</span><button class="bm-btn" data-trick="t29" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t29" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They deal. They turn over four kings. You still win.</p>
   <ol class="steps">
@@ -1127,10 +1608,17 @@
   <div class="animplayer" data-anim="t29"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=4-Mf6F0BLCQ">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://forums.geniimagazine.com/viewtopic.php?t=4449">Genii Forum literature roundup</a> — history and variants · <a href="https://www.conjuringcredits.com/doku.php?id=cards:ten-card_poker_deal">Conjuring Credits</a> — full credits, Hooper (1774) to Trost.</p>
+  <div class="trick-notes-panel" id="notespanel-t29" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t29">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t29" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t30">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 30"><div class="flip-inner"><div class="flip-face flip-front">30</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Clock Trick</h3><label class="learned"><input type="checkbox" data-trick="t30"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 30"><div class="flip-inner"><div class="flip-face flip-front">30</div><div class="flip-face flip-back red">♥</div></div></div><h3>The Clock Trick</h3><label class="learned"><input type="checkbox" data-trick="t30"><span>Learned</span><button class="bm-btn" data-trick="t30" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t30" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Name any hour. The clock already knows.</p>
   <ol class="steps">
@@ -1143,10 +1631,17 @@
   <div class="animplayer" data-anim="t30"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/shorts/b3kKVfQYyyU">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.talkmagic.co.uk/ftopic61668.php">TalkMagic's self-workers roundup</a> — where the classic clock trick sits among the great no-sleight tricks.</p>
+  <div class="trick-notes-panel" id="notespanel-t30" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t30">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t30" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t31">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 31"><div class="flip-inner"><div class="flip-face flip-front">31</div><div class="flip-face flip-back black">♣</div></div></div><h3>Miraskill</h3><label class="learned"><input type="checkbox" data-trick="t31"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 31"><div class="flip-inner"><div class="flip-face flip-front">31</div><div class="flip-face flip-back black">♣</div></div></div><h3>Miraskill</h3><label class="learned"><input type="checkbox" data-trick="t31"><span>Learned</span><button class="bm-btn" data-trick="t31" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t31" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They shuffle, they deal, you never touch the cards — and your prediction is right twice.</p>
   <ol class="steps">
@@ -1159,11 +1654,18 @@
   <p class="aside">Stewart James, 1935. A pair-separation prophecy, not a "do as I do" — the prediction does the entertaining, the arithmetic does the work.</p>
   <div class="animplayer" data-anim="t31"></div>
   <p class="guides">📖 <a href="https://wiki.geniimagazine.com/index.php?title=Miraskill">Miraskill</a> (Magicpedia) — history and the principle. Also taught on the (paid) <em>Encyclopedia of Card Tricks</em> video series.</p>
+  <div class="trick-notes-panel" id="notespanel-t31" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t31">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t31" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 
 <article class="trick reveal" id="t38">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 38"><div class="flip-inner"><div class="flip-face flip-front">38</div><div class="flip-face flip-back red">♥</div></div></div><h3>Spelling Bee</h3><label class="learned"><input type="checkbox" data-trick="t38"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 38"><div class="flip-inner"><div class="flip-face flip-front">38</div><div class="flip-face flip-back red">♥</div></div></div><h3>Spelling Bee</h3><label class="learned"><input type="checkbox" data-trick="t38"><span>Learned</span><button class="bm-btn" data-trick="t38" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t38" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">You spell out each card's name as you deal, and every card turns up right on the last letter.</p>
   <ol class="steps">
@@ -1177,9 +1679,16 @@
   <div class="animplayer" data-anim="t38"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=N1k_ndwfoXk">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://en.wikipedia.org/wiki/Spelling_Bee_(card_trick)">Spelling Bee</a> (Wikipedia) — the stack and the story.</p>
+  <div class="trick-notes-panel" id="notespanel-t38" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t38">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t38" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t39">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 39"><div class="flip-inner"><div class="flip-face flip-front">39</div><div class="flip-face flip-back black">♣</div></div></div><h3>Lazy Magician</h3><label class="learned"><input type="checkbox" data-trick="t39"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 39"><div class="flip-inner"><div class="flip-face flip-front">39</div><div class="flip-face flip-back black">♣</div></div></div><h3>Lazy Magician</h3><label class="learned"><input type="checkbox" data-trick="t39"><span>Learned</span><button class="bm-btn" data-trick="t39" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t39" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">You never touch the deck — the spectator follows your instructions and finds their own card.</p>
   <ol class="steps">
@@ -1191,9 +1700,16 @@
   <p class="aside">In Al Koran's presentation the spectator does literally everything, including the final reveal, while you stand back and take the credit.</p>
   <div class="animplayer" data-anim="t39"></div>
   <p class="guides">📖 <a href="https://www.oneahead.com/p/not-so-lazy-magician-tutorial">Not-so-lazy magician tutorial</a> (OneAhead) — Koran's hands-off presentation · <a href="https://learncards.net/the-lazy-magician/">alternate count-down handling</a> (LearnCards).</p>
+  <div class="trick-notes-panel" id="notespanel-t39" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t39">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t39" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t40">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 40"><div class="flip-inner"><div class="flip-face flip-front">40</div><div class="flip-face flip-back red">♦</div></div></div><h3>Poker Player's Picnic</h3><label class="learned"><input type="checkbox" data-trick="t40"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 40"><div class="flip-inner"><div class="flip-face flip-front">40</div><div class="flip-face flip-back red">♦</div></div></div><h3>Poker Player's Picnic</h3><label class="learned"><input type="checkbox" data-trick="t40"><span>Learned</span><button class="bm-btn" data-trick="t40" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t40" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">The spectator cuts the deck into four piles themselves — and there's an ace on top of every pile.</p>
   <ol class="steps">
@@ -1206,9 +1722,16 @@
   <div class="animplayer" data-anim="t40"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=Qi9l1Hn6iRQ">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 In <em>The Royal Road to Card Magic</em> (<a href="https://archive.org/download/theroyalroadtocardmagic/The%20Royal%20Road%20to%20Card%20Magic.pdf">free PDF</a>) — the picnic is a Royal Road classic.</p>
+  <div class="trick-notes-panel" id="notespanel-t40" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t40">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t40" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 <article class="trick reveal" id="t48">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 48"><div class="flip-inner"><div class="flip-face flip-front">48</div><div class="flip-face flip-back black">♣</div></div></div><h3>Princess Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t48"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 48"><div class="flip-inner"><div class="flip-face flip-front">48</div><div class="flip-face flip-back black">♣</div></div></div><h3>Princess Card Trick</h3><label class="learned"><input type="checkbox" data-trick="t48"><span>Learned</span><button class="bm-btn" data-trick="t48" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t48" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">They only think of a card. You remove one. Theirs is the one that's gone.</p>
   <ol class="steps">
@@ -1222,10 +1745,17 @@
   <div class="animplayer" data-anim="t48"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=m2sEJUMT4Ug">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 Henry Hardin, c. 1905. The modern six-card "one turns blank" versions are a different trick wearing the same name — this is the original thought-of-card handling.</p>
+  <div class="trick-notes-panel" id="notespanel-t48" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t48">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t48" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t52">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 52"><div class="flip-inner"><div class="flip-face flip-front">52</div><div class="flip-face flip-back black">♣</div></div></div><h3>Magician's Choice</h3><label class="learned"><input type="checkbox" data-trick="t52"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 52"><div class="flip-inner"><div class="flip-face flip-front">52</div><div class="flip-face flip-back black">♣</div></div></div><h3>Magician's Choice</h3><label class="learned"><input type="checkbox" data-trick="t52"><span>Learned</span><button class="bm-btn" data-trick="t52" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t52" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Every choice is theirs. The card you need was chosen before they opened their mouth.</p>
   <ol class="steps">
@@ -1239,6 +1769,13 @@
   <div class="animplayer" data-anim="t52"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=ZrbAGTnSQHE">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The clean two-out above is the whole move. Michael O'Brien's talk on branching is the graduate course: same idea, hidden inside a routine so the question never feels like a question.</p>
+  <div class="trick-notes-panel" id="notespanel-t52" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t52">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t52" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 </section>
 
@@ -1247,7 +1784,7 @@
 <div class="rule"></div>
 
 <article class="trick reveal" id="t34">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 34"><div class="flip-inner"><div class="flip-face flip-front">34</div><div class="flip-face flip-back red">♥</div></div></div><h3>Thumb Fan</h3><label class="learned"><input type="checkbox" data-trick="t34"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 34"><div class="flip-inner"><div class="flip-face flip-front">34</div><div class="flip-face flip-back red">♥</div></div></div><h3>Thumb Fan</h3><label class="learned"><input type="checkbox" data-trick="t34"><span>Learned</span><button class="bm-btn" data-trick="t34" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t34" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">The classic display — a perfect semicircle of cards from one sweep of the thumb.</p>
   <ol class="steps">
@@ -1260,10 +1797,17 @@
   <div class="animplayer" data-anim="t34"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=8UpZaK4715o">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://card-tricks.wonderhowto.com/how-to/perform-simple-thumb-fan-card-flourish-273492/">The simple thumb fan</a> (WonderHowTo) — written walkthrough to go with the video.</p>
+  <div class="trick-notes-panel" id="notespanel-t34" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t34">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t34" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t35">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 35"><div class="flip-inner"><div class="flip-face flip-front">35</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Dribble</h3><label class="learned"><input type="checkbox" data-trick="t35"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 35"><div class="flip-inner"><div class="flip-face flip-front">35</div><div class="flip-face flip-back black">♣</div></div></div><h3>The Dribble</h3><label class="learned"><input type="checkbox" data-trick="t35"><span>Learned</span><button class="bm-btn" data-trick="t35" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t35" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">Cards cascading hand to hand in a waterfall — the foundation flourish.</p>
   <ol class="steps">
@@ -1276,10 +1820,17 @@
   <div class="animplayer" data-anim="t35"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=LomV0fzR7lA">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="http://www.thecardtrickteacher.com/card-trick-video.php?v=3885">The dribble for absolute beginners</a> (The Card Trick Teacher).</p>
+  <div class="trick-notes-panel" id="notespanel-t35" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t35">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t35" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t36">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 36"><div class="flip-inner"><div class="flip-face flip-front">36</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Spring</h3><label class="learned"><input type="checkbox" data-trick="t36"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 36"><div class="flip-inner"><div class="flip-face flip-front">36</div><div class="flip-face flip-back red">♦</div></div></div><h3>The Spring</h3><label class="learned"><input type="checkbox" data-trick="t36"><span>Learned</span><button class="bm-btn" data-trick="t36" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t36" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge med">Med</span></div>
   <p class="lede">Bend the deck, let go — a stream of cards flying hand to hand.</p>
   <ol class="steps">
@@ -1292,10 +1843,17 @@
   <div class="animplayer" data-anim="t36"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=zk868Dw8QJM">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.blifaloo.com/spinning-flourish/">Spring card flourish tutorial</a> (Blifaloo).</p>
+  <div class="trick-notes-panel" id="notespanel-t36" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t36">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t36" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t37">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 37"><div class="flip-inner"><div class="flip-face flip-front">37</div><div class="flip-face flip-back black">♠</div></div></div><h3>Sybil Cut</h3><label class="learned"><input type="checkbox" data-trick="t37"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 37"><div class="flip-inner"><div class="flip-face flip-front">37</div><div class="flip-face flip-back black">♠</div></div></div><h3>Sybil Cut</h3><label class="learned"><input type="checkbox" data-trick="t37"><span>Learned</span><button class="bm-btn" data-trick="t37" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t37" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge hard">Hard</span></div>
   <p class="lede">Packets dancing between your fingers — and the deck never actually mixes.</p>
   <ol class="steps">
@@ -1308,10 +1866,17 @@
   <div class="animplayer" data-anim="t37"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=8T9yeV9oT2o">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 <a href="https://www.cardtricksrevealed.com/products/sybil-cut-tutorial-dynamo-shuffle/">Sybil cut tutorial</a> (Card Tricks Revealed) — taught step by step as the "Dynamo Shuffle".</p>
+  <div class="trick-notes-panel" id="notespanel-t37" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t37">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t37" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t49">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 49"><div class="flip-inner"><div class="flip-face flip-front">49</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ribbon Spread</h3><label class="learned"><input type="checkbox" data-trick="t49"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 49"><div class="flip-inner"><div class="flip-face flip-front">49</div><div class="flip-face flip-back red">♦</div></div></div><h3>Ribbon Spread</h3><label class="learned"><input type="checkbox" data-trick="t49"><span>Learned</span><button class="bm-btn" data-trick="t49" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t49" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A long even ribbon of cards, then the whole ribbon turns over in one stroke.</p>
   <ol class="steps">
@@ -1324,10 +1889,17 @@
   <div class="animplayer" data-anim="t49"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=WSDg60uvqYM">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 The spread is in every handling book from Erdnase on. Learn it on cloth first — a bare table teaches you the wrong failure.</p>
+  <div class="trick-notes-panel" id="notespanel-t49" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t49">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t49" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 <article class="trick reveal" id="t53">
-  <div class="thead"><div class="flip" role="img" aria-label="Trick 53"><div class="flip-inner"><div class="flip-face flip-front">53</div><div class="flip-face flip-back red">♦</div></div></div><h3>Pressure Fan</h3><label class="learned"><input type="checkbox" data-trick="t53"><span>Learned</span></label></div>
+  <div class="thead"><div class="flip" role="img" aria-label="Trick 53"><div class="flip-inner"><div class="flip-face flip-front">53</div><div class="flip-face flip-back red">♦</div></div></div><h3>Pressure Fan</h3><label class="learned"><input type="checkbox" data-trick="t53"><span>Learned</span><button class="bm-btn" data-trick="t53" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t53" type="button" title="Practice notes">📝 Notes</button></label></div>
   <div class="meta"><span class="badge easy">Easy</span></div>
   <p class="lede">A wider fan than the thumb can make. The cards bend into a circle because both hands are pushing.</p>
   <ol class="steps">
@@ -1340,6 +1912,13 @@
   <div class="animplayer" data-anim="t53"></div>
   <p class="vsrc">Prefer video? <a href="https://www.youtube.com/watch?v=1AciRgjeLpo">Watch the tutorial &rarr;</a></p>
   <p class="guides">📖 52Kards with Xavior Spade, "Pressure Fan." Make the small fan ugly-and-even before you chase the big one.</p>
+  <div class="trick-notes-panel" id="notespanel-t53" style="display:none;">
+    <div class="notes-header">
+      <span>📝 Practice Notes &amp; Observations</span>
+      <span class="notes-status" id="notestatus-t53">Saved</span>
+    </div>
+    <textarea class="trick-notes-input" data-trick="t53" placeholder="Record personal notes, angle reminders, flash warnings, or target speed..."></textarea>
+  </div>
 </article>
 
 </section>
@@ -3191,6 +3770,7 @@ var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: r
 
 function Player(root, anim){
   this.root=root; this.anim=anim; this.i=0; this.playing=false; this.timer=null; this.objs={}; this.touched=false;
+  this.speed=1; this.looping=false;
   var self=this;
   this.stage=mk('div','stage'); this.stage.setAttribute('aria-hidden','true');
   this.cap=mk('div','caption');
@@ -3200,7 +3780,25 @@ function Player(root, anim){
   this.bNext=mk('button','cbtn','\u203A'); this.bNext.setAttribute('aria-label','Next step');
   this.bRe=mk('button','cbtn','\u21BA'); this.bRe.setAttribute('aria-label','Restart');
   this.pos=mk('span','steppos');
-  bar.appendChild(this.bPrev); bar.appendChild(this.bPlay); bar.appendChild(this.bNext); bar.appendChild(this.bRe); bar.appendChild(this.pos);
+
+  var spdDiv = mk('div', 'spd-group');
+  [0.5, 1, 1.5, 2].forEach(function(s){
+    var sb = mk('button', 'sbtn' + (s === 1 ? ' active' : ''), s + 'x');
+    sb.onclick = function(){
+      self.speed = s;
+      spdDiv.querySelectorAll('.sbtn').forEach(function(b){ b.classList.remove('active'); });
+      sb.classList.add('active');
+    };
+    spdDiv.appendChild(sb);
+  });
+  this.bLoop = mk('button', 'cbtn loop-btn', '🔁');
+  this.bLoop.title = "Loop current step";
+  this.bLoop.onclick = function(){
+    self.looping = !self.looping;
+    self.bLoop.classList.toggle('active', self.looping);
+  };
+
+  bar.appendChild(this.bPrev); bar.appendChild(this.bPlay); bar.appendChild(this.bNext); bar.appendChild(this.bRe); bar.appendChild(this.bLoop); bar.appendChild(spdDiv); bar.appendChild(this.pos);
   root.appendChild(this.stage); root.appendChild(this.cap); root.appendChild(bar);
   this.bPrev.onclick=function(){ self.touched=true; self.goto(self.i-1); };
   this.bNext.onclick=function(){ self.touched=true; self.goto(self.i+1); };
@@ -3247,7 +3845,8 @@ Player.prototype.applyStep=function(step){
 };
 Player.prototype.stepDelay=function(){
   var n=((this.anim.steps[this.i]||{}).actions||[]).length;
-  return Math.min(6500, 2300+n*550);
+  var base = Math.min(6500, 2300+n*550);
+  return Math.round(base / (this.speed || 1));
 };
 Player.prototype.play=function(){
   var self=this;
@@ -3681,11 +4280,778 @@ document.getElementById('surpriseBtn').addEventListener('click', function(){
 
 document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
 
+
+/* ---------- Sleight School Interactive Training Suite Logic ---------- */
+(function(){
+  "use strict";
+
+  function getEl(id){ return document.getElementById(id); }
+
+  // Data Keys
+  var KEY_LEARNED = 'sleight-school-learned';
+  var KEY_BOOKMARKS = 'sleight-school-bookmarks';
+  var KEY_NOTES = 'sleight-school-notes';
+  var KEY_ACTS = 'sleight-school-acts';
+
+  var learned = [], bookmarks = [], notes = {}, acts = [];
+
+  try { learned = JSON.parse(localStorage.getItem(KEY_LEARNED) || '[]'); } catch(e){ learned = []; }
+  try { bookmarks = JSON.parse(localStorage.getItem(KEY_BOOKMARKS) || '[]'); } catch(e){ bookmarks = []; }
+  try { notes = JSON.parse(localStorage.getItem(KEY_NOTES) || '{}'); } catch(e){ notes = {}; }
+  try { acts = JSON.parse(localStorage.getItem(KEY_ACTS) || '[]'); } catch(e){ acts = []; }
+
+  // Initialize Default Acts if empty
+  if (!acts.length) {
+    acts = [
+      { id: 'jordan-5min', title: "Jordan's 5-Minute Casual Set", tricks: ['t1', 't48', 't38'] },
+      { id: 'table-miracles', title: "Close-up Table Miracles", tricks: ['t12', 't19', 't13'] }
+    ];
+    try { localStorage.setItem(KEY_ACTS, JSON.stringify(acts)); } catch(e){}
+  }
+
+  function saveLearned(){ try{ localStorage.setItem(KEY_LEARNED, JSON.stringify(learned)); }catch(e){} }
+  function saveBookmarks(){ try{ localStorage.setItem(KEY_BOOKMARKS, JSON.stringify(bookmarks)); }catch(e){} }
+  function saveNotes(){ try{ localStorage.setItem(KEY_NOTES, JSON.stringify(notes)); }catch(e){} }
+  function saveActs(){ try{ localStorage.setItem(KEY_ACTS, JSON.stringify(acts)); }catch(e){} }
+
+  // Map category for each trick article
+  function getTrickCategory(art) {
+    var sec = art.closest('section.block');
+    if (!sec) return 'Other';
+    var h2 = sec.querySelector('h2.sec');
+    if (!h2) return 'Other';
+    var text = h2.childNodes[0].textContent.trim();
+    return text;
+  }
+
+  function getTrickDifficulty(art) {
+    var badge = art.querySelector('.badge');
+    if (!badge) return 'med';
+    if (badge.classList.contains('easy')) return 'easy';
+    if (badge.classList.contains('hard')) return 'hard';
+    return 'med';
+  }
+
+  function getTrickTitle(art) {
+    var h3 = art.querySelector('h3');
+    return h3 ? h3.textContent.trim() : '';
+  }
+
+  // --- Filter Engine ---
+  var searchInput = getEl('searchInput');
+  var clearSearchBtn = getEl('clearSearchBtn');
+  var diffFilter = getEl('diffFilter');
+  var catFilter = getEl('catFilter');
+  var statusFilter = getEl('statusFilter');
+  var sortBy = getEl('sortBy');
+  var filterCount = getEl('filterCount');
+  var resetFiltersBtn = getEl('resetFiltersBtn');
+
+  function applyFilters() {
+    var query = ((getEl('searchInput') && getEl('searchInput').value) || '').toLowerCase().trim();
+    var diff = getEl('diffFilter') ? getEl('diffFilter').value : 'all';
+    var cat = getEl('catFilter') ? getEl('catFilter').value : 'all';
+    var status = getEl('statusFilter') ? getEl('statusFilter').value : 'all';
+    var sort = getEl('sortBy') ? getEl('sortBy').value : 'default';
+
+    if (getEl('clearSearchBtn')) getEl('clearSearchBtn').classList.toggle('visible', query.length > 0);
+
+    var articles = Array.from(document.querySelectorAll('article.trick'));
+    var visibleCount = 0;
+
+    articles.forEach(function(art){
+      var id = art.id;
+      var title = getTrickTitle(art).toLowerCase();
+      var lede = (art.querySelector('.lede')?.textContent || '').toLowerCase();
+      var stepsText = (art.querySelector('.steps')?.textContent || '').toLowerCase();
+      var noteText = (notes[id] || '').toLowerCase();
+      var trickCat = getTrickCategory(art);
+      var trickDiff = getTrickDifficulty(art);
+      var isLearned = learned.indexOf(id) >= 0;
+      var isBm = bookmarks.indexOf(id) >= 0;
+      var hasNote = !!notes[id];
+
+      var matchSearch = !query || title.includes(query) || lede.includes(query) || stepsText.includes(query) || noteText.includes(query);
+      var matchDiff = (diff === 'all') || (trickDiff === diff);
+      var matchCat = (cat === 'all') || (trickCat.toLowerCase().includes(cat.toLowerCase()));
+
+      var matchStatus = true;
+      if (status === 'learned') matchStatus = isLearned;
+      if (status === 'unlearned') matchStatus = !isLearned;
+      if (status === 'bookmarked') matchStatus = isBm;
+      if (status === 'hasNotes') matchStatus = hasNote;
+
+      var visible = matchSearch && matchDiff && matchCat && matchStatus;
+      art.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    if (getEl('filterCount')) getEl('filterCount').textContent = 'Showing ' + visibleCount + ' of ' + articles.length + ' tricks';
+
+    if (sort !== 'default') {
+      var container = articles[0]?.parentNode;
+      if (container) {
+        var sorted = articles.slice().sort(function(a,b){
+          if (sort === 'title') {
+            return getTrickTitle(a).localeCompare(getTrickTitle(b));
+          } else if (sort === 'difficulty') {
+            var diffWeight = { easy: 1, med: 2, hard: 3 };
+            return diffWeight[getTrickDifficulty(a)] - diffWeight[getTrickDifficulty(b)];
+          }
+          return 0;
+        });
+        sorted.forEach(function(a){ container.appendChild(a); });
+      }
+    }
+  }
+
+  if (getEl('searchInput')) getEl('searchInput').addEventListener('input', applyFilters);
+  if (getEl('clearSearchBtn')) getEl('clearSearchBtn').addEventListener('click', function(){ getEl('searchInput').value = ''; applyFilters(); });
+  if (getEl('diffFilter')) getEl('diffFilter').addEventListener('change', applyFilters);
+  if (getEl('catFilter')) getEl('catFilter').addEventListener('change', applyFilters);
+  if (getEl('statusFilter')) getEl('statusFilter').addEventListener('change', applyFilters);
+  if (getEl('sortBy')) getEl('sortBy').addEventListener('change', applyFilters);
+  if (getEl('resetFiltersBtn')) getEl('resetFiltersBtn').addEventListener('click', function(){
+    if (getEl('searchInput')) getEl('searchInput').value = '';
+    if (getEl('diffFilter')) getEl('diffFilter').value = 'all';
+    if (getEl('catFilter')) getEl('catFilter').value = 'all';
+    if (getEl('statusFilter')) getEl('statusFilter').value = 'all';
+    if (getEl('sortBy')) getEl('sortBy').value = 'default';
+    applyFilters();
+  });
+
+  // --- Bookmark and Notes UI Handlers ---
+  function refreshTricksUI() {
+    document.querySelectorAll('article.trick').forEach(function(art){
+      var id = art.id;
+
+      var bmBtn = art.querySelector('.bm-btn');
+      if (bmBtn) {
+        var isBm = bookmarks.indexOf(id) >= 0;
+        bmBtn.classList.toggle('bookmarked', isBm);
+      }
+
+      var notesBtn = art.querySelector('.notes-toggle-btn');
+      if (notesBtn) {
+        var hasN = !!notes[id];
+        notesBtn.classList.toggle('has-notes', hasN);
+      }
+
+      var textarea = art.querySelector('.trick-notes-input');
+      if (textarea && textarea.value !== (notes[id] || '')) {
+        textarea.value = notes[id] || '';
+      }
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var bmBtn = e.target.closest('.bm-btn');
+    if (bmBtn && bmBtn.getAttribute('data-trick')) {
+      var id = bmBtn.getAttribute('data-trick');
+      var ix = bookmarks.indexOf(id);
+      if (ix >= 0) bookmarks.splice(ix, 1);
+      else bookmarks.push(id);
+      saveBookmarks();
+      refreshTricksUI();
+      applyFilters();
+      return;
+    }
+
+    var notesBtn = e.target.closest('.notes-toggle-btn');
+    if (notesBtn && notesBtn.getAttribute('data-trick')) {
+      var id = notesBtn.getAttribute('data-trick');
+      var panel = getEl('notespanel-' + id);
+      if (panel) {
+        panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';
+      }
+      return;
+    }
+  });
+
+  document.addEventListener('input', function(e){
+    if (e.target.classList.contains('trick-notes-input')) {
+      var id = e.target.getAttribute('data-trick');
+      var val = e.target.value.trim();
+      if (val) notes[id] = val;
+      else delete notes[id];
+      saveNotes();
+
+      var status = getEl('notestatus-' + id);
+      if (status) {
+        status.textContent = 'Saving...';
+        setTimeout(function(){ status.textContent = 'Saved'; }, 400);
+      }
+      refreshTricksUI();
+    }
+  });
+
+  // --- Modals Controller ---
+  function setupModal(modalId, openBtns, closeId) {
+    document.addEventListener('click', function(e){
+      var modal = getEl(modalId);
+      if (!modal) return;
+
+      openBtns.forEach(function(btnId){
+        if (e.target.closest('#' + btnId)) {
+          modal.classList.add('open');
+        }
+      });
+
+      if (e.target.closest('#' + closeId)) {
+        modal.classList.remove('open');
+      }
+
+      if (e.target === modal) {
+        modal.classList.remove('open');
+      }
+    });
+  }
+
+  setupModal('practiceStudioModal', ['openStudioBtn', 'fabStudioBtn'], 'closeStudioBtn');
+  setupModal('webcamMirrorModal', ['openMirrorBtn', 'fabMirrorBtn'], 'closeMirrorBtn');
+  setupModal('actBuilderModal', ['openActBuilderBtn', 'fabActBtn'], 'closeActBtn');
+
+  if (getEl('fabTopBtn')) getEl('fabTopBtn').addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  // --- Practice Studio Controller ---
+  var currentStudioDeck = [];
+  var currentStudioIndex = 0;
+  var currentStudioStep = 0;
+
+  function buildStudioDeck() {
+    var type = getEl('studioDeckSelect') ? getEl('studioDeckSelect').value : 'all';
+    var articles = Array.from(document.querySelectorAll('article.trick'));
+
+    if (type === 'unlearned') {
+      currentStudioDeck = articles.filter(function(a){ return learned.indexOf(a.id) < 0; });
+    } else if (type === 'bookmarked') {
+      currentStudioDeck = articles.filter(function(a){ return bookmarks.indexOf(a.id) >= 0; });
+    } else if (type === 'foundations') {
+      currentStudioDeck = articles.filter(function(a){ return getTrickCategory(a).toLowerCase().includes('foundation'); });
+    } else if (type === 'moves') {
+      currentStudioDeck = articles.filter(function(a){ return getTrickCategory(a).toLowerCase().includes('move'); });
+    } else if (type === 'routines') {
+      currentStudioDeck = articles.filter(function(a){ return getTrickCategory(a).toLowerCase().includes('routine'); });
+    } else {
+      currentStudioDeck = articles;
+    }
+
+    if (!currentStudioDeck.length) currentStudioDeck = articles;
+    currentStudioIndex = 0;
+    currentStudioStep = 0;
+    renderStudioCard();
+  }
+
+  var studioAutoTimer = null;
+  function resetStudioAutoAdvance() {
+    if (studioAutoTimer) { clearInterval(studioAutoTimer); studioAutoTimer = null; }
+    var autoCheck = getEl('studioAutoCheck');
+    if (autoCheck && autoCheck.checked) {
+      studioAutoTimer = setInterval(function(){
+        var art = currentStudioDeck[currentStudioIndex];
+        if (!art) return;
+        var stepEls = art.querySelectorAll('.steps li');
+        if (currentStudioStep < stepEls.length - 1) {
+          currentStudioStep++;
+        } else if (currentStudioIndex < currentStudioDeck.length - 1) {
+          currentStudioIndex++;
+          currentStudioStep = 0;
+        } else {
+          currentStudioIndex = 0;
+          currentStudioStep = 0;
+        }
+        renderStudioCard();
+      }, 4000);
+    }
+  }
+
+  function renderStudioCard() {
+    resetStudioAutoAdvance();
+    if (!currentStudioDeck.length) return;
+    var art = currentStudioDeck[currentStudioIndex];
+    var id = art.id;
+
+    if (getEl('studioTrickTitle')) getEl('studioTrickTitle').textContent = getTrickTitle(art);
+    if (getEl('studioTrickLede')) getEl('studioTrickLede').textContent = art.querySelector('.lede')?.textContent || '';
+
+    var badgeClass = 'badge ' + getTrickDifficulty(art);
+    if (getEl('studioTrickBadge')) {
+      getEl('studioTrickBadge').className = badgeClass;
+      getEl('studioTrickBadge').textContent = getTrickDifficulty(art).toUpperCase();
+    }
+
+    var stepEls = art.querySelectorAll('.steps li');
+    if (currentStudioStep >= stepEls.length) currentStudioStep = 0;
+
+    if (getEl('studioStepNum')) getEl('studioStepNum').textContent = 'Step ' + (currentStudioStep + 1) + ' of ' + stepEls.length;
+    if (getEl('studioStepText')) getEl('studioStepText').innerHTML = stepEls[currentStudioStep] ? stepEls[currentStudioStep].innerHTML : '';
+
+    if (getEl('studioProgressText')) getEl('studioProgressText').textContent = 'Trick ' + (currentStudioIndex + 1) + ' of ' + currentStudioDeck.length;
+
+    var isL = learned.indexOf(id) >= 0;
+    if (getEl('studioLearnedCheckbox')) getEl('studioLearnedCheckbox').checked = isL;
+    if (getEl('studioLearnedLabel')) getEl('studioLearnedLabel').textContent = isL ? 'Learned ✓' : 'Mark Learned';
+
+    var isB = bookmarks.indexOf(id) >= 0;
+    if (getEl('studioBmBtn')) getEl('studioBmBtn').classList.toggle('bookmarked', isB);
+  }
+
+  if (getEl('studioDeckSelect')) getEl('studioDeckSelect').addEventListener('change', buildStudioDeck);
+  if (getEl('studioShuffleBtn')) getEl('studioShuffleBtn').addEventListener('click', function(){
+    currentStudioIndex = Math.floor(Math.random() * currentStudioDeck.length);
+    currentStudioStep = 0;
+    renderStudioCard();
+  });
+
+  if (getEl('studioPrevStepBtn')) getEl('studioPrevStepBtn').addEventListener('click', function(){
+    if (currentStudioStep > 0) {
+      currentStudioStep--;
+    } else if (currentStudioIndex > 0) {
+      currentStudioIndex--;
+      currentStudioStep = 0;
+    }
+    renderStudioCard();
+  });
+
+  if (getEl('studioNextStepBtn')) getEl('studioNextStepBtn').addEventListener('click', function(){
+    var art = currentStudioDeck[currentStudioIndex];
+    var stepEls = art.querySelectorAll('.steps li');
+    if (currentStudioStep < stepEls.length - 1) {
+      currentStudioStep++;
+    } else if (currentStudioIndex < currentStudioDeck.length - 1) {
+      currentStudioIndex++;
+      currentStudioStep = 0;
+    }
+    renderStudioCard();
+  });
+
+  if (getEl('studioLearnedCheckbox')) getEl('studioLearnedCheckbox').addEventListener('change', function(){
+    var art = currentStudioDeck[currentStudioIndex];
+    if (!art) return;
+    var id = art.id;
+    var ix = learned.indexOf(id);
+    if (getEl('studioLearnedCheckbox').checked && ix < 0) learned.push(id);
+    if (!getEl('studioLearnedCheckbox').checked && ix >= 0) learned.splice(ix, 1);
+    saveLearned();
+    refreshTricksUI();
+    renderStudioCard();
+  });
+
+  if (getEl('studioBmBtn')) getEl('studioBmBtn').addEventListener('click', function(){
+    var art = currentStudioDeck[currentStudioIndex];
+    if (!art) return;
+    var id = art.id;
+    var ix = bookmarks.indexOf(id);
+    if (ix >= 0) bookmarks.splice(ix, 1);
+    else bookmarks.push(id);
+    saveBookmarks();
+    refreshTricksUI();
+    renderStudioCard();
+  });
+
+  if (getEl('studioJumpToArticleBtn')) getEl('studioJumpToArticleBtn').addEventListener('click', function(){
+    var art = currentStudioDeck[currentStudioIndex];
+    var studioModal = getEl('practiceStudioModal');
+    if (studioModal) studioModal.classList.remove('open');
+    if (art) {
+      art.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      art.classList.remove('reveal');
+    }
+  });
+
+  if (getEl('studioAutoCheck')) getEl('studioAutoCheck').addEventListener('change', resetStudioAutoAdvance);
+  buildStudioDeck();
+
+  // --- Stopwatch Practice Timer ---
+  var timerSecs = 0, timerInterval = null;
+
+  function updateTimerDisplay() {
+    var m = Math.floor(timerSecs / 60);
+    var s = timerSecs % 60;
+    if (getEl('studioTimerDisplay')) getEl('studioTimerDisplay').textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  if (getEl('timerStartBtn')) getEl('timerStartBtn').addEventListener('click', function(){
+    if (timerInterval) return;
+    timerInterval = setInterval(function(){
+      timerSecs++;
+      updateTimerDisplay();
+    }, 1000);
+  });
+
+  if (getEl('timerPauseBtn')) getEl('timerPauseBtn').addEventListener('click', function(){
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  });
+
+  if (getEl('timerResetBtn')) getEl('timerResetBtn').addEventListener('click', function(){
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+    timerSecs = 0;
+    updateTimerDisplay();
+  });
+
+  // --- Rhythm Metronome ---
+  var metroBpm = 90, metroRunning = false, metroSound = true, metroTimer = null, audioCtx = null;
+
+  if (getEl('metroBpmSlider')) getEl('metroBpmSlider').addEventListener('input', function(){
+    metroBpm = parseInt(getEl('metroBpmSlider').value, 10);
+    if (getEl('metroBpmText')) getEl('metroBpmText').textContent = metroBpm + ' BPM';
+    if (metroRunning) { stopMetro(); startMetro(); }
+  });
+
+  function playClickSound() {
+    if (!metroSound) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      var osc = audioCtx.createOscillator();
+      var gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    } catch(e){}
+  }
+
+  function startMetro() {
+    metroRunning = true;
+    if (getEl('metroToggleBtn')) getEl('metroToggleBtn').textContent = 'Stop Click';
+    var intervalMs = (60 / metroBpm) * 1000;
+    metroTimer = setInterval(function(){
+      playClickSound();
+      if (getEl('metroPulse')) {
+        getEl('metroPulse').classList.add('flash');
+        setTimeout(function(){ if (getEl('metroPulse')) getEl('metroPulse').classList.remove('flash'); }, 100);
+      }
+    }, intervalMs);
+  }
+
+  function stopMetro() {
+    metroRunning = false;
+    if (getEl('metroToggleBtn')) getEl('metroToggleBtn').textContent = 'Start Click';
+    if (metroTimer) { clearInterval(metroTimer); metroTimer = null; }
+  }
+
+  if (getEl('metroToggleBtn')) getEl('metroToggleBtn').addEventListener('click', function(){
+    if (metroRunning) stopMetro();
+    else startMetro();
+  });
+
+  if (getEl('metroSoundToggleBtn')) getEl('metroSoundToggleBtn').addEventListener('click', function(){
+    metroSound = !metroSound;
+    if (getEl('metroSoundToggleBtn')) getEl('metroSoundToggleBtn').textContent = metroSound ? '🔊 Sound On' : '🔇 Mute';
+  });
+
+  // --- Live Webcam Angle Mirror Controller ---
+  var webcamStream = null;
+
+  if (getEl('startCamBtn')) getEl('startCamBtn').addEventListener('click', function(){
+    var v = getEl('webcamVideo');
+    if (webcamStream) {
+      webcamStream.getTracks().forEach(function(t){ t.stop(); });
+      webcamStream = null;
+      if (v) v.srcObject = null;
+      getEl('startCamBtn').textContent = 'Start Camera';
+      return;
+    }
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream){
+        webcamStream = stream;
+        if (v) v.srcObject = stream;
+        getEl('startCamBtn').textContent = 'Stop Camera';
+      }).catch(function(err){
+        alert('Could not access webcam: ' + err.message);
+      });
+    } else {
+      alert('Webcam API not supported in this browser.');
+    }
+  });
+
+  if (getEl('toggleMirrorFlipBtn')) getEl('toggleMirrorFlipBtn').addEventListener('click', function(){
+    if (getEl('webcamBox')) getEl('webcamBox').classList.toggle('no-mirror');
+  });
+
+  if (getEl('toggleGridBtn')) getEl('toggleGridBtn').addEventListener('click', function(){
+    if (getEl('webcamOverlay')) getEl('webcamOverlay').classList.toggle('active');
+  });
+
+  // --- Act Builder Controller ---
+  function populateActDropdowns() {
+    var actSelect = getEl('actSelect');
+    var addTrickToActSelect = getEl('addTrickToActSelect');
+    if (!actSelect || !addTrickToActSelect) return;
+
+    actSelect.innerHTML = '';
+    acts.forEach(function(a){
+      var opt = document.createElement('option');
+      opt.value = a.id;
+      opt.textContent = a.title;
+      actSelect.appendChild(opt);
+    });
+
+    addTrickToActSelect.innerHTML = '<option value="">Select a trick to add...</option>';
+    document.querySelectorAll('article.trick').forEach(function(art){
+      var opt = document.createElement('option');
+      opt.value = art.id;
+      opt.textContent = getTrickTitle(art) + ' (' + getTrickDifficulty(art) + ')';
+      addTrickToActSelect.appendChild(opt);
+    });
+  }
+
+  function renderCurrentAct() {
+    var actSelect = getEl('actSelect');
+    var actListContainer = getEl('actListContainer');
+    if (!actSelect || !actListContainer) return;
+    var currentActId = actSelect.value;
+    var currentAct = acts.find(function(a){ return a.id === currentActId; });
+    if (!currentAct) return;
+
+    actListContainer.innerHTML = '';
+    currentAct.tricks.forEach(function(tid, idx){
+      var art = document.getElementById(tid);
+      var title = art ? getTrickTitle(art) : tid;
+
+      var item = document.createElement('div');
+      item.className = 'act-item';
+      item.innerHTML = '<span class="num">' + (idx + 1) + '.</span>' +
+        '<span class="title">' + title + '</span>' +
+        '<div class="act-btns">' +
+        '<button class="sbtn move-up" data-idx="' + idx + '">↑</button>' +
+        '<button class="sbtn move-down" data-idx="' + idx + '">↓</button>' +
+        '<button class="sbtn remove-trick" data-idx="' + idx + '">&times;</button>' +
+        '</div>';
+      actListContainer.appendChild(item);
+    });
+
+    if (getEl('actStatsText')) {
+      getEl('actStatsText').textContent = currentAct.tricks.length + ' Tricks · Est. ' + (currentAct.tricks.length * 2) + ' minutes';
+    }
+  }
+
+  if (getEl('actSelect')) getEl('actSelect').addEventListener('change', renderCurrentAct);
+
+  if (getEl('addTrickToActBtn')) getEl('addTrickToActBtn').addEventListener('click', function(){
+    var tid = getEl('addTrickToActSelect') ? getEl('addTrickToActSelect').value : '';
+    var currentActId = getEl('actSelect') ? getEl('actSelect').value : '';
+    var currentAct = acts.find(function(a){ return a.id === currentActId; });
+    if (tid && currentAct) {
+      currentAct.tricks.push(tid);
+      saveActs();
+      renderCurrentAct();
+    }
+  });
+
+  if (getEl('newActBtn')) getEl('newActBtn').addEventListener('click', function(){
+    var name = prompt('Enter a title for your new setlist:', 'My Custom Routine');
+    if (name) {
+      var newAct = { id: 'act-' + Date.now(), title: name, tricks: [] };
+      acts.push(newAct);
+      saveActs();
+      populateActDropdowns();
+      if (getEl('actSelect')) getEl('actSelect').value = newAct.id;
+      renderCurrentAct();
+    }
+  });
+
+  if (getEl('actListContainer')) getEl('actListContainer').addEventListener('click', function(e){
+    var currentActId = getEl('actSelect') ? getEl('actSelect').value : '';
+    var currentAct = acts.find(function(a){ return a.id === currentActId; });
+    if (!currentAct) return;
+
+    if (e.target.classList.contains('remove-trick')) {
+      var idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      currentAct.tricks.splice(idx, 1);
+      saveActs(); renderCurrentAct();
+    } else if (e.target.classList.contains('move-up')) {
+      var idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (idx > 0) {
+        var temp = currentAct.tricks[idx];
+        currentAct.tricks[idx] = currentAct.tricks[idx - 1];
+        currentAct.tricks[idx - 1] = temp;
+        saveActs(); renderCurrentAct();
+      }
+    } else if (e.target.classList.contains('move-down')) {
+      var idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      if (idx < currentAct.tricks.length - 1) {
+        var temp = currentAct.tricks[idx];
+        currentAct.tricks[idx] = currentAct.tricks[idx + 1];
+        currentAct.tricks[idx + 1] = temp;
+        saveActs(); renderCurrentAct();
+      }
+    }
+  });
+
+  if (getEl('runActInStudioBtn')) getEl('runActInStudioBtn').addEventListener('click', function(){
+    var currentActId = getEl('actSelect') ? getEl('actSelect').value : '';
+    var currentAct = acts.find(function(a){ return a.id === currentActId; });
+    if (!currentAct || !currentAct.tricks.length) return;
+
+    currentStudioDeck = currentAct.tricks.map(function(tid){ return document.getElementById(tid); }).filter(Boolean);
+    currentStudioIndex = 0;
+    currentStudioStep = 0;
+    renderStudioCard();
+
+    var actModal = getEl('actBuilderModal');
+    var studioModal = getEl('practiceStudioModal');
+    if (actModal) actModal.classList.remove('open');
+    if (studioModal) studioModal.classList.add('open');
+  });
+
+  populateActDropdowns();
+  renderCurrentAct();
+  refreshTricksUI();
+
+})();
+
 refresh();
 
 })();
 
 </script>
+
+
+<!-- Floating Action Bar -->
+<div class="fab-bar">
+  <button class="fab-btn primary" id="fabStudioBtn" type="button" title="Launch Practice Studio">⚡ Studio</button>
+  <button class="fab-btn" id="fabMirrorBtn" type="button" title="Angle Mirror">📹 Mirror</button>
+  <button class="fab-btn" id="fabActBtn" type="button" title="Act Builder">🎭 Acts</button>
+  <button class="fab-btn" id="fabTopBtn" type="button" title="Back to Top">↑ Top</button>
+</div>
+
+<!-- Practice Studio Modal -->
+<div class="modal-overlay" id="practiceStudioModal" role="dialog" aria-modal="true" aria-labelledby="studioTitle">
+  <div class="modal-container">
+    <button class="modal-close" id="closeStudioBtn" type="button" aria-label="Close Practice Studio">&times;</button>
+    <h2 class="modal-title" id="studioTitle">⚡ Practice Studio &amp; Drill Room</h2>
+    <p class="modal-sub">Master your sleights step-by-step with interactive drill cards, rhythm metronome, and practice timer.</p>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px;">
+      <label style="font-weight:600; font-size:14px; color:var(--gold);">Practice Deck:</label>
+      <select id="studioDeckSelect" style="background:var(--bg); border:1px solid var(--line); color:var(--cream); padding:6px 12px; border-radius:999px; outline:none; font-family:inherit;">
+        <option value="all">All 53 Syllabus Tricks</option>
+        <option value="unlearned">Unlearned Tricks Only</option>
+        <option value="bookmarked">Bookmarked Tricks Only</option>
+        <option value="foundations">Foundations Only</option>
+        <option value="moves">Moves Only</option>
+        <option value="routines">Routines Only</option>
+      </select>
+      <button class="hbtn ghost" id="studioShuffleBtn" type="button" style="padding:4px 14px; font-size:13px;">🔀 Random Drill</button>
+      <span id="studioProgressText" style="margin-left:auto; font-size:13px; color:var(--muted);">Trick 1 of 53</span>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio-card">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <h3 id="studioTrickTitle" style="font-family:'Fraunces',serif; margin:0; font-size:24px; color:var(--cream);">Key Card Principle</h3>
+          <span id="studioTrickBadge" class="badge easy">Easy</span>
+        </div>
+        <p id="studioTrickLede" style="color:var(--muted); font-size:15px; margin:8px 0 16px;">The most useful secret in card magic.</p>
+
+        <div class="drill-step-box">
+          <div class="drill-step-num" id="studioStepNum">Step 1 of 4</div>
+          <div id="studioStepText">While chatting, glimpse the bottom card and memorize it.</div>
+        </div>
+
+        <div class="drill-nav">
+          <button class="cbtn" id="studioPrevStepBtn" type="button" aria-label="Previous step">&lsaquo;</button>
+          <button class="hbtn" id="studioNextStepBtn" type="button" style="padding:6px 18px; font-size:14px;">Next Step &rsaquo;</button>
+          <label style="font-size:13px; color:var(--muted); display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" id="studioAutoCheck"> Auto-advance
+          </label>
+        </div>
+
+        <div style="margin-top:20px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <label class="learned" style="margin:0;"><input type="checkbox" id="studioLearnedCheckbox"><span id="studioLearnedLabel">Mark Learned</span></label>
+          <button class="bm-btn" id="studioBmBtn" type="button" title="Bookmark trick">★</button>
+          <button class="hbtn ghost" id="studioJumpToArticleBtn" type="button" style="padding:4px 12px; font-size:12px; margin-left:auto;">Jump to Guide ↓</button>
+        </div>
+      </div>
+
+      <div>
+        <!-- Stopwatch & Timer Widget -->
+        <div class="tool-widget">
+          <h4>⏱ Practice Timer</h4>
+          <div class="timer-display" id="studioTimerDisplay">00:00</div>
+          <div class="timer-btns">
+            <button class="sbtn" id="timerStartBtn" type="button">Start</button>
+            <button class="sbtn" id="timerPauseBtn" type="button">Pause</button>
+            <button class="sbtn" id="timerResetBtn" type="button">Reset</button>
+          </div>
+        </div>
+
+        <!-- Rhythm Metronome Widget -->
+        <div class="tool-widget">
+          <h4>🥁 Rhythm Metronome <span id="metroBpmText" style="font-size:13px; color:var(--cream);">90 BPM</span></h4>
+          <div class="metro-box">
+            <div class="metro-pulse" id="metroPulse"></div>
+            <input type="range" id="metroBpmSlider" min="40" max="200" value="90" style="accent-color:var(--gold);">
+            <div style="display:flex; gap:8px;">
+              <button class="sbtn" id="metroToggleBtn" type="button" style="flex:1;">Start Click</button>
+              <button class="sbtn" id="metroSoundToggleBtn" type="button">🔊 Sound On</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Webcam Angle Mirror Modal -->
+<div class="modal-overlay" id="webcamMirrorModal" role="dialog" aria-modal="true" aria-labelledby="mirrorTitle">
+  <div class="modal-container" style="width:min(680px, 95vw);">
+    <button class="modal-close" id="closeMirrorBtn" type="button" aria-label="Close Mirror">&times;</button>
+    <h2 class="modal-title" id="mirrorTitle">📹 Live Webcam Angle Mirror</h2>
+    <p class="modal-sub">Practice facing yourself to eliminate bad angles, flashes, and tells in real time.</p>
+
+    <div class="webcam-box" id="webcamBox">
+      <video id="webcamVideo" autoplay playsinline muted></video>
+      <div class="webcam-overlay" id="webcamOverlay">
+        <div class="webcam-crosshair"></div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px;">
+      <button class="hbtn" id="startCamBtn" type="button" style="font-size:14px; padding:8px 18px;">Start Camera</button>
+      <button class="hbtn ghost" id="toggleMirrorFlipBtn" type="button" style="font-size:14px; padding:8px 18px;">Flip Mirror</button>
+      <button class="hbtn ghost" id="toggleGridBtn" type="button" style="font-size:14px; padding:8px 18px;">Toggle Grid Overlay</button>
+    </div>
+  </div>
+</div>
+
+<!-- Act Builder Modal -->
+<div class="modal-overlay" id="actBuilderModal" role="dialog" aria-modal="true" aria-labelledby="actTitle">
+  <div class="modal-container" style="width:min(720px, 95vw);">
+    <button class="modal-close" id="closeActBtn" type="button" aria-label="Close Act Builder">&times;</button>
+    <h2 class="modal-title" id="actTitle">🎭 Custom Act &amp; Setlist Builder</h2>
+    <p class="modal-sub">Assemble custom 3-5 trick performance sets for casual tables, formal parlor, or street magic.</p>
+
+    <div style="display:flex; gap:10px; margin-bottom:16px;">
+      <select id="actSelect" style="flex:1; background:var(--bg); border:1px solid var(--line); color:var(--cream); padding:8px 14px; border-radius:10px; outline:none; font-family:inherit;">
+        <option value="default">Jordan's 5-Minute Casual Set</option>
+      </select>
+      <button class="hbtn ghost" id="newActBtn" type="button" style="padding:6px 14px; font-size:13px;">+ New Setlist</button>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-bottom:16px;">
+      <select id="addTrickToActSelect" style="flex:1; background:var(--bg); border:1px solid var(--line); color:var(--cream); padding:8px 14px; border-radius:10px; outline:none; font-family:inherit;">
+        <option value="">Select a trick to add to routine...</option>
+      </select>
+      <button class="hbtn" id="addTrickToActBtn" type="button" style="padding:6px 16px; font-size:13px;">Add Trick</button>
+    </div>
+
+    <div class="act-list" id="actListContainer">
+      <!-- Populated by JS -->
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; border-top:1px solid var(--line); padding-top:14px;">
+      <span id="actStatsText" style="font-size:13px; color:var(--muted);">3 Tricks · Est. 5 minutes</span>
+      <button class="hbtn" id="runActInStudioBtn" type="button" style="font-size:14px; padding:8px 20px;">⚡ Run Set in Studio</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
