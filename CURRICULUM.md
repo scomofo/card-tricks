@@ -1,6 +1,6 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the fifty-three tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the sixty-four tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
 ---
 
@@ -94,6 +94,24 @@ A progressive syllabus for the fifty-three tricks in the [Sleight School guide](
   3. The index finger pushes the top half forward; it swings down onto the bottom half. Halves swapped, one-handed.
 * **Pro Tip:** Flourishes are the salt of card magic — a pinch improves everything.
 
+### 10. The Break (Pinky Break)
+* **Difficulty:** Beginner
+* **Objective:** Maintain a secret separation between sections of the deck using minimal hand tension.
+* **Mechanics:**
+  1. Hold the deck in dealing grip. As a card drops onto the deck or is handled, allow the pad of the left pinky finger to catch a tiny corner or edge of the separating card.
+  2. Keep the flesh of the pinky soft; a deep, rigid intrusion creates a visible gap on the sides of the deck.
+  3. Use the break as a temporary holding station for controls, double lifts, or passes.
+* **Pro Tip:** Practice squaring the deck completely from the front and sides while your left pinky maintains the separation invisibly from the rear.
+
+### 11. The Spread Cull
+* **Difficulty:** Intermediate
+* **Objective:** Secretly extract or control target cards to the top or bottom of the deck while spreading face-up.
+* **Mechanics:**
+  1. Spread through the cards face-up under the guise of searching for a card or showing the mix.
+  2. When reaching the target card, ride it beneath the spread using the right fingers under cover of the top cards.
+  3. Draw the card flush underneath to the top or bottom position as you square the spread.
+* **Pro Tip:** Keep the rhythm of the spread completely uniform; pausing or jerking when reaching the card exposes the cull.
+
 ---
 
 ## Part 2: The Moves
@@ -156,6 +174,45 @@ A progressive syllabus for the fifty-three tricks in the [Sleight School guide](
   3. The hands pivot: the bottom half swings up and over as the top half drops beneath.
   4. Square up immediately, the way you would after any ordinary cut.
 * **Pro Tip:** Graduate school — months, not days. Until it's invisible, the overhand control does the same job honestly.
+
+### 7. The Jordan Count
+* **Difficulty:** Intermediate
+* **Objective:** Count four cards while hiding the identity or orientation of a specific card (typically the third card).
+* **Mechanics:**
+  1. Hold four cards face-down in the left hand.
+  2. Count the first card individually into the right hand.
+  3. As you take the second card on top of the first, turn both cards slightly or execute a clean transfer so that when you take the third card, you recount or redisplay elements, concealing the key card face.
+  4. Finish by taking the fourth card cleanly on top.
+* **Pro Tip:** Like the Elmsley count, focus entirely on the rhythm of your voice and eyes rather than looking down at your fingers during the transfer steps.
+
+### 8. The Side Steal
+* **Difficulty:** Advanced
+* **Objective:** Secretly draw a chosen card sideways out of the deck into a palm or directly to the top.
+* **Mechanics:**
+  1. Maintain a pinky break above the chosen card in the center of the deck.
+  2. Cover the deck with the right hand as if squaring it.
+  3. Use the right fingertips to push the card out sideways into the right palm, shifting it to the top as the hands separate.
+* **Pro Tip:** Perform the steal during a natural square-up or gesture, moving the body rather than isolating the hands.
+
+### 9. Marlo Tilt
+* **Difficulty:** Intermediate
+* **Objective:** Create the convincing optical illusion of inserting a selection into the middle when it goes second from the top.
+* **Mechanics:**
+  1. Obtain a subtle pinky break under the top card at the rear of the deck.
+  2. Tilt the front edge of the deck down toward the spectator while slightly lifting the rear edge of the top card.
+  3. Slide the selected card into the rear gap — from the front angle, it appears to slide directly into the deck's equator.
+* **Pro Tip:** Keep the tilt angle low and subtle; over-tilting reveals the gap behind the top card.
+* **On the site:** Card t51, "The Tilt."
+
+### 10. Erdnase Color Change
+* **Difficulty:** Intermediate / Advanced
+* **Objective:** Visibly transform the face of a card by wiping the palm flat across the deck.
+* **Mechanics:**
+  1. Hold the deck face-up in a dealing grip.
+  2. Sweep the right palm flat across the face card, using the heel of the hand to secretly drag the second card from top forward.
+  3. Draw the second card over the face card as the palm clears, wiping down to reveal the transformation.
+* **Pro Tip:** Let the motion be a smooth, continuous wave rather than an abrupt snatching movement.
+* **On the site:** Card t50, "Erdnase Color Change."
 
 ---
 
@@ -260,6 +317,56 @@ A progressive syllabus for the fifty-three tricks in the [Sleight School guide](
   2. Palm it under cover of squaring the deck.
   3. Hand them the deck; produce the signed card from your (or their) pocket.
 * **Pro Tip:** The trick isn't the palm — it's the ordinary moments around it.
+
+### 11. Cannibal Cards
+* **Difficulty:** Intermediate
+* **Objective:** Three spectator-selected "missionary" cards are fed to four kings, only to vanish and reappear inside the kings' stomachs.
+* **Routine Flow:**
+  1. Display the four Kings (the "cannibals") and have three spectators choose cards (the "missionaries").
+  2. Place one missionary card under each of the first three kings, and tuck the fourth king on top or bottom.
+  3. Perform a magical gesture or brief narrative beat illustrating how the kings eat the missionaries.
+  4. Spread the four kings to reveal that three cards are now trapped between them, turning out to be the three chosen signatures.
+* **Pro Tip:** The narrative framing carries this routine; pace the story so the audience visualizes each "meal" before the final spread.
+
+### 12. The Gathering of the Clan (Aces Routine)
+* **Difficulty:** Advanced
+* **Objective:** Four aces placed into different parts of the deck magically travel to assemble together in one packet.
+* **Routine Flow:**
+  1. Show the four aces clearly, then deal them face-down into four separate packets on the table, burying each under three indifferent cards.
+  2. Perform a magical gesture over each packet in turn.
+  3. Turn over the first three packets to show the aces have vanished.
+  4. Turn over the final packet to reveal all four aces gathered together.
+* **Pro Tip:** Use subtle packet switches or a classic master move (like the Stanyon or McDonald handling) to establish the premise cleanly before the magic happens.
+
+### 13. Paul Harris' Reset
+* **Difficulty:** Intermediate / Advanced
+* **Objective:** Transpose four Aces and four Kings one by one, then instantly reset both packets.
+* **Routine Flow:**
+  1. Display four Aces in hand and four Kings on the table.
+  2. Using Elmsley counts and pinky breaks, transform each Ace into a King sequentially, placing transformed cards onto the tabled pile.
+  3. Perform a magical gesture over both packets.
+  4. Instantly spread both sets to reveal the Aces have returned to your hand and the Kings to the table.
+* **Pro Tip:** The instant "reset" finish dismantling card count tracking is what makes the effect so fooling.
+
+### 14. Stewart James' "Further Than That"
+* **Difficulty:** Beginner (Self-Working Stack)
+* **Objective:** A multi-phase self-working masterwork featuring a forced selection, spelled revelation, Ace assembly, and Royal Flush kicker.
+* **Routine Flow:**
+  1. Pre-arrange a 14-card top stack (Spades 2–7, 3 non-Spade Aces, Ace of Spades at 10th, Spades 10–K at 11–14).
+  2. Spectator names a number from 10 to 20 (e.g. 13); deal 13 cards, add the digits (1 + 3 = 4), and count down to force the Ace of Spades.
+  3. Spell "A-C-E O-F S-P-A-D-E-S" to produce the selection.
+  4. Turn over the tops of the dealt packets to reveal the other three Aces.
+  5. Reveal the remaining stack cards to complete a Royal Flush in Spades.
+* **Pro Tip:** Deliver the phrase "further than that" between phases to anchor the escalating visual rewards.
+
+### 15. John Bannon's Play It Straight Triumph
+* **Difficulty:** Beginner / Intermediate (Self-Working)
+* **Objective:** A self-working Triumph where face-up and face-down shuffles unmix to reveal an entire suit arranged numerically, except for the selection.
+* **Routine Flow:**
+  1. Have a spectator select and remember a card.
+  2. Interleave face-up and face-down packets according to Bannon's procedural system.
+  3. Ribbon-spread the deck: every card has turned face-down except for 12 cards of the chosen suit in Ace-to-King order, with only their selection missing.
+* **Pro Tip:** Frame this as a demonstration of mental order over chaos rather than manual dexterity.
 
 ---
 
@@ -377,6 +484,25 @@ A progressive syllabus for the fifty-three tricks in the [Sleight School guide](
   4. Turn the top card of each pile over one by one.
 * **Pro Tip:** Have them make the last cut small — a tall fourth pile with an ace on top reads better than four even ones.
 
+### 61. Kruskal Count
+* **Difficulty:** Beginner
+* **Objective:** A spectator selects a secret word and follows a numerical path through a face-down layout to land on a predicted target card.
+* **Mechanics:**
+  1. Deal a block of cards face-up into a row, letting the spectator mentally choose a starting point or word length rule (e.g., face cards = 5, numbers = face value, aces = 1).
+  2. Follow the numerical value of the first card to jump forward to the next card, continuing the chain until reaching a final card.
+  3. Open a pre-written prediction to show you knew exactly where their numerical path would terminate.
+* **Pro Tip:** The mathematical convergence built into Kruskal's principle makes this foolproof as long as the counting rules are clear.
+
+### 62. 8-Card Brainwave (Posterior Total)
+* **Difficulty:** Beginner / Intermediate
+* **Objective:** A spectator thinks of a number, names a suit, and finds that their mentally selected card is the only face-up card in a small packet.
+* **Mechanics:**
+  1. Start with a pocket packet of 8 specially oriented cards.
+  2. Ask the spectator to choose a number between 1 and 8 and a suit.
+  3. Count down to their chosen number using a specialized counting sequence (such as the Gilbreath principle).
+  4. Spread the packet to reveal that their named card is facing the opposite direction of every other card.
+* **Pro Tip:** Keep your patter focused entirely on their freedom of choice to maximize the psychological impact of the self-working math.
+
 ---
 
 ## Part 5: Flourishes
@@ -465,3 +591,22 @@ A progressive syllabus for the fifty-three tricks in the [Sleight School guide](
   3. The spectator's packet is spread: all four aces.
   4. The method uses double-faced cards — each displayed "ace" is flipped or exchanged during the covering so the packet is really all indifferent cards.
 * **Pro Tip:** This is the only gaffed routine on the page. Treat the double-facers casually — the more ordinary your handling, the less anyone suspects the cards themselves.
+
+### 63. The Cascade Shuffle (Riffle Shuffle & Cascade)
+* **Difficulty:** Intermediate
+* **Objective:** Visibly interweave two halves of a deck together smoothly from the bottom corners up.
+* **Mechanics:**
+  1. Square the deck into two equal halves. Angle the inner corners of the packets together.
+  2. Lift the inner corners slightly with your thumbs while pushing the packets into one another; the cards should spring and weave alternative corners automatically.
+  3. Drop the top thumbs and let the interlaced bottom corners cascade into each other by releasing downward pressure.
+  4. Square the interwoven block by pushing the sides together or bridging the deck to flatten it.
+* **Pro Tip:** Keep your touch light; forcing the cards together too aggressively bends corners and ruins the smooth waterfall effect.
+
+### 64. One-Handed Fan
+* **Difficulty:** Advanced
+* **Objective:** Open the deck into a complete circular or semi-circular fan using only a single hand.
+* **Mechanics:**
+  1. Hold the deck from above with the thumb at the inner edge and fingers resting across the top face.
+  2. Plant the thumb firmly near the bottom-left corner and pivot the top cards outward in a sweeping circular motion using the index and middle fingers as guides.
+  3. Distribute pressure evenly across the outer edge until a full 180-degree fan locks into place.
+* **Pro Tip:** This flourish relies entirely on thumb traction and finger flexibility; practice with a broken-in, clean deck rather than a brand-new, slippery pack.
