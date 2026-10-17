@@ -1,6 +1,6 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the seventy-four tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the seventy-five tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
 ---
 
@@ -248,6 +248,22 @@ A progressive syllabus for the seventy-four tricks in the [Sleight School guide]
   4. Resquare casually — the count remains secret.
 * **Pro Tip:** It should look like a soft display, not a move. Even light on the faces sells the illusion.
 * **On the site:** Card t69, "Ascanio Spread."
+
+---
+
+## Part 3: Routines
+
+### 1. The Rising Card
+* **Difficulty:** Intermediate
+* **Objective:** Make a spectator's chosen card rise slowly out of the deck entirely on its own. The rising card is one of the oldest plots in card magic — magicians have performed versions of it since the 1800s — and this is the classic no-gimmick handling: no thread, no magnets, nothing but one hidden finger doing the lifting.
+* **Mechanics:**
+  1. Have a card selected, shown around, and returned to the deck. Control it to the top — the overhand shuffle control from Part 1 does the job, or hold a pinky break beneath it as it is returned and cut straight to the break.
+  2. Hold the deck upright in one hand, faces toward the audience, gripped lightly at the sides near the bottom corners. The selection is now the rearmost card, on the side facing you.
+  3. Rest the pad of that hand's pinky flat against the back of the selection, hidden behind the deck. From the front, the deck itself is the cover — nobody can see the finger at work.
+  4. Keep the deck hand absolutely still and straighten the pinky slowly. Its pad drags the selection upward a few millimetres at a time. The card creeps — it never jumps. A smooth, even rise over several seconds is the whole illusion.
+  5. Let it climb until about a third of the card clears the top of the deck, then stop and let the moment sit. Reach over with your free hand, draw the risen card out, and turn it face toward the audience as you take it.
+* **Pro Tip:** The card moves; the hand doesn't. Any wobble in the deck hand gives the finger away, so brace that wrist against your body while you learn it — and keep every spectator in front of you. From behind, the pinky is doing plainly visible work.
+* **On the site:** Card t75, "The Rising Card."
 
 ---
 
