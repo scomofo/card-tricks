@@ -1,32 +1,32 @@
 # Sleight School
 
-53 card tricks & sleights, ordered so each one teaches you the next — from the Key Card Principle up to Triumph and advanced Cardistry.
+**175 card tricks & sleights** — foundations through advanced gambling and mentalism, with interactive animations and setup-method blocks on self-workers.
 
-**View the guide:** open `index.html` in a browser (or enable GitHub Pages on this repo).
+**Live guide:** [scomofo.github.io/card-tricks](https://scomofo.github.io/card-tricks/) (enable GitHub Pages on `main` / root if needed).
 
-## Interactive Training & Practice Suite
+## What’s in the site
 
-Sleight School includes an integrated suite of interactive practice tools:
+- Declarative animation engine with primitives: fan, spread, packet, hand, scale
+- Method blocks on Systems/self-workers and beginner cards
+- Practice tools: filters, notes, bookmarks, timer, metronome, webcam mirror, setlist builder
+- Curriculum markdown for progressive study
 
-- **⚡ Practice Studio & Drill Room:** Step-by-step flashcard drill viewer with auto-advance and direct guide links.
-- **⏱ Practice Timer:** Built-in stopwatch timer to track practice duration and drills.
-- **🥁 Rhythm Metronome:** Adjustable BPM (40–200 BPM) with synthesized click and visual beat pulse to master move rhythm (e.g., Elmsley Count, Pass).
-- **📹 Live Webcam Angle Mirror:** Real-time camera feed with mirror flip toggle and angle grid overlay to eliminate flashes and tells.
-- **🎭 Custom Act & Setlist Builder:** Create, arrange, and time custom 3–5 trick performance routines (e.g., Jordan's 5-Minute Casual Set).
-- **🔍 Filter & Search Bar:** Instantly search tricks by keyword, difficulty, category, status (Learned, Unlearned, Bookmarked, Has Notes), or sort order.
-- **🔁 Interactive Animation Player:** Speed adjustment (0.5x, 1x, 1.5x, 2x) and step looping on all 53 animations.
-- **📝 Practice Notes & Bookmarks:** Save personal handling observations and star favorite sleights (auto-saved to local browser storage).
+## Syllabus overview
 
-## Syllabus Overview
+**Foundations** — key cards, shuffles, forces, breaks, cuts  
+**Moves** — lifts, counts, palms, passes, deals, changes  
+**Routines** — ambitious, assemblies, classics, mental  
+**Systems & Self-Workers** — stacks, math, hands-off plots  
+**Flourishes** — fans, springs, one-hand cuts  
 
-**Foundations** — Key Card Principle · Overhand Shuffle Control · Hindu Shuffle & Force · Double Lift · False Cut · Classic Force · The Palm · The Peek · Charlier Cut
+## Deploy / update `index.html`
 
-**The Moves** — The Glide · Riffle Force · Elmsley Count · Snap Change · Top Change · The Pass · Cross Cut Force · Slip Force · Double Undercut · Mexican Turnover · Erdnase Color Change · The Tilt
+The full single-file site is ~650 KB. If automated push fails on size limits:
 
-**Routines** — 21-Card Trick · Two-Card Monte · Ambitious Card · Triumph · Oil and Water · Twisting the Aces · Chicago Opener · Biddle Trick · Do As I Do · Card to Pocket · Gemini Twins · Impromptu Invisible Deck · Three-Card Monte · Card to Ceiling · McDonald's Aces
+1. Download the latest `index_upgraded.html` artifact from the Grok session  
+2. Rename to `index.html` and upload via GitHub web UI (Add file → Upload) to replace `index.html` on `main`  
+3. Upload `CURRICULUM.md` the same way if you want the full syllabus text  
 
-**Systems & Self-Workers** — Si Stebbins Stack · Out of This World · Fitch Cheney's Five-Card Trick · Ten-Card Poker Deal · The Clock Trick · Miraskill · Spelling Bee · Lazy Magician · Poker Player's Picnic · Princess Card Trick · Magician's Choice
+## Local
 
-**Flourishes** — Thumb Fan · The Dribble · The Spring · Sybil Cut · Ribbon Spread · Pressure Fan
-
-Each trick features step-by-step instructions, interactive step animations, video tutorials, and book references.
+Open `index.html` in a browser — no build step.
