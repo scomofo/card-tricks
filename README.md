@@ -1,31 +1,18 @@
 # Sleight School
 
-**175 card tricks & sleights** — foundations through advanced gambling and mentalism, with interactive animations and setup-method blocks on self-workers.
+**191 card tricks & sleights** — foundations through advanced gambling and mentalism, with interactive animations and setup-method blocks.
 
-**Live guide:** [scomofo.github.io/card-tricks](https://scomofo.github.io/card-tricks/) (enable GitHub Pages on `main` / root if needed).
+**Live:** [scomofo.github.io/card-tricks](https://scomofo.github.io/card-tricks/) (Pages on `main` / root).
 
-## What’s in the site
+## Deploy the full site
 
-- Declarative animation engine with primitives: fan, spread, packet, hand, scale
-- Method blocks on Systems/self-workers and beginner cards
-- Practice tools: filters, notes, bookmarks, timer, metronome, webcam mirror, setlist builder
-- Curriculum markdown for progressive study
+The complete `index.html` is ~670 KB and must be uploaded manually:
 
-## Syllabus overview
+1. Download `index_upgraded.html` from the latest Grok artifacts  
+2. Rename to `index.html`  
+3. GitHub → **Add file** → **Upload files** → commit to `main`  
 
-**Foundations** — key cards, shuffles, forces, breaks, cuts  
-**Moves** — lifts, counts, palms, passes, deals, changes  
-**Routines** — ambitious, assemblies, classics, mental  
-**Systems & Self-Workers** — stacks, math, hands-off plots  
-**Flourishes** — fans, springs, one-hand cuts  
-
-## Deploy / update `index.html`
-
-The full single-file site is ~650 KB. If automated push fails on size limits:
-
-1. Download the latest `index_upgraded.html` artifact from the Grok session  
-2. Rename to `index.html` and upload via GitHub web UI (Add file → Upload) to replace `index.html` on `main`  
-3. Upload `CURRICULUM.md` the same way if you want the full syllabus text  
+Also upload the full `CURRICULUM.md` from artifacts if you want the complete syllabus.
 
 ## Local
 
