@@ -1,37 +1,32 @@
-# Card Tricks Curriculum
+# Sleight School Curriculum
 
-A progressive syllabus for the one hundred ninety-seven tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+**240 lessons** — foundations, forces, sleights, self-workers, cardistry, and one-hand spring mechanics.
 
-> Full detailed syllabus lives in the repo `CURRICULUM.md` artifact and site method blocks. This commit syncs the expanded Sleight School: 197 tricks, method blocks on all Systems/self-workers and beginners, deduped entries, enriched animations.
+## How to use this syllabus
 
-See the live site for interactive animations and setup-method blocks on each card.
+1. **Brand new:** follow *Start here* in the app (10-card path).
+2. **Practice:** use *Today's 5* and challenge decks; export progress anytime.
+3. **Cardistry / OHS:** complete Cardistry Study before Advanced Flourishes; OHS ladder before performance spring.
+4. **Angles:** each tagged force/control/cardistry/OHS card includes angle notes in the app.
 
----
+## Challenge decks
 
-## Site reference
+- Week 1 foundations (beginner-path tags)
+- Self-workers only
+- Cardistry foundations
+- One-hand spring lab
+- Forces lab
+- Shuffle lab
 
-- **Repo:** https://github.com/scomofo/card-tricks
-- **Live:** https://scomofo.github.io/card-tricks/
-- **Tricks:** t1–t201 (with gaps for removed duplicates t160/t165/t172/t180)
-- **Count:** 197 interactive cards
+## Practice rules
 
-## Recent updates
+- One focus per block
+- Slow until positions are correct; then tempo
+- Stop when form breaks
+- Film weekly (front for most; side for OHS)
 
-- Phase 1–3 engine + action primitives (fan/spread/packet/hand/scale)
-- Full animation rewrite pass on high-value cards
-- Method blocks on Systems & Self-Workers and beginner cards
-- Gambling, mentalism, and advanced sleight expansions
-- Dedup: Do As I Do, Chicago Opener, Princess Card Trick
-- New: Matching the Cards, Card Through Table, Ambitious Classic Phase, Numeric Force, Packet Vanish, Spectator as Magician
-- The Rising Card added as t201 (classic pinky rise, with animation)
-- Dedupe: t180 Card Under Box removed — duplicate of t187, the fuller version
+## Deploy
 
-## Parts overview
+Ship `index.html`, `styles.css`, `anims.js`, `app.js`, `manifest.json`, and `sw.js` together.
 
-1. **Foundations** — key cards, shuffles, forces, breaks, cuts
-2. **Moves** — lifts, counts, palms, passes, deals, changes
-3. **Routines** — ambitious, assemblies, mental, classics
-4. **Systems & Self-Workers** — stacks, math, hands-off plots
-5. **Flourishes** — fans, springs, one-hand cuts
-
-Upload the full `index.html` from the latest `index_upgraded.html` artifact if the GitHub API rejects the large single-file push; Pages serves `index.html` from `main`.
+See the app syllabus list for the full 240-item catalog (t1–t240).
