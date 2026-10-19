@@ -1,0 +1,10 @@
+{
+  "name": "Sleight School",
+  "short_name": "Sleight School",
+  "description": "Card tricks, sleights, cardistry, and practice — zero to hero.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d0b08",
+  "theme_color": "#d8a93f",
+  "lang": "en"
+}
