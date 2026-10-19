@@ -3,43 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sleight School — Loading…</title>
+<title>Sleight School — Upload the full site</title>
 <style>
-body{margin:0;background:#061018;color:#e7f0f3;font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center}
-.box{text-align:center;opacity:.85}
-.bar{width:200px;height:4px;background:#1a2a35;border-radius:2px;margin:1rem auto;overflow:hidden}
-.fill{height:100%;width:0;background:#8fd0c8;transition:width .2s}
+body{font-family:system-ui,sans-serif;max-width:34rem;margin:3rem auto;padding:0 1.25rem;line-height:1.55;background:#0d0b08;color:#f0e7d3}
+a{color:#d8a93f}
+code{background:#1a140d;padding:.15em .4em;border-radius:4px}
+.box{border:1px solid #2c2314;border-radius:12px;padding:1.25rem 1.4rem;margin:1.5rem 0;background:#15110c}
+h1{font-size:1.45rem;color:#d8a93f}
 </style>
 </head>
 <body>
+<h1>Sleight School</h1>
+<p>The full site is ~740&nbsp;KB. Automated push from Grok hits GitHub API limits, so this file has to be uploaded once in the browser.</p>
 <div class="box">
-  <p>Loading Sleight School…</p>
-  <div class="bar"><div class="fill" id="fill"></div></div>
-  <p id="status" style="font-size:13px;opacity:.6">0%</p>
+<ol>
+<li>In the Grok chat, download <code>index_upgraded.html</code></li>
+<li>Rename it to <code>index.html</code></li>
+<li>Open this repo on GitHub → <strong>Add file</strong> → <strong>Upload files</strong></li>
+<li>Drop the file so it <strong>replaces</strong> this <code>index.html</code></li>
+<li>Commit to <code>main</code>, then hard-refresh the site</li>
+</ol>
 </div>
-<script>
-(async function () {
-  const N = 22;
-  const parts = [];
-  const fill = document.getElementById('fill');
-  const status = document.getElementById('status');
-  for (let i = 0; i < N; i++) {
-    const name = 'chunks/c' + String(i).padStart(3, '0') + '.htmlpart';
-    const r = await fetch(name + '?t=' + Date.now());
-    if (!r.ok) {
-      status.textContent = 'Failed to load ' + name;
-      return;
-    }
-    parts.push(await r.text());
-    const pct = Math.round(((i + 1) / N) * 100);
-    fill.style.width = pct + '%';
-    status.textContent = pct + '%';
-  }
-  const html = parts.join('');
-  document.open();
-  document.write(html);
-  document.close();
-})();
-</script>
+<p>Includes 197 tricks, basic shuffles with clear steps, progress bar of 197, green at 100%.</p>
 </body>
 </html>
