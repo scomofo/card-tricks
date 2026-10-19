@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sleight School — 198 Card Tricks, Zero to Hero</title>
+<title>Sleight School — 197 Card Tricks, Zero to Hero</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -601,13 +601,13 @@
   <div class="float-card c2">K♥</div>
   <div class="float-card c3">Q♣</div>
   <div class="float-card c4">J♦</div>
-  <p class="kicker">A 198-trick syllabus</p>
+  <p class="kicker">A 197-trick syllabus</p>
   <h1>Sleight <em>School</em></h1>
   <p class="sub">Learn them in order — each trick builds on the ones before it. One deck of cards, fifteen minutes a day.</p>
   
   <div class="herobtns">
 
-    <div class="myprogress"><div class="pbar"><div class="pfill" id="pfill"></div></div><span class="ptext" id="ptext">0 of 198 learned</span></div>
+    <div class="myprogress"><div class="pbar"><div class="pfill" id="pfill"></div></div><span class="ptext" id="ptext">0 of 197 learned</span></div>
 
     <div class="hbtnrow">
 
@@ -667,7 +667,7 @@
     </div>
   </div>
   <div class="filter-stats">
-    <span id="filterCount">Showing 198 of 198 tricks</span>
+    <span id="filterCount">Showing 197 of 197 tricks</span>
     <button id="resetFiltersBtn" class="reset-link" type="button">Reset Filters</button>
   </div>
 </div>
@@ -851,8 +851,7 @@
     <li><a href="#t177">Packet Vanish</a></li>
     <li><a href="#t178">Spectator as Magician</a></li>
     <li><a href="#t179">Acrobatic Card</a></li>
-    <li><a href="#t180">Card Under Box</a></li>
-    <li><a href="#t181">Four Ace Production</a></li>
+        <li><a href="#t181">Four Ace Production</a></li>
     <li><a href="#t182">Triumphant Cut</a></li>
     <li><a href="#t183">Prediction Card</a></li>
     <li><a href="#t184">Back-to-Back</a></li>
@@ -1038,7 +1037,7 @@
 
   <h2>Start here</h2>
 
-  <p class="pathsub">One hundred ninety-eight tricks is a lot. This is the order that builds — each one hands you something the next one needs. After No. 14, the rest of the page is yours.</p>
+  <p class="pathsub">One hundred ninety-seven tricks is a lot. This is the order that builds — each one hands you something the next one needs. After No. 14, the rest of the page is yours.</p>
 
   <ol class="path">
 
@@ -2967,7 +2966,7 @@
 
 <div class="cheatsheet">
   <h2>Sleight School — Cheat Sheet</h2>
-  <p class="cs-sub">One hundred ninety-eight tricks, one line each. <span class="cs-url">scomofo.github.io/card-tricks</span></p>
+  <p class="cs-sub">One hundred ninety-seven tricks, one line each. <span class="cs-url">scomofo.github.io/card-tricks</span></p>
   <ol>
     <li><b>1. Key Card Principle</b> — The most useful secret in card magic: knowing a card nobody told you.</li>
     <li><b>2. Overhand Shuffle Control</b> — Keep a card exactly where you want it while the shuffle looks honest.</li>
@@ -3145,7 +3144,6 @@
     <li><b>177. Packet Vanish</b> — A small packet vanishes from your hands, card by card or all at once.</li>
     <li><b>178. Spectator as Magician</b> — They hold the deck themselves and find their own card, hands-off.</li>
     <li><b>179. Acrobatic Card</b> — A card jumps and flips out of the deck entirely on its own.</li>
-    <li><b>180. Card Under Box</b> — Their card is under the card case — the one that never left the table.</li>
     <li><b>181. Four Ace Production</b> — All four aces appear from a shuffled deck in one flashy sequence.</li>
     <li><b>182. Triumphant Cut</b> — A flourish of cuts that secretly rights the deck — with their card reversed inside.</li>
     <li><b>183. Prediction Card</b> — A card set aside before anything happens matches the one they freely pick.</li>
@@ -3172,7 +3170,7 @@
 <footer class="reveal">
   <div class="books">
     <h2>The textbook</h2>
-    <p>If these 198 give you the bug, there's one book: <strong><em>The Royal Road to Card Magic</em></strong> by Hugard &amp; Braue. Written as lessons, drawn all the way through, and it covers everything here in more depth. <a href="https://archive.org/details/theroyalroadtocardmagic">Free PDF</a>. After that, Roberto Giobbi's <em>Card College</em>.</p>
+    <p>If these 197 give you the bug, there's one book: <strong><em>The Royal Road to Card Magic</em></strong> by Hugard &amp; Braue. Written as lessons, drawn all the way through, and it covers everything here in more depth. <a href="https://archive.org/details/theroyalroadtocardmagic">Free PDF</a>. After that, Roberto Giobbi's <em>Card College</em>.</p>
   </div>
   <p style="text-align:center">Video links belong to their creators, written guides to theirs.<br>Now go fool someone you like.</p>
   <div class="signoff">♠ ♥ ♣ ♦</div>
@@ -8705,34 +8703,6 @@ ANIMS.t179 = { steps: [
     ]}
 ]};
 
-ANIMS.t180 = { steps: [
-  { caption: "Card Under Box — their card vanishes and is found under the card case that never left the table.",
-    beats: ["under the case"],
-    actions: [
-      {t:'deck', id:'d', x:40, y:52, n:51},
-      {t:'card', id:'sel', rank:'A', suit:'♠', x:40, y:38, face:'up', w:12},
-      {t:'hi', id:'sel', on:true},
-      {t:'packet', id:'box', x:70, y:50, n:1, w:14},
-      {t:'label', id:'k', text:'selection · case in view', x:50, y:88}
-    ]},
-  { caption: "Control and load under the case on an offbeat. Case never looks touched.",
-    beats: ["load"],
-    actions: [
-      {t:'hi', id:'sel', on:false},
-      {t:'move', id:'sel', x:70, y:58, z:1},
-      {t:'scale', id:'sel', s:0.85},
-      {t:'hand', id:'rh', x:68, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'loaded under the case', x:50, y:88}
-    ]},
-  { caption: "Lift the case — signed card underneath.",
-    actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'scale', id:'sel', s:1.1},
-      {t:'hi', id:'sel', on:true},
-      {t:'flip', id:'sel', to:'up'},
-      {t:'label', id:'k', text:'under the box the whole time', x:50, y:88}
-    ]}
-]};
 
 ANIMS.t181 = { steps: [
   { caption: "Four Ace Production — produce the four aces from a shuffled deck in a flashy sequence.",
@@ -9553,27 +9523,6 @@ if('IntersectionObserver' in window && !REDUCED){
   <div class="aside"><b>Tip.</b> Tension and release. A soft deck springs better than a stiff one.</div>
 </article>
 
-<article class="trick reveal" id="t180">
-  <div class="thead">
-    <div class="flip"><div class="flip-inner">
-      <div class="flip-face flip-front">180</div>
-      <div class="flip-face flip-back">♠</div>
-    </div></div>
-    <div>
-      <h3>Card Under Box</h3>
-      <div class="meta"><span class="badge med">Intermediate</span></div>
-      <label class="learned"><input type="checkbox" data-trick="t180"><span>Learned</span><button class="bm-btn" data-trick="t180" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button><button class="notes-toggle-btn" data-trick="t180" type="button" title="Practice notes">📝 Notes</button></label>
-    </div>
-  </div>
-  <p class="lede">Their card vanishes and is found under the card case that stayed in view.</p>
-  <div class="animplayer" data-anim="t180"></div>
-  <ol class="steps">
-    <li><strong>Case in play.</strong> On the table from the start.</li>
-    <li><strong>Load.</strong> Under the case on an offbeat.</li>
-    <li><strong>Reveal.</strong> Lift the case — card underneath.</li>
-  </ol>
-  <div class="aside"><b>Tip.</b> Never look at the case after the load. Let them discover it.</div>
-</article>
 
 <article class="trick reveal" id="t181">
   <div class="thead">
@@ -13382,7 +13331,7 @@ refresh();
     <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px;">
       <label style="font-weight:600; font-size:14px; color:var(--gold);">Practice Deck:</label>
       <select id="studioDeckSelect" style="background:var(--bg); border:1px solid var(--line); color:var(--cream); padding:6px 12px; border-radius:999px; outline:none; font-family:inherit;">
-        <option value="all">All 198 Syllabus Tricks</option>
+        <option value="all">All 197 Syllabus Tricks</option>
         <option value="unlearned">Unlearned Tricks Only</option>
         <option value="bookmarked">Bookmarked Tricks Only</option>
         <option value="foundations">Foundations Only</option>
