@@ -1,8 +1,8 @@
 # Card Tricks Curriculum
 
-A progressive syllabus for the one hundred seventy-five tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
+A progressive syllabus for the one hundred ninety-eight tricks in the [Sleight School guide](https://scomofo.github.io/card-tricks/). Foundations first, moves second, routines last — each part builds on the one before it.
 
-> Full detailed syllabus lives in the repo `CURRICULUM.md` artifact and site method blocks. This commit syncs the expanded Sleight School: 175 tricks, method blocks on all Systems/self-workers and beginners, deduped entries, enriched animations.
+> Full detailed syllabus lives in the repo `CURRICULUM.md` artifact and site method blocks. This commit syncs the expanded Sleight School: 198 tricks, method blocks on all Systems/self-workers and beginners, deduped entries, enriched animations.
 
 See the live site for interactive animations and setup-method blocks on each card.
 
@@ -12,8 +12,8 @@ See the live site for interactive animations and setup-method blocks on each car
 
 - **Repo:** https://github.com/scomofo/card-tricks
 - **Live:** https://scomofo.github.io/card-tricks/
-- **Tricks:** t1–t178 (with gaps for removed duplicates t160/t165/t172)
-- **Count:** 175 interactive cards
+- **Tricks:** t1–t201 (with gaps for removed duplicates t160/t165/t172)
+- **Count:** 198 interactive cards
 
 ## Recent updates
 
@@ -23,6 +23,7 @@ See the live site for interactive animations and setup-method blocks on each car
 - Gambling, mentalism, and advanced sleight expansions
 - Dedup: Do As I Do, Chicago Opener, Princess Card Trick
 - New: Matching the Cards, Card Through Table, Ambitious Classic Phase, Numeric Force, Packet Vanish, Spectator as Magician
+- The Rising Card added as t201 (classic pinky rise, with animation)
 
 ## Parts overview
 

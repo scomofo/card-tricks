@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sleight School — 197 Card Tricks, Zero to Hero</title>
+<title>Sleight School — 198 Card Tricks, Zero to Hero</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -601,13 +601,13 @@
   <div class="float-card c2">K♥</div>
   <div class="float-card c3">Q♣</div>
   <div class="float-card c4">J♦</div>
-  <p class="kicker">A 197-trick syllabus</p>
+  <p class="kicker">A 198-trick syllabus</p>
   <h1>Sleight <em>School</em></h1>
   <p class="sub">Learn them in order — each trick builds on the ones before it. One deck of cards, fifteen minutes a day.</p>
   
   <div class="herobtns">
 
-    <div class="myprogress"><div class="pbar"><div class="pfill" id="pfill"></div></div><span class="ptext" id="ptext">0 of 197 learned</span></div>
+    <div class="myprogress"><div class="pbar"><div class="pfill" id="pfill"></div></div><span class="ptext" id="ptext">0 of 198 learned</span></div>
 
     <div class="hbtnrow">
 
@@ -667,7 +667,7 @@
     </div>
   </div>
   <div class="filter-stats">
-    <span id="filterCount">Showing 197 of 197 tricks</span>
+    <span id="filterCount">Showing 198 of 198 tricks</span>
     <button id="resetFiltersBtn" class="reset-link" type="button">Reset Filters</button>
   </div>
 </div>
@@ -872,7 +872,7 @@
     <li><a href="#t197">Hindu Shuffle (Basic Mix)</a></li>
     <li><a href="#t198">Wash Shuffle</a></li>
     <li><a href="#t199">Riffle Shuffle with Bridge</a></li>
-    <li><a href="#t200">Running Cut</a></li></ol>
+    <li><a href="#t200">Running Cut</a></li> <li><a href="#t201">The Rising Card</a></li></ol>
 </nav>
 
 <div class="practice reveal">
@@ -9123,6 +9123,44 @@ ANIMS.t200 = { steps: [
       {t:'label', id:'k', text:'running cut complete', x:50, y:88}
     ]}
 ]};
+
+ANIMS.t201 = { steps: [
+  { caption: "A card is <b>chosen</b>, shown around, and returned to the deck.",
+    actions: [
+      {t:'deck', id:'deck', x:50, y:55, n:51},
+      {t:'card', id:'sel', rank:'Q', suit:'♥', x:50, y:30, face:'up'},
+      {t:'label', id:'l', text:'their card', x:50, y:88},
+      {t:'move', id:'sel', x:50, y:55}
+    ]},
+  { caption: "You shuffle — but the <b>control</b> keeps their card on top.",
+    actions: [
+      {t:'remove', id:'sel'},
+      {t:'unlabel', id:'l'},
+      {t:'label', id:'l', text:'secretly on top', x:50, y:88}
+    ]},
+  { caption: "The deck is held <b>upright</b>, faces out. Behind it, your <b>pinky</b> rests against the back of the top card.",
+    actions: [
+      {t:'unlabel', id:'l'},
+      {t:'label', id:'l', text:'pinky hidden behind', x:50, y:88}
+    ]},
+  { caption: "The deck hand stays <b>perfectly still</b>. The pinky straightens — slowly — and the card <b>creeps upward</b>.",
+    actions: [
+      {t:'unlabel', id:'l'},
+      {t:'card', id:'rise', rank:'Q', suit:'♥', x:50, y:44, face:'down'},
+      {t:'label', id:'l', text:'slowly…', x:50, y:88}
+    ]},
+  { caption: "Higher — a third of the card clears the deck. Nobody is touching it. (Somebody is.)",
+    actions: [
+      {t:'move', id:'rise', x:50, y:32},
+      {t:'unlabel', id:'l'},
+      {t:'hi', id:'rise', on:true}
+    ]},
+  { caption: "Your free hand draws it out and turns it over: <b>their card</b>.",
+    actions: [
+      {t:'move', id:'rise', x:50, y:22},
+      {t:'flip', id:'rise', to:'up'}
+    ]}
+]};
 ;
 ;
 ;
@@ -12455,6 +12493,38 @@ if('IntersectionObserver' in window && !REDUCED){
   </div>
 </article>
 
+<article class="trick reveal" id="t201">
+  <div class="thead">
+    <div class="flip"><div class="flip-inner">
+      <div class="flip-face flip-front">201</div>
+      <div class="flip-face flip-back">♠</div>
+    </div></div>
+    <div>
+      <h3>The Rising Card</h3>
+      <div class="meta"><span class="badge med">Intermediate</span></div>
+      <label class="learned"><input type="checkbox" data-trick="t201"><span>Learned</span>
+      <button class="bm-btn" data-trick="t201" type="button" aria-label="Bookmark trick" title="Bookmark trick">★</button>
+      <button class="notes-toggle-btn" data-trick="t201" type="button" title="Practice notes">📝 Notes</button></label>
+    </div>
+  </div>
+  <p class="lede">Their card is buried somewhere in the deck — then, with nobody touching anything, it slowly rises out of the pack all by itself.</p>
+  <div class="animplayer" data-anim="t201"></div>
+  <h4 style="margin:1rem 0 0.4rem;font-size:0.95rem;opacity:0.95">How to do it</h4>
+  <ol class="steps">
+    <li><strong>Control it to the top.</strong> Have a card chosen, shown, and returned, then control it to the top. The overhand shuffle control (No. 2) keeps it there through an honest-looking shuffle.</li>
+    <li><strong>Deck upright.</strong> Hold the deck upright, faces toward the audience, gripped lightly at the sides near the bottom corners. Their card is the rearmost card, against your palm side.</li>
+    <li><strong>The hidden finger.</strong> Rest the pad of your pinky flat against the back of their card, hidden behind the deck where nobody can see it.</li>
+    <li><strong>The rise.</strong> Keep the deck hand perfectly still and straighten the pinky slowly. The card creeps up a few millimetres at a time — slow and even, as if it were floating, not being pushed.</li>
+    <li><strong>The reveal.</strong> Let it rise until a third of the card clears the deck. Stop. Let the moment sit — then draw it out with your free hand and turn it face toward them.</li>
+  </ol>
+  <div class="aside" style="margin-top:1rem">
+    <b>Remember</b>
+    <ul style="margin:0.4rem 0 0;padding-left:1.2rem">    <li>The card moves; the hand doesn't. Brace the deck hand's wrist against your body while you practise.</li>
+    <li>Keep the audience in front of you — from behind, the pinky work is completely exposed.</li>
+    <li>One of the oldest plots in card magic: rising cards were famous stage pieces in the 1800s. This is the classic finger rise — no thread, no gimmick, just a patient pinky.</li></ul>
+  </div>
+</article>
+
 </section>
 
 <script>
@@ -13178,7 +13248,7 @@ refresh();
     <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px;">
       <label style="font-weight:600; font-size:14px; color:var(--gold);">Practice Deck:</label>
       <select id="studioDeckSelect" style="background:var(--bg); border:1px solid var(--line); color:var(--cream); padding:6px 12px; border-radius:999px; outline:none; font-family:inherit;">
-        <option value="all">All 197 Syllabus Tricks</option>
+        <option value="all">All 198 Syllabus Tricks</option>
         <option value="unlearned">Unlearned Tricks Only</option>
         <option value="bookmarked">Bookmarked Tricks Only</option>
         <option value="foundations">Foundations Only</option>
