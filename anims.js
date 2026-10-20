@@ -334,38 +334,38 @@ ANIMS.t6 = { steps: [
 ]};
 
 ANIMS.t7 = { steps: [
-  { caption: "Force card — the J♥ — sits on top of the deck.",
+  { caption: "The force card — the J♥ — sits on <b>top</b> of the deck in your left hand. Everything else is psychology.",
     beats: ["force on top"],
     actions: [
-      {t:'deck', id:'deck', x:50, y:55, n:52},
-      {t:'card', id:'jh', rank:'J', suit:'♥', x:50, y:46, face:'down', w:11},
-      {t:'hi', id:'jh', on:true},
-      {t:'label', id:'k', text:'J♥ on top', x:50, y:88}
+      {t:'packet', id:'deck', x:50, y:52, w:13, cards:[{bulk:51},{rank:'J', suit:'♥', face:'down'}]},
+      {t:'hand', id:'lh', x:38, y:58, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'force card on top: J♥', x:50, y:88}
     ]},
-  { caption: "Riffle down the outer edge. They say stop. The break lands near the top.",
+  { caption: "Right thumb riffles down the outer edge. They say <b>stop</b> whenever they feel like it — the break lands near the top.",
     beats: ["riffle · stop"],
     actions: [
-      {t:'hi', id:'jh', on:false},
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'deck', id:'upper', x:50, y:32, n:8},
-      {t:'deck', id:'lower', x:50, y:64, n:44},
-      {t:'move', id:'jh', x:50, y:58},
-      {t:'label', id:'k', text:'\"stop\" — break near the top', x:50, y:88}
+      {t:'remove', id:'deck'},
+      {t:'packet', id:'upper', x:50, y:32, w:13, cards:[{bulk:7},{rank:'J', suit:'♥', face:'down'}]},
+      {t:'packet', id:'lower', x:50, y:64, w:13, cards:[{bulk:44}]},
+      {t:'hand', id:'rh', x:60, y:34, side:'right', on:true},
+      {t:'label', id:'k', text:'"stop" — the break', x:50, y:88}
     ]},
-  { caption: "As the upper packet lifts, the left thumb drags the top card back so it stays on the lower packet.",
+  { caption: "As the right hand lifts its packet away, your <b>left thumb drags the top card back</b> — the J♥ stays behind on the lower packet, covered by the lifting hand.",
     beats: ["slip the force"],
     actions: [
-      {t:'move', id:'upper', x:78, y:30},
-      {t:'hi', id:'jh', on:true},
-      {t:'note', id:'b', text:'thumb drags J♥ onto lower packet', x:50, y:78}
+      {t:'repacket', id:'upper', cards:[{bulk:7}]},
+      {t:'card', id:'jh', rank:'J', suit:'♥', x:50, y:38, face:'down', w:11, z:5, secret:{rank:'J', suit:'♥'}},
+      {t:'move', id:'jh', x:50, y:57},
+      {t:'move', id:'upper', x:76, y:28},
+      {t:'label', id:'k', text:'the J♥ stays behind', x:50, y:88}
     ]},
-  { caption: "Show the top of the lower packet: \"the card you stopped at.\" It's the J♥.",
+  { caption: "Show the top card of the lower packet: <b>the card they stopped at</b>. It was never in doubt — protect their belief that the stop chose it; that belief does most of the work.",
+    climax: true,
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
       {t:'flip', id:'jh', to:'up'},
       {t:'scale', id:'jh', s:1.08},
-      {t:'label', id:'k', text:'their free choice — the force', x:50, y:88}
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'"the card you stopped at"', x:50, y:88}
     ]}
 ]};
 
@@ -663,34 +663,72 @@ ANIMS.t16 = { steps: [
 ;
 
 ANIMS.t23 = { steps: [
-  { caption: "Four cards counted into the right hand. One is the selection — it will vanish from the packet.",
-    beats: ["Biddle trick"],
+  { caption: "Their card is selected, noted, and <b>controlled to the top</b> of the deck. The A♠ stands in for it here.",
+    beats: ["control to top"],
     actions: [
-      {t:'spread', x:20, y:50, count:4, dx:16, face:'up', w:11, prefix:'b',
-        cards:[
-          {id:'b0', rank:'7', suit:'♣'}, {id:'b1', rank:'A', suit:'♠'},
-          {id:'b2', rank:'4', suit:'♥'}, {id:'b3', rank:'9', suit:'♦'}
-        ]},
-      {t:'hi', id:'b1', on:true},
-      {t:'label', id:'k', text:'selection is the A♠', x:50, y:88}
+      {t:'packet', id:'deck', x:44, y:52, w:13, cards:[{bulk:47},{rank:'9', suit:'♦', face:'down'},{rank:'4', suit:'♥', face:'down'},{rank:'7', suit:'♣', face:'down'},{rank:'K', suit:'♣', face:'down'},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'hand', id:'lh', x:32, y:58, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'selection on top: A♠', x:50, y:88}
     ]},
-  { caption: "Count them into a new packet, stealing the selection back onto the deck under cover of the count.",
+  { caption: "Deal the <b>top five cards</b> into a face-down packet.",
+    beats: ["deal five"],
+    actions: [
+      {t:'repacket', id:'deck', cards:[{bulk:47}]},
+      {t:'packet', id:'five', x:64, y:44, w:12, cards:[{rank:'A', suit:'♠', face:'down'},{rank:'K', suit:'♣', face:'down'},{rank:'7', suit:'♣', face:'down'},{rank:'4', suit:'♥', face:'down'},{rank:'9', suit:'♦', face:'down'}]},
+      {t:'hand', id:'rh', x:74, y:38, side:'right', on:true},
+      {t:'label', id:'k', text:'five cards dealt', x:50, y:88}
+    ]},
+  { caption: "Spread them: <b>\"Is your card in here?\"</b> It is — they confirm it. The question is misdirection you never have to choreograph.",
+    beats: ["the question"],
+    actions: [
+      {t:'remove', id:'five'},
+      {t:'spread', x:22, y:46, dx:14, w:11, face:'up', prefix:'p', cards:[{id:'p0', rank:'K', suit:'♣'},{id:'p1', rank:'4', suit:'♥'},{id:'p2', rank:'7', suit:'♣'},{id:'p3', rank:'A', suit:'♠'},{id:'p4', rank:'9', suit:'♦'}]},
+      {t:'hi', id:'p3', on:true},
+      {t:'label', id:'k', text:'confirmed — the A♠ is here', x:50, y:88}
+    ]},
+  { caption: "Turn the packet face-up and <b>count the cards one by one</b> into your other hand. One…",
+    beats: ["the count"],
+    actions: [
+      {t:'remove', id:'p0'},
+      {t:'remove', id:'p1'},
+      {t:'remove', id:'p2'},
+      {t:'remove', id:'p3'},
+      {t:'remove', id:'p4'},
+      {t:'packet', id:'five', x:42, y:48, w:12, cards:[{rank:'K', suit:'♣', face:'up'},{rank:'4', suit:'♥', face:'up'},{rank:'7', suit:'♣', face:'up'},{rank:'A', suit:'♠', face:'up'},{rank:'9', suit:'♦', face:'up'}]},
+      {t:'repacket', id:'five', cards:[{rank:'K', suit:'♣', face:'up'},{rank:'4', suit:'♥', face:'up'},{rank:'7', suit:'♣', face:'up'},{rank:'A', suit:'♠', face:'up'}]},
+      {t:'packet', id:'pile', x:64, y:52, w:11, cards:[{rank:'9', suit:'♦', face:'up'}]},
+      {t:'label', id:'k', text:'counting: one…', x:50, y:88}
+    ]},
+  { caption: "Two — and the <b>Biddle steal</b>: the second card never reaches the pile. It stays back beneath the packet, secretly in your right hand, while they're busy watching the count.",
     beats: ["Biddle steal"],
     actions: [
-      {t:'hi', id:'b1', on:false},
-      {t:'hand', id:'rh', x:55, y:38, side:'right', on:true},
-      {t:'move', id:'b0', x:55, y:48},
-      {t:'move', id:'b1', x:40, y:30, z:2},
-      {t:'move', id:'b2', x:58, y:50},
-      {t:'move', id:'b3', x:61, y:52},
-      {t:'label', id:'k', text:'selection stolen back to deck', x:50, y:88}
+      {t:'repacket', id:'five', cards:[{rank:'K', suit:'♣', face:'up'},{rank:'4', suit:'♥', face:'up'},{rank:'7', suit:'♣', face:'up'}]},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:44, y:58, face:'up', w:11, z:2},
+      {t:'palm', id:'sel'},
+      {t:'label', id:'k', text:'the second card stays back', x:50, y:88}
     ]},
-  { caption: "Show three cards. The selection is gone from the packet — already waiting on the deck.",
+  { caption: "Three, four, five — the count finishes clean. <b>Set the counted cards down.</b>",
+    beats: ["the count"],
     actions: [
+      {t:'remove', id:'five'},
+      {t:'repacket', id:'pile', cards:[{rank:'9', suit:'♦', face:'up'},{rank:'7', suit:'♣', face:'up'},{rank:'4', suit:'♥', face:'up'},{rank:'K', suit:'♣', face:'up'}]},
+      {t:'label', id:'k', text:'five counted — or so it seems', x:50, y:88}
+    ]},
+  { caption: "Show the packet: <b>four cards</b>. Their card has vanished from among the five.",
+    actions: [
+      {t:'remove', id:'pile'},
+      {t:'spread', x:26, y:48, dx:15, w:11, face:'up', prefix:'q', cards:[{id:'q0', rank:'9', suit:'♦'},{id:'q1', rank:'7', suit:'♣'},{id:'q2', rank:'4', suit:'♥'},{id:'q3', rank:'K', suit:'♣'}]},
+      {t:'label', id:'k', text:'four cards — where is the fifth?', x:50, y:88}
+    ]},
+  { caption: "It was never in the count at all. Produce it <b>face-up on the deck</b>, where the steal left it — or from your pocket. Impossible, and clean.",
+    climax: true,
+    actions: [
+      {t:'unpalm', id:'sel'},
+      {t:'move', id:'sel', x:44, y:38},
+      {t:'scale', id:'sel', s:1.1},
+      {t:'hi', id:'sel', on:true},
       {t:'hand', id:'rh', on:false},
-      {t:'remove', id:'b1'},
-      {t:'hi', id:'b0', on:true},
-      {t:'label', id:'k', text:'three left · selection vanished', x:50, y:88}
+      {t:'label', id:'k', text:'the A♠ — never in the packet', x:50, y:88}
     ]}
 ]};
 var ANIMS = ANIMS || {};
@@ -1032,38 +1070,46 @@ ANIMS.t24 = { steps: [
 ]};
 
 ANIMS.t25 = { steps: [
-  { caption: "Selection signed and controlled to the top. You're about to palm it and produce it from the pocket.",
-    beats: ["card to pocket"],
+  { caption: "Their card is <b>selected, signed, and controlled to the top</b>. What follows is the palm's graduation ceremony.",
+    beats: ["control to top"],
     actions: [
-      {t:'deck', id:'deck', x:42, y:52, n:51},
+      {t:'deck', id:'d', x:42, y:53, n:51},
       {t:'card', id:'sel', rank:'A', suit:'♠', x:42, y:42, face:'up', w:12},
       {t:'hi', id:'sel', on:true},
-      {t:'label', id:'k', text:'signed A♠ on top', x:50, y:88}
+      {t:'label', id:'k', text:'signed A♠ — on top', x:50, y:88}
     ]},
-  { caption: "Palm the top card as you hand the deck out or set it down. The hand looks empty.",
+  { caption: "<b>Palm the top card</b> (No. 15) under cover of squaring the deck — the hand that leaves looks empty.",
     beats: ["palm"],
     actions: [
       {t:'hi', id:'sel', on:false},
-      {t:'hand', id:'rh', x:60, y:38, side:'right', on:true},
-      {t:'move', id:'sel', x:72, y:36, z:5},
+      {t:'palm', id:'sel'},
+      {t:'hand', id:'rh', x:58, y:36, side:'right', on:true},
+      {t:'move', id:'sel', x:60, y:34, z:5},
       {t:'scale', id:'sel', s:0.9},
-      {t:'note', id:'b', text:'palmed', x:78, y:55}
+      {t:'move', id:'d', x:44, y:53},
+      {t:'label', id:'k', text:'palmed under the square-up', x:50, y:88}
     ]},
-  { caption: "Reach into the pocket. Load the card as you go in; come out with it as if it had been there all along.",
+  { caption: "Hand them the deck: <b>\"Hold this. Your card is gone.\"</b> The more ordinary the moments around the palm, the more impossible the middle feels.",
+    actions: [
+      {t:'move', id:'d', x:26, y:56},
+      {t:'label', id:'k', text:'they hold the deck', x:50, y:88}
+    ]},
+  { caption: "Reach into your pocket — <b>or better, have them reach in</b>. The card loads as the hand goes in.",
     beats: ["pocket load"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', x:85, y:55},
-      {t:'move', id:'sel', x:85, y:60},
+      {t:'move', id:'sel', x:84, y:60},
+      {t:'hand', id:'rh', x:86, y:56, side:'right', on:true},
       {t:'label', id:'k', text:'into the pocket', x:50, y:88}
     ]},
-  { caption: "Produce the signed card from the pocket. Clean, impossible, done.",
+  { caption: "Produce their <b>signed card</b> from the pocket, as if it had been there all along. Clean, impossible, done.",
+    climax: true,
     actions: [
-      {t:'move', id:'sel', x:70, y:45},
+      {t:'unpalm', id:'sel'},
+      {t:'move', id:'sel', x:66, y:42},
       {t:'scale', id:'sel', s:1.08},
       {t:'hi', id:'sel', on:true},
       {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'from the pocket — signed A♠', x:50, y:88}
+      {t:'label', id:'k', text:'signed A♠ — from the pocket', x:50, y:88}
     ]}
 ]};
 ANIMS.t26 = { steps: [
@@ -1145,29 +1191,47 @@ ANIMS.t27 = { steps: [
     ]}
 ]};
 ANIMS.t28 = { steps: [
-  { caption: "Fitch Cheney's Five-Card Trick — a helper shows five cards; one is given to the spectator; you name it.",
+  { caption: "Five cards, drawn at random. Among any five, <b>two must share a suit</b> — here, the two spades. That pigeonhole fact is the whole trick.",
     beats: ["five cards"],
     actions: [
-      {t:'spread', x:12, y:50, count:5, dx:14, face:'up', w:11, prefix:'f',
-        cards:[
-          {id:'f0',rank:'A',suit:'♠'},{id:'f1',rank:'7',suit:'♥'},
-          {id:'f2',rank:'K',suit:'♦'},{id:'f3',rank:'3',suit:'♣'},{id:'f4',rank:'Q',suit:'♠'}
-        ]},
-      {t:'label', id:'k', text:'five cards drawn', x:50, y:88}
+      {t:'spread', x:14, y:46, dx:15, w:11, face:'up', prefix:'fc', cards:[{id:'as', rank:'A', suit:'♠'},{id:'qs', rank:'Q', suit:'♠'},{id:'h7', rank:'7', suit:'♥'},{id:'kd', rank:'K', suit:'♦'},{id:'c3', rank:'3', suit:'♣'}]},
+      {t:'label', id:'k', text:'two spades among five', x:50, y:88}
     ]},
-  { caption: "Helper hands one card to the spectator and arranges the other four in a coded order.",
-    beats: ["code"],
+  { caption: "Your partner leaves the room. <b>Hide one of the pair</b> — the A♠ — and keep its mate to carry the code.",
+    beats: ["hide one"],
     actions: [
-      {t:'hi', id:'f2', on:true},
-      {t:'move', id:'f2', x:50, y:30},
-      {t:'hand', id:'rh', x:60, y:38, side:'right', on:true},
-      {t:'label', id:'k', text:'one card hidden · four encode it', x:50, y:88}
+      {t:'hi', id:'as', on:true},
+      {t:'hi', id:'qs', on:true},
+      {t:'flip', id:'as', to:'down'},
+      {t:'move', id:'as', x:50, y:18},
+      {t:'label', id:'k', text:'hidden: the A♠', x:50, y:88}
     ]},
-  { caption: "You read the order of the four and name the hidden card instantly.",
+  { caption: "Lay the mate face-up <b>first</b>: the Q♠. It silently names the suit — <b>spades</b>.",
+    beats: ["the code"],
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'scale', id:'f2', s:1.12},
-      {t:'label', id:'k', text:'named — K♦', x:50, y:88}
+      {t:'hi', id:'as', on:false},
+      {t:'hi', id:'qs', on:false},
+      {t:'move', id:'qs', x:20, y:54},
+      {t:'label', id:'k', text:'first card = the suit', x:50, y:88}
+    ]},
+  { caption: "Arrange the remaining three left to right: <b>low, high, medium</b> — 3♣, K♦, 7♥. The six possible orders encode the numbers <b>1 through 6</b>; this one says <b>two</b>.",
+    beats: ["the code"],
+    actions: [
+      {t:'move', id:'c3', x:38, y:54},
+      {t:'move', id:'kd', x:56, y:54},
+      {t:'move', id:'h7', x:74, y:54},
+      {t:'note', id:'b', text:'low · high · medium = +2', x:50, y:74},
+      {t:'label', id:'k', text:'the order encodes +2', x:50, y:88}
+    ]},
+  { caption: "Your partner walks in, reads <b>spades</b> off the first card and <b>two</b> off the order, counts Q → K → <b>A</b> around the suit — and names the hidden card cold. No signals, no stooges, no marked cards.",
+    climax: true,
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'flip', id:'as', to:'up'},
+      {t:'move', id:'as', x:50, y:30},
+      {t:'scale', id:'as', s:1.15},
+      {t:'hi', id:'as', on:true},
+      {t:'label', id:'k', text:'named: the A♠', x:50, y:88}
     ]}
 ]};
 ANIMS.t29 = { steps: [
@@ -1269,33 +1333,44 @@ ANIMS.t31 = { steps: [
     ]}
 ]};
 ANIMS.t32 = { steps: [
-  { caption: "Cross Cut Force — the spectator cuts; you complete the cut so the original top card is still forced.",
-    beats: ["their cut"],
+  { caption: "The force card — the A♠ — sits on <b>top</b> of the deck, and the deck goes on the table.",
+    beats: ["force on top"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'card', id:'force', rank:'A', suit:'♠', x:50, y:40, face:'down', w:11},
-      {t:'hi', id:'force', on:true},
+      {t:'packet', id:'deck', x:50, y:54, w:13, cards:[{bulk:51},{rank:'A', suit:'♠', face:'down'}]},
       {t:'label', id:'k', text:'force card on top', x:50, y:88}
     ]},
-  { caption: "They cut the deck. Place the original bottom half crosswise on the top half — a natural 'mark'.",
+  { caption: "They cut wherever they want: the <b>top portion</b> lifts off and is set beside the rest. The A♠ rides on top of their portion — it was the deck's top card.",
+    beats: ["their cut"],
+    actions: [
+      {t:'remove', id:'deck'},
+      {t:'packet', id:'theirs', x:34, y:50, w:13, cards:[{bulk:25},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'packet', id:'rest', x:66, y:50, w:13, cards:[{bulk:26}]},
+      {t:'hand', id:'rh', x:76, y:40, side:'right', on:true},
+      {t:'label', id:'k', text:'their free cut', x:50, y:88}
+    ]},
+  { caption: "Take the remaining bottom portion and lay it <b>crosswise</b> on top of their packet — \"marking the exact spot they cut to.\"",
     beats: ["cross"],
     actions: [
-      {t:'hi', id:'force', on:false},
-      {t:'deck', id:'top', x:50, y:38, n:26},
-      {t:'deck', id:'bot', x:50, y:62, n:26},
-      {t:'hand', id:'rh', x:60, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'crossed packets', x:50, y:88}
+      {t:'move', id:'rest', x:34, y:50},
+      {t:'rot', id:'rest', deg:90},
+      {t:'label', id:'k', text:'the cross marks the spot', x:50, y:88}
     ]},
-  { caption: "Time misdirection — talk, gesture. Then lift the upper half and show its face as their card.",
-    beats: ["the force"],
+  { caption: "<b>Time misdirection</b>: chat for a beat, so the cross reads as a placeholder and the order of the packets fades from memory. The pause is the move — rushing makes the cross look like a force.",
+    beats: ["time misdirection"],
     actions: [
       {t:'hand', id:'rh', on:false},
-      {t:'remove', id:'bot'},
-      {t:'move', id:'force', x:50, y:40},
-      {t:'flip', id:'force', to:'up'},
-      {t:'hi', id:'force', on:true},
-      {t:'scale', id:'force', s:1.1},
-      {t:'label', id:'k', text:'original top — forced', x:50, y:88}
+      {t:'label', id:'k', text:'let a beat pass', x:50, y:88}
+    ]},
+  { caption: "Lift the crosswise packet away and have them take the <b>top card of the lower packet</b>: the original top card of the deck — your force. Every step felt like their free choice.",
+    beats: ["the force"], climax: true,
+    actions: [
+      {t:'move', id:'rest', x:70, y:36},
+      {t:'rot', id:'rest', deg:0},
+      {t:'repacket', id:'theirs', cards:[{bulk:25}]},
+      {t:'card', id:'fc', rank:'A', suit:'♠', x:34, y:42, face:'down', w:11, z:5, secret:{rank:'A', suit:'♠'}},
+      {t:'flip', id:'fc', to:'up'},
+      {t:'hi', id:'fc', on:true},
+      {t:'label', id:'k', text:'the card they cut to: A♠', x:50, y:88}
     ]}
 ]};
 ANIMS.t33 = { steps: [
@@ -1669,27 +1744,40 @@ ANIMS.t43 = { steps: [
     ]}
 ]};
 ANIMS.t44 = { steps: [
-  { caption: "Card to Ceiling — signed card is lost in the deck, then found stuck to the ceiling.",
+  { caption: "Their <b>signed card</b> — the A♠. You are about to put it somewhere absurd.",
+    beats: ["signed card"],
     actions: [
-      {t:'deck', id:'d', x:50, y:55, n:52},
-      {t:'card', id:'sel', rank:'A', suit:'♠', x:50, y:40, face:'up', w:12},
+      {t:'deck', id:'d', x:44, y:56, n:51},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:44, y:43, face:'up', w:12, secret:{rank:'A', suit:'♠'}},
       {t:'hi', id:'sel', on:true},
       {t:'label', id:'k', text:'signed selection', x:50, y:88}
     ]},
-  { caption: "Card is controlled, deck is tossed (or riffled) upward. The signed card sticks to the ceiling.",
-    beats: ["the toss"],
+  { caption: "Under cover of natural handling — turning the card over, handing it around — press a <b>small pellet of magician's wax</b> onto its back. Exposed view can see it sitting there; the room can't.",
+    beats: ["the wax"],
     actions: [
       {t:'hi', id:'sel', on:false},
-      {t:'move', id:'sel', x:50, y:12},
-      {t:'scale', id:'sel', s:0.85},
-      {t:'hand', id:'rh', x:55, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'stuck to the ceiling', x:50, y:88}
+      {t:'flip', id:'sel', to:'down'},
+      {t:'card', id:'wax', x:44, y:43, face:'down', w:3, z:8, ghost:true},
+      {t:'hand', id:'rh', x:56, y:36, side:'right', on:true},
+      {t:'label', id:'k', text:'wax on the back (Exposed)', x:50, y:88}
     ]},
-  { caption: "Everyone looks up. There it is — signed, impossible, unforgettable.",
+  { caption: "Throw the card <b>spinning toward the ceiling</b>, flat like a frisbee, so it arrives back-first.",
+    beats: ["the toss"],
     actions: [
+      {t:'move', id:'sel', x:50, y:12, z:5},
+      {t:'move', id:'wax', x:50, y:12, z:3},
+      {t:'rot', id:'sel', deg:180},
+      {t:'scale', id:'sel', s:0.85},
       {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'the toss — back first', x:50, y:88}
+    ]},
+  { caption: "The wax <b>grabs on impact</b>. Point it out overhead — or let it drop later for the reveal. Their signed card, stuck to the ceiling.",
+    climax: true,
+    actions: [
+      {t:'move', id:'wax', x:50, y:9},
+      {t:'flip', id:'sel', to:'up'},
       {t:'hi', id:'sel', on:true},
-      {t:'label', id:'k', text:'card to ceiling', x:50, y:88}
+      {t:'label', id:'k', text:'stuck — signed A♠, on the ceiling', x:50, y:88}
     ]}
 ]};
 ANIMS.t45 = { steps: [
@@ -2397,33 +2485,59 @@ ANIMS.t47 = { steps: [
     ]}
 ]};
 ANIMS.t48 = { steps: [
-  { caption: "Princess Card Trick — five cards shown. They think of one. You will name it.",
+  { caption: "Five pairs of <b>near-twins</b> sit face to face — the 6♣ against the 6♠, the 7♥ against the 7♦, and so on: same colour, different suit, close enough that nobody memorizes a fan. No memorable court cards — sixes and sevens vanish from memory; queens don't.",
+    beats: ["the setup"],
+    actions: [
+      {t:'packet', id:'prin', x:50, y:52, w:14, cards:[{rank:'6', suit:'♠', face:'down'},{rank:'7', suit:'♦', face:'down'},{rank:'8', suit:'♠', face:'down'},{rank:'9', suit:'♦', face:'down'},{rank:'10', suit:'♠', face:'down'},{rank:'6', suit:'♣', face:'up'},{rank:'7', suit:'♥', face:'up'},{rank:'8', suit:'♣', face:'up'},{rank:'9', suit:'♥', face:'up'},{rank:'10', suit:'♣', face:'up'}]},
+      {t:'note', id:'b', text:'five pairs of near-twins — mates squared behind', x:50, y:24},
+      {t:'label', id:'k', text:'five faces show · five mates behind', x:50, y:88}
+    ]},
+  { caption: "Fan the packet so only the five faces show. <b>Don't let them touch</b> — ask someone to think of one card in the fan.",
     beats: ["think of one"],
     actions: [
-      {t:'spread', x:14, y:50, count:5, dx:15, face:'up', w:12, prefix:'p',
-        cards:[
-          {id:'p0', rank:'A', suit:'♠'},{id:'p1', rank:'7', suit:'♥'},
-          {id:'p2', rank:'K', suit:'♦'},{id:'p3', rank:'3', suit:'♣'},
-          {id:'p4', rank:'Q', suit:'♠'}
-        ]},
-      {t:'label', id:'k', text:'think of one card', x:50, y:88}
+      {t:'remove', id:'prin'},
+      {t:'packet', id:'mates', x:22, y:64, w:12, cards:[{rank:'6', suit:'♠', face:'down'},{rank:'7', suit:'♦', face:'down'},{rank:'8', suit:'♠', face:'down'},{rank:'9', suit:'♦', face:'down'},{rank:'10', suit:'♠', face:'down'}]},
+      {t:'fan', x:56, y:46, spread:60, startDeg:-30, radius:12, w:11, face:'up', cards:[{id:'s6c', rank:'6', suit:'♣'},{id:'s7h', rank:'7', suit:'♥'},{id:'s8c', rank:'8', suit:'♣'},{id:'s9h', rank:'9', suit:'♥'},{id:'s10c', rank:'10', suit:'♣'}]},
+      {t:'unnote', id:'b'},
+      {t:'label', id:'k', text:'think of one', x:50, y:88}
     ]},
-  { caption: "You remove cards (via switch or equivoque) until only possibilities consistent with their thought remain.",
-    beats: ["eliminate"],
+  { caption: "Say they think of the <b>7♥</b> — you can't know, and you don't need to. <b>No sleight at all</b>: the secret is that they never saw the cards you show at the end.",
     actions: [
-      {t:'move', id:'p1', x:20, y:28},
-      {t:'move', id:'p3', x:80, y:28},
-      {t:'hand', id:'rh', x:50, y:38, side:'right', on:true},
-      {t:'label', id:'k', text:'narrowing down', x:50, y:88}
+      {t:'hi', id:'s7h', on:true},
+      {t:'label', id:'k', text:'a free thought', x:50, y:88}
     ]},
-  { caption: "Name their card — or show that the last remaining card is theirs. Either ending lands hard.",
+  { caption: "Close the fan and <b>turn the packet toward yourself</b>.",
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'remove', id:'p0'},{t:'remove', id:'p1'},{t:'remove', id:'p3'},{t:'remove', id:'p4'},
-      {t:'hi', id:'p2', on:true},
-      {t:'scale', id:'p2', s:1.12},
-      {t:'move', id:'p2', x:50, y:48},
-      {t:'label', id:'k', text:'the thought-of card', x:50, y:88}
+      {t:'remove', id:'s6c'},
+      {t:'remove', id:'s7h'},
+      {t:'remove', id:'s8c'},
+      {t:'remove', id:'s9h'},
+      {t:'remove', id:'s10c'},
+      {t:'packet', id:'shown', x:56, y:52, w:12, cards:[{rank:'6', suit:'♣', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'8', suit:'♣', face:'down'},{rank:'9', suit:'♥', face:'down'},{rank:'10', suit:'♣', face:'down'}]},
+      {t:'label', id:'k', text:'packet turned toward you', x:50, y:88}
+    ]},
+  { caption: "In that turn, the shown packet is <b>exchanged for its mates</b>. The cards now in your hand are the twins nobody ever saw.",
+    beats: ["packet switch"],
+    actions: [
+      {t:'remove', id:'shown'},
+      {t:'move', id:'mates', x:50, y:52},
+      {t:'label', id:'k', text:'the switch (Exposed)', x:50, y:88}
+    ]},
+  { caption: "Remove <b>any one mate</b> — here the 6♠ — and pocket it. It is, apparently, the one they thought of.",
+    beats: ["the removal"],
+    actions: [
+      {t:'repacket', id:'mates', cards:[{rank:'7', suit:'♦', face:'down'},{rank:'8', suit:'♠', face:'down'},{rank:'9', suit:'♦', face:'down'},{rank:'10', suit:'♠', face:'down'}]},
+      {t:'card', id:'m6', rank:'6', suit:'♠', x:50, y:44, face:'down', w:11, z:5, secret:{rank:'6', suit:'♠'}},
+      {t:'palm', id:'m6'},
+      {t:'move', id:'m6', x:85, y:72},
+      {t:'label', id:'k', text:'one mate pocketed', x:50, y:88}
+    ]},
+  { caption: "Spread the remaining mates — the ones they never saw — and ask if they see their card. <b>They don't</b>: whichever face they thought of, only its twin is here. Name the pocketed card only if you glimpsed which face they lingered on; otherwise, let the absence be the trick.",
+    climax: true,
+    actions: [
+      {t:'remove', id:'mates'},
+      {t:'spread', x:24, y:50, dx:16, w:11, face:'up', prefix:'m', cards:[{id:'m7d', rank:'7', suit:'♦'},{id:'m8s', rank:'8', suit:'♠'},{id:'m9d', rank:'9', suit:'♦'},{id:'m10s', rank:'10', suit:'♠'}]},
+      {t:'label', id:'k', text:'their card is not here', x:50, y:88}
     ]}
 ]};
 ANIMS.t49 = { steps: [
@@ -2682,32 +2796,93 @@ ANIMS.t52 = { steps: [
     ]}
 ]};
 ANIMS.t53 = { steps: [
-  { caption: "Pressure Fan — a tighter, more controlled fan formed by pressure between the hands rather than a thumb sweep alone.",
-    beats: ["pressure · arc"],
+  { caption: "Bevel the deck slightly toward the right. The left hand takes it with the <b>fingers on the face, thumb at the inner end</b> — the same grip as a thumb fan, then you don't use it that way.",
+    beats: ["the grip"],
     actions: [
-      {t:'deck', id:'d', x:50, y:52, n:52},
-      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
-      {t:'hand', id:'rh', x:60, y:48, side:'right', on:true},
-      {t:'note', id:'b', text:'pressure between the hands', x:50, y:28},
-      {t:'label', id:'k', text:'two-hand pressure grip', x:50, y:88}
+      {t:'deck', id:'d', x:48, y:54, n:52},
+      {t:'rot', id:'d', deg:-6},
+      {t:'hand', id:'lh', x:36, y:58, side:'left', on:true, grip:'thumb-fan grip'},
+      {t:'note', id:'b', text:'fingers on the face · thumb at the inner end', x:48, y:26},
+      {t:'label', id:'k', text:'bevelled · thumb-fan grip', x:50, y:88}
     ]},
-  { caption: "Apply even pressure and open the arc. Cards separate into a tight, uniform fan.",
+  { caption: "The right hand meets the deck and <b>presses back</b>, so the cards bow instead of sliding. The left thumb starts the spread.",
+    beats: ["pressure"],
+    actions: [
+      {t:'hand', id:'rh', x:60, y:44, side:'right', on:true, grip:'pressing back'},
+      {t:'note', id:'b', text:'the cards bow instead of sliding', x:48, y:26},
+      {t:'label', id:'k', text:'two-hand pressure', x:50, y:88}
+    ]},
+  { caption: "As the left thumb clears, the right hand <b>keeps pushing through the arc</b>. The fan opens wider than a thumb fan, and the indices stay readable.",
     beats: ["open"],
     actions: [
       {t:'unnote', id:'b'},
       {t:'remove', id:'d'},
-      {t:'fan', x:52, y:55, count:11, spread:95, startDeg:-48, radius:13, w:9, face:'up', prefix:'p',
-        cards:[
-          {rank:'A',suit:'♠'},{rank:'2',suit:'♥'},{rank:'3',suit:'♣'},{rank:'4',suit:'♦'},
-          {rank:'5',suit:'♠'},{rank:'6',suit:'♥'},{rank:'7',suit:'♣'},{rank:'8',suit:'♦'},
-          {rank:'9',suit:'♠'},{rank:'10',suit:'♥'},{rank:'J',suit:'♣'}
-        ]},
-      {t:'label', id:'k', text:'pressure fan opening', x:50, y:88}
+      {t:'fan', x:52, y:56, count:52, spread:130, startDeg:-65, radius:15, w:9, face:'down', prefix:'fan'},
+      {t:'label', id:'k', text:'the fan opens', x:50, y:88}
     ]},
-  { caption: "Hold. Tighter and more refined than a casual thumb fan — ideal for close-up display.",
+  { caption: "Hold it: <b>wider than a thumb fan</b>, even and controlled — and it works on a tired deck, which the thumb fan will not. A fan you can't close cleanly isn't finished.",
+    climax: true,
     actions: [
+      {t:'label', id:'k', text:'wider than a thumb fan', x:50, y:88}
+    ]},
+  { caption: "Close it by <b>reversing the pressure</b> — same path, slower.",
+    actions: [
+      {t:'remove', id:'fan0'},
+      {t:'remove', id:'fan1'},
+      {t:'remove', id:'fan2'},
+      {t:'remove', id:'fan3'},
+      {t:'remove', id:'fan4'},
+      {t:'remove', id:'fan5'},
+      {t:'remove', id:'fan6'},
+      {t:'remove', id:'fan7'},
+      {t:'remove', id:'fan8'},
+      {t:'remove', id:'fan9'},
+      {t:'remove', id:'fan10'},
+      {t:'remove', id:'fan11'},
+      {t:'remove', id:'fan12'},
+      {t:'remove', id:'fan13'},
+      {t:'remove', id:'fan14'},
+      {t:'remove', id:'fan15'},
+      {t:'remove', id:'fan16'},
+      {t:'remove', id:'fan17'},
+      {t:'remove', id:'fan18'},
+      {t:'remove', id:'fan19'},
+      {t:'remove', id:'fan20'},
+      {t:'remove', id:'fan21'},
+      {t:'remove', id:'fan22'},
+      {t:'remove', id:'fan23'},
+      {t:'remove', id:'fan24'},
+      {t:'remove', id:'fan25'},
+      {t:'remove', id:'fan26'},
+      {t:'remove', id:'fan27'},
+      {t:'remove', id:'fan28'},
+      {t:'remove', id:'fan29'},
+      {t:'remove', id:'fan30'},
+      {t:'remove', id:'fan31'},
+      {t:'remove', id:'fan32'},
+      {t:'remove', id:'fan33'},
+      {t:'remove', id:'fan34'},
+      {t:'remove', id:'fan35'},
+      {t:'remove', id:'fan36'},
+      {t:'remove', id:'fan37'},
+      {t:'remove', id:'fan38'},
+      {t:'remove', id:'fan39'},
+      {t:'remove', id:'fan40'},
+      {t:'remove', id:'fan41'},
+      {t:'remove', id:'fan42'},
+      {t:'remove', id:'fan43'},
+      {t:'remove', id:'fan44'},
+      {t:'remove', id:'fan45'},
+      {t:'remove', id:'fan46'},
+      {t:'remove', id:'fan47'},
+      {t:'remove', id:'fan48'},
+      {t:'remove', id:'fan49'},
+      {t:'remove', id:'fan50'},
+      {t:'remove', id:'fan51'},
+      {t:'deck', id:'d', x:48, y:54, n:52},
+      {t:'hand', id:'lh', on:false},
       {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'pressure fan — tight and even', x:50, y:88}
+      {t:'label', id:'k', text:'closed by reversing', x:50, y:88}
     ]}
 ]};
 ANIMS.t54 = { steps: [
@@ -2938,31 +3113,40 @@ ANIMS.t60 = { steps: [
     ]}
 ]};
 ANIMS.t61 = { steps: [
-  { caption: "Kruskal Count — lay cards in a row. Start on any card; jump forward by its value.",
+  { caption: "Deal a block of cards face-up into a row, and set down a <b>pre-written prediction</b>. The rule: follow each card's value forward — <b>face cards count 5, aces count 1</b>, numbers are face value.",
     beats: ["the rule"],
     actions: [
-      {t:'spread', x:8, y:50, count:12, dx:7.5, face:'up', w:7.5, prefix:'k',
-        cards:[
-          {id:'k0',rank:'3',suit:'♥'},{id:'k1',rank:'5',suit:'♣'},{id:'k2',rank:'A',suit:'♠'},
-          {id:'k3',rank:'7',suit:'♦'},{id:'k4',rank:'2',suit:'♥'},{id:'k5',rank:'9',suit:'♠'},
-          {id:'k6',rank:'4',suit:'♣'},{id:'k7',rank:'K',suit:'♦'},{id:'k8',rank:'6',suit:'♥'},
-          {id:'k9',rank:'8',suit:'♣'},{id:'k10',rank:'Q',suit:'♠'},{id:'k11',rank:'A',suit:'♦'}
-        ]},
+      {t:'spread', x:8, y:48, dx:8.6, w:7.5, face:'up', prefix:'k', cards:[{id:'k0', rank:'2', suit:'♦', face:'up'},{id:'k1', rank:'4', suit:'♣', face:'up'},{id:'k2', rank:'3', suit:'♥', face:'up'},{id:'k3', rank:'K', suit:'♠', face:'up'},{id:'k4', rank:'A', suit:'♦', face:'up'},{id:'k5', rank:'3', suit:'♣', face:'up'},{id:'k6', rank:'2', suit:'♠', face:'up'},{id:'k7', rank:'A', suit:'♥', face:'up'},{id:'k8', rank:'K', suit:'♦', face:'up'},{id:'k9', rank:'6', suit:'♣', face:'up'}]},
+      {t:'note', id:'env', text:'sealed prediction — written before the first card was dealt', x:50, y:18},
       {t:'label', id:'k', text:'pick any starting card', x:50, y:88}
     ]},
-  { caption: "Jump by the card's value (face cards = 5). From different starts the path converges.",
-    beats: ["convergence"],
+  { caption: "They mentally choose a starting point and a secret word to count by. Say they start on the <b>2♦</b> — two steps forward…",
+    beats: ["the chain"],
     actions: [
       {t:'hi', id:'k0', on:true},
-      {t:'hi', id:'k2', on:true},
-      {t:'hi', id:'k7', on:true},
-      {t:'label', id:'k', text:'paths converge on one card', x:50, y:88}
+      {t:'label', id:'k', text:'start: 2♦ (+2)', x:50, y:88}
     ]},
-  { caption: "That meeting point is your prediction. Pure math — invisible and inevitable.",
+  { caption: "…lands on the 3♥; three more to the 3♣; three more to the <b>K♦</b>, where the count runs out of road. One path, traced.",
     actions: [
-      {t:'hi', id:'k0', on:false},{t:'hi', id:'k2', on:false},
-      {t:'hi', id:'k7', on:true},
-      {t:'scale', id:'k7', s:1.12},
+      {t:'hi', id:'k2', on:true},
+      {t:'hi', id:'k5', on:true},
+      {t:'hi', id:'k8', on:true},
+      {t:'label', id:'k', text:'2♦ → 3♥ → 3♣ → K♦', x:50, y:88}
+    ]},
+  { caption: "Start somewhere else entirely — the <b>K♠</b>: five steps, the same K♦. In fact <b>every start in the row merges</b> onto it. Kruskal's principle quietly herds all the paths together — as long as the counting rules are stated clearly.",
+    beats: ["convergence"],
+    actions: [
+      {t:'hi', id:'k0', on:false},
+      {t:'hi', id:'k2', on:false},
+      {t:'hi', id:'k5', on:false},
+      {t:'hi', id:'k3', on:true},
+      {t:'label', id:'k', text:'every start merges here', x:50, y:88}
+    ]},
+  { caption: "Open the prediction: <b>K♦</b>. Pure mathematics wearing a card trick's clothes — invisible, and inevitable.",
+    climax: true,
+    actions: [
+      {t:'note', id:'env', text:'the prediction, written first: K♦', x:50, y:18},
+      {t:'scale', id:'k8', s:1.15},
       {t:'label', id:'k', text:'the Kruskal card', x:50, y:88}
     ]}
 ]};
@@ -3007,57 +3191,232 @@ ANIMS.t62 = { steps: [
     ]}
 ]};
 ANIMS.t63 = { steps: [
-  { caption: "Cascade Shuffle — a waterfall of cards from one hand into the other. Genuine mix, pure style.",
-    beats: ["cascade grip"],
+  { caption: "Square the deck into <b>two equal halves</b> and angle the inner corners of the packets together, thumbs on top.",
+    beats: ["the setup"],
     actions: [
-      {t:'deck', id:'d', x:38, y:32, n:52},
-      {t:'hand', id:'rh', x:44, y:24, side:'right', on:true},
-      {t:'hand', id:'lh', x:56, y:62, side:'left', on:true},
-      {t:'label', id:'k', text:'waterfall grip', x:50, y:88}
+      {t:'packet', id:'h1', x:38, y:46, w:13, cards:[{bulk:26}]},
+      {t:'packet', id:'h2', x:62, y:46, w:13, cards:[{bulk:26}]},
+      {t:'rot', id:'h1', deg:-10},
+      {t:'rot', id:'h2', deg:10},
+      {t:'hand', id:'lh', x:28, y:52, side:'left', on:true},
+      {t:'hand', id:'rh', x:72, y:52, side:'right', on:true},
+      {t:'note', id:'b', text:'thumbs on the inner corners', x:50, y:22},
+      {t:'label', id:'k', text:'two halves · corners angled', x:50, y:88}
     ]},
-  { caption: "Release in a continuous stream. The cascade is even pressure and soft hands.",
-    beats: ["the waterfall"],
+  { caption: "Lift the inner corners slightly with your thumbs while <b>pushing the packets into one another</b> — the cards spring and weave, alternating corners automatically.",
+    beats: ["riffle weave"],
     actions: [
-      {t:'remove', id:'d'},
-      {t:'spread', x:32, y:38, count:8, dx:4.5, dy:3, face:'down', w:8, prefix:'c', stagger:32},
-      {t:'label', id:'k', text:'cards cascading', x:50, y:88}
+      {t:'move', id:'h1', x:46, y:48},
+      {t:'move', id:'h2', x:54, y:48},
+      {t:'rot', id:'h1', deg:0},
+      {t:'rot', id:'h2', deg:0},
+      {t:'note', id:'b', text:'corners interlace — alternating, on their own', x:50, y:22},
+      {t:'label', id:'k', text:'the weave', x:50, y:88}
     ]},
-  { caption: "Catch the cascade and square. Beautiful, and it actually shuffles.",
+  { caption: "Drop the top thumbs and let the interlaced corners <b>cascade</b> into each other, releasing downward pressure. Keep your touch light — forcing the cards together bends corners and ruins the waterfall.",
+    beats: ["the waterfall"], climax: true,
     actions: [
-      {t:'deck', id:'done', x:54, y:55, n:52},
+      {t:'unnote', id:'b'},
+      {t:'remove', id:'h1'},
+      {t:'remove', id:'h2'},
+      {t:'spread', x:26, y:28, dx:0.9, dy:1.05, w:8, face:'down', prefix:'c', stagger:26, count:52},
+      {t:'hand', id:'rh', x:66, y:26, side:'right', on:true},
+      {t:'hand', id:'lh', x:44, y:80, side:'left', on:true},
+      {t:'label', id:'k', text:'the cascade', x:50, y:88}
+    ]},
+  { caption: "Catch the cascade and <b>square the interwoven block</b> by pushing the sides together — or bridge it flat. A genuine mix, and it actually shuffles.",
+    actions: [
+      {t:'remove', id:'c0'},
+      {t:'remove', id:'c1'},
+      {t:'remove', id:'c2'},
+      {t:'remove', id:'c3'},
+      {t:'remove', id:'c4'},
+      {t:'remove', id:'c5'},
+      {t:'remove', id:'c6'},
+      {t:'remove', id:'c7'},
+      {t:'remove', id:'c8'},
+      {t:'remove', id:'c9'},
+      {t:'remove', id:'c10'},
+      {t:'remove', id:'c11'},
+      {t:'remove', id:'c12'},
+      {t:'remove', id:'c13'},
+      {t:'remove', id:'c14'},
+      {t:'remove', id:'c15'},
+      {t:'remove', id:'c16'},
+      {t:'remove', id:'c17'},
+      {t:'remove', id:'c18'},
+      {t:'remove', id:'c19'},
+      {t:'remove', id:'c20'},
+      {t:'remove', id:'c21'},
+      {t:'remove', id:'c22'},
+      {t:'remove', id:'c23'},
+      {t:'remove', id:'c24'},
+      {t:'remove', id:'c25'},
+      {t:'remove', id:'c26'},
+      {t:'remove', id:'c27'},
+      {t:'remove', id:'c28'},
+      {t:'remove', id:'c29'},
+      {t:'remove', id:'c30'},
+      {t:'remove', id:'c31'},
+      {t:'remove', id:'c32'},
+      {t:'remove', id:'c33'},
+      {t:'remove', id:'c34'},
+      {t:'remove', id:'c35'},
+      {t:'remove', id:'c36'},
+      {t:'remove', id:'c37'},
+      {t:'remove', id:'c38'},
+      {t:'remove', id:'c39'},
+      {t:'remove', id:'c40'},
+      {t:'remove', id:'c41'},
+      {t:'remove', id:'c42'},
+      {t:'remove', id:'c43'},
+      {t:'remove', id:'c44'},
+      {t:'remove', id:'c45'},
+      {t:'remove', id:'c46'},
+      {t:'remove', id:'c47'},
+      {t:'remove', id:'c48'},
+      {t:'remove', id:'c49'},
+      {t:'remove', id:'c50'},
+      {t:'remove', id:'c51'},
+      {t:'deck', id:'d', x:50, y:52, n:52},
       {t:'hand', id:'rh', on:false},
       {t:'label', id:'k', text:'cascaded and squared', x:50, y:88}
     ]}
 ]};
 ANIMS.t64 = { steps: [
-  { caption: "One-Handed Fan — open a wide, even fan with a single hand.",
-    beats: ["one hand · full fan"],
+  { caption: "Hold the deck <b>from above</b>: thumb at the inner edge, fingers resting across the top face. Plant the thumb firmly near the <b>bottom-left corner</b> — it is the pivot everything turns on.",
+    beats: ["the grip"],
     actions: [
       {t:'deck', id:'d', x:48, y:55, n:52},
-      {t:'hand', id:'lh', x:36, y:58, side:'left', on:true},
-      {t:'note', id:'b', text:'thumb drives · fingers shape', x:48, y:30},
-      {t:'label', id:'k', text:'one-hand grip', x:50, y:88}
+      {t:'hand', id:'lh', x:36, y:58, side:'left', on:true, grip:'from above'},
+      {t:'note', id:'b', text:'thumb planted at the bottom-left corner — the pivot', x:48, y:28},
+      {t:'label', id:'k', text:'one hand · thumb pivot', x:50, y:88}
     ]},
-  { caption: "Thumb drives the cards in a smooth arc. Fingers form the curve as the fan opens.",
+  { caption: "<b>Pivot the top cards outward</b> in a sweeping circular motion, using the index and middle fingers as guides, pressure even across the outer edge.",
     beats: ["open"],
     actions: [
       {t:'unnote', id:'b'},
       {t:'remove', id:'d'},
-      {t:'fan', x:52, y:56, count:12, spread:110, startDeg:-55, radius:14, w:9, face:'up', prefix:'f',
-        cards:[
-          {rank:'A',suit:'♠'},{rank:'K',suit:'♥'},{rank:'Q',suit:'♣'},{rank:'J',suit:'♦'},
-          {rank:'10',suit:'♠'},{rank:'9',suit:'♥'},{rank:'8',suit:'♣'},{rank:'7',suit:'♦'},
-          {rank:'6',suit:'♠'},{rank:'5',suit:'♥'},{rank:'4',suit:'♣'},{rank:'3',suit:'♦'}
-        ]},
-      {t:'label', id:'k', text:'fan opening', x:50, y:88}
+      {t:'fan', x:52, y:56, count:52, spread:85, startDeg:-42, radius:13, w:9, face:'down', prefix:'fan'},
+      {t:'label', id:'k', text:'the sweep', x:50, y:88}
     ]},
-  { caption: "Hold. Close with a soft squeeze. Pure one-hand control.",
+  { caption: "A full <b>180-degree fan</b> locks into place — the whole deck bloomed in a single hand. This one is all thumb traction and finger flexibility; no second hand to help.",
+    climax: true,
     actions: [
-      {t:'deck', id:'done', x:50, y:52, n:52},
+      {t:'remove', id:'fan0'},
+      {t:'remove', id:'fan1'},
+      {t:'remove', id:'fan2'},
+      {t:'remove', id:'fan3'},
+      {t:'remove', id:'fan4'},
+      {t:'remove', id:'fan5'},
+      {t:'remove', id:'fan6'},
+      {t:'remove', id:'fan7'},
+      {t:'remove', id:'fan8'},
+      {t:'remove', id:'fan9'},
+      {t:'remove', id:'fan10'},
+      {t:'remove', id:'fan11'},
+      {t:'remove', id:'fan12'},
+      {t:'remove', id:'fan13'},
+      {t:'remove', id:'fan14'},
+      {t:'remove', id:'fan15'},
+      {t:'remove', id:'fan16'},
+      {t:'remove', id:'fan17'},
+      {t:'remove', id:'fan18'},
+      {t:'remove', id:'fan19'},
+      {t:'remove', id:'fan20'},
+      {t:'remove', id:'fan21'},
+      {t:'remove', id:'fan22'},
+      {t:'remove', id:'fan23'},
+      {t:'remove', id:'fan24'},
+      {t:'remove', id:'fan25'},
+      {t:'remove', id:'fan26'},
+      {t:'remove', id:'fan27'},
+      {t:'remove', id:'fan28'},
+      {t:'remove', id:'fan29'},
+      {t:'remove', id:'fan30'},
+      {t:'remove', id:'fan31'},
+      {t:'remove', id:'fan32'},
+      {t:'remove', id:'fan33'},
+      {t:'remove', id:'fan34'},
+      {t:'remove', id:'fan35'},
+      {t:'remove', id:'fan36'},
+      {t:'remove', id:'fan37'},
+      {t:'remove', id:'fan38'},
+      {t:'remove', id:'fan39'},
+      {t:'remove', id:'fan40'},
+      {t:'remove', id:'fan41'},
+      {t:'remove', id:'fan42'},
+      {t:'remove', id:'fan43'},
+      {t:'remove', id:'fan44'},
+      {t:'remove', id:'fan45'},
+      {t:'remove', id:'fan46'},
+      {t:'remove', id:'fan47'},
+      {t:'remove', id:'fan48'},
+      {t:'remove', id:'fan49'},
+      {t:'remove', id:'fan50'},
+      {t:'remove', id:'fan51'},
+      {t:'fan', x:52, y:56, count:52, spread:175, startDeg:-87, radius:15, w:9, face:'down', prefix:'fan'},
+      {t:'label', id:'k', text:'180° — locked', x:50, y:88}
+    ]},
+  { caption: "Close with a <b>soft squeeze</b>. Practice with a broken-in, clean deck — a brand-new slippery pack fights every step.",
+    actions: [
+      {t:'remove', id:'fan0'},
+      {t:'remove', id:'fan1'},
+      {t:'remove', id:'fan2'},
+      {t:'remove', id:'fan3'},
+      {t:'remove', id:'fan4'},
+      {t:'remove', id:'fan5'},
+      {t:'remove', id:'fan6'},
+      {t:'remove', id:'fan7'},
+      {t:'remove', id:'fan8'},
+      {t:'remove', id:'fan9'},
+      {t:'remove', id:'fan10'},
+      {t:'remove', id:'fan11'},
+      {t:'remove', id:'fan12'},
+      {t:'remove', id:'fan13'},
+      {t:'remove', id:'fan14'},
+      {t:'remove', id:'fan15'},
+      {t:'remove', id:'fan16'},
+      {t:'remove', id:'fan17'},
+      {t:'remove', id:'fan18'},
+      {t:'remove', id:'fan19'},
+      {t:'remove', id:'fan20'},
+      {t:'remove', id:'fan21'},
+      {t:'remove', id:'fan22'},
+      {t:'remove', id:'fan23'},
+      {t:'remove', id:'fan24'},
+      {t:'remove', id:'fan25'},
+      {t:'remove', id:'fan26'},
+      {t:'remove', id:'fan27'},
+      {t:'remove', id:'fan28'},
+      {t:'remove', id:'fan29'},
+      {t:'remove', id:'fan30'},
+      {t:'remove', id:'fan31'},
+      {t:'remove', id:'fan32'},
+      {t:'remove', id:'fan33'},
+      {t:'remove', id:'fan34'},
+      {t:'remove', id:'fan35'},
+      {t:'remove', id:'fan36'},
+      {t:'remove', id:'fan37'},
+      {t:'remove', id:'fan38'},
+      {t:'remove', id:'fan39'},
+      {t:'remove', id:'fan40'},
+      {t:'remove', id:'fan41'},
+      {t:'remove', id:'fan42'},
+      {t:'remove', id:'fan43'},
+      {t:'remove', id:'fan44'},
+      {t:'remove', id:'fan45'},
+      {t:'remove', id:'fan46'},
+      {t:'remove', id:'fan47'},
+      {t:'remove', id:'fan48'},
+      {t:'remove', id:'fan49'},
+      {t:'remove', id:'fan50'},
+      {t:'remove', id:'fan51'},
+      {t:'deck', id:'d', x:48, y:55, n:52},
       {t:'hand', id:'lh', on:false},
-      {t:'label', id:'k', text:'one-handed fan complete', x:50, y:88}
+      {t:'label', id:'k', text:'closed', x:50, y:88}
     ]}
-]}
+]};
 
 ANIMS.t65 = { steps: [
   { caption: "The pinky break — the secret separation that makes double lifts, controls and passes possible. Grip: deck in left-hand dealing position. The card above where the break will form is the deck's top card.",
@@ -3432,32 +3791,37 @@ ANIMS.t74 = { steps: [
 ]}
 
 ANIMS.t75 = { steps: [
-  { caption: "Bottom Deal — deal the bottom card while appearing to deal from the top. The gambling companion to the second deal.",
-    beats: ["false bottom deal"],
+  { caption: "The deck sits in the left hand, its front angled slightly down so the bottom edge stays hidden. The <b>bottom card</b> — the A♠ — is the one that will leave.",
+    beats: ["setup"],
     actions: [
-      {t:'deck', id:'d', x:42, y:48, n:51},
-      {t:'card', id:'bot', rank:'A', suit:'♠', x:42, y:58, face:'down', w:11},
-      {t:'hi', id:'bot', on:true},
-      {t:'hand', id:'lh', x:32, y:55, side:'left', on:true},
-      {t:'label', id:'k', text:'bottom card will be dealt', x:50, y:88}
+      {t:'deck', id:'d', x:42, y:47, n:51},
+      {t:'rot', id:'d', deg:-4},
+      {t:'card', id:'bot', rank:'A', suit:'♠', x:42, y:58, face:'down', w:11, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'lh', x:32, y:54, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'bottom card: A♠', x:50, y:88}
     ]},
-  { caption: "Right hand comes over as if taking the top card. Left fingers buckle or release the bottom card into the deal.",
+  { caption: "The right hand approaches <b>exactly as for a normal top deal</b> — same reach, same rhythm. The cover is the sameness.",
     beats: ["the take"],
     actions: [
-      {t:'hi', id:'bot', on:false},
-      {t:'hand', id:'rh', x:58, y:48, side:'right', on:true},
-      {t:'move', id:'bot', x:70, y:52, z:5},
-      {t:'note', id:'b', text:'bottom card into the deal', x:70, y:70},
-      {t:'label', id:'k', text:'looks like a top deal', x:50, y:88}
+      {t:'hand', id:'rh', x:54, y:38, side:'right', on:true},
+      {t:'label', id:'k', text:'an honest approach', x:50, y:88}
     ]},
-  { caption: "The top stock is untouched. From the front it was a clean, ordinary deal.",
+  { caption: "The left fingers <b>buckle and free the bottom card</b> into the right hand. It is dealt — while the top stock never moves.",
+    beats: ["bottom deal"],
+    actions: [
+      {t:'move', id:'bot', x:72, y:54, z:5},
+      {t:'note', id:'b', text:'bottom card into the deal — the top stays', x:70, y:72},
+      {t:'label', id:'k', text:'dealt — from the bottom', x:50, y:88}
+    ]},
+  { caption: "Turn it over: the <b>A♠, from the bottom</b>. Same rhythm and wrist turn as an honest deal — from the front, that's all it ever looked like.",
+    climax: true,
     actions: [
       {t:'unnote', id:'b'},
+      {t:'flip', id:'bot', to:'up'},
+      {t:'hi', id:'bot', on:true},
       {t:'hand', id:'rh', on:false},
       {t:'hand', id:'lh', on:false},
-      {t:'hi', id:'bot', on:true},
-      {t:'flip', id:'bot', to:'up'},
-      {t:'label', id:'k', text:'A♠ from the bottom', x:50, y:88}
+      {t:'label', id:'k', text:'A♠ — dealt from the bottom', x:50, y:88}
     ]}
 ]};
 
@@ -3622,31 +3986,38 @@ ANIMS.t80 = { steps: [
 ]};
 
 ANIMS.t81 = { steps: [
-  { caption: "Bottom Palm — steal the bottom card into the left palm under cover of squaring or handing the deck away.",
-    beats: ["steal from bottom"],
+  { caption: "The <b>bottom card</b> is the one to steal — the A♠, underneath the deck in your left hand.",
+    beats: ["setup"],
     actions: [
-      {t:'deck', id:'d', x:48, y:48, n:51},
-      {t:'card', id:'bot', rank:'A', suit:'♠', x:48, y:58, face:'down', w:11},
-      {t:'hi', id:'bot', on:true},
-      {t:'hand', id:'lh', x:36, y:55, side:'left', on:true},
-      {t:'label', id:'k', text:'bottom card targeted', x:50, y:88}
+      {t:'deck', id:'d', x:48, y:47, n:51},
+      {t:'card', id:'bot', rank:'A', suit:'♠', x:48, y:58, face:'down', w:11, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'lh', x:36, y:54, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'bottom card: A♠', x:50, y:88}
     ]},
-  { caption: "As the right hand takes the deck, the left fingers curl the bottom card into the palm. Deck leaves clean.",
-    beats: ["the steal"],
+  { caption: "As the right hand <b>takes the deck</b>, the left fingers curl the bottom card into the palm. The deck leaves clean; the card stays.",
+    beats: ["bottom palm · the steal"],
     actions: [
-      {t:'hi', id:'bot', on:false},
-      {t:'hand', id:'rh', x:60, y:40, side:'right', on:true},
-      {t:'move', id:'d', x:62, y:42},
-      {t:'move', id:'bot', x:36, y:58, z:2},
+      {t:'hand', id:'rh', x:60, y:38, side:'right', on:true},
+      {t:'move', id:'d', x:62, y:40},
+      {t:'palm', id:'bot'},
+      {t:'move', id:'bot', x:34, y:60},
       {t:'scale', id:'bot', s:0.85},
-      {t:'note', id:'b', text:'palmed in left', x:28, y:72},
-      {t:'label', id:'k', text:'deck handed away · card retained', x:50, y:88}
+      {t:'label', id:'k', text:'deck goes · card stays', x:50, y:88}
     ]},
-  { caption: "Produce later from the pocket, the hand, or load it into a wallet. Same acting rules as the top palm.",
+  { caption: "The deck is handed away or set down. The left hand hangs <b>soft and natural</b> — the same acting rules as the top palm: never flat, never frozen.",
+    beats: ["the leave"],
+    actions: [
+      {t:'move', id:'d', x:76, y:32},
+      {t:'hand', id:'rh', on:false},
+      {t:'note', id:'b', text:'still in the left palm', x:26, y:74},
+      {t:'label', id:'k', text:'the leave', x:50, y:88}
+    ]},
+  { caption: "Produce it later — from a pocket, from the hand, or loaded where it's needed: <b>the A♠ that left while nobody watched</b>.",
+    climax: true,
     actions: [
       {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'move', id:'bot', x:50, y:45},
+      {t:'unpalm', id:'bot'},
+      {t:'move', id:'bot', x:50, y:46},
       {t:'scale', id:'bot', s:1.08},
       {t:'flip', id:'bot', to:'up'},
       {t:'hi', id:'bot', on:true},
@@ -3655,28 +4026,40 @@ ANIMS.t81 = { steps: [
 ]};
 
 ANIMS.t82 = { steps: [
-  { caption: "Breather Crimp — a subtle, permanent bend that lets you cut to a card by feel alone.",
-    beats: ["locator card"],
-    actions: [
-      {t:'card', id:'crimp', rank:'A', suit:'♠', x:50, y:50, face:'down', w:14},
-      {t:'hi', id:'crimp', on:true},
-      {t:'label', id:'k', text:'the work card', x:50, y:88}
-    ]},
-  { caption: "A lengthwise (or widthwise) bend put in under the guise of handling. Once set, it survives shuffles.",
+  { caption: "The work: under casual handling, put a <b>soft lengthwise bend</b> in the card — ends down, middle up, or the reverse. Less bend is more; if you can see it, they can see it.",
     beats: ["the work"],
     actions: [
-      {t:'hand', id:'rh', x:60, y:42, side:'right', on:true},
-      {t:'note', id:'b', text:'soft lengthwise bend', x:50, y:28},
-      {t:'label', id:'k', text:'invisible to the eye · obvious to the thumb', x:50, y:88}
+      {t:'card', id:'cr', rank:'A', suit:'♠', x:50, y:44, face:'down', w:13, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'rh', x:60, y:36, side:'right', on:true},
+      {t:'note', id:'b', text:'a soft bow — subtler than you think', x:50, y:22},
+      {t:'label', id:'k', text:'the work card', x:50, y:88}
     ]},
-  { caption: "Riffle or cut; the deck wants to break at the crimp. Instant control without a visible break.",
+  { caption: "Slip it into the deck and shuffle. The bend is <b>permanent</b> — it survives shuffles, invisible at a glance, obvious to a thumb.",
+    beats: ["durability"],
     actions: [
-      {t:'unnote', id:'b'},
+      {t:'deck', id:'d', x:36, y:57, n:51},
+      {t:'move', id:'cr', x:38, y:47},
+      {t:'hand', id:'lh', x:26, y:62, side:'left', on:true},
       {t:'hand', id:'rh', on:false},
-      {t:'deck', id:'d', x:50, y:55, n:52},
-      {t:'move', id:'crimp', x:50, y:40},
-      {t:'hi', id:'crimp', on:true},
-      {t:'label', id:'k', text:'cut straight to it', x:50, y:88}
+      {t:'unnote', id:'b'},
+      {t:'label', id:'k', text:'lost in the deck', x:50, y:88}
+    ]},
+  { caption: "Riffle or cut — <b>the deck wants to break at the crimp</b>. The packets part right at the bend, every time.",
+    beats: ["the break"],
+    actions: [
+      {t:'remove', id:'d'},
+      {t:'packet', id:'up', x:64, y:40, w:13, cards:[{bulk:25}]},
+      {t:'packet', id:'lo', x:38, y:63, w:13, cards:[{bulk:26}]},
+      {t:'move', id:'cr', x:38, y:53},
+      {t:'label', id:'k', text:'the break finds it', x:50, y:88}
+    ]},
+  { caption: "Cut straight to it: <b>instant control with no visible break</b> — a lifelong locator, found by feel alone. Mark a force card, a stack boundary, whatever needs finding.",
+    climax: true,
+    actions: [
+      {t:'flip', id:'cr', to:'up'},
+      {t:'hi', id:'cr', on:true},
+      {t:'hand', id:'lh', on:false},
+      {t:'label', id:'k', text:'the A♠ — cut to by feel', x:50, y:88}
     ]}
 ]};
 
@@ -3779,30 +4162,57 @@ ANIMS.t85 = { steps: [
 ]};
 
 ANIMS.t86 = { steps: [
-  { caption: "Elevator Cards — three cards (or a selection and mates) penetrate up through the packet one by one.",
-    beats: ["penetration"],
+  { caption: "A small packet — four cards. The A♠ will ride the elevator: <b>to the bottom, then back on top</b>, one card at a time.",
+    beats: ["packet"],
     actions: [
-      {t:'spread', x:22, y:50, count:4, dx:14, face:'up', w:11, prefix:'e',
-        cards:[
-          {id:'e0', rank:'A', suit:'♠'},{id:'e1', rank:'2', suit:'♥'},
-          {id:'e2', rank:'3', suit:'♣'},{id:'e3', rank:'4', suit:'♦'}
-        ]},
+      {t:'spread', x:24, y:46, dx:15, w:11, face:'up', prefix:'e', cards:[{id:'e0', rank:'A', suit:'♠'},{id:'e1', rank:'2', suit:'♥'},{id:'e2', rank:'3', suit:'♣'},{id:'e3', rank:'4', suit:'♦'}]},
       {t:'hi', id:'e0', on:true},
-      {t:'label', id:'k', text:'ace goes to the bottom', x:50, y:88}
+      {t:'label', id:'k', text:'the traveller: A♠', x:50, y:88}
     ]},
-  { caption: "Ace is placed on the bottom of the small packet. Snap — it rises to the top.",
-    beats: ["first rise"],
+  { caption: "Square them face-down with the <b>A♠ on the bottom</b> of the packet.",
+    beats: ["to the bottom"],
     actions: [
-      {t:'hi', id:'e0', on:false},
-      {t:'move', id:'e0', x:50, y:62},
-      {t:'move', id:'e0', x:50, y:38, z:5},
-      {t:'hi', id:'e0', on:true},
-      {t:'label', id:'k', text:'back on top', x:50, y:88}
+      {t:'remove', id:'e0'},
+      {t:'remove', id:'e1'},
+      {t:'remove', id:'e2'},
+      {t:'remove', id:'e3'},
+      {t:'packet', id:'pkt', x:50, y:50, w:12, cards:[{rank:'A', suit:'♠', face:'down'},{rank:'2', suit:'♥', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'4', suit:'♦', face:'down'}]},
+      {t:'label', id:'k', text:'A♠ at the bottom', x:50, y:88}
     ]},
-  { caption: "Repeat with the next card. Each \"elevator\" ride uses a double lift or buckle to fake the penetration.",
+  { caption: "Snap. Under cover of the snap, the bottom card <b>buckles up the back of the packet</b> — the ghost in Exposed view is the ride the audience never sees.",
+    beats: ["buckle"],
     actions: [
-      {t:'scale', id:'e0', s:1.08},
-      {t:'label', id:'k', text:'elevator — up through the packet', x:50, y:88}
+      {t:'repacket', id:'pkt', cards:[{rank:'2', suit:'♥', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'4', suit:'♦', face:'down'}]},
+      {t:'card', id:'bk', rank:'A', suit:'♠', x:44, y:58, face:'down', w:11, z:2, ghost:true, secret:{rank:'A', suit:'♠'}},
+      {t:'label', id:'k', text:'the buckle (Exposed)', x:50, y:88}
+    ]},
+  { caption: "Turn over the top card: the <b>A♠, back on top</b> — apparently straight through the packet.",
+    beats: ["the rise"],
+    actions: [
+      {t:'remove', id:'bk'},
+      {t:'card', id:'risen', rank:'A', suit:'♠', x:50, y:42, face:'down', w:11, z:5, secret:{rank:'A', suit:'♠'}},
+      {t:'flip', id:'risen', to:'up'},
+      {t:'hi', id:'risen', on:true},
+      {t:'label', id:'k', text:'risen', x:50, y:88}
+    ]},
+  { caption: "Set the risen ace aside. Next passenger: the 2♥ takes the <b>same ride</b> — buckled up the back under the snap.",
+    beats: ["repeat"],
+    actions: [
+      {t:'move', id:'risen', x:22, y:38},
+      {t:'hi', id:'risen', on:false},
+      {t:'repacket', id:'pkt', cards:[{rank:'3', suit:'♣', face:'down'},{rank:'4', suit:'♦', face:'down'}]},
+      {t:'card', id:'bk2', rank:'2', suit:'♥', x:44, y:58, face:'down', w:11, z:2, ghost:true, secret:{rank:'2', suit:'♥'}},
+      {t:'label', id:'k', text:'second ride', x:50, y:88}
+    ]},
+  { caption: "And the 2♥ arrives on top. <b>Clean display</b> of the risen cards — keep the packet small and the snaps sharp; rhythm sells the penetration.",
+    climax: true,
+    actions: [
+      {t:'remove', id:'bk2'},
+      {t:'card', id:'risen2', rank:'2', suit:'♥', x:36, y:38, face:'down', w:11, z:5, secret:{rank:'2', suit:'♥'}},
+      {t:'flip', id:'risen2', to:'up'},
+      {t:'hi', id:'risen2', on:true},
+      {t:'hi', id:'risen', on:true},
+      {t:'label', id:'k', text:'two cards rode the elevator', x:50, y:88}
     ]}
 ]};
 
@@ -3830,27 +4240,51 @@ ANIMS.t87 = { steps: [
 ]};
 
 ANIMS.t88 = { steps: [
-  { caption: "Any Card at Any Number (ACAAN) — they name a card and a number; that card is at that position.",
+  { caption: "A <b>stacked deck</b>: you know where every card sits. In this stack the 7♥ lies <b>twentieth</b> from the top.",
+    beats: ["the stack"],
+    actions: [
+      {t:'packet', id:'stk', x:50, y:52, w:13, cards:[{bulk:32},{rank:'7', suit:'♥', face:'down'},{bulk:19}]},
+      {t:'label', id:'k', text:'a stacked deck — every position known', x:50, y:88}
+    ]},
+  { caption: "They name a card and a number — genuinely free: the <b>7♥</b>, and <b>twelve</b>. The cleaner the naming process, the stronger the effect.",
     beats: ["named card · named number"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'name a card · name a number', x:50, y:88}
+      {t:'note', id:'b', text:'they name: the 7♥ — and the number 12', x:50, y:22},
+      {t:'hand', id:'rh', x:62, y:40, side:'right', on:true},
+      {t:'label', id:'k', text:'named: 7♥ at 12', x:50, y:88}
     ]},
-  { caption: "With a stacked deck, a cut, or a simple shift, the named card is brought to the named position.",
+  { caption: "Do the arithmetic in silence: it sits at 20, they want 12 — <b>cut eight cards</b>. The top eight come off…",
     beats: ["the shift"],
     actions: [
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'cut or shift to position', x:50, y:88}
+      {t:'remove', id:'stk'},
+      {t:'packet', id:'top8', x:32, y:42, w:12, cards:[{bulk:8}]},
+      {t:'packet', id:'rest', x:60, y:52, w:13, cards:[{bulk:32},{rank:'7', suit:'♥', face:'down'},{bulk:11}]},
+      {t:'label', id:'k', text:'cut 8', x:50, y:88}
     ]},
-  { caption: "Count down to their number. Turn the card — it's the one they named. Hands-off versions exist for pure self-workers.",
+  { caption: "…and go <b>underneath</b>. The cut is the whole shift — the 7♥ now sits exactly <b>twelfth</b> in the packet that remains on top.",
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'card', id:'named', rank:'A', suit:'♠', x:50, y:40, face:'up', w:14},
+      {t:'move', id:'top8', x:60, y:68},
+      {t:'unnote', id:'b'},
+      {t:'label', id:'k', text:'7♥ now at 12', x:50, y:88}
+    ]},
+  { caption: "Count down toward their number — <b>eleven cards</b> dealt off the top, one at a time…",
+    beats: ["the count"],
+    actions: [
+      {t:'repacket', id:'rest', cards:[{bulk:32},{rank:'7', suit:'♥', face:'down'}]},
+      {t:'packet', id:'counted', x:28, y:42, w:12, cards:[{bulk:11}]},
+      {t:'label', id:'k', text:'counting: eleven down', x:50, y:88}
+    ]},
+  { caption: "…and the <b>twelfth card</b> is turned over: the <b>7♥ they named</b>, at the number they named.",
+    climax: true,
+    actions: [
+      {t:'repacket', id:'rest', cards:[{bulk:32}]},
+      {t:'card', id:'named', rank:'7', suit:'♥', x:60, y:42, face:'down', w:11, z:5, secret:{rank:'7', suit:'♥'}},
+      {t:'flip', id:'named', to:'up'},
       {t:'hi', id:'named', on:true},
-      {t:'scale', id:'named', s:1.12},
-      {t:'label', id:'k', text:'their card at their number', x:50, y:88}
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'twelfth: the 7♥', x:50, y:88}
     ]}
-]}
+]};
 
 ANIMS.t89 = { steps: [
   { caption: "Deck in the <b>right hand</b>, top card targeted — the A♠. The left hand stays free the whole time.",
@@ -3954,30 +4388,40 @@ ANIMS.t91 = { steps: [
 ;
 
 ANIMS.t92 = { steps: [
-  { caption: "Card to Wallet — signed selection leaves the deck and appears in a wallet that stayed in view or pocket.",
-    beats: ["control"],
+  { caption: "Their selection is <b>signed and controlled</b>. The wallet has been in view the whole time — ordinary, familiar, above suspicion. Familiarity kills suspicion.",
+    beats: ["sign · control"],
     actions: [
-      {t:'deck', id:'d', x:45, y:50, n:52},
-      {t:'card', id:'sel', rank:'A', suit:'♠', x:45, y:38, face:'up', w:12},
+      {t:'deck', id:'d', x:45, y:52, n:51},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:45, y:40, face:'up', w:12},
       {t:'hi', id:'sel', on:true},
-      {t:'label', id:'k', text:'selection controlled', x:50, y:88}
+      {t:'label', id:'k', text:'signed — and controlled', x:50, y:88}
     ]},
-  { caption: "Palm or ditch the card. Load into the wallet (or a window envelope inside) while opening it or gesturing.",
-    beats: ["palm · load"],
+  { caption: "<b>Palm the card</b> while attention is on the deck or on a gesture — the steal happens in the moment nobody is watching your hand.",
+    beats: ["palm"],
     actions: [
       {t:'hi', id:'sel', on:false},
-      {t:'move', id:'sel', x:70, y:42},
-      {t:'hand', id:'rh', x:72, y:45, side:'right', on:true},
-      {t:'label', id:'k', text:'steal · load under cover of opening', x:50, y:88}
+      {t:'palm', id:'sel'},
+      {t:'move', id:'sel', x:72, y:42},
+      {t:'hand', id:'rh', x:74, y:45, side:'right', on:true},
+      {t:'label', id:'k', text:'palmed', x:50, y:88}
     ]},
-  { caption: "Open the wallet fully. Their signed card is inside — personal and impossible.",
+  { caption: "As you <b>open the wallet</b> — or the window envelope inside it — the palmed card slides in. The opening itself covers the load.",
+    beats: ["the load"],
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'move', id:'sel', x:50, y:48},
-      {t:'flip', id:'sel', to:'up'},
-      {t:'hi', id:'sel', on:true},
+      {t:'note', id:'w', text:'the wallet — opening now', x:72, y:64},
+      {t:'move', id:'sel', x:72, y:58},
+      {t:'label', id:'k', text:'loaded under the opening', x:50, y:88}
+    ]},
+  { caption: "Open it fully: <b>their signed card is inside</b> — personal, and impossible.",
+    climax: true,
+    actions: [
+      {t:'unnote', id:'w'},
+      {t:'unpalm', id:'sel'},
+      {t:'move', id:'sel', x:58, y:44},
       {t:'scale', id:'sel', s:1.08},
-      {t:'label', id:'k', text:'wallet empty → then card', x:50, y:88}
+      {t:'hi', id:'sel', on:true},
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'signed A♠ — in the wallet', x:50, y:88}
     ]}
 ]};
 ;
@@ -4091,52 +4535,84 @@ ANIMS.t95 = { steps: [
 ;
 
 ANIMS.t96 = { steps: [
-  { caption: "Vanishing Deck — the whole deck disappears, leaving a single card or empty hands.",
-    beats: ["full deck"],
+  { caption: "A <b>full deck</b>, clearly in hand. One card is picked out in Exposed view — it's the one that will stay.",
+    beats: ["display"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
-      {t:'hand', id:'rh', x:60, y:55, side:'right', on:true},
-      {t:'label', id:'k', text:'deck in play', x:50, y:88}
+      {t:'deck', id:'d', x:50, y:52, n:51},
+      {t:'card', id:'one', rank:'A', suit:'♠', x:50, y:41, face:'down', w:11, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'lh', x:38, y:58, side:'left', on:true},
+      {t:'hand', id:'rh', x:62, y:58, side:'right', on:true},
+      {t:'label', id:'k', text:'a full deck in hand', x:50, y:88}
     ]},
-  { caption: "Cover: box, silk, fold, or a ditch to lap/pocket. The mass leaves under that cover.",
-    beats: ["cover · ditch"],
+  { caption: "<b>Cover</b>: a silk over the hands, the card box, a fold of the body — something has to hide the moment the mass leaves.",
+    beats: ["cover"],
+    actions: [
+      {t:'note', id:'b', text:'cover: silk, box, fold — or a body ditch', x:50, y:20},
+      {t:'hand', id:'lh', x:44, y:54, side:'left', on:true},
+      {t:'hand', id:'rh', x:56, y:54, side:'right', on:true},
+      {t:'label', id:'k', text:'covered', x:50, y:88}
+    ]},
+  { caption: "Under that cover the deck is <b>ditched</b> — to lap or pocket. The hands come apart: empty, except for one card.",
+    beats: ["the ditch"],
     actions: [
       {t:'remove', id:'d'},
-      {t:'label', id:'k', text:'cover · deck goes', x:50, y:88}
+      {t:'unnote', id:'b'},
+      {t:'move', id:'one', x:50, y:47},
+      {t:'hand', id:'lh', x:30, y:60, side:'left', on:true},
+      {t:'hand', id:'rh', x:70, y:60, side:'right', on:true},
+      {t:'label', id:'k', text:'the deck is gone', x:50, y:88}
     ]},
-  { caption: "Show empty hands or a single remaining card. Optional kicker: produce the deck again from a pocket.",
+  { caption: "<b>Shock first; clean up second.</b> The entire deck has vanished — this card never left. Don't explain the empty hands with more moves.",
+    climax: true,
     actions: [
-      {t:'card', id:'one', rank:'A', suit:'♠', x:50, y:48, face:'up', w:12},
+      {t:'flip', id:'one', to:'up'},
       {t:'hi', id:'one', on:true},
-      {t:'hand', id:'lh', on:false},{t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'shock first · clean second', x:50, y:88}
+      {t:'scale', id:'one', s:1.1},
+      {t:'label', id:'k', text:'one card remains', x:50, y:88}
+    ]},
+  { caption: "Optional second beat: <b>produce the deck again</b> from a pocket.",
+    beats: ["reproduction"],
+    actions: [
+      {t:'deck', id:'d', x:78, y:44, n:51},
+      {t:'hand', id:'rh', x:84, y:50, side:'right', on:true},
+      {t:'label', id:'k', text:'the deck returns', x:50, y:88}
     ]}
 ]};
 
 
 ANIMS.t97 = { steps: [
-  { caption: "Center Deal — deal a card from the middle while it looks like a top deal. Advanced gambling technique.",
-    beats: ["step / break"],
+  { caption: "A <b>break or step</b> holds the target — the A♠ — in the <b>center</b> of the deck. Exposed view shows exactly where it lives.",
+    beats: ["the mark"],
     actions: [
-      {t:'deck', id:'d', x:45, y:50, n:52},
-      {t:'card', id:'mid', rank:'A', suit:'♠', x:45, y:44, face:'down', w:11},
-      {t:'hi', id:'mid', on:true},
-      {t:'hand', id:'lh', x:35, y:55, side:'left', on:true},
-      {t:'label', id:'k', text:'break or step marks the card', x:50, y:88}
+      {t:'packet', id:'stk', x:45, y:50, w:13, cards:[{bulk:25},{rank:'A', suit:'♠', face:'down'},{bulk:26}]},
+      {t:'hand', id:'lh', x:33, y:56, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'target stepped in the center', x:50, y:88}
     ]},
-  { caption: "Deal motion looks like a top deal. The take is from the step; the true top card stays.",
-    beats: ["deal from center"],
+  { caption: "The deck is <b>stepped</b> at the target — two stocks, offset by a card's width. From the front, nothing shows.",
+    beats: ["the step"],
     actions: [
-      {t:'hand', id:'rh', x:62, y:42, side:'right', on:true},
-      {t:'move', id:'mid', x:70, y:50},
-      {t:'label', id:'k', text:'take from the step · top stays', x:50, y:88}
+      {t:'remove', id:'stk'},
+      {t:'packet', id:'top', x:45, y:39, w:13, cards:[{bulk:26}]},
+      {t:'packet', id:'bot', x:47, y:61, w:13, cards:[{bulk:25},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'label', id:'k', text:'the step', x:50, y:88}
     ]},
-  { caption: "Dealt card hits the table. Top and bottom stocks remain intact for stacked demos.",
+  { caption: "Deal — with a motion <b>identical to a clean top deal</b>, the take comes from the step. The center card slides out; the true top card stays exactly where it was.",
+    beats: ["center deal"],
     actions: [
-      {t:'flip', id:'mid', to:'up'},
-      {t:'hi', id:'mid', on:true},
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
+      {t:'repacket', id:'bot', cards:[{bulk:25}]},
+      {t:'card', id:'dealt', rank:'A', suit:'♠', x:50, y:58, face:'down', w:11, z:5, secret:{rank:'A', suit:'♠'}},
+      {t:'move', id:'dealt', x:74, y:52},
+      {t:'hand', id:'rh', x:64, y:42, side:'right', on:true},
+      {t:'label', id:'k', text:'dealt from the center', x:50, y:88}
+    ]},
+  { caption: "The dealt card is the <b>A♠ from the middle</b> — and the top and bottom stocks remain untouched, ready for stacked demos. Angle-sensitive and hard: master the second and bottom deals first.",
+    climax: true,
+    actions: [
+      {t:'flip', id:'dealt', to:'up'},
+      {t:'hi', id:'dealt', on:true},
+      {t:'remove', id:'top'},
+      {t:'remove', id:'bot'},
+      {t:'deck', id:'d', x:45, y:50, n:51},
       {t:'label', id:'k', text:'center dealt · stocks safe', x:50, y:88}
     ]}
 ]};
@@ -4264,51 +4740,66 @@ ANIMS.t101 = { steps: [
 ;
 
 ANIMS.t102 = { steps: [
-  { caption: "Tossed-Out Deck — several spectators each peek a card from a rubber-banded deck tossed into the audience.",
-    beats: ["multiple minds"],
+  { caption: "A <b>rubber-banded deck</b> is tossed into the audience. Several spectators will each peek a card — and you will name every single one.",
+    beats: ["the toss"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'hand', id:'rh', x:60, y:40, side:'right', on:true},
-      {t:'note', id:'b', text:'banded · banked', x:50, y:28},
-      {t:'label', id:'k', text:'deck tossed out', x:50, y:88}
+      {t:'packet', id:'d', x:50, y:50, w:13, cards:[{bulk:40},{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'hand', id:'rh', x:62, y:40, side:'right', on:true},
+      {t:'note', id:'b', text:'rubber-banded — and banked', x:50, y:24},
+      {t:'label', id:'k', text:'toss it out', x:50, y:88}
     ]},
-  { caption: "Each person opens slightly, remembers one card, closes it. The deck returns.",
-    beats: ["free peeks"],
+  { caption: "The secret, in Exposed view: the deck is a <b>bank</b> — the same <b>four cards repeat</b> through it, again and again. Wherever anyone peeks, they can only land on one of the four.",
+    beats: ["the bank"],
     actions: [
       {t:'unnote', id:'b'},
-      {t:'spread', x:18, y:50, count:5, dx:12, face:'up', w:10, prefix:'p',
-        cards:[{rank:'A',suit:'♠'},{rank:'7',suit:'♥'},{rank:'K',suit:'♦'},{rank:'3',suit:'♣'},{rank:'Q',suit:'♠'}]},
-      {t:'label', id:'k', text:'several cards peeked', x:50, y:88}
+      {t:'remove', id:'d'},
+      {t:'packet', id:'stk', x:34, y:52, w:13, cards:[{bulk:40}]},
+      {t:'packet', id:'win', x:68, y:52, w:13, cards:[{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{rank:'3', suit:'♣', face:'down'},{rank:'K', suit:'♦', face:'down'},{rank:'7', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'label', id:'k', text:'the bank: A♠ 7♥ K♦ 3♣, repeating', x:50, y:88}
     ]},
-  { caption: "You name every peeked card. A stacked or restricted bank makes the \"free\" peeks knowable.",
+  { caption: "Each person opens the banded deck slightly, <b>remembers one card</b>, and closes it. Three peeks — every one of them a bank card, because there is nothing else to peek.",
+    beats: ["the peeks"],
     actions: [
+      {t:'remove', id:'win'},
+      {t:'packet', id:'rest', x:68, y:52, w:13, cards:[{bulk:9}]},
+      {t:'card', id:'pk1', rank:'A', suit:'♠', x:26, y:26, face:'up', w:10},
+      {t:'card', id:'pk2', rank:'7', suit:'♥', x:50, y:22, face:'up', w:10},
+      {t:'card', id:'pk3', rank:'K', suit:'♦', x:74, y:26, face:'up', w:10},
+      {t:'label', id:'k', text:'three peeks', x:50, y:88}
+    ]},
+  { caption: "The deck comes back and you <b>name every peeked card</b> — the A♠, the 7♥, the K♦. The method is a bank; the miracle is in the naming. Presentation carries this one.",
+    climax: true,
+    actions: [
+      {t:'hi', id:'pk1', on:true},
+      {t:'hi', id:'pk2', on:true},
+      {t:'hi', id:'pk3', on:true},
       {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'every thought named', x:50, y:88}
+      {t:'label', id:'k', text:'named: A♠ · 7♥ · K♦', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t103 = { steps: [
-  { caption: "Think of a Card — pure mentalism presentation. They think of a card; you name it. Method is flexible.",
-    beats: ["thought of card"],
+  { caption: "No card is touched, taken, or named aloud. They <b>only think of one</b>.",
+    beats: ["think"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
+      {t:'deck', id:'d', x:50, y:52, n:52},
       {t:'label', id:'k', text:'think of any card', x:50, y:88}
     ]},
-  { caption: "No card is touched. Through glimpses, psychological forces, or a stacked bank, you narrow to their thought.",
-    beats: ["narrowing"],
+  { caption: "The process is <b>invisible narrowing</b>: wording and timing steer the thought. Picture a card — a bright one, a picture card — and most minds land in the same small neighbourhood. The article's own example target: the Queen of Hearts.",
+    beats: ["the steer"],
     actions: [
-      {t:'hand', id:'rh', x:55, y:40, side:'right', on:true},
-      {t:'note', id:'b', text:'process is invisible', x:50, y:28},
-      {t:'label', id:'k', text:'reading the thought', x:50, y:88}
+      {t:'hand', id:'rh', x:64, y:40, side:'right', on:true},
+      {t:'note', id:'b', text:'"picture a card — a bright one, a picture card…"', x:50, y:22},
+      {t:'label', id:'k', text:'the steer', x:50, y:88}
     ]},
-  { caption: "Name the card. Or have them remove it themselves and confirm. The less procedure, the stronger the mind-read.",
+  { caption: "Name it — or better, have them <b>remove it from the deck themselves</b> to confirm: the <b>Queen of Hearts</b>. One clean hit beats a chain of fishing questions; the less procedure, the stronger the mind-read.",
+    climax: true,
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'card', id:'thought', rank:'A', suit:'♠', x:50, y:45, face:'up', w:14},
-      {t:'hi', id:'thought', on:true},
-      {t:'scale', id:'thought', s:1.12},
-      {t:'label', id:'k', text:'the thought-of card', x:50, y:88}
+      {t:'remove', id:'d'},
+      {t:'deck', id:'d', x:50, y:52, n:51},
+      {t:'card', id:'th', rank:'Q', suit:'♥', x:50, y:38, face:'up', w:12, z:5},
+      {t:'hi', id:'th', on:true},
+      {t:'label', id:'k', text:'the Queen of Hearts', x:50, y:88}
     ]}
 ]};
 
@@ -4482,31 +4973,48 @@ ANIMS.t108 = { steps: [
 ]};
 
 ANIMS.t109 = { steps: [
-  { caption: "Braue Reversal — reverse a card (or packet) while cutting the deck, under cover of a natural action.",
-    beats: ["reverse under cut"],
+  { caption: "The selection — the A♠ — sits on <b>top</b> of the deck. You're going to reverse it inside a cut, with no visible reverse action at all.",
+    beats: ["setup"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'card', id:'sel', rank:'A', suit:'♠', x:50, y:40, face:'down', w:11},
-      {t:'hi', id:'sel', on:true},
-      {t:'label', id:'k', text:'card to reverse', x:50, y:88}
+      {t:'packet', id:'deck', x:50, y:50, w:13, cards:[{bulk:51},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'hand', id:'lh', x:38, y:56, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'selection on top', x:50, y:88}
     ]},
-  { caption: "Cut half the deck into the right hand. The selection is flipped against the left-hand packet as the cut is completed.",
-    beats: ["flip on the cut"],
+  { caption: "<b>Cut</b>: half the deck comes off into the right hand. The selection rides on top of that half.",
+    beats: ["the cut"],
     actions: [
-      {t:'hi', id:'sel', on:false},
-      {t:'hand', id:'rh', x:60, y:40, side:'right', on:true},
-      {t:'deck', id:'half', x:60, y:45, n:26},
-      {t:'flip', id:'sel', to:'up'},
+      {t:'remove', id:'deck'},
+      {t:'packet', id:'top', x:64, y:40, w:13, cards:[{bulk:25},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'packet', id:'bot', x:38, y:58, w:13, cards:[{bulk:26}]},
+      {t:'hand', id:'rh', x:72, y:34, side:'right', on:true},
+      {t:'label', id:'k', text:'the cut', x:50, y:88}
+    ]},
+  { caption: "As the cut completes, the selection <b>flips over against the lower packet</b>, turned by the landing itself. Don't pause on the flip — the cut is the move.",
+    beats: ["Braue reversal"],
+    actions: [
+      {t:'repacket', id:'top', cards:[{bulk:25}]},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:48, y:48, face:'up', w:11, z:5},
+      {t:'move', id:'top', x:48, y:39},
       {t:'label', id:'k', text:'reversed on the cut', x:50, y:88}
     ]},
-  { caption: "Deck squared. Selection is face-up in the middle (or at a known position) without a visible reverse action.",
+  { caption: "<b>Square the deck.</b> The selection now sits face-up inside it, at a position you know — ready for ambitious phases, secret reverses, kicker productions.",
+    beats: ["square"],
     actions: [
-      {t:'remove', id:'half'},{t:'remove', id:'d'},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'move', id:'sel', x:50, y:48},
-      {t:'hi', id:'sel', on:true},
+      {t:'move', id:'bot', x:48, y:57},
+      {t:'move', id:'sel', x:48, y:48},
+      {t:'move', id:'top', x:48, y:40},
       {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'Braue reversal done', x:50, y:88}
+      {t:'label', id:'k', text:'squared — reversed inside', x:50, y:88}
+    ]},
+  { caption: "Spread the deck and there it is: <b>one card reversed in the middle</b> — the selection, turned face-up with nobody having seen a thing.",
+    climax: true,
+    actions: [
+      {t:'remove', id:'top'},
+      {t:'remove', id:'bot'},
+      {t:'spread', x:6, y:52, dx:1.65, w:8, face:'down', prefix:'r', count:51},
+      {t:'move', id:'sel', x:50, y:50, z:9},
+      {t:'hi', id:'sel', on:true},
+      {t:'label', id:'k', text:'one card reversed: A♠', x:50, y:88}
     ]}
 ]};
 
@@ -4563,88 +5071,119 @@ ANIMS.t111 = { steps: [
 ]};
 
 ANIMS.t112 = { steps: [
-  { caption: "Gambler's Cop — a low, natural palm that hides a card in the curled fingers while the hand looks relaxed and empty.",
-    beats: ["low palm"],
+  { caption: "One card, and a hand that must look <b>empty and idle</b>. The gambler's cop hides the card low — in the curled fingers, not in a full classic palm.",
+    beats: ["setup"],
     actions: [
-      {t:'card', id:'c', rank:'A', suit:'♠', x:45, y:55, face:'down', w:12},
-      {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
+      {t:'card', id:'c', rank:'A', suit:'♠', x:45, y:52, face:'down', w:12, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'lh', x:38, y:56, side:'left', on:true},
       {t:'hi', id:'c', on:true},
-      {t:'label', id:'k', text:'card to be copped', x:50, y:88}
+      {t:'label', id:'k', text:'the card to cop', x:50, y:88}
     ]},
-  { caption: "Card settles into the curl of the fingers and heel — not the classic full palm. Hand hangs naturally at the side.",
+  { caption: "The card <b>settles into the curl of the fingers and heel</b> — not a full palm. A low, natural hold, clipped by bent fingers.",
     beats: ["the settle"],
     actions: [
       {t:'hi', id:'c', on:false},
-      {t:'move', id:'c', x:38, y:62, z:2},
+      {t:'palm', id:'c'},
+      {t:'move', id:'c', x:36, y:62},
       {t:'scale', id:'c', s:0.8},
-      {t:'note', id:'b', text:'curled fingers · relaxed hand', x:55, y:72},
+      {t:'hand', id:'lh', x:34, y:60, side:'left', on:true, grip:'curled fingers · heel of hand'},
+      {t:'note', id:'b', text:'into the curl — not a full palm', x:56, y:74},
       {t:'label', id:'k', text:'copped — hand looks empty', x:50, y:88}
     ]},
-  { caption: "Walk, gesture, or reach into a pocket. Produce or ditch on your own time.",
+  { caption: "The hand <b>hangs at the side</b>, relaxed and idle. Relaxation is the camouflage — a stiff hand announces the steal.",
+    beats: ["the hang"],
     actions: [
+      {t:'move', id:'c', x:30, y:72},
+      {t:'hand', id:'lh', x:28, y:74, side:'left', on:true, grip:''},
       {t:'unnote', id:'b'},
-      {t:'move', id:'c', x:55, y:48},
+      {t:'label', id:'k', text:'hangs empty', x:50, y:88}
+    ]},
+  { caption: "Walk, gesture, reach into a pocket — or <b>produce it on your own schedule</b>. The cop keeps the card available and the hand innocent.",
+    climax: true,
+    actions: [
+      {t:'unpalm', id:'c'},
+      {t:'move', id:'c', x:50, y:46},
       {t:'scale', id:'c', s:1.08},
       {t:'flip', id:'c', to:'up'},
       {t:'hi', id:'c', on:true},
+      {t:'hand', id:'lh', on:false},
       {t:'label', id:'k', text:'produced from the cop', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t113 = { steps: [
-  { caption: "Tenkai Palm — card held flat against the palm by the thumb, almost parallel to the floor. Extremely open-looking.",
-    beats: ["flat palm"],
+  { caption: "One card, to be held <b>flat against the palm by the thumb</b> — the Tenkai palm: open-looking, versatile, and devastating head-on.",
+    beats: ["setup"],
     actions: [
-      {t:'card', id:'c', rank:'A', suit:'♠', x:50, y:50, face:'down', w:12},
+      {t:'card', id:'c', rank:'A', suit:'♠', x:48, y:50, face:'down', w:12, secret:{rank:'A', suit:'♠'}},
       {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
       {t:'hi', id:'c', on:true},
-      {t:'label', id:'k', text:'card into Tenkai', x:50, y:88}
+      {t:'label', id:'k', text:'the card', x:50, y:88}
     ]},
-  { caption: "Thumb pins the card against the upper palm. Fingers can move freely; the hand looks nearly empty from the front.",
-    beats: ["thumb pin"],
+  { caption: "<b>Pin</b>: the thumb holds the card flat against the upper palm, almost parallel to the floor. Keep the thumb soft — a hard pinch flashes the edge.",
+    beats: ["the pin"],
     actions: [
       {t:'hi', id:'c', on:false},
+      {t:'palm', id:'c'},
       {t:'move', id:'c', x:58, y:40, z:2},
       {t:'scale', id:'c', s:0.85},
       {t:'rot', id:'c', deg:15},
-      {t:'note', id:'b', text:'flat against the palm', x:70, y:55},
+      {t:'hand', id:'rh', x:60, y:40, side:'right', on:true, grip:'thumb pin'},
+      {t:'note', id:'b', text:'flat against the upper palm — thumb soft', x:72, y:56},
       {t:'label', id:'k', text:'Tenkai position', x:50, y:88}
     ]},
-  { caption: "Ideal for open-hand vanishes, transfers, and productions. Angle-sensitive but devastating head-on.",
+  { caption: "<b>Open</b>: the fingers are free and the hand looks nearly empty from the front. The price is angles — devastating head-on, careful at the sides.",
+    beats: ["the open hand"],
+    actions: [
+      {t:'hand', id:'rh', x:58, y:44, side:'right', on:true, grip:''},
+      {t:'note', id:'b', text:'head-on it reads empty — guard the sides', x:72, y:56},
+      {t:'label', id:'k', text:'open — head-on', x:50, y:88}
+    ]},
+  { caption: "Vanishes, transfers, productions: the card simply <b>appears</b> from a hand that looked empty.",
+    climax: true,
     actions: [
       {t:'unnote', id:'b'},
-      {t:'move', id:'c', x:50, y:48},
-      {t:'scale', id:'c', s:1.08},
+      {t:'unpalm', id:'c'},
+      {t:'move', id:'c', x:50, y:46},
       {t:'rot', id:'c', deg:0},
+      {t:'scale', id:'c', s:1.08},
       {t:'flip', id:'c', to:'up'},
       {t:'hi', id:'c', on:true},
+      {t:'hand', id:'rh', on:false},
       {t:'label', id:'k', text:'produced from Tenkai', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t114 = { steps: [
-  { caption: "Through-the-Fist Change — push a face-up card through the fist; it emerges face-down (or transformed).",
-    beats: ["push through · change"],
+  { caption: "Two cards — though the audience will only ever count one. A <b>second card hides inside the fist</b> before you begin: Exposed view can see it; the room can't.",
+    beats: ["setup"],
     actions: [
-      {t:'card', id:'c', rank:'A', suit:'♠', x:50, y:50, face:'up', w:14},
-      {t:'hi', id:'c', on:true},
-      {t:'hand', id:'rh', x:60, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'face-up into the fist', x:50, y:88}
+      {t:'hand', id:'rh', x:54, y:44, side:'right', on:true},
+      {t:'card', id:'hid', rank:'K', suit:'♠', x:54, y:44, face:'down', w:11, z:2, ghost:true, secret:{rank:'K', suit:'♠'}},
+      {t:'card', id:'in', rank:'5', suit:'♥', x:30, y:46, face:'up', w:12},
+      {t:'hi', id:'in', on:true},
+      {t:'label', id:'k', text:'one card hidden in the fist', x:50, y:88}
     ]},
-  { caption: "Card goes into the top of the fist. A hidden turn or switch happens inside; it exits the bottom changed.",
-    beats: ["through the hand"],
+  { caption: "The face-up 5♥ goes <b>into the top of the fist</b>.",
+    beats: ["in"],
     actions: [
-      {t:'hi', id:'c', on:false},
-      {t:'move', id:'c', x:60, y:42},
-      {t:'scale', id:'c', s:0.7},
-      {t:'label', id:'k', text:'through the fist', x:50, y:88}
+      {t:'move', id:'in', x:50, y:36},
+      {t:'label', id:'k', text:'in at the top', x:50, y:88}
     ]},
-  { caption: "Emerges face-down — or as a different card entirely. Simple, visual, and widely useful.",
+  { caption: "Inside the hand, the <b>switch</b>: the 5♥ stays in the fist, and the hidden card is the one that travels through and out the bottom.",
+    beats: ["through"],
     actions: [
-      {t:'move', id:'c', x:50, y:55},
-      {t:'scale', id:'c', s:1.08},
-      {t:'flip', id:'c', to:'down'},
-      {t:'hi', id:'c', on:true},
+      {t:'palm', id:'in'},
+      {t:'reveal', id:'hid'},
+      {t:'move', id:'hid', x:54, y:64},
+      {t:'flip', id:'hid', to:'up'},
+      {t:'label', id:'k', text:'the switch (Exposed)', x:50, y:88}
+    ]},
+  { caption: "Out comes the <b>K♠</b> — a different card entirely. <b>Hold it a beat</b>: the change needs a moment to register. The 5♥ never left the fist.",
+    climax: true,
+    actions: [
+      {t:'scale', id:'hid', s:1.1},
+      {t:'hi', id:'hid', on:true},
       {t:'label', id:'k', text:'changed on the way through', x:50, y:88}
     ]}
 ]};
