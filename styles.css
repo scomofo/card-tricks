@@ -261,6 +261,60 @@
   .vsrc a{color:var(--gold-soft)}
   .noanim .pinner,.noanim .pcard,.noanim .pdeck,.noanim .ppacket,.noanim .plabel,.noanim .pnote,.noanim .phand{transition:none !important}
 
+  /* --- Phase 3: secret layer, real packet stacks, grips, climax, slow replay --- */
+
+  /* ghost face: a face-down card's true identity, visible only in Exposed view */
+  .pghost{position:absolute;inset:0;border-radius:7%;z-index:6;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:19px;letter-spacing:.01em;color:#2a2118;
+    background:linear-gradient(155deg,rgba(248,241,223,.92),rgba(230,214,173,.92));
+    border:2px dashed var(--gold);opacity:0;transition:opacity .3s ease}
+  .pghost.red{color:#b82e1c}
+  .animplayer.exposed .pghost{opacity:.62}
+  .pcard:not(.facedown) .pghost{display:none}
+
+  /* bottom-card identity tag on a packet, Exposed view only */
+  .pbot{position:absolute;top:-25px;right:-4px;z-index:7;pointer-events:none;white-space:nowrap;
+    font-size:11px;font-weight:600;color:var(--gold);background:rgba(0,0,0,.78);
+    border:1px dashed var(--gold-soft);border-radius:8px;padding:1px 7px;
+    opacity:0;transition:opacity .3s ease}
+  .animplayer.exposed .pbot{opacity:.9}
+
+  /* secret-layer elements in Exposed view: offset so hidden layers separate */
+  .animplayer.exposed .ghost-el{transform:translate(-76%,-76%) rotate(-5deg)}
+  .animplayer.exposed .palmed-el{outline:2px dashed var(--gold);outline-offset:3px}
+
+  /* packets rendered as real stacks of mini-cards */
+  .ppacket.has-cards{background:transparent;border-color:transparent;box-shadow:none}
+  .pmini{position:absolute;inset:0;border-radius:7%;pointer-events:none;
+    box-shadow:0 1px 1px rgba(0,0,0,.25),0 3px 8px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.18)}
+  .pmini-back{background:
+      linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 40%),
+      repeating-linear-gradient(45deg,#6e1a12 0 5px,#8a3224 5px 10px);
+    border:2px solid #c4922e}
+  .pmini-face{background:linear-gradient(155deg,#f8f1df 0%,#efe3c0 45%,#e6d6ad 100%);
+    border:1px solid #c4ad72;color:#2a2118;
+    display:flex;align-items:center;justify-content:center;gap:2px;
+    font-family:'Fraunces',serif;font-weight:700;container-type:inline-size}
+  .pmini-face.red{color:#b82e1c}
+  .pmini-face .rk{font-size:30cqi;line-height:1}
+  .pmini-face .st{font-size:32cqi;line-height:1}
+
+  /* grip callout under a hand glyph (counter-flipped for right hands) */
+  .pgrip{position:absolute;top:calc(100% + 1px);left:50%;transform:translateX(-50%);
+    font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--gold);white-space:nowrap;
+    background:rgba(0,0,0,.72);border:1px solid var(--gold-soft);border-radius:8px;padding:1px 6px}
+  .pgrip:empty{display:none}
+  .phand.right .pgrip{transform:translateX(-50%) scaleX(-1)}
+
+  /* climax (reveal) step caption */
+  .animplayer .caption.is-climax{background:rgba(216,169,63,.07);
+    box-shadow:inset 0 0 0 1px rgba(216,169,63,.45)}
+
+  /* quarter-speed step replay: stretch every stage transition ~4x */
+  .animplayer.slowmo .stage *,
+  .animplayer.slowmo .stage{transition-duration:2.6s !important}
+
   /* ---------- checklist + progress ---------- */
 
   .thead{position:relative}
