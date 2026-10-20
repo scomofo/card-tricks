@@ -412,35 +412,48 @@ ANIMS.t8 = { steps: [
 ;
 
 ANIMS.t15 = { steps: [
-  { caption: "The Palm — steal the top card into a relaxed right-hand palm during a square-up.",
-    beats: ["top ready"],
+  { caption: "The card to vanish sits on top — deck in the left hand in <b>dealing grip</b>, nothing to see yet.",
+    beats: ["setup"],
     actions: [
-      {t:'deck', id:'d', x:45, y:52, n:52},
-      {t:'card', id:'top', rank:'A', suit:'♠', x:45, y:40, face:'down', w:12},
-      {t:'hi', id:'top', on:true},
-      {t:'hand', id:'lh', x:35, y:55, side:'left', on:true},
-      {t:'label', id:'k', text:'top card targeted', x:50, y:88}
+      {t:'deck', id:'d', x:45, y:52, n:51},
+      {t:'card', id:'top', rank:'A', suit:'♠', x:45, y:41, face:'down', w:12, secret:{rank:'A', suit:'♠'}},
+      {t:'hand', id:'lh', x:35, y:55, side:'left', on:true, grip:'dealing grip'},
+      {t:'label', id:'k', text:'card on top · 51 below', x:50, y:88}
     ]},
-  { caption: "Right hand comes over to square. Contact the top card; it leaves with the hand.",
-    beats: ["take"],
+  { caption: "The right hand comes over to <b>square the deck</b> — thumb at the inner end, fingers at the outer.",
+    beats: ["square-up"],
     actions: [
-      {t:'hand', id:'rh', x:55, y:42, side:'right', on:true},
-      {t:'move', id:'top', x:60, y:48},
-      {t:'label', id:'k', text:'square-up covers the steal', x:50, y:88}
+      {t:'hand', id:'rh', x:56, y:42, side:'right', on:true, grip:'thumb inner · fingers outer'},
+      {t:'label', id:'k', text:'squaring', x:50, y:88}
     ]},
-  { caption: "Hand moves away. Fingers softly curved — never stiff, never flat-open. Deck can be handed out.",
-    beats: ["away"],
+  { caption: "As the hand lifts away it presses down gently and <b>carries the top card with it</b> — bowed into the palm, clipped by pressure at the base of the fingers.",
+    beats: ["palm"],
     actions: [
-      {t:'hi', id:'top', on:false},
-      {t:'move', id:'top', x:72, y:42},
-      {t:'label', id:'k', text:'relaxed curl · not a claw', x:50, y:88}
+      {t:'palm', id:'top'},
+      {t:'move', id:'top', x:60, y:46},
+      {t:'hand', id:'rh', x:62, y:44, side:'right', on:true, grip:''},
+      {t:'label', id:'k', text:'it leaves with the hand', x:50, y:88}
     ]},
-  { caption: "Produce later from palm, pocket, or load. Acting and timing are most of the vanish.",
+  { caption: "The hand drifts away, <b>fingers softly curled</b> — never flat, never frozen. The deck can be handed out; the card is simply gone.",
+    climax: true,
     actions: [
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
-      {t:'flip', id:'top', to:'up'},
-      {t:'hi', id:'top', on:true},
-      {t:'label', id:'k', text:'produce when attention returns', x:50, y:88}
+      {t:'move', id:'top', x:74, y:40},
+      {t:'hand', id:'rh', x:76, y:38, side:'right', on:true},
+      {t:'label', id:'k', text:'empty hand · full palm', x:50, y:88}
+    ]},
+  { caption: "To bring it back, the hand returns over the deck — the card rides home <b>under cover of the square-up</b>, still palmed.",
+    beats: ["the return"],
+    actions: [
+      {t:'hand', id:'rh', x:56, y:42, side:'right', on:true},
+      {t:'move', id:'top', x:45, y:41},
+      {t:'label', id:'k', text:'home under cover', x:50, y:88}
+    ]},
+  { caption: "Square once more and it's back on top. Palming is <b>ninety percent acting</b>: the hand looks empty because you behave as if it is.",
+    actions: [
+      {t:'unpalm', id:'top'},
+      {t:'hand', id:'rh', on:false},
+      {t:'hand', id:'lh', on:false},
+      {t:'label', id:'k', text:'restored', x:50, y:88}
     ]}
 ]};
 ;
@@ -852,39 +865,80 @@ ANIMS.t17 = { steps: [
 ]};
 
 ANIMS.t18 = { steps: [
-  { caption: "Twisting the Aces — four aces turn face-up one at a time in a packet, under impossible conditions.",
-    beats: ["packet twisting"],
+  { caption: "Four aces face-down, in <b>Clubs–Hearts–Spades–Diamonds</b> order from the top. Remember the order — everything hides inside it.",
+    beats: ["the packet"],
     actions: [
-      {t:'spread', x:18, y:50, count:4, dx:16, face:'down', w:12, prefix:'a',
-        cards:[
-          {id:'a0', rank:'A', suit:'♠'},{id:'a1', rank:'A', suit:'♥'},
-          {id:'a2', rank:'A', suit:'♦'},{id:'a3', rank:'A', suit:'♣'}
-        ]},
-      {t:'hand', id:'rh', x:70, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'four aces face-down', x:50, y:88}
+      {t:'card', id:'ac', rank:'A', suit:'♣', x:32, y:50, face:'down', w:11, secret:{rank:'A', suit:'♣'}},
+      {t:'card', id:'ah', rank:'A', suit:'♥', x:44, y:50, face:'down', w:11, secret:{rank:'A', suit:'♥'}},
+      {t:'card', id:'as', rank:'A', suit:'♠', x:56, y:50, face:'down', w:11, secret:{rank:'A', suit:'♠'}},
+      {t:'card', id:'ad', rank:'A', suit:'♦', x:68, y:50, face:'down', w:11, secret:{rank:'A', suit:'♦'}},
+      {t:'hand', id:'rh', x:76, y:38, side:'right', on:true},
+      {t:'label', id:'k', text:'A♣ A♥ A♠ A♦ — top to bottom', x:50, y:88}
     ]},
-  { caption: "A magical twist. Spread again — one ace has turned face-up.",
-    beats: ["first twist"],
+  { caption: "Triple turnover — <b>three cards lift as one</b>, and the face that shows is the Ace of Spades: 'the heaviest ace. Most ink.'",
+    beats: ["triple turnover"],
     actions: [
-      {t:'flip', id:'a0', to:'up'},
-      {t:'hi', id:'a0', on:true},
-      {t:'label', id:'k', text:'first ace turns', x:50, y:88}
+      {t:'move', id:'ac', x:56, y:47, z:5},
+      {t:'move', id:'ah', x:56, y:48.5, z:6},
+      {t:'flip', id:'as', to:'up'},
+      {t:'hi', id:'as', on:true},
+      {t:'label', id:'k', text:'three as one · A♠ shows', x:50, y:88}
     ]},
-  { caption: "Twist again. A second ace faces up. Then a third.",
-    beats: ["second · third"],
+  { caption: "Turn them face-down again, then give the packet a <b>twist — 180 degrees</b> in the hand. The twist is the choreography; watch what it covers.",
+    beats: ["twist"],
     actions: [
-      {t:'hi', id:'a0', on:false},
-      {t:'flip', id:'a1', to:'up'},
-      {t:'flip', id:'a2', to:'up'},
-      {t:'hi', id:'a1', on:true},{t:'hi', id:'a2', on:true},
-      {t:'label', id:'k', text:'two more turn', x:50, y:88}
+      {t:'flip', id:'as', to:'down'},
+      {t:'hi', id:'as', on:false},
+      {t:'move', id:'ac', x:32, y:50},
+      {t:'move', id:'ah', x:44, y:50},
+      {t:'rot', id:'ac', deg:180},
+      {t:'rot', id:'ah', deg:180},
+      {t:'rot', id:'as', deg:180},
+      {t:'rot', id:'ad', deg:180},
+      {t:'label', id:'k', text:'twist', x:50, y:88}
     ]},
-  { caption: "Final twist. All four aces face up. Elmsley counts and hidden turns do the work.",
+  { caption: "Elmsley count — and the <b>Ace of Hearts has turned face-up</b>. The count did it; the twist got the credit.",
+    beats: ["Elmsley count"],
     actions: [
-      {t:'hi', id:'a1', on:false},{t:'hi', id:'a2', on:false},
-      {t:'flip', id:'a3', to:'up'},
-      {t:'hi', id:'a0', on:true},{t:'hi', id:'a1', on:true},
-      {t:'hi', id:'a2', on:true},{t:'hi', id:'a3', on:true},
+      {t:'move', id:'ac', x:34, y:45},
+      {t:'move', id:'ah', x:46, y:45},
+      {t:'flip', id:'ah', to:'up'},
+      {t:'hi', id:'ah', on:true},
+      {t:'label', id:'k', text:'A♥ turned', x:50, y:88}
+    ]},
+  { caption: "Twist again. Elmsley count, <b>letting the last card fall underneath</b> — the Ace of Clubs, face-up.",
+    beats: ["Elmsley count"],
+    actions: [
+      {t:'hi', id:'ah', on:false},
+      {t:'rot', id:'ac', deg:360},
+      {t:'rot', id:'ah', deg:360},
+      {t:'rot', id:'as', deg:360},
+      {t:'rot', id:'ad', deg:360},
+      {t:'move', id:'as', x:58, y:45},
+      {t:'flip', id:'ac', to:'up'},
+      {t:'hi', id:'ac', on:true},
+      {t:'label', id:'k', text:'A♣ turned', x:50, y:88}
+    ]},
+  { caption: "The Ace of Diamonds is the stubborn one. Twist, and show the packet <b>still face-down all around</b> — backs outside, the two turned aces buried in the middle.",
+    beats: ["twist"],
+    actions: [
+      {t:'hi', id:'ac', on:false},
+      {t:'move', id:'as', x:50, y:46, z:6},
+      {t:'move', id:'ah', x:50, y:47.5, z:5},
+      {t:'move', id:'ac', x:50, y:49, z:4},
+      {t:'move', id:'ad', x:50, y:50.5, z:3},
+      {t:'label', id:'k', text:'backs all around', x:50, y:88}
+    ]},
+  { caption: "One last twist — and there it is: the <b>Ace of Diamonds, face-up in the middle</b>. They watched the twists; the counts did the work.",
+    climax: true,
+    actions: [
+      {t:'move', id:'as', x:32, y:50},
+      {t:'flip', id:'as', to:'up'},
+      {t:'move', id:'ac', x:44, y:50},
+      {t:'move', id:'ad', x:56, y:50},
+      {t:'flip', id:'ad', to:'up'},
+      {t:'move', id:'ah', x:68, y:50},
+      {t:'hi', id:'ad', on:true},
       {t:'hand', id:'rh', on:false},
       {t:'label', id:'k', text:'all four face-up', x:50, y:88}
     ]}
@@ -1272,36 +1326,87 @@ ANIMS.t33 = { steps: [
     ]}
 ]};
 ANIMS.t34 = { steps: [
-  { caption: "Thumb Fan — open the deck into a wide arc with a single sweep of the thumb.",
-    beats: ["the fan"],
+  { caption: "Hold the deck <b>face-down</b> in one hand, beveled slightly to the side; the other thumb rests on the top edge.",
+    beats: ["fan grip"],
     actions: [
-      {t:'deck', id:'d', x:48, y:55, n:52},
-      {t:'hand', id:'lh', x:36, y:58, side:'left', on:true},
-      {t:'note', id:'b', text:'thumb on the face edge · fingers support', x:48, y:30},
-      {t:'label', id:'k', text:'fan grip', x:50, y:88}
+      {t:'deck', id:'d', x:46, y:54, n:52},
+      {t:'hand', id:'lh', x:35, y:57, side:'left', on:true},
+      {t:'hand', id:'rh', x:56, y:44, side:'right', on:true},
+      {t:'note', id:'b', text:'thumb on the top edge · middle finger is the anchor', x:48, y:26},
+      {t:'label', id:'k', text:'beveled · thumb set', x:50, y:88}
     ]},
-  { caption: "Thumb drives the cards in a smooth arc. Fingers shape the curve as the fan opens.",
-    beats: ["thumb drives"],
+  { caption: "Sweep the thumb in a <b>smooth, steady arc</b> — the cards spread into a semicircle, pivoting around the middle finger of the holding hand.",
+    beats: ["thumb fan"],
     actions: [
       {t:'unnote', id:'b'},
       {t:'remove', id:'d'},
-      {t:'fan', x:52, y:56, count:12, spread:110, startDeg:-55, radius:14, w:9, face:'up', prefix:'f',
-        cards:[
-          {rank:'A',suit:'♠'},{rank:'K',suit:'♥'},{rank:'Q',suit:'♣'},{rank:'J',suit:'♦'},
-          {rank:'10',suit:'♠'},{rank:'9',suit:'♥'},{rank:'8',suit:'♣'},{rank:'7',suit:'♦'},
-          {rank:'6',suit:'♠'},{rank:'5',suit:'♥'},{rank:'4',suit:'♣'},{rank:'3',suit:'♦'}
-        ]},
-      {t:'label', id:'k', text:'fan opening', x:50, y:88}
+      {t:'fan', x:50, y:54, count:52, spread:150, startDeg:-75, radius:15, w:6.5, face:'down', prefix:'f'},
+      {t:'label', id:'k', text:'the arc', x:50, y:88}
     ]},
-  { caption: "Hold the finished fan. Indices readable, arc even — a clean display of control.",
+  { caption: "<b>Even pressure is the whole skill</b> — too hard and the cards clump; too light and the fan collapses. A fresh deck fans far easier; learn it on new cards.",
+    beats: ["even pressure"],
     actions: [
-      {t:'label', id:'k', text:'thumb fan — open and even', x:50, y:88}
+      {t:'label', id:'k', text:'even · open', x:50, y:88}
     ]},
-  { caption: "Close with a soft squeeze back into a squared deck. Ready for the next move.",
+  { caption: "Close it <b>one-handed</b> — squeeze the fan shut into a squared deck. That's the flourish's natural finish.",
+    climax: true,
     actions: [
-      {t:'deck', id:'done', x:50, y:52, n:52},
+      {t:'remove', id:'f0'},
+      {t:'remove', id:'f1'},
+      {t:'remove', id:'f2'},
+      {t:'remove', id:'f3'},
+      {t:'remove', id:'f4'},
+      {t:'remove', id:'f5'},
+      {t:'remove', id:'f6'},
+      {t:'remove', id:'f7'},
+      {t:'remove', id:'f8'},
+      {t:'remove', id:'f9'},
+      {t:'remove', id:'f10'},
+      {t:'remove', id:'f11'},
+      {t:'remove', id:'f12'},
+      {t:'remove', id:'f13'},
+      {t:'remove', id:'f14'},
+      {t:'remove', id:'f15'},
+      {t:'remove', id:'f16'},
+      {t:'remove', id:'f17'},
+      {t:'remove', id:'f18'},
+      {t:'remove', id:'f19'},
+      {t:'remove', id:'f20'},
+      {t:'remove', id:'f21'},
+      {t:'remove', id:'f22'},
+      {t:'remove', id:'f23'},
+      {t:'remove', id:'f24'},
+      {t:'remove', id:'f25'},
+      {t:'remove', id:'f26'},
+      {t:'remove', id:'f27'},
+      {t:'remove', id:'f28'},
+      {t:'remove', id:'f29'},
+      {t:'remove', id:'f30'},
+      {t:'remove', id:'f31'},
+      {t:'remove', id:'f32'},
+      {t:'remove', id:'f33'},
+      {t:'remove', id:'f34'},
+      {t:'remove', id:'f35'},
+      {t:'remove', id:'f36'},
+      {t:'remove', id:'f37'},
+      {t:'remove', id:'f38'},
+      {t:'remove', id:'f39'},
+      {t:'remove', id:'f40'},
+      {t:'remove', id:'f41'},
+      {t:'remove', id:'f42'},
+      {t:'remove', id:'f43'},
+      {t:'remove', id:'f44'},
+      {t:'remove', id:'f45'},
+      {t:'remove', id:'f46'},
+      {t:'remove', id:'f47'},
+      {t:'remove', id:'f48'},
+      {t:'remove', id:'f49'},
+      {t:'remove', id:'f50'},
+      {t:'remove', id:'f51'},
+      {t:'deck', id:'d', x:46, y:54, n:52},
       {t:'hand', id:'lh', on:false},
-      {t:'label', id:'k', text:'closed and squared', x:50, y:88}
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'closed one-handed', x:50, y:88}
     ]}
 ]};
 ANIMS.t35 = { steps: [
@@ -1335,31 +1440,32 @@ ANIMS.t35 = { steps: [
     ]}
 ]};
 ANIMS.t36 = { steps: [
-  { caption: "The Spring — cards stream in an arc from one hand to the other. Related to the waterfall; different grip pressure.",
+  { caption: "Grip the deck with the <b>thumb along one long edge</b> and the fingers along the other, and bend it into a slight arch — the cards sit under tension.",
     beats: ["bow"],
     actions: [
-      {t:'deck', id:'d', x:55, y:42, n:52},
-      {t:'hand', id:'rh', x:60, y:35, side:'right', on:true},
+      {t:'deck', id:'d', x:56, y:42, n:52},
+      {t:'scale', id:'d', s:0.95},
+      {t:'hand', id:'rh', x:63, y:35, side:'right', on:true, grip:'thumb + fingers on the long edges'},
       {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
-      {t:'label', id:'k', text:'deck bowed · catch hand ready', x:50, y:88}
+      {t:'label', id:'k', text:'arched · under tension', x:50, y:88}
     ]},
-  { caption: "Release end pressure so cards peel in a ribbon — not a single flying block.",
+  { caption: "Aim at the waiting hand and let the thumb <b>release the cards gradually</b> — they shoot off in a tight, arcing stream.",
     beats: ["stream"],
     actions: [
-      {t:'remove', id:'d'},
-      {t:'spread', x:42, y:48, count:10, dx:3, face:'down', w:8, prefix:'s'},
-      {t:'label', id:'k', text:'even stream between hands', x:50, y:88}
+      {t:'move', id:'d', x:43, y:55},
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'tight stream', x:50, y:88}
     ]},
-  { caption: "Catch with a soft left hand. Do not clamp mid-stream.",
+  { caption: "Start with your hands <b>close together</b> — distance comes only after the release feels smooth and even.",
     beats: ["catch"],
     actions: [
-      {t:'deck', id:'caught', x:42, y:55, n:52},
-      {t:'label', id:'k', text:'soft catch · then square', x:50, y:88}
+      {t:'label', id:'k', text:'start close', x:50, y:88}
     ]},
-  { caption: "Square. Start close; add distance only after the stream is even. (See OHS lessons for one-hand work.)",
+  { caption: "Control beats force — a <b>relaxed, steady thumb release</b> throws a longer, cleaner spring than muscling it. The spring and the dribble are the same skill in two directions.",
+    climax: true,
     actions: [
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
-      {t:'label', id:'k', text:'spring complete', x:50, y:88}
+      {t:'move', id:'d', x:59, y:39},
+      {t:'label', id:'k', text:'longer · cleaner', x:50, y:88}
     ]}
 ]};
 ;
@@ -2321,29 +2427,140 @@ ANIMS.t48 = { steps: [
     ]}
 ]};
 ANIMS.t49 = { steps: [
-  { caption: "Ribbon Spread — a wide, even spread across the table. Display, selection, or flourish.",
+  { caption: "Bevel the deck so the cards step toward your spreading hand — <b>index finger on the near end</b>, the other fingers riding the long edge, on a cloth surface.",
     beats: ["table spread"],
     actions: [
-      {t:'deck', id:'d', x:30, y:50, n:52},
-      {t:'hand', id:'rh', x:38, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'ready to spread', x:50, y:88}
+      {t:'deck', id:'d', x:26, y:50, n:52},
+      {t:'rot', id:'d', deg:4},
+      {t:'hand', id:'rh', x:34, y:42, side:'right', on:true},
+      {t:'note', id:'b', text:'cloth surface — pad or carpet, never bare glass', x:50, y:24},
+      {t:'label', id:'k', text:'beveled · on cloth', x:50, y:88}
     ]},
-  { caption: "Push the deck forward and to the side in one smooth stroke. Cards ribbon out in an even arc or line.",
+  { caption: "Sweep in <b>one straight line with even pressure</b> — uneven pressure piles a clump at the far end.",
     beats: ["the stroke"],
     actions: [
+      {t:'unnote', id:'b'},
       {t:'remove', id:'d'},
-      {t:'spread', x:10, y:50, count:12, dx:7, face:'down', w:8, prefix:'r', stagger:20},
+      {t:'spread', x:9, y:50, count:52, dx:1.32, w:8, face:'down', prefix:'r', stagger:18},
       {t:'label', id:'k', text:'ribbon forming', x:50, y:88}
     ]},
-  { caption: "Hold the finished spread. Even gaps, clean edges — a professional table display.",
+  { caption: "Turn it over — <b>pinch the near end, lay a finger on top, and ride the length</b> of the ribbon; friction flips every card as you go.",
+    beats: ["turnover"],
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'ribbon spread complete', x:50, y:88}
+      {t:'remove', id:'r0'},
+      {t:'remove', id:'r1'},
+      {t:'remove', id:'r2'},
+      {t:'remove', id:'r3'},
+      {t:'remove', id:'r4'},
+      {t:'remove', id:'r5'},
+      {t:'remove', id:'r6'},
+      {t:'remove', id:'r7'},
+      {t:'remove', id:'r8'},
+      {t:'remove', id:'r9'},
+      {t:'remove', id:'r10'},
+      {t:'remove', id:'r11'},
+      {t:'remove', id:'r12'},
+      {t:'remove', id:'r13'},
+      {t:'remove', id:'r14'},
+      {t:'remove', id:'r15'},
+      {t:'remove', id:'r16'},
+      {t:'remove', id:'r17'},
+      {t:'remove', id:'r18'},
+      {t:'remove', id:'r19'},
+      {t:'remove', id:'r20'},
+      {t:'remove', id:'r21'},
+      {t:'remove', id:'r22'},
+      {t:'remove', id:'r23'},
+      {t:'remove', id:'r24'},
+      {t:'remove', id:'r25'},
+      {t:'remove', id:'r26'},
+      {t:'remove', id:'r27'},
+      {t:'remove', id:'r28'},
+      {t:'remove', id:'r29'},
+      {t:'remove', id:'r30'},
+      {t:'remove', id:'r31'},
+      {t:'remove', id:'r32'},
+      {t:'remove', id:'r33'},
+      {t:'remove', id:'r34'},
+      {t:'remove', id:'r35'},
+      {t:'remove', id:'r36'},
+      {t:'remove', id:'r37'},
+      {t:'remove', id:'r38'},
+      {t:'remove', id:'r39'},
+      {t:'remove', id:'r40'},
+      {t:'remove', id:'r41'},
+      {t:'remove', id:'r42'},
+      {t:'remove', id:'r43'},
+      {t:'remove', id:'r44'},
+      {t:'remove', id:'r45'},
+      {t:'remove', id:'r46'},
+      {t:'remove', id:'r47'},
+      {t:'remove', id:'r48'},
+      {t:'remove', id:'r49'},
+      {t:'remove', id:'r50'},
+      {t:'remove', id:'r51'},
+      {t:'spread', x:9, y:50, cards:[{rank:'A', suit:'♠', face:'up'},{rank:'2', suit:'♠', face:'up'},{rank:'3', suit:'♠', face:'up'},{rank:'4', suit:'♠', face:'up'},{rank:'5', suit:'♠', face:'up'},{rank:'6', suit:'♠', face:'up'},{rank:'7', suit:'♠', face:'up'},{rank:'8', suit:'♠', face:'up'},{rank:'9', suit:'♠', face:'up'},{rank:'10', suit:'♠', face:'up'},{rank:'J', suit:'♠', face:'up'},{rank:'Q', suit:'♠', face:'up'},{rank:'K', suit:'♠', face:'up'},{rank:'A', suit:'♥', face:'up'},{rank:'2', suit:'♥', face:'up'},{rank:'3', suit:'♥', face:'up'},{rank:'4', suit:'♥', face:'up'},{rank:'5', suit:'♥', face:'up'},{rank:'6', suit:'♥', face:'up'},{rank:'7', suit:'♥', face:'up'},{rank:'8', suit:'♥', face:'up'},{rank:'9', suit:'♥', face:'up'},{rank:'10', suit:'♥', face:'up'},{rank:'J', suit:'♥', face:'up'},{rank:'Q', suit:'♥', face:'up'},{rank:'K', suit:'♥', face:'up'},{rank:'A', suit:'♦', face:'up'},{rank:'2', suit:'♦', face:'up'},{rank:'3', suit:'♦', face:'up'},{rank:'4', suit:'♦', face:'up'},{rank:'5', suit:'♦', face:'up'},{rank:'6', suit:'♦', face:'up'},{rank:'7', suit:'♦', face:'up'},{rank:'8', suit:'♦', face:'up'},{rank:'9', suit:'♦', face:'up'},{rank:'10', suit:'♦', face:'up'},{rank:'J', suit:'♦', face:'up'},{rank:'Q', suit:'♦', face:'up'},{rank:'K', suit:'♦', face:'up'},{rank:'A', suit:'♣', face:'up'},{rank:'2', suit:'♣', face:'up'},{rank:'3', suit:'♣', face:'up'},{rank:'4', suit:'♣', face:'up'},{rank:'5', suit:'♣', face:'up'},{rank:'6', suit:'♣', face:'up'},{rank:'7', suit:'♣', face:'up'},{rank:'8', suit:'♣', face:'up'},{rank:'9', suit:'♣', face:'up'},{rank:'10', suit:'♣', face:'up'},{rank:'J', suit:'♣', face:'up'},{rank:'Q', suit:'♣', face:'up'},{rank:'K', suit:'♣', face:'up'}], dx:1.32, w:8, face:'up', prefix:'u', stagger:18},
+      {t:'hand', id:'rh', x:80, y:42, side:'right', on:true},
+      {t:'label', id:'k', text:'the turnover', x:50, y:88}
     ]},
-  { caption: "Scoop from one end to close, or invite a selection from the spread.",
+  { caption: "Scoop it up squared. It fools no one and <b>frames everything else</b> — a clean ribbon before a selection makes the deck look ordinary, which is the point.",
+    climax: true,
     actions: [
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'scooped and squared', x:50, y:88}
+      {t:'remove', id:'u0'},
+      {t:'remove', id:'u1'},
+      {t:'remove', id:'u2'},
+      {t:'remove', id:'u3'},
+      {t:'remove', id:'u4'},
+      {t:'remove', id:'u5'},
+      {t:'remove', id:'u6'},
+      {t:'remove', id:'u7'},
+      {t:'remove', id:'u8'},
+      {t:'remove', id:'u9'},
+      {t:'remove', id:'u10'},
+      {t:'remove', id:'u11'},
+      {t:'remove', id:'u12'},
+      {t:'remove', id:'u13'},
+      {t:'remove', id:'u14'},
+      {t:'remove', id:'u15'},
+      {t:'remove', id:'u16'},
+      {t:'remove', id:'u17'},
+      {t:'remove', id:'u18'},
+      {t:'remove', id:'u19'},
+      {t:'remove', id:'u20'},
+      {t:'remove', id:'u21'},
+      {t:'remove', id:'u22'},
+      {t:'remove', id:'u23'},
+      {t:'remove', id:'u24'},
+      {t:'remove', id:'u25'},
+      {t:'remove', id:'u26'},
+      {t:'remove', id:'u27'},
+      {t:'remove', id:'u28'},
+      {t:'remove', id:'u29'},
+      {t:'remove', id:'u30'},
+      {t:'remove', id:'u31'},
+      {t:'remove', id:'u32'},
+      {t:'remove', id:'u33'},
+      {t:'remove', id:'u34'},
+      {t:'remove', id:'u35'},
+      {t:'remove', id:'u36'},
+      {t:'remove', id:'u37'},
+      {t:'remove', id:'u38'},
+      {t:'remove', id:'u39'},
+      {t:'remove', id:'u40'},
+      {t:'remove', id:'u41'},
+      {t:'remove', id:'u42'},
+      {t:'remove', id:'u43'},
+      {t:'remove', id:'u44'},
+      {t:'remove', id:'u45'},
+      {t:'remove', id:'u46'},
+      {t:'remove', id:'u47'},
+      {t:'remove', id:'u48'},
+      {t:'remove', id:'u49'},
+      {t:'remove', id:'u50'},
+      {t:'remove', id:'u51'},
+      {t:'deck', id:'d', x:50, y:50, n:52},
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'scooped · squared', x:50, y:88}
     ]}
 ]};
 ANIMS.t50 = { steps: [
@@ -2528,31 +2745,36 @@ ANIMS.t54 = { steps: [
     ]}
 ]};
 ANIMS.t55 = { steps: [
-  { caption: "Side Steal — selection is held under a break mid-deck, then taken into the right palm under a square-up.",
-    beats: ["break"],
+  { caption: "Their card is buried in the center of the deck, held under a <b>pinky break</b> — the break sits above it, and the deck looks innocent.",
+    beats: ["pinky break"],
     actions: [
-      {t:'deck', id:'d', x:48, y:50, n:52},
-      {t:'card', id:'sel', rank:'A', suit:'♠', x:48, y:44, face:'down', w:11},
-      {t:'hi', id:'sel', on:true},
+      {t:'packet', id:'low', x:48, y:55, w:13, cards:[{bulk:25},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'packet', id:'up', x:48, y:41, w:13, cards:[{bulk:26}]},
       {t:'hand', id:'lh', x:36, y:55, side:'left', on:true},
-      {t:'label', id:'k', text:'break above selection', x:50, y:88}
+      {t:'label', id:'k', text:'break above their card', x:50, y:88}
     ]},
-  { caption: "Right hand covers to square. Audience sees a casual adjustment, not a grab.",
+  { caption: "The right hand <b>covers the deck, as if only squaring it</b> — a casual adjustment, nothing more.",
     beats: ["cover"],
     actions: [
-      {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'cover from above', x:50, y:88}
+      {t:'hand', id:'rh', x:59, y:40, side:'right', on:true},
+      {t:'label', id:'k', text:'cover', x:50, y:88}
     ]},
-  { caption: "Under cover, right fingertips contact the selection and slide it right — clear of the pack into the palm.",
-    beats: ["extract"],
+  { caption: "Under that cover, the right fingertips <b>push the card out sideways</b> — clear of the pack, straight into the right palm.",
+    beats: ["side steal"],
     actions: [
-      {t:'move', id:'sel', x:68, y:48},
-      {t:'label', id:'k', text:'sideways extract into palm', x:50, y:88}
+      {t:'repacket', id:'low', cards:[{bulk:25}]},
+      {t:'card', id:'sel', rank:'A', suit:'♠', x:48, y:46, face:'down', w:11, z:8, secret:{rank:'A', suit:'♠'}},
+      {t:'palm', id:'sel'},
+      {t:'move', id:'sel', x:66, y:48},
+      {t:'label', id:'k', text:'sideways · into the palm', x:50, y:88}
     ]},
-  { caption: "Hands separate. Deck is clean; selection is palmed for production or load.",
+  { caption: "The hands separate in <b>one natural motion</b> — the deck is clean, and their card rides in the palm, ready to produce or load. Do the steal inside a gesture: still hands are watched hands.",
+    climax: true,
     actions: [
-      {t:'hi', id:'sel', on:false},
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
+      {t:'move', id:'sel', x:76, y:44},
+      {t:'move', id:'up', x:48, y:53},
+      {t:'hand', id:'rh', x:78, y:40, side:'right', on:true},
+      {t:'hand', id:'lh', on:false},
       {t:'label', id:'k', text:'deck clean · card stolen', x:50, y:88}
     ]}
 ]};
@@ -2912,38 +3134,49 @@ ANIMS.t66 = { steps: [
 ]};
 
 ANIMS.t67 = { steps: [
-  { caption: "Jordan Count — four cards counted as four while hiding the face of the third.",
+  { caption: "Four cards face-down. The <b>third card's face must never show</b> — count four as four while hiding it.",
     beats: ["hide the third"],
     actions: [
-      {t:'spread', x:18, y:50, count:4, dx:16, face:'down', w:11, prefix:'j',
-        cards:[
-          {id:'j0', rank:'7', suit:'♣'},{id:'j1', rank:'4', suit:'♦'},
-          {id:'j2', rank:'A', suit:'♠'},{id:'j3', rank:'9', suit:'♥'}
-        ]},
-      {t:'hi', id:'j2', on:true},
-      {t:'label', id:'k', text:'card 3 (A♠) must stay hidden', x:50, y:88}
+      {t:'card', id:'j1', rank:'7', suit:'♣', x:38, y:47, face:'down', w:11, z:4, secret:{rank:'7', suit:'♣'}},
+      {t:'card', id:'j2', rank:'4', suit:'♦', x:38, y:49, face:'down', w:11, z:3, secret:{rank:'4', suit:'♦'}},
+      {t:'card', id:'j3', rank:'A', suit:'♠', x:38, y:51, face:'down', w:11, z:2, secret:{rank:'A', suit:'♠'}},
+      {t:'card', id:'j4', rank:'9', suit:'♥', x:38, y:53, face:'down', w:11, z:1, secret:{rank:'9', suit:'♥'}},
+      {t:'hand', id:'lh', x:30, y:52, side:'left', on:true},
+      {t:'label', id:'k', text:'the third stays hidden', x:50, y:88}
     ]},
-  { caption: "Count \"One\" — take the first card cleanly into the right hand.",
-    beats: ["1 clean"],
+  { caption: "One — take the first card <b>singly</b> into the right hand and show it: the 7♣.",
+    beats: ["one"],
     actions: [
-      {t:'hi', id:'j2', on:false},
-      {t:'hand', id:'rh', x:55, y:40, side:'right', on:true},
-      {t:'move', id:'j0', x:55, y:48, z:4},
-      {t:'label', id:'k', text:'\"One…\"', x:50, y:88}
+      {t:'hand', id:'rh', x:68, y:40, side:'right', on:true},
+      {t:'move', id:'j1', x:62, y:48, z:4},
+      {t:'flip', id:'j1', to:'up'},
+      {t:'label', id:'k', text:'one', x:50, y:88}
     ]},
-  { caption: "\"Two\" — take the second on top. \"Three\" — a block push puts the original first card back while taking two as one.",
+  { caption: "Two — the second card singly, shown the same way: the 4♦. <b>Rhythm is everything</b>; count out loud at a steady tempo.",
+    beats: ["two"],
+    actions: [
+      {t:'flip', id:'j1', to:'down'},
+      {t:'move', id:'j2', x:62, y:49.5, z:5},
+      {t:'flip', id:'j2', to:'up'},
+      {t:'label', id:'k', text:'two', x:50, y:88}
+    ]},
+  { caption: "Three — the <b>Jordan move</b>: the last two cards travel as one block, and the face that shows is the 9♥. The third card rides hidden inside the block.",
     beats: ["the Jordan move"],
     actions: [
-      {t:'move', id:'j1', x:55, y:50, z:3},
-      {t:'move', id:'j0', x:42, y:40, z:5},
-      {t:'move', id:'j2', x:55, y:48, z:4},
-      {t:'label', id:'k', text:'\"Two… Three…\" — third stays hidden', x:50, y:88}
+      {t:'flip', id:'j2', to:'down'},
+      {t:'move', id:'j3', x:62, y:51, z:6},
+      {t:'move', id:'j4', x:62, y:51.8, z:7},
+      {t:'flip', id:'j4', to:'up'},
+      {t:'label', id:'k', text:'three — a block', x:50, y:88}
     ]},
-  { caption: "\"Four.\" Last card on top. Four counted; the ace never showed.",
+  { caption: "Four — the <b>last card on top</b>. Four cards counted; the A♠'s face never appeared. The move was buried in the cadence.",
+    climax: true,
     actions: [
-      {t:'move', id:'j3', x:55, y:46, z:6},
+      {t:'flip', id:'j4', to:'down'},
+      {t:'move', id:'j3', x:62, y:46.5, z:8},
       {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'four counted · ace invisible', x:50, y:88}
+      {t:'hand', id:'lh', on:false},
+      {t:'label', id:'k', text:'four counted · A♠ invisible', x:50, y:88}
     ]}
 ]};
 
@@ -3662,31 +3895,34 @@ ANIMS.t89 = { steps: [
 ;
 
 ANIMS.t90 = { steps: [
-  { caption: "Mercury Card Fold — fold a card into quarters inside the palm so it becomes a tiny packet.",
-    beats: ["card in palm"],
+  { caption: "The card sits <b>in the palm</b> — face-in or face-out, the hand soft and natural around it.",
+    beats: ["in the hand"],
     actions: [
       {t:'card', id:'c', rank:'A', suit:'♠', x:50, y:48, face:'up', w:14},
       {t:'hi', id:'c', on:true},
-      {t:'hand', id:'rh', x:58, y:52, side:'right', on:true},
-      {t:'label', id:'k', text:'card secured in palm', x:50, y:88}
+      {t:'hand', id:'rh', x:59, y:50, side:'right', on:true},
+      {t:'label', id:'k', text:'card in palm', x:50, y:88}
     ]},
-  { caption: "First fold: lengthwise (or short-wise — pick one system and stick to it).",
-    beats: ["fold 1"],
+  { caption: "First fold — a <b>lengthwise crease</b>, made under cover of the hand; the palm hides the work.",
+    beats: ["palm","fold 1"],
     actions: [
-      {t:'scale', id:'c', s:0.7},
-      {t:'label', id:'k', text:'first fold', x:50, y:88}
+      {t:'palm', id:'c'},
+      {t:'scale', id:'c', s:0.68},
+      {t:'hi', id:'c', on:false},
+      {t:'label', id:'k', text:'fold 1 · lengthwise', x:50, y:88}
     ]},
-  { caption: "Second fold: the other direction. Card is now a compact quarter-packet hidden in the hand.",
+  { caption: "Second fold — <b>widthwise</b>. The card is now a compact quarter-packet: invisible bulk in a soft hand.",
     beats: ["fold 2"],
     actions: [
-      {t:'scale', id:'c', s:0.45},
-      {t:'hi', id:'c', on:false},
-      {t:'label', id:'k', text:'quartered · hidden', x:50, y:88}
+      {t:'scale', id:'c', s:0.42},
+      {t:'label', id:'k', text:'quartered', x:50, y:88}
     ]},
-  { caption: "Load into pocket, wallet, or envelope. Unfold later for a signed-card reveal in an impossible place.",
+  { caption: "Load it — <b>pocket, wallet, or a sealed envelope</b> — and let it wait; it unfolds later in an impossible place. Keep the hand soft: a tight fist telegraphs the fold.",
+    climax: true,
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'load · delay · reveal', x:50, y:88}
+      {t:'move', id:'c', x:76, y:68},
+      {t:'hand', id:'rh', x:74, y:62, side:'right', on:true},
+      {t:'label', id:'k', text:'loaded', x:50, y:88}
     ]}
 ]};
 ;
@@ -7433,46 +7669,74 @@ ANIMS.t213 = { steps: [
 ]};
 
 ANIMS.t214 = { steps: [
-  { caption: "Two-Handed Spring — a controlled spring between both hands (related to the one-hand spring, different grip).",
-    beats: ["arch"],
+  { caption: "Bow — hold the deck by its <b>short ends</b> and apply even pressure until it arches.",
+    beats: ["bow"],
     actions: [
-      {t:'deck', id:'d', x:50, y:48, n:52},
+      {t:'deck', id:'d', x:50, y:46, n:52},
       {t:'hand', id:'lh', x:38, y:52, side:'left', on:true},
       {t:'hand', id:'rh', x:62, y:52, side:'right', on:true},
-      {t:'label', id:'k', text:'deck bowed between hands', x:50, y:88}
+      {t:'label', id:'k', text:'short ends · even pressure', x:50, y:88}
     ]},
-  { caption: "Pressure at the ends; release so cards stream to the other hand without spraying.",
+  { caption: "Release — the cards <b>stream</b> across to the receiving hand in one continuous ribbon, not a spray.",
     beats: ["stream"],
     actions: [
-      {t:'label', id:'k', text:'steady stream · soft catch', x:50, y:88}
+      {t:'move', id:'d', x:61, y:48},
+      {t:'scale', id:'d', s:1.04},
+      {t:'label', id:'k', text:'continuous stream', x:50, y:88}
     ]},
-  { caption: "Catch and square. If cards fly, reduce pressure and height.",
+  { caption: "Catch — <b>soft palm</b>, never a slap; the stream lands and settles into the hand.",
+    beats: ["catch"],
     actions: [
-      {t:'hand', id:'lh', on:false},{t:'hand', id:'rh', on:false},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'two-handed spring complete', x:50, y:88}
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'soft catch', x:50, y:88}
+    ]},
+  { caption: "Square — <b>end clean</b> before the next move. If cards spray, use less pressure and less distance.",
+    climax: true,
+    actions: [
+      {t:'move', id:'d', x:50, y:50},
+      {t:'hand', id:'lh', on:false},
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'squared · ready', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t215 = { steps: [
-  { caption: "Study loop — how to practice cardistry so each session actually improves something.",
+  { caption: "Pick one move — <b>only one focus</b> per block: a waterfall, a cut, one thing.",
     beats: ["deliberate practice"],
     actions: [
       {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'one move · many clean reps', x:50, y:88}
+      {t:'label', id:'k', text:'one move only', x:50, y:88}
     ]},
-  { caption: "Pick one move. Do slow reps until positions are correct. Then add tempo. Film the last set.",
-    beats: ["slow → fast"],
+  { caption: "Slow reps — correct positions <b>before tempo</b>; form first, always.",
+    beats: ["slow reps"],
     actions: [
       {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'form first · speed second', x:50, y:88}
+      {t:'move', id:'d', x:50, y:47},
+      {t:'label', id:'k', text:'form first', x:50, y:88}
     ]},
-  { caption: "End with a short combo of moves you already own. Confidence compounds.",
+  { caption: "Tempo — speed up <b>only while form holds</b>; the moment it breaks, slow back down.",
+    beats: ["tempo"],
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'session complete', x:50, y:88}
+      {t:'move', id:'d', x:50, y:50},
+      {t:'scale', id:'d', s:1.03},
+      {t:'label', id:'k', text:'speed while form holds', x:50, y:88}
+    ]},
+  { caption: "Film — record the last set <b>from the front</b>; your eyes forgive, the lens doesn't.",
+    beats: ["film"],
+    actions: [
+      {t:'note', id:'b', text:'record the last set — from the front', x:50, y:26},
+      {t:'label', id:'k', text:'film the last set', x:50, y:88}
+    ]},
+  { caption: "Combo — end with <b>two or three moves you already own</b>. Ten clean minutes beat thirty messy ones.",
+    climax: true,
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
+      {t:'move', id:'d', x:50, y:52},
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'owned combo · session done', x:50, y:88}
     ]}
-]}
+]};
 
 ANIMS.t216 = { steps: [
   { caption: "One-Hand Spring — cards stream from a bowed deck in a single hand into a catch or the table.",
@@ -7523,27 +7787,34 @@ ANIMS.t217 = { steps: [
 ]};
 
 ANIMS.t218 = { steps: [
-  { caption: "Revolution Cut (flourish rate) — the packet revolves fully before landing. Control the axis.",
+  { caption: "Lift — the <b>upper packet clears the deck</b>; the lower half waits below.",
+    beats: ["lift"],
+    actions: [
+      {t:'packet', id:'base', x:50, y:56, w:13, cards:[{bulk:26}]},
+      {t:'packet', id:'rev', x:50, y:34, w:13, cards:[{bulk:26}]},
+      {t:'hand', id:'rh', x:60, y:30, side:'right', on:true},
+      {t:'label', id:'k', text:'upper packet clear', x:50, y:88}
+    ]},
+  { caption: "Axis — choose a <b>stable rotation line</b> and commit to it; the spin is just the result.",
+    beats: ["axis"],
+    actions: [
+      {t:'rot', id:'rev', deg:12},
+      {t:'label', id:'k', text:'stable axis', x:50, y:88}
+    ]},
+  { caption: "One <b>clean revolution</b> — a full 360° with the faces readable as it turns.",
     beats: ["full revolution"],
     actions: [
-      {t:'deck', id:'base', x:50, y:55, n:26},
-      {t:'deck', id:'rev', x:50, y:36, n:26},
-      {t:'hand', id:'rh', x:58, y:30, side:'right', on:true},
-      {t:'label', id:'k', text:'upper packet revolves', x:50, y:88}
-    ]},
-  { caption: "Guide a full 360° so faces flash cleanly, then land square on the lower half.",
-    beats: ["land"],
-    actions: [
       {t:'rot', id:'rev', deg:360},
-      {t:'move', id:'rev', x:50, y:52},
-      {t:'label', id:'k', text:'360° · land · square', x:50, y:88}
+      {t:'label', id:'k', text:'360°', x:50, y:88}
     ]},
-  { caption: "Advanced when chained with other cuts. One clean revolution beats three messy ones.",
+  { caption: "Land — square on the lower half <b>without a bounce recovery</b>. One clean revolution beats a triple spin that dies on landing.",
+    climax: true,
     actions: [
+      {t:'move', id:'rev', x:50, y:53},
+      {t:'repacket', id:'base', cards:[{bulk:52}]},
+      {t:'remove', id:'rev'},
       {t:'hand', id:'rh', on:false},
-      {t:'remove', id:'rev'},{t:'remove', id:'base'},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'revolution complete', x:50, y:88}
+      {t:'label', id:'k', text:'landed · square', x:50, y:88}
     ]}
 ]};
 
@@ -7621,137 +7892,186 @@ ANIMS.t221 = { steps: [
 ]};
 
 ANIMS.t222 = { steps: [
-  { caption: "Deck Squeeze / Compression Display — the deck compresses and expands as a visual beat.",
-    beats: ["compress"],
+  { caption: "Ends — pressure <b>only on the short ends</b>; the long edges stay out of it.",
+    beats: ["ends"],
     actions: [
       {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
-      {t:'hand', id:'rh', x:60, y:55, side:'right', on:true},
-      {t:'label', id:'k', text:'pressure from both ends', x:50, y:88}
+      {t:'hand', id:'lh', x:39, y:55, side:'left', on:true},
+      {t:'hand', id:'rh', x:61, y:55, side:'right', on:true},
+      {t:'label', id:'k', text:'short ends only', x:50, y:88}
     ]},
-  { caption: "Apply even end pressure, then ease so the deck returns to full thickness with a soft spring.",
+  { caption: "Compress — <b>even, brief, reversible</b>; the deck squeezes down between the hands.",
+    beats: ["compress"],
+    actions: [
+      {t:'scale', id:'d', s:0.88},
+      {t:'label', id:'k', text:'compress', x:50, y:88}
+    ]},
+  { caption: "Expand — a <b>soft return</b> to full thickness; never force a permanent warp into the cards.",
     beats: ["expand"],
     actions: [
-      {t:'scale', id:'d', s:0.92},
-      {t:'scale', id:'d', s:1.0},
-      {t:'label', id:'k', text:'compress · expand', x:50, y:88}
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'full thickness again', x:50, y:88}
     ]},
-  { caption: "Use as a connector between cuts. Never force cards to warp permanently.",
+  { caption: "Link — flow <b>straight into the next cut</b> or display; the squeeze is a connector, not a destination.",
+    climax: true,
     actions: [
-      {t:'hand', id:'lh', on:false},{t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'squeeze display complete', x:50, y:88}
+      {t:'move', id:'d', x:50, y:46},
+      {t:'hand', id:'lh', on:false},
+      {t:'hand', id:'rh', on:false},
+      {t:'label', id:'k', text:'into the next move', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t223 = { steps: [
-  { caption: "L-Cut — packets form an L shape mid-cut, then resolve. Geometric and readable.",
+  { caption: "Shape — build a <b>readable L</b> with the two packets; geometry first, speed second.",
     beats: ["L shape"],
     actions: [
-      {t:'deck', id:'vert', x:45, y:42, n:26},
-      {t:'deck', id:'horiz', x:58, y:55, n:26},
-      {t:'hand', id:'rh', x:55, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'packets in an L', x:50, y:88}
+      {t:'packet', id:'vert', x:43, y:40, w:13, cards:[{bulk:26}]},
+      {t:'packet', id:'horiz', x:58, y:57, w:13, cards:[{bulk:26}]},
+      {t:'rot', id:'horiz', deg:90},
+      {t:'hand', id:'rh', x:56, y:34, side:'right', on:true},
+      {t:'label', id:'k', text:'the L', x:50, y:88}
     ]},
-  { caption: "Hold the shape a beat so it reads, then close into a single squared deck.",
-    beats: ["resolve"],
+  { caption: "Hold — <b>one beat</b> so the shape registers. If the audience can't see the L, the move is only a messy cut.",
+    beats: ["hold"],
     actions: [
-      {t:'move', id:'vert', x:50, y:50},
-      {t:'move', id:'horiz', x:50, y:50},
-      {t:'label', id:'k', text:'close the L', x:50, y:88}
+      {t:'label', id:'k', text:'hold the beat', x:50, y:88}
     ]},
-  { caption: "Advanced when chained. Clarity of the L matters more than speed.",
+  { caption: "Close — resolve into a <b>single squared deck</b>. Later, link L-cuts into longer phrases.",
+    climax: true,
     actions: [
+      {t:'move', id:'vert', x:50, y:48},
+      {t:'move', id:'horiz', x:50, y:48},
+      {t:'rot', id:'horiz', deg:0},
+      {t:'repacket', id:'vert', cards:[{bulk:52}]},
+      {t:'remove', id:'horiz'},
       {t:'hand', id:'rh', on:false},
-      {t:'remove', id:'vert'},{t:'remove', id:'horiz'},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'L-cut complete', x:50, y:88}
+      {t:'label', id:'k', text:'resolved · squared', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t224 = { steps: [
-  { caption: "Flourish Combo Builder — link three owned moves into one continuous phrase.",
+  { caption: "Pick three — only moves with a <b>high success rate</b>; a failed 'almost learned' middle kills the phrase.",
     beats: ["combo"],
     actions: [
       {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'move A → B → C', x:50, y:88}
+      {t:'label', id:'k', text:'A · B · C — owned moves', x:50, y:88}
     ]},
-  { caption: "Example path: swivel cut → scissor cut → waterfall. Same deck, no reset between.",
-    beats: ["flow"],
+  { caption: "Transitions — practise <b>A→B and B→C</b> more than the middles; the joins are where phrases die.",
+    beats: ["transitions"],
     actions: [
       {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
       {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
+      {t:'label', id:'k', text:'drill the joins', x:50, y:88}
+    ]},
+  { caption: "Phrase — run the <b>full line without stopping</b> to square: swivel cut → scissor cut → waterfall, one breath.",
+    climax: true,
+    actions: [
+      {t:'move', id:'d', x:50, y:46},
+      {t:'scale', id:'d', s:1.03},
       {t:'label', id:'k', text:'no pause · one phrase', x:50, y:88}
     ]},
-  { caption: "Write your combo down. Practice the transitions more than the flashy middles.",
+  { caption: "Write it — keep a <b>short list</b> of combos that always work, and build the next phrase from those.",
     actions: [
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
-      {t:'label', id:'k', text:'combo phrase complete', x:50, y:88}
+      {t:'note', id:'b', text:'combo list: A → B → C', x:50, y:26},
+      {t:'scale', id:'d', s:1},
+      {t:'hand', id:'rh', on:false},
+      {t:'hand', id:'lh', on:false},
+      {t:'label', id:'k', text:'written down', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t225 = { steps: [
-  { caption: "Advanced practice rules — how to train hard flourishes without burning out or engraving mistakes.",
-    beats: ["training"],
-    actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'deliberate · limited · filmed', x:50, y:88}
-    ]},
-  { caption: "Isolate one transfer. Ten clean slow reps. Then five at tempo. Stop when form breaks.",
+  { caption: "Isolate — <b>one transfer or one axis</b> per block; nothing else shares the set.",
     beats: ["isolate"],
     actions: [
-      {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'stop before form collapses', x:50, y:88}
+      {t:'deck', id:'d', x:50, y:50, n:52},
+      {t:'label', id:'k', text:'one piece at a time', x:50, y:88}
     ]},
-  { caption: "One advanced move per week is enough. Own it before stacking another.",
+  { caption: "Slow — <b>ten clean slow reps</b> before any tempo is allowed near it.",
+    beats: ["slow reps"],
     actions: [
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'advanced practice complete', x:50, y:88}
+      {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
+      {t:'move', id:'d', x:50, y:47},
+      {t:'label', id:'k', text:'ten clean reps', x:50, y:88}
+    ]},
+  { caption: "Cap — stop the set <b>when form breaks</b>; never 'push through' and engrave the break.",
+    beats: ["cap"],
+    actions: [
+      {t:'label', id:'k', text:'stop at the break', x:50, y:88}
+    ]},
+  { caption: "Film — <b>front and side, weekly</b>; bad form you can't see is bad form you keep.",
+    beats: ["film"],
+    actions: [
+      {t:'note', id:'b', text:'film front + side — weekly', x:50, y:26},
+      {t:'label', id:'k', text:'weekly film', x:50, y:88}
+    ]},
+  { caption: "Quota — <b>one new advanced move per week</b> is enough. Own it before stacking another; speed without form is a fumble at higher velocity.",
+    climax: true,
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
+      {t:'move', id:'d', x:50, y:52},
+      {t:'label', id:'k', text:'owned · then the next', x:50, y:88}
     ]}
-]}
+]};
 
 ANIMS.t226 = { steps: [
-  { caption: "One-Hand Spring — Grip Map. Where each finger works before any cards move.",
+  { caption: "Thumb — <b>one short end</b> of the deck belongs to the thumb; that is its whole job.",
     beats: ["map the hand"],
     actions: [
       {t:'deck', id:'d', x:50, y:48, n:52},
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'short ends under control', x:50, y:88}
+      {t:'hand', id:'rh', x:59, y:40, side:'right', on:true, grip:'thumb on one short end'},
+      {t:'label', id:'k', text:'thumb end', x:50, y:88}
     ]},
-  { caption: "Thumb on one short end; fingers on the other. The long edges stay free so the deck can bow.",
+  { caption: "Fingers — the <b>opposite short end</b>: middle and ring fingers do most of the work.",
     beats: ["ends only"],
     actions: [
-      {t:'note', id:'b', text:'thumb end · finger end · free longs', x:50, y:28},
-      {t:'label', id:'k', text:'pressure on ends, not sides', x:50, y:88}
+      {t:'hand', id:'rh', x:59, y:40, side:'right', on:true, grip:'middle + ring on the far short end'},
+      {t:'label', id:'k', text:'finger end', x:50, y:88}
     ]},
-  { caption: "If you squeeze the long edges, the deck cannot spring — it only crushes.",
+  { caption: "Long edges — <b>free</b>. Squeeze them and the deck cannot spring; it only crushes.",
+    beats: ["longs free"],
+    actions: [
+      {t:'hand', id:'rh', x:59, y:40, side:'right', on:true, grip:''},
+      {t:'note', id:'b', text:'long edges FREE — no squeeze', x:50, y:26},
+      {t:'label', id:'k', text:'longs stay free', x:50, y:88}
+    ]},
+  { caption: "Test — you should be able to <b>bow the deck</b> without the sides pinching shut. Noisy, crushed edges mean you're gripping the longs: reset the map.",
+    climax: true,
     actions: [
       {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'grip map set', x:50, y:88}
+      {t:'scale', id:'d', s:0.94},
+      {t:'label', id:'k', text:'bow test passed', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t227 = { steps: [
-  { caption: "The Bow — even bend from end to end. This stores the energy the spring will release.",
+  { caption: "Press — thumb and fingers work <b>toward each other</b> along the short ends.",
     beats: ["build the bow"],
     actions: [
       {t:'deck', id:'d', x:50, y:48, n:52},
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'apply end pressure', x:50, y:88}
+      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true, grip:'ends only'},
+      {t:'label', id:'k', text:'end pressure', x:50, y:88}
     ]},
-  { caption: "Press thumb and fingers toward each other until the center of the deck rises into a smooth arch.",
+  { caption: "Arch — the <b>center of the deck rises</b> into a continuous curve; the bend is stored energy.",
     beats: ["arch"],
     actions: [
       {t:'scale', id:'d', s:0.94},
-      {t:'note', id:'b', text:'center rises · ends fixed', x:50, y:28},
-      {t:'label', id:'k', text:'smooth arch — not a kink', x:50, y:88}
+      {t:'note', id:'b', text:'center rises · ends fixed', x:50, y:26},
+      {t:'label', id:'k', text:'smooth arch', x:50, y:88}
     ]},
-  { caption: "A kink (sharp bend in one spot) means uneven pressure. Reset and bow again.",
+  { caption: "Check — look for a <b>smooth arc</b>. A kink in one spot means the pressure is uneven.",
+    beats: ["check"],
     actions: [
       {t:'unnote', id:'b'},
-      {t:'scale', id:'d', s:1.0},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'even bow ready', x:50, y:88}
+      {t:'label', id:'k', text:'arc, not a kink', x:50, y:88}
+    ]},
+  { caption: "Reset — if it kinks, <b>release fully and bow again slowly</b>, then hold the even bow a beat before any release.",
+    climax: true,
+    actions: [
+      {t:'scale', id:'d', s:0.9},
+      {t:'label', id:'k', text:'even bow · held', x:50, y:88}
     ]}
 ]};
 
@@ -7848,153 +8168,218 @@ ANIMS.t231 = { steps: [
 ]};
 
 ANIMS.t232 = { steps: [
-  { caption: "Troubleshooting — common one-hand spring failures and the first fix for each.",
-    beats: ["debug"],
+  { caption: "Spray — cards everywhere: the first fix is <b>less pressure, a lower arc</b>, a softer deck if needed.",
+    beats: ["spray"],
     actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'name the failure · apply one fix', x:50, y:88}
+      {t:'deck', id:'d', x:50, y:46, n:52},
+      {t:'rot', id:'d', deg:8},
+      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
+      {t:'label', id:'k', text:'spray → ease off', x:50, y:88}
     ]},
-  { caption: "Spray → less pressure, lower arc. Brick (nothing moves) → more even bow, softer grip on longs. Jam → catch later.",
-    beats: ["fixes"],
+  { caption: "Brick — nothing moves: the bow isn't even, or you're <b>squeezing the long edges</b> shut.",
+    beats: ["brick"],
     actions: [
-      {t:'note', id:'b', text:'spray · brick · jam', x:50, y:28},
-      {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'one variable at a time', x:50, y:88}
+      {t:'rot', id:'d', deg:0},
+      {t:'scale', id:'d', s:0.93},
+      {t:'label', id:'k', text:'brick → even bow', x:50, y:88}
     ]},
-  { caption: "Change only one dial per set of reps. Otherwise you cannot tell what helped.",
+  { caption: "Jam on the catch — <b>catch later</b>, softer palm, and do not clamp early.",
+    beats: ["jam"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'systematic troubleshooting', x:50, y:88}
+      {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'jam → catch later', x:50, y:88}
+    ]},
+  { caption: "The rule — <b>one variable per set of reps</b>, so you know what helped. Random thrashing engraves bad form; systematic beats stubborn.",
+    climax: true,
+    actions: [
+      {t:'move', id:'d', x:44, y:54},
+      {t:'label', id:'k', text:'one dial at a time', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t233 = { steps: [
-  { caption: "Deck Condition — stiffness, humidity, and break-in change everything.",
-    beats: ["the tool matters"],
-    actions: [
-      {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'same hands · different deck · different result', x:50, y:88}
-    ]},
-  { caption: "New decks are stiff and spray. Broken-in decks bow and stream more easily. Slightly dry air can make cards cling.",
+  { caption: "New decks — <b>stiff</b>; they tend to spray or refuse a deep bow.",
     beats: ["condition"],
     actions: [
-      {t:'note', id:'b', text:'stiff · broken-in · humid · dry', x:50, y:28},
-      {t:'label', id:'k', text:'match practice deck to performance deck', x:50, y:88}
+      {t:'deck', id:'d', x:50, y:50, n:52},
+      {t:'note', id:'b', text:'new deck: stiff', x:50, y:26},
+      {t:'label', id:'k', text:'stiff', x:50, y:88}
     ]},
-  { caption: "Practice on the deck you will perform with, or you are practicing a different move.",
+  { caption: "Broken-in — the same grip <b>bows and streams more easily</b>; the deck has learned the move with you.",
+    beats: ["condition"],
+    actions: [
+      {t:'note', id:'b', text:'broken-in: bows easily', x:50, y:26},
+      {t:'label', id:'k', text:'broken-in', x:50, y:88}
+    ]},
+  { caption: "Humidity — cards can <b>cling</b>; the release needs a cleaner ease, and dry air changes it again.",
+    beats: ["condition"],
+    actions: [
+      {t:'note', id:'b', text:'humid: cards cling', x:50, y:26},
+      {t:'label', id:'k', text:'cling', x:50, y:88}
+    ]},
+  { caption: "Match — <b>practice deck ≈ performance deck</b>, and re-check the bow after any deck change. Switching mid-learning feels like starting over, because it almost is.",
+    climax: true,
     actions: [
       {t:'unnote', id:'b'},
-      {t:'label', id:'k', text:'deck condition accounted for', x:50, y:88}
+      {t:'label', id:'k', text:'train on the deck you will use', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t234 = { steps: [
-  { caption: "Progression Ladder — a sensible order from first attempts to performance-height springs.",
+  { caption: "Rung 1 — the <b>two-handed spring</b>, owned. Nothing here starts until this is boring.",
     beats: ["ladder"],
     actions: [
       {t:'deck', id:'d', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'do not skip rungs', x:50, y:88}
+      {t:'hand', id:'lh', x:40, y:55, side:'left', on:true},
+      {t:'hand', id:'rh', x:60, y:45, side:'right', on:true},
+      {t:'label', id:'k', text:'rung 1 · two hands', x:50, y:88}
     ]},
-  { caption: "1) Two-hand spring  2) One-hand bow only  3) Low one-hand stream into a pile  4) Low stream into a catch  5) Raise the arc.",
-    beats: ["steps"],
+  { caption: "Rung 2 — one-hand <b>bow only, no release</b>, until the arch is even.",
+    beats: ["ladder"],
     actions: [
-      {t:'note', id:'b', text:'two-hand → bow → low stream → catch → height', x:50, y:28},
-      {t:'hand', id:'rh', x:58, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'own each rung before the next', x:50, y:88}
+      {t:'hand', id:'lh', on:false},
+      {t:'scale', id:'d', s:0.94},
+      {t:'label', id:'k', text:'rung 2 · bow only', x:50, y:88}
     ]},
-  { caption: "If a rung fails, drop back one. Speed is not a rung — form is.",
+  { caption: "Rung 3 — a <b>low one-hand stream</b> into a table pile.",
+    beats: ["ladder"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'progression clear', x:50, y:88}
+      {t:'scale', id:'d', s:1},
+      {t:'move', id:'d', x:50, y:57},
+      {t:'label', id:'k', text:'rung 3 · low stream', x:50, y:88}
+    ]},
+  { caption: "Rung 4 — the same low stream, now into a <b>hand catch</b>.",
+    beats: ["ladder"],
+    actions: [
+      {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
+      {t:'move', id:'d', x:44, y:54},
+      {t:'label', id:'k', text:'rung 4 · catch', x:50, y:88}
+    ]},
+  { caption: "Rung 5 — raise the <b>arc height only now</b>, after the catch is reliable. Failed rung? Drop back one. Speed is not a rung.",
+    climax: true,
+    actions: [
+      {t:'move', id:'d', x:57, y:38},
+      {t:'label', id:'k', text:'rung 5 · height last', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t235 = { steps: [
-  { caption: "Performance Spring — short, intentional, and finished cleanly. Not a marathon of retries.",
+  { caption: "One — plan a <b>single spring</b>, then continue the act; it is a beat, not a set.",
     beats: ["show conditions"],
     actions: [
-      {t:'deck', id:'d', x:50, y:45, n:52},
-      {t:'hand', id:'rh', x:58, y:38, side:'right', on:true},
-      {t:'label', id:'k', text:'one spring · then continue the act', x:50, y:88}
+      {t:'deck', id:'d', x:56, y:40, n:52},
+      {t:'hand', id:'rh', x:62, y:34, side:'right', on:true},
+      {t:'hand', id:'lh', x:42, y:58, side:'left', on:true},
+      {t:'label', id:'k', text:'one spring', x:50, y:88}
     ]},
-  { caption: "In performance, one good spring beats three attempted ones. If the bow feels wrong, skip to a cut you own.",
-    beats: ["abort criteria"],
+  { caption: "Abort — if the bow feels wrong, <b>do not release</b>; cut instead. A skipped spring is invisible.",
+    beats: ["abort rule"],
     actions: [
-      {t:'label', id:'k', text:'bad bow → do not release', x:50, y:88}
+      {t:'scale', id:'d', s:0.94},
+      {t:'label', id:'k', text:'bad bow → cut instead', x:50, y:88}
     ]},
-  { caption: "End with a square and eye contact. The finish sells the flourish more than the height.",
+  { caption: "Finish — <b>square and look up</b>. The hold after sells it; the audience remembers the calm finish more than the maximum height.",
+    climax: true,
+    actions: [
+      {t:'scale', id:'d', s:1},
+      {t:'move', id:'d', x:44, y:54},
+      {t:'label', id:'k', text:'square · eyes up', x:50, y:88}
+    ]},
+  { caption: "Never — <b>chase a failed spring</b> in front of people. One intentional attempt, a clean finish, or a graceful abort.",
     actions: [
       {t:'hand', id:'rh', on:false},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'performance spring complete', x:50, y:88}
+      {t:'hand', id:'lh', on:false},
+      {t:'label', id:'k', text:'never three retries', x:50, y:88}
     ]}
-]}
+]};
 
 ANIMS.t236 = { steps: [
-  { caption: "Thumb Bias — micro-adjust which end leads the release. Changes stream direction and clump patterns.",
-    beats: ["which end first"],
+  { caption: "Neutral — <b>both ends ease together</b>; this is the performance default.",
+    beats: ["neutral release"],
     actions: [
-      {t:'deck', id:'d', x:50, y:48, n:52},
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'thumb end vs finger end', x:50, y:88}
+      {t:'deck', id:'d', x:52, y:44, n:52},
+      {t:'hand', id:'rh', x:59, y:38, side:'right', on:true},
+      {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
+      {t:'label', id:'k', text:'neutral', x:50, y:88}
     ]},
-  { caption: "Slightly earlier ease on the thumb end sends cards one way; finger-end lead sends them the other.",
-    beats: ["bias"],
+  { caption: "Thumb-lead — ease the thumb end a <b>fraction earlier</b> and the stream shifts with it.",
+    beats: ["thumb-lead"],
     actions: [
-      {t:'note', id:'b', text:'thumb-lead · finger-lead · neutral', x:50, y:28},
-      {t:'label', id:'k', text:'tiny bias · big stream change', x:50, y:88}
+      {t:'move', id:'d', x:46, y:52},
+      {t:'label', id:'k', text:'thumb-lead', x:50, y:88}
     ]},
-  { caption: "Neutral (both ends ease together) is the performance default. Bias is a diagnostic tool.",
+  { caption: "Finger-lead — the <b>opposite bias</b>, the opposite shift; the clump patterns change too.",
+    beats: ["finger-lead"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'thumb bias understood', x:50, y:88}
+      {t:'move', id:'d', x:56, y:46},
+      {t:'label', id:'k', text:'finger-lead', x:50, y:88}
+    ]},
+  { caption: "Use — bias is for <b>diagnosis and fine aim</b>, not random style changes mid-show. If the stream always drifts one way, you already have an unconscious bias: neutralise it first.",
+    climax: true,
+    actions: [
+      {t:'move', id:'d', x:50, y:50},
+      {t:'label', id:'k', text:'bias understood', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t237 = { steps: [
-  { caption: "Left-Hand Spring — same physics, non-dominant hand. Fixes asymmetry and doubles your options on stage.",
+  { caption: "Grip map — rebuild the <b>ends-only grip</b> in the left hand from scratch.",
     beats: ["other hand"],
     actions: [
       {t:'deck', id:'d', x:48, y:48, n:52},
-      {t:'hand', id:'lh', x:40, y:42, side:'left', on:true},
-      {t:'label', id:'k', text:'left hand · full grip map', x:50, y:88}
+      {t:'hand', id:'lh', x:40, y:42, side:'left', on:true, grip:'ends only'},
+      {t:'label', id:'k', text:'left grip map', x:50, y:88}
     ]},
-  { caption: "Rebuild from grip map and bow — do not copy right-hand muscle memory blindly.",
+  { caption: "Bow — an <b>even arch</b> before any release; do not mirror right-hand habits blindly.",
     beats: ["rebuild"],
     actions: [
-      {t:'note', id:'b', text:'grip → bow → low stream → catch', x:50, y:28},
-      {t:'label', id:'k', text:'same ladder · other hand', x:50, y:88}
+      {t:'scale', id:'d', s:0.94},
+      {t:'label', id:'k', text:'left bow', x:50, y:88}
     ]},
-  { caption: "Train left at low height only until the stream is even. Then match right-hand standards.",
+  { caption: "Low stream — <b>table pile only</b> until it's even; left-hand lag is normal.",
+    beats: ["low stream"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'lh', on:false},
-      {t:'label', id:'k', text:'left-hand spring path', x:50, y:88}
+      {t:'scale', id:'d', s:1},
+      {t:'move', id:'d', x:48, y:57},
+      {t:'label', id:'k', text:'low · table pile', x:50, y:88}
+    ]},
+  { caption: "Catch — add the catch <b>after the stream is boringly reliable</b>; low height only until the quality matches the right hand.",
+    climax: true,
+    actions: [
+      {t:'hand', id:'rh', x:60, y:55, side:'right', on:true},
+      {t:'move', id:'d', x:53, y:53},
+      {t:'label', id:'k', text:'left catch added', x:50, y:88}
     ]}
 ]};
 
 ANIMS.t238 = { steps: [
-  { caption: "Continuous Spring — stream, catch, re-bow, stream again without a full table reset.",
+  { caption: "Catch — <b>soft and complete</b>; the catching hand becomes the next spring hand.",
     beats: ["cycle"],
     actions: [
-      {t:'deck', id:'d', x:50, y:45, n:52},
-      {t:'hand', id:'rh', x:58, y:38, side:'right', on:true},
+      {t:'deck', id:'d', x:44, y:54, n:52},
       {t:'hand', id:'lh', x:42, y:58, side:'left', on:true},
-      {t:'label', id:'k', text:'catch becomes the next bow', x:50, y:88}
+      {t:'hand', id:'rh', x:58, y:38, side:'right', on:true},
+      {t:'label', id:'k', text:'caught', x:50, y:88}
     ]},
-  { caption: "The catch hand squares only enough to re-grip the ends — not a full performance square.",
-    beats: ["minimal square"],
+  { caption: "Micro-square — only enough to <b>regrip the ends</b>; a full square between springs kills the phrase.",
+    beats: ["micro-square"],
     actions: [
-      {t:'label', id:'k', text:'catch · micro-square · re-bow', x:50, y:88}
+      {t:'move', id:'d', x:46, y:52},
+      {t:'label', id:'k', text:'micro-square only', x:50, y:88}
     ]},
-  { caption: "Two continuous springs is enough for show. More is practice, not better entertainment.",
+  { caption: "Re-bow — the <b>same even-arch standard</b> as the first spring; the second bow is where quality usually dies.",
+    beats: ["re-bow"],
     actions: [
-      {t:'hand', id:'rh', on:false},{t:'hand', id:'lh', on:false},
-      {t:'deck', id:'done', x:50, y:50, n:52},
-      {t:'label', id:'k', text:'continuous cycle', x:50, y:88}
+      {t:'scale', id:'d', s:0.94},
+      {t:'label', id:'k', text:'second bow', x:50, y:88}
+    ]},
+  { caption: "Spring again — and stop there: <b>two cycles in performance is enough</b>. More is practice, not better entertainment.",
+    climax: true,
+    actions: [
+      {t:'scale', id:'d', s:1},
+      {t:'move', id:'d', x:57, y:42},
+      {t:'label', id:'k', text:'two cycles · done', x:50, y:88}
     ]}
 ]};
 
@@ -8026,24 +8411,33 @@ ANIMS.t239 = { steps: [
 ]};
 
 ANIMS.t240 = { steps: [
-  { caption: "Pressure Curve — the shape of force over time during the release (not just \"hard\" or \"soft\").",
-    beats: ["force over time"],
+  { caption: "Hold — peak bow pressure stays <b>stable for a beat</b>; the curve starts level, not spiked.",
+    beats: ["the curve"],
     actions: [
-      {t:'deck', id:'d', x:50, y:48, n:52},
-      {t:'hand', id:'rh', x:58, y:40, side:'right', on:true},
-      {t:'label', id:'k', text:'bow peak · ease curve · empty', x:50, y:88}
+      {t:'deck', id:'d', x:54, y:44, n:52},
+      {t:'scale', id:'d', s:0.93},
+      {t:'hand', id:'rh', x:60, y:38, side:'right', on:true},
+      {t:'hand', id:'lh', x:40, y:58, side:'left', on:true},
+      {t:'label', id:'k', text:'hold', x:50, y:88}
     ]},
-  { caption: "Ideal: high hold, smooth ramp down, empty hands as the last cards leave. Avoid a cliff-drop in pressure.",
+  { caption: "Ramp — pressure <b>falls smoothly</b> as the cards leave; no cliff-drop anywhere in the release.",
     beats: ["smooth ramp"],
     actions: [
-      {t:'note', id:'b', text:'hold · ramp · empty', x:50, y:28},
-      {t:'label', id:'k', text:'no cliff-drop release', x:50, y:88}
+      {t:'scale', id:'d', s:0.97},
+      {t:'move', id:'d', x:50, y:50},
+      {t:'label', id:'k', text:'smooth ramp', x:50, y:88}
     ]},
-  { caption: "Cliff-drop = spray. Ramp that stalls mid-way = gaps. Feel the curve; do not only watch the cards.",
+  { caption: "Empty — hands are <b>free as the last cards leave</b>; nothing is still being squeezed at the end.",
+    beats: ["empty"],
     actions: [
-      {t:'unnote', id:'b'},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'pressure curve trained', x:50, y:88}
+      {t:'move', id:'d', x:43, y:55},
+      {t:'scale', id:'d', s:1},
+      {t:'label', id:'k', text:'empty hands', x:50, y:88}
+    ]},
+  { caption: "Read it — <b>cliff-drop → spray; stalled ramp → gaps</b>. Feel the curve in the fingers; do not only watch the cards.",
+    climax: true,
+    actions: [
+      {t:'label', id:'k', text:'feel the curve', x:50, y:88}
     ]}
 ]};
 ;
