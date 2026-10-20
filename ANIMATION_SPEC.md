@@ -194,3 +194,10 @@ the article's steps 1–3 describe — bottom card stolen under cover, then
 left on the face by the wiping hand — and the caption words the result
 plainly ("it's still there, right underneath"). Flagged for the author;
 article text was not changed.
+
+Update (2026-10-20): on the author's ruling, the article's steps 3–4 were
+rewritten to the handling the scene stages — the stolen card stays palmed
+(not carried away for good), the wiping hand leaves it on the face, and
+the original face card is drawn underneath to become the bottom card —
+so the article and the scene now agree. The paragraph above is kept as
+the record of the original discrepancy.
