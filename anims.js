@@ -11154,7 +11154,7 @@ ANIMS.t228 = { steps: [
       {t:'packet', id:'catch', x:48, y:69, w:12, cards:[{bulk:12}]},
       {t:'label', id:'k', text:'sequential peel — not explosion', x:50, y:88}
     ]},
-  { caption: "The fail sign: <b>if the block jumps as one, the release was too sudden</b>. Practice the release into a table pile before adding a hand catch.",
+  { caption: "Controlled release: <b>the cards leave the arch one after another</b> — no jump, no burst, the block never moves as one. Practice the release into a table pile before adding a hand catch.",
     climax: true,
     actions: [
       {t:'remove', id:'s0'},
@@ -11280,7 +11280,7 @@ ANIMS.t230 = { steps: [
       {t:'move', id:'catch', x:45, y:58},
       {t:'label', id:'k', text:'square after the last card', x:50, y:88}
     ]},
-  { caption: "The jam to avoid: <b>grabbing mid-stream</b> creates folds and stops the flow. If you miss, let the cards fall and reset — chasing mid-air makes it worse.",
+  { caption: "Clean catch: <b>the whole stream settles into the waiting palm in order</b> — no grab, no folds, nothing chased mid-air. The hand was in place before the release and simply receives.",
     climax: true,
     actions: [
       {t:'move', id:'catch', x:50, y:50},
