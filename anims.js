@@ -1980,39 +1980,61 @@ ANIMS.t39 = { steps: [
 ]};
 
 ANIMS.t40 = { steps: [
-  { caption: "Secretly stack the <b>four aces on top</b> of the deck (Exposed view shows them riding there). Everything after this is done by the spectator.",
+  { caption: "Secretly stack the four aces together <b>ninth through twelfth from the top</b> — eight indifferent cards above them (Exposed view shows where they sit). Everything after this is done by the spectator.",
     beats: ["ace stack"],
     actions: [
-      {t:'packet', id:'deck', x:50, y:52, w:13, cards:[{bulk:48},{rank:'A', suit:'♣', face:'down'},{rank:'A', suit:'♦', face:'down'},{rank:'A', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'}]},
-      {t:'note', id:'b', text:'four aces on top', x:50, y:24},
-      {t:'label', id:'k', text:'aces stacked · spectator does the rest', x:50, y:88}
+      {t:'packet', id:'deck', x:50, y:52, w:13, cards:[{bulk:40},{rank:'A', suit:'♣', face:'down'},{rank:'A', suit:'♦', face:'down'},{rank:'A', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{bulk:8}]},
+      {t:'note', id:'b', text:'aces at 9–12 from the top', x:50, y:24},
+      {t:'label', id:'k', text:'the stack · eight cards over the aces', x:50, y:88}
     ]},
-  { caption: "Ask them to <b>cut the deck into four piles</b>: lift off packets and lay them in a row. The first piles form — each cut takes cards off the top, where the aces were stacked (Exposed view tracks an ace to the top of each new pile).",
-    beats: ["spectator cuts"],
+  { caption: "Hand the deck to a spectator. They deal <b>face down into four piles</b> in a row, one card at a time, pile to pile — the way you'd deal a hand of poker.",
+    beats: ["the deal"],
     actions: [
-      {t:'remove', id:'deck'},
-      {t:'packet', id:'p1', x:20, y:52, w:12, cards:[{bulk:12},{rank:'A', suit:'♠', face:'down'}]},
-      {t:'packet', id:'p2', x:40, y:52, w:12, cards:[{bulk:12},{rank:'A', suit:'♥', face:'down'}]},
-      {t:'packet', id:'rest', x:66, y:52, w:12, cards:[{bulk:24},{rank:'A', suit:'♣', face:'down'},{rank:'A', suit:'♦', face:'down'}]},
+      {t:'repacket', id:'deck', cards:[{bulk:40},{rank:'A', suit:'♣', face:'down'},{rank:'A', suit:'♦', face:'down'},{rank:'A', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'},{bulk:4}]},
+      {t:'packet', id:'p1', x:20, y:52, w:12, cards:[{bulk:1}]},
+      {t:'packet', id:'p2', x:40, y:52, w:12, cards:[{bulk:1}]},
+      {t:'packet', id:'p3', x:60, y:52, w:12, cards:[{bulk:1}]},
+      {t:'packet', id:'p4', x:80, y:52, w:12, cards:[{bulk:1}]},
       {t:'hand', id:'rh', x:56, y:38, side:'right', on:true},
       {t:'unnote', id:'b'},
-      {t:'label', id:'k', text:'cutting into piles', x:50, y:88}
+      {t:'label', id:'k', text:'dealing · one card to each pile', x:50, y:88}
     ]},
-  { caption: "Four cuts, four piles. You have not touched the cards since the setup — <b>an ace rides on top of every pile</b> (Exposed).",
-    beats: ["four piles"],
+  { caption: "Around again — one, two, three, four, and back to one. <b>Two cards on every pile</b>, eight dealt, and the four aces are now the top four cards of the deck (Exposed). Nobody at the table knows it.",
+    beats: ["the deal"],
     actions: [
-      {t:'remove', id:'rest'},
-      {t:'packet', id:'p3', x:60, y:52, w:12, cards:[{bulk:12},{rank:'A', suit:'♦', face:'down'}]},
-      {t:'packet', id:'p4', x:80, y:52, w:12, cards:[{bulk:12},{rank:'A', suit:'♣', face:'down'}]},
-      {t:'label', id:'k', text:'four piles · four aces on top', x:50, y:88}
+      {t:'repacket', id:'deck', cards:[{bulk:40},{rank:'A', suit:'♣', face:'down'},{rank:'A', suit:'♦', face:'down'},{rank:'A', suit:'♥', face:'down'},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'repacket', id:'p1', cards:[{bulk:2}]},
+      {t:'repacket', id:'p2', cards:[{bulk:2}]},
+      {t:'repacket', id:'p3', cards:[{bulk:2}]},
+      {t:'repacket', id:'p4', cards:[{bulk:2}]},
+      {t:'label', id:'k', text:'two rounds dealt · aces on top of the deck', x:50, y:88}
     ]},
-  { caption: "Turn the top card of each pile over, one by one: <b>four aces</b>. Fully self-working — the only move was getting the aces on top beforehand, and the spectator did all the cutting.",
-    climax: true,
+  { caption: "The third round is the stack's payoff: <b>the last card dealt onto every pile is an ace</b> (Exposed view shows them landing) — and the spectator dealt them there, one fair card at a time.",
+    beats: ["the deal"],
     actions: [
-      {t:'repacket', id:'p1', cards:[{bulk:12}]},
-      {t:'repacket', id:'p2', cards:[{bulk:12}]},
-      {t:'repacket', id:'p3', cards:[{bulk:12}]},
-      {t:'repacket', id:'p4', cards:[{bulk:12}]},
+      {t:'repacket', id:'deck', cards:[{bulk:40}]},
+      {t:'repacket', id:'p1', cards:[{bulk:2},{rank:'A', suit:'♠', face:'down'}]},
+      {t:'repacket', id:'p2', cards:[{bulk:2},{rank:'A', suit:'♥', face:'down'}]},
+      {t:'repacket', id:'p3', cards:[{bulk:2},{rank:'A', suit:'♦', face:'down'}]},
+      {t:'repacket', id:'p4', cards:[{bulk:2},{rank:'A', suit:'♣', face:'down'}]},
+      {t:'label', id:'k', text:'three rounds dealt · an ace tops every pile', x:50, y:88}
+    ]},
+  { caption: "Twelve cards dealt. <b>Set the rest of the deck aside</b> — it has no part in what happens next.",
+    beats: ["twelve dealt"],
+    actions: [
+      {t:'move', id:'deck', x:88, y:22, w:10},
+      {t:'hand', id:'rh', on:false},
+      {t:'note', id:'b', text:'the rest of the deck — out of play', x:62, y:14},
+      {t:'label', id:'k', text:'four piles of three', x:50, y:88}
+    ]},
+  { caption: "Turn the top card of each pile over, one by one: <b>four aces</b>. Fully self-working — the only move was the secret stack beforehand, and the spectator dealt every card.",
+    beats: ["four aces"], climax: true,
+    actions: [
+      {t:'unnote', id:'b'},
+      {t:'repacket', id:'p1', cards:[{bulk:2}]},
+      {t:'repacket', id:'p2', cards:[{bulk:2}]},
+      {t:'repacket', id:'p3', cards:[{bulk:2}]},
+      {t:'repacket', id:'p4', cards:[{bulk:2}]},
       {t:'card', id:'a1', rank:'A', suit:'♠', x:20, y:40, face:'down', w:11, z:5},
       {t:'card', id:'a2', rank:'A', suit:'♥', x:40, y:40, face:'down', w:11, z:5},
       {t:'card', id:'a3', rank:'A', suit:'♦', x:60, y:40, face:'down', w:11, z:5},
@@ -2025,8 +2047,7 @@ ANIMS.t40 = { steps: [
       {t:'hi', id:'a2', on:true},
       {t:'hi', id:'a3', on:true},
       {t:'hi', id:'a4', on:true},
-      {t:'hand', id:'rh', on:false},
-      {t:'label', id:'k', text:'they cut to four aces', x:50, y:88}
+      {t:'label', id:'k', text:'they dealt themselves four aces', x:50, y:88}
     ]}
 ]};
 
@@ -11133,7 +11154,7 @@ ANIMS.t228 = { steps: [
       {t:'packet', id:'catch', x:48, y:69, w:12, cards:[{bulk:12}]},
       {t:'label', id:'k', text:'sequential peel — not explosion', x:50, y:88}
     ]},
-  { caption: "The fail sign: <b>if the block jumps as one, the release was too sudden</b>. Practice the release into a table pile before adding a hand catch.",
+  { caption: "Controlled release: <b>the cards leave the arch one after another</b> — no jump, no burst, the block never moves as one. Practice the release into a table pile before adding a hand catch.",
     climax: true,
     actions: [
       {t:'remove', id:'s0'},
@@ -11259,7 +11280,7 @@ ANIMS.t230 = { steps: [
       {t:'move', id:'catch', x:45, y:58},
       {t:'label', id:'k', text:'square after the last card', x:50, y:88}
     ]},
-  { caption: "The jam to avoid: <b>grabbing mid-stream</b> creates folds and stops the flow. If you miss, let the cards fall and reset — chasing mid-air makes it worse.",
+  { caption: "Clean catch: <b>the whole stream settles into the waiting palm in order</b> — no grab, no folds, nothing chased mid-air. The hand was in place before the release and simply receives.",
     climax: true,
     actions: [
       {t:'move', id:'catch', x:50, y:50},
