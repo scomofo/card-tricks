@@ -6,4 +6,4 @@ Each board is one trick: one panel per step of its animation scene, with the ste
 
 Method: textless photorealistic panel photos generated per step, captioned by typesetting (never in-image text). Boards were audited panel by panel against the catalog on 2026-10-21; the FAIL and MAJOR defects found were regenerated and re-verified before this upload.
 
-Not wired into the app - reference material only.
+Integrated into the app as optional photo-step guides beneath each animation. The existing written learner steps, animated captions, and controls remain unchanged. If an image is missing or fails to load, the guide shows a fallback directing learners to those original materials.
