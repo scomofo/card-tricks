@@ -717,3 +717,7 @@
   border: 1px dashed var(--line); border-radius: 12px; color: var(--faint); font-size: 13px;
 }
 .animplayer[data-lazy="1"]:not(.mounted)::after { content: "Animation loads when visible"; }
+
+/* Step boards (wired in 2026-10-21): one board image under each trick's player. */
+.board-fig { margin: 14px 0 4px; }
+.board-img { display: block; width: 100%; height: auto; border-radius: 10px; }
