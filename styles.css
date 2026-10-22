@@ -721,3 +721,10 @@
 /* Step boards (wired in 2026-10-21): one board image under each trick's player. */
 .board-fig { margin: 14px 0 4px; }
 .board-img { display: block; width: 100%; height: auto; border-radius: 10px; }
+
+/* Optional all-steps photo guide; existing animation and text stay in place. */
+.board-guide { margin: 14px 0 18px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.02); }
+.board-guide summary { padding: 12px 14px; color: var(--gold); cursor: pointer; font-size: 14px; font-weight: 600; }
+.board-guide summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.board-guide .board-fig { margin: 0; padding: 0 12px 12px; }
+.board-guide-fallback { padding: 0 14px 12px; margin: 0; color: var(--muted); font-size: 14px; }
