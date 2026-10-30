@@ -822,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var secId = sec && sec.id || "";
     var secText = (sec && sec.querySelector("h2") && sec.querySelector("h2").textContent || "").toLowerCase();
 
-    if (/force|cut-deeper|10–20|10-20|classic force|riffle force|hindu.*force|under-the-spread/.test(title)) tags.push("force");
+    if (/force|cut-deeper|10–19|10-19|classic force|riffle force|hindu.*force|under-the-spread/.test(title)) tags.push("force");
     if (/control|break|pass|palm|side steal|cull|top change|double lift|glide|peek/.test(title)) tags.push("control");
     if (/shuffle|faro|riffle|overhand|hindu shuffle|wash|bridge/.test(title)) tags.push("shuffle");
     if (/self-worker|spell|mathematical|si stebbins|key card|21 card|do as i|princess/.test(title) || /self-worker/.test(secText)) tags.push("self-worker");

@@ -9981,12 +9981,12 @@ ANIMS.t201 = { steps: [
       {t:'note', id:'b', text:'force card: 5♦, 10th from the top', x:50, y:24},
       {t:'label', id:'k', text:'force card placed', x:50, y:88}
     ]},
-  { caption: "Number. Ask for <b>any number from 10 to 20</b> — and keep the range natural in conversation, so it never feels like a restriction. They name <b>15</b>.",
+  { caption: "Number. Ask for <b>any number from 10 to 19</b> — and keep the range natural in conversation, so it never feels like a restriction. They name <b>15</b>.",
     beats: ["number named"],
     actions: [
       {t:'note', id:'b', text:'they name 15', x:50, y:24},
       {t:'hand', id:'rh', x:63, y:42, side:'right', on:true},
-      {t:'label', id:'k', text:'name a number from 10 to 20', x:50, y:88}
+      {t:'label', id:'k', text:'name a number from 10 to 19', x:50, y:88}
     ]},
   { caption: "Count. Deal fifteen cards fairly into a pile, one at a time. Dealing reverses them — so the force card, tenth down in the deck, now sits <b>sixth from the top of the pile</b>. Hold that number: six.",
     beats: ["count"],
