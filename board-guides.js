@@ -33,6 +33,9 @@
       var asset = lookupBoard(article);
       var details = doc.createElement('details');
       details.className = 'board-guide';
+      // Show photographic steps by default so learners actually discover them.
+      // Native <details> still lets them collapse a long board when desired.
+      details.open = true;
       var summary = doc.createElement('summary');
       summary.textContent = 'Photo step guide (all steps)';
       var fallback = doc.createElement('p');
