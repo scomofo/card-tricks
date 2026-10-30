@@ -93,6 +93,7 @@ test('mount makes a collapsible reference and is idempotent without changing les
   assert.equal(mountBoardGuides(f.doc), 1);
   const details = f.host.children[0];
   assert.equal(details.tag, 'details');
+  assert.equal(details.open, true, 'photo steps should be visible without expanding a disclosure');
   assert.equal(details.children[0].tag, 'summary');
   assert.equal(details.children[1], f.figure);
   assert.equal(details.children[2].hidden, true);
