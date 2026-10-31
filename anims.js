@@ -3670,7 +3670,7 @@ ANIMS.t59 = { steps: [
       {t:'note', id:'b', text:'stack: 2♠–7♠ · three aces · A♠ 10th · 10♠–K♠', x:50, y:24},
       {t:'label', id:'k', text:'a stacked deck', x:50, y:88}
     ]},
-  { caption: "The spectator names a number from 10 to 20 — say <b>13</b>. Deal thirteen cards into a pile, reversing their order. Add the digits: 1 + 3 = 4.",
+  { caption: "The spectator names a number from 10 to 19 — say <b>13</b>. Deal thirteen cards into a pile, reversing their order. Add the digits: 1 + 3 = 4.",
     beats: ["named number"],
     actions: [
       {t:'repacket', id:'dk', cards:[{bulk:38},{rank:'K', suit:'♠', face:'down'}]},
