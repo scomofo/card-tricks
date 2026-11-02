@@ -3189,13 +3189,16 @@ ANIMS.t50 = { steps: [
     beats: ["the wipe"],
     actions: [
       {t:'unnote', id:'b'},
+      {t:'repacket', id:'deck', cards:[ {rank:'4', suit:'♥', face:'down'}, {bulk:50} ]},
       {t:'move', id:'chg', x:50, y:48},
       {t:'hand', id:'rh', x:57, y:36},
+      {t:'note', id:'b', text:'under the same wipe, the 4♥ is drawn back underneath', x:26, y:74},
       {t:'label', id:'k', text:'the wipe', x:50, y:88}
     ]},
-  { caption: "What they see is the hand lifting off a <b>changed face</b>: the A♠. The 4♥ never moved — it's still there, right underneath it.",
+  { caption: "What they see is the hand lifting off a <b>changed face</b>: the A♠. Under the same wipe, the 4♥ was drawn back underneath the deck — it is the new bottom card now.",
     beats: ["the change"], climax: true,
     actions: [
+      {t:'unnote', id:'b'},
       {t:'unpalm', id:'chg'},
       {t:'hand', id:'rh', x:74, y:20},
       {t:'hi', id:'chg', on:true},
@@ -8830,7 +8833,7 @@ ANIMS.t176 = { steps: [
       {t:'note', id:'b', text:'force card: K♥, 12th from the top', x:50, y:24},
       {t:'label', id:'k', text:'name a number', x:50, y:88}
     ]},
-  { caption: "They name <b>12</b>. Any number in range would do — the position was fixed before they spoke, and the range is never mentioned as a restriction.",
+  { caption: "They name <b>12</b> — the one number the fixed twelfth position serves. The position was fixed before they spoke.",
     beats: ["number named"],
     actions: [
       {t:'note', id:'b', text:'they name 12 — freely', x:50, y:24},
